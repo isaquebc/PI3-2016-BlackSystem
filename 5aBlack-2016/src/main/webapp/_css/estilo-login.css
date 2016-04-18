@@ -1,0 +1,66 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 17/04/2016, 10:59:52
+    Author     : Isaque
+*/
+
+body {
+	margin: 0 auto;  
+}
+.logotipo{
+    position: absolute;
+    right: 0px;
+    background: #DDDCFB;
+    height: auto;
+    width: 800px;
+    height: 100%;
+    float: left;
+    top: 0;
+    
+}
+.formul{
+    position: relative;
+    width: 300px;
+    display: block;
+    left: 200px;
+    top: 300px;
+}
+.campo>input{
+    width: 100px;
+    margin: 3px;
+    alignment-adjust: central;
+}
+.campo>label{
+	width: 50px;
+	display: inline-block;
+}
+.campo>label:after{
+	content: " :";
+}
+.campo{
+    margin:10px;
+    text-align: center;
+     font-size: medium;
+}
+fieldset{
+    
+    text-align: right;
+    font-size: small;
+}
+[type=submit]{
+    
+    margin: 7px;
+    
+}
+#logo-login{
+    position: relative;
+    left: 35%;
+    top: 25%;
+    width: 350px;
+}
+
+
