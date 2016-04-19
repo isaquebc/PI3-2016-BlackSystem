@@ -12,6 +12,6 @@ function formatar(mascara, documento){
 /* Este script formata qualquer tipo de campo. DIgite no HTML
  *
  * TELEFONE = <input type="text" name="tel" maxlength="12" OnKeyPress="formatar('##-####-####', this)" >
- * CEP = <input type="text" name="cep" maxlength="9" OnKeyPress="formatar('#####-###', this)" >
+ * CEP = <input type="text" name="cep" maxlength="9" OnKeyPress="formatar('#####-###', this)" />
  * CPF = <input type="text" name="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" >
  * */

@@ -1,0 +1,38 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19/04/2016, 18:25:27
+    Author     : isaque.bcosta1
+*/
+
+#t{
+    position: relative;
+    left: 30%;
+    top: 170px;
+    font-size: 30pt;
+}
+form{
+    position: relative;
+    top: 200px;
+    width: auto;
+    left:20%;
+    border: 0px;
+    color: #000000;
+}
+.relatorio{
+    position: relative;
+    display: inline-block;
+    color: #000000;
+    font-size: 15pt;
+}
+.campo{
+    position: relative;
+    display: inline-block;
+}
+.relatorio select, .relatorio input{
+    width: auto;
+    height: 15px;
+}

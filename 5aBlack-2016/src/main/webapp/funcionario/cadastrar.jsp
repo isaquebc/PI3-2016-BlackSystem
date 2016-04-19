@@ -10,9 +10,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../_css/estilo-menu.css" rel="stylesheet"/>
-        <link href="../_css/estilo-pedido-gerar.css" rel="stylesheet"/>
+        <link href="../_css/estilo-formulario.css" rel="stylesheet"/>
         <script src="../_js/home-menu.js" type="text/javascript"></script>
-        <title>5aBlack - Buscar Pedido</title>
+        <title>5aBlack - Cadastrar Funcionario</title>
     </head>
     <body>
         <%-- COMEÇO do cabeçado--%>
@@ -76,7 +76,7 @@
         <%-- FIM do cabeçado--%>   
 
         <h1 id="t">Novo Funcionario</h1>
-        <form action="gerarPedidoServlet" method="post" accept-charset="UTF-8">
+        <form action="NovoFuncionarioServlet" method="post" accept-charset="UTF-8">
             <fieldset id="funcionario"> 
                 <div class="funcionario">
                     <div class="campo nome">
@@ -117,10 +117,10 @@
                         <label>Filial de trabalho</label>
                         <select name="filial" id="filial">
                             <option value="">Selecione</option>
-                            <option value="backoffice">Santos</option>
-                            <option value="atendimento">São Paulo</option>
-                            <option value="suporteTecnico">Minas Gerais</option>
-                            <option value="gerenteTI">Rio de Janeiro</option>
+                            <option value="santos">Santos</option>
+                            <option value="sao-paulo">São Paulo</option>
+                            <option value="minas-gerais">Minas Gerais</option>
+                            <option value="rio-de-janeiro">Rio de Janeiro</option>
                         </select>
                     </div>
                     <div class="campo data-entrada">

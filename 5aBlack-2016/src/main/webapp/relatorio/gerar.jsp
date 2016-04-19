@@ -10,8 +10,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../_css/estilo-menu.css" rel="stylesheet"/>
+        <link href="../_css/estilo-relatorio.css" rel="stylesheet"/>
         <script src="../_js/home-menu.js" type="text/javascript"></script>
-        <title>5aBlack - Buscar Pedido</title>
+        <title>5aBlack - Relatorio</title>
     </head>
     <body>
         <%-- COMEÇO do cabeçado--%>
@@ -74,6 +75,33 @@
         </div>
         <%-- FIM do cabeçado--%>   
       
+        <h1 id="t">relatorio</h1>
+        <form action="GerarRelatorioServlet" method="post" accept-charset="UTF-8">
+            <fieldset id="relatorio"> 
+                <div class="relatorio">
+                    <div class="campo tipo-relatorio">
+                        <label>Tipo de Relatório</label>
+                        <select name="tipoRelatorio" id="tipo-relatorio">
+                            <option value="">Selecione</option>
+                            <option value="venda">Vendas</option>
+                            <option value="cliente">Cliente</option>
+                            <option value="funcionario">Funcionario</option>
+                            <option value="produto">Produto</option>
+                            <option value="pedido">Pedido</option>
+                        </select>
+                    </div>
+                    <div class="campo periodo">
+                        <label>Periodo de </label>
+                        <input type="date" id="data-inicial" for="data-inicial" name="data-inicial">
+                        <label>à</label>
+                        <input type="date" id="data-final" for="data-final" name="data-final">
+                    </div>
+                </div> 
+
+            </fieldset>
+            <input type="submit" value="Inserir" id="inserir"/>
+
+        </form>
         
        <%--
        

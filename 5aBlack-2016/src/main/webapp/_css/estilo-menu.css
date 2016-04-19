@@ -54,7 +54,7 @@ menu.superior.config{
 }
 body.menuAberto .menu.superior.config>.esconder.menu{
     visibility: visible;
-    color: white;
+    color: #FFFFFF;
     width: 300px;
     height: auto;
     background: #000000;

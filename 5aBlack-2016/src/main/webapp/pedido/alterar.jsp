@@ -12,7 +12,7 @@
         <link href="../_css/estilo-menu.css" rel="stylesheet"/>
         <link href="../_css/estilo-buscar.css" rel="stylesheet"/>
         <script src="../_js/home-menu.js" type="text/javascript"></script>
-        <title>5aBlack - Buscar Pedido</title>
+        <title>5aBlack - Alterar Pedido</title>
     </head>
     <body>
         <%-- COMEÇO do cabeçado--%>
@@ -74,7 +74,7 @@
             <div class="menu superior help">Help</div>
         </div>
         <%-- FIM do cabeçado--%>   
-        <form action="BuscarPedidoServlet" method="post" accept-charset="UTF-8">
+        <form action="AlterarPedidoServlet" method="post" accept-charset="UTF-8">
             <fieldset id="pesquisa"> 
                 <div class="campo pesquisa">
                     <input type="number" for="campo-pesquisa" id="campo-pesquisa" placeholder="Digite o numero do pedido">

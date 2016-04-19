@@ -10,9 +10,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../_css/estilo-menu.css" rel="stylesheet"/>
-        <link href="../_css/estilo-pedido-gerar.css" rel="stylesheet"/>
+        <link href="../_css/estilo-formulario.css" rel="stylesheet"/>
         <script src="../_js/home-menu.js" type="text/javascript"></script>
-        <title>5aBlack - Buscar Pedido</title>
+        <title>5aBlack - Gerar Pedido</title>
     </head>
     <body>
         <%-- COMEÇO do cabeçado--%>
@@ -76,7 +76,7 @@
         <%-- FIM do cabeçado--%>   
 
         <h1 id="t">Pedido</h1>
-        <form action="gerarPedidoServlet" method="post" accept-charset="UTF-8">
+        <form action="GerarPedidoServlet" method="post" accept-charset="UTF-8">
             <fieldset id="Roupa"> 
                 <div class="roupa">
                     <div class="campo tipo-peca">
