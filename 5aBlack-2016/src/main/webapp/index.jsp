@@ -30,7 +30,7 @@
 
                     <div class="campo obrigatorio">
                         <label for="cpf">CPF</label>
-                        <input type="text" id="cpf" name="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder="000.000.000-00" >
+                        <input type="text" id="cpf" name="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder="___.___.___-__" >
                     </div>
 
                     <div class="campo obrigatorio">

@@ -1,0 +1,34 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18/04/2016, 20:34:43
+    Author     : Isaque
+*/
+body{
+    
+}
+fieldset{
+    position: relative;
+    top: 200px;
+    width: auto;
+    left:20%;
+    font-size: 11pt;
+    border: 0px;
+}
+.campo.pesquisa{
+    display: inline-block;
+}
+#campo-pesquisa{
+    width: 700px;
+    height: 23px;
+    font-size: 15pt;
+    display: inline-block;
+}
+[type=submit]{
+    font-size: larger;
+    height: 27px;
+    
+}

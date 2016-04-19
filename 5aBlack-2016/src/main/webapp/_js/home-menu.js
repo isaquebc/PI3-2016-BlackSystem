@@ -30,11 +30,13 @@ function iniciar() {
     chamado.addEventListener("click", abrirChamado);
     relatorio.addEventListener("click", abrirRelatorio);
     
+    document.body.classList.toggle("menuFechado");
     
     
 }
 function abrirMenu() {
     menu = document.body.classList.toggle("menuAberto");
+    document.body.classList.toggle("menuFechado");
 }
 function abrirPedido(){
     pedido = document.body.classList.toggle("menuPedido");
