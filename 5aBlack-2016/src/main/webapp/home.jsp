@@ -16,7 +16,7 @@
     <body>
         <div class="cabecalho">
             <div class="menu superior config" > 
-                <div class="esconder menu">
+                <div class="menu">
                     <div class="pedido">
                         <div class="menu opcoes link" id="pedido">Pedido</div>
                         <div class="esconder menu-secundario">
@@ -67,7 +67,6 @@
                 </div>
                 <img class="link" id="config" src="_img/icone-configuracoes.png"/> 
             </div>
-
             <div class="menu superior logo"> <img id="logo" src="_img/logotipo-pequeno.png">5aBlack</div>
             <div class="menu superior help">Help</div>
             <div id="l"> </div>

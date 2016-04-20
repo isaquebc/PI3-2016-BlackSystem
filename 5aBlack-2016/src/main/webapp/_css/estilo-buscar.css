@@ -14,15 +14,15 @@ fieldset{
     position: relative;
     top: 200px;
     width: auto;
-    left:20%;
-    font-size: 11pt;
+    left:40%;
+      font-size: 11pt;
     border: 0px;
 }
 .campo.pesquisa{
     display: inline-block;
 }
 #campo-pesquisa{
-    width: 700px;
+    width: 300px;
     height: 23px;
     font-size: 15pt;
     display: inline-block;
