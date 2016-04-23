@@ -16,13 +16,18 @@ and open the template in the editor.
 }
 form{
     position: relative;
+    display: inline-block;
     top: 210px;
-    width: auto;
     left:20%;
-    border: 0px;
     color: #000000;
 }
-.relatorio{
+#campos-relatorio{
+    display: inline-block;
+    width: auto;
+    border: 0px;
+
+}
+.campos-relatorio{
     position: relative;
     display: inline-block;
     color: #000000;
@@ -33,7 +38,7 @@ form{
     display: inline-block;
 }
 
-.relatorio select, .relatorio input{
+.campos-relatorio select, .campos-relatorio input{
     width: auto;
-    height: 15px;
+    height: 25px;
 }

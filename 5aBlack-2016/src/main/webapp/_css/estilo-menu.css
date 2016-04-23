@@ -13,9 +13,9 @@ body{
 .cabecalho{
     display: block;
     position: absolute;
-    top: 4px;
+    top: 2px;
     width: 100%;
-    margin: 3px;
+    margin: 2px;
     background-color: #FFFFFF;
     height: 100px;
 }
@@ -25,13 +25,17 @@ body{
     
 }
 #config{
-    margin: 10px;
+    margin: 3px;
+    position: absolute;
+    right: 6%;
+    top: 0px;
+    
 }
 .menu.superior.config{
     position: relative;
-    left: 10px;
-    top: 100px;
-    margin: 40px;
+    left: 0px;
+    top: 4px;
+    margin: 1px;
 }
 .menu.superior.logo{
     display: inline-block;
@@ -57,11 +61,11 @@ body{
 body .menu.superior.config>.menu{
     visibility: visible;
     color: #FFFFFF;
-    width: 250px;
+    width: 190px;
     height: auto;
     background: #000000;
-    padding-top: 10px;
-    padding-bottom: 1px;
+    padding-top: 1px;
+    padding-bottom: 15px;
     
 }
 body .menu.opcoes{
@@ -73,12 +77,15 @@ body .menu.opcoes{
     font-size: 15pt;
 }
 #menuPedido{}
+
 body.menuAberto .menuPedido{}
+
+
 
 body.menuPedido .pedido .menu-secundario{
     visibility: visible;
     background: #FFFFFF;
-    width: 298px;
+    width: 190px;
     color: #000000;
     height: auto;
 }
@@ -94,7 +101,7 @@ body.menuPedido .pedido .opcoes-secundarias{
 body.menuFuncionario .funcionario .menu-secundario{
     visibility: visible;
     background: #FFFFFF;
-    width: 298px;
+    width: 190px;
     color: #000000;
     height: auto;
 }
@@ -110,7 +117,7 @@ body.menuFuncionario .funcionario .opcoes-secundarias{
 body.menuServicoProduto .servicoProduto .menu-secundario{
     visibility: visible;
     background: #FFFFFF;
-    width: 298px;
+    width: 190px;
     color: #000000;
     height: auto;
 }
@@ -126,7 +133,7 @@ body.menuServicoProduto .servicoProduto .opcoes-secundarias{
 body.menuCliente .cliente .menu-secundario{
     visibility: visible;
     background: #FFFFFF;
-    width: 298px;
+    width: 190px;
     color: #000000;
     height: auto;
 }
@@ -142,7 +149,7 @@ body.menuCliente .cliente .opcoes-secundarias{
 body.menuChamado .chamado .menu-secundario{
     visibility: visible;
     background: #FFFFFF;
-    width: 298px;
+    width: 190px;
     color: #000000;
     height: auto;
 }
@@ -158,7 +165,7 @@ body.menuChamado .chamado .opcoes-secundarias{
 body.menuRelatorio .relatorio .menu-secundario{
     visibility: visible;
     background: #FFFFFF;
-    width: 298px;
+    width: 190px;
     color: #000000;
     height: auto;
 }
@@ -170,17 +177,9 @@ body.menuRelatorio .relatorio .opcoes-secundarias{
     height: auto;
     font-size: 13pt;
 }
-body.menuFechado menu-secundario{
-    visibility: hidden;
-    height: 0px;
-    width: 0px;
-}
-
 
 .link:hover{
     cursor: pointer;
     left: 100px;
 }
-#relatorio{
-    color: #FFFFFF
-}
+

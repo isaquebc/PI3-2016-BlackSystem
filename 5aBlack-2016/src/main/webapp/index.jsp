@@ -24,7 +24,7 @@
 
             <div class="mensagem alerta"></div>
 
-            <form action="home.jsp" class="pessoal" method="post">
+            <form action="inicial/home.jsp" class="pessoal" method="post">
 
                 <fieldset class="login">
 
