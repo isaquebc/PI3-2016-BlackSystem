@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
+    <head >
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../_css/estilo-menu.css" rel="stylesheet"/>
         <script src="../_js/home-menu.js" type="text/javascript"></script>
@@ -40,7 +40,7 @@
                         <div class="esconder menu-secundario">
                             <a href="../servicoProduto/cadastrarServico.jsp"><div class="opcoes-secundarias link" id="cadastrarServico">Cadastar Serviço</div></a>
                             <a href="../servicoProduto/alterarServico.jsp"><div class="opcoes-secundarias link" id="alterarServico">Alterar Serviço</div></a>
-                            <div class="opcoes-secundarias link" id="emBranco"></div>
+                            <div class="opcoes-secundarias" id="emBranco"></div>
                             <a href="../servicoProduto/cadastrarProduto.jsp"><div class="opcoes-secundarias link" id="cadastrarProduto">Cadastar Produto</div></a>
                             <a href="../servicoProduto/alterarProduto.jsp"><div class="opcoes-secundarias link" id="alterarProduto">Alterar Produto</div></a>
                         </div>
@@ -70,9 +70,17 @@
 
                 </div>
             </div>
-            <div class="menu superior logo"> <img id="logo" src="../_img/logotipo-pequeno.png">5aBlack</div>
+            <a href="../inicial/home.jsp"><div class="menu superior logo link"> <img id="logo" src="../_img/logotipo-pequeno.png">5aBlack</div></a>
             <div class="menu superior help">Help</div>
-            <img class="link" id="config" src="../_img/icone-configuracoes.png"/> 
+            <div class="menu-direita">
+                <img  id="config" src="../_img/icone-configuracoes.png"/> 
+                <div class="esconder menu">
+                    <a class="link"><label id="perfil">Perfil</label></a>
+                    <a class="link"><label id="alterar-senha">Alterar Senha</label></a>
+                    <a class="link"><label id="sair">Sair</label></a>
+                    
+                </div>
+            </div>
             <div id="l"> </div>
         </div>
     </body>

@@ -13,10 +13,10 @@
         <title>5aBlack - Cadastrar Funcionario</title>
     </head>
     <body>
-        
+
         <%-- AQUI EU ESTOU CHAMANDO O MENU NESTA PAGINA --%>
         <jsp:include page="../menu.jsp" />  
-        
+
 
         <h1 id="t">Novo Funcionario</h1>
         <form action="NovoFuncionarioServlet" method="post" accept-charset="UTF-8">
@@ -25,6 +25,9 @@
                     <div class="campo nome">
                         <label>Nome</label>
                         <input type="text" name="nome" for="pNome" id="pNome" placeholder=" NOME"/>
+                    </div>
+                    <div class="campo sobrenome">
+                        <label>Sobrenome</label>
                         <input type="text" name="sobrenome" for="sNome" id="sNome" placeholder=" SOBRENOME"/>
                     </div>
                     <div class="campo cargo">
@@ -67,7 +70,7 @@
                         </select>
                     </div>
                     <div class="campo data-entrada">
-                        <label>Data de entrada na empresa</label>
+                        <label>Data de Contratação</label>
                         <input type="date" name="data-entrada" id="data-entrada" for="data-entrada"/>
                     </div>
                     <div class="campo salario">
@@ -78,7 +81,7 @@
                         <label>Senha</label>
                         <input type="password" name="senha" id="senha" for="senha"/>
                     </div>
-                    
+
                 </div> 
 
             </fieldset>
