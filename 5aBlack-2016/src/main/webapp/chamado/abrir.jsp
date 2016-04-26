@@ -10,6 +10,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../_css/estilo-formulario.css" rel="stylesheet"/>
+        
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-light_blue.min.css" />  
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+        <script src="../_js/formatoJS.js" type="text/javascript"></script>
         <title>5aBlack - Buscar Pedido</title>
     </head>
     <body>
@@ -17,39 +25,39 @@
         <%-- AQUI EU ESTOU CHAMANDO O MENU NESTA PAGINA --%>
         <jsp:include page="../menu.jsp" />  
         
-      
-        <h1 id="t">Novo Chamado</h1>
+      <main id="main-layout" class="mdl-layout__content linha-unica" >
+          <div id="container">
         <form action="NovoChamadoServlet" method="post" accept-charset="UTF-8">
             <fieldset id="chamado"> 
-                <div class="campo filial">
-                        <label>Filial de trabalho</label>
-                        <select name="filial" id="filial">
-                            <option value="">Selecione</option>
+                <legend><h4>Abrir Chamado</h4></legend>
+                    <div class="campo filial mdl-textfield mdl-js-textfield">
+                        <label class="mdl-textfield__label" for="filial">Filial de trabalho</label>
+                        <select class="mdl-textfield__input" name="filial" id="filial">
+                            <option value=""></option>
                             <option value="santos">Santos</option>
                             <option value="sao-paulo">São Paulo</option>
                             <option value="minas-gerais">Minas Gerais</option>
                             <option value="rio-de-janeiro">Rio de Janeiro</option>
                         </select>
                     </div>
-                    <div class="campo tipo-solicitacao">
-                        <label>Tipo de Solicitação</label>
-                        <select name="cargo" id="cargo">
-                            <option value="">Selecione</option>
+                    <div class="campo tipo-solicitacao mdl-textfield mdl-js-textfield">
+                        <label class="mdl-textfield__label" for="solicitacao">Tipo de Solicitação</label>
+                        <select class="mdl-textfield__input" name="solicitacao" id="solicitacao">
+                            <option value=""></option>
                             <option value="resetar-senha">Esqueci minha senha</option>
                             <option value="dado-incorreto">Dado incorreto</option>
                         </select>
                     </div>
-                    <div class="campo descricao">
-                        <label>Descrição</label>
-                        <textarea name="descricao" form="dercricao" placeholder="Descreva o seu problema..."></textarea>
+                    <div class="campo descricao mdl-textfield mdl-js-textfield">
+                        <label class="mdl-textfield__label" for="descricao">Descrição do problema</label>
+                        <textarea name="descricao" class="mdl-textfield__input" form="dercricao"/></textarea>
                     </div>                    
-                </div> 
-
             </fieldset>
-            <input type="submit" value="Inserir" id="inserir"/>
+            <button type="submit" id="inserir" class="mdl-button mdl-js-button mdl-js-ripple-effect">Abrir</button>
 
         </form>
-        
+          </div>
+      </main>
        <%--
        
        AQUI A GENTE VAI GERAR A LISTA DE PEDIDOS COM O ID INDICADO!!

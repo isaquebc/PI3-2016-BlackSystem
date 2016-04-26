@@ -7,38 +7,63 @@ and open the template in the editor.
     Created on : 19/04/2016, 18:25:27
     Author     : isaque.bcosta1
 */
-
-#t{
-    position: relative;
-    left: 40%;
-    top: 170px;
-    font-size: 30pt;
-}
-form{
-    position: relative;
+fieldset{
     display: inline-block;
-    top: 210px;
-    left:20%;
-    color: #000000;
 }
-#campos-relatorio{
-    display: inline-block;
+.teste{
+    display:inline-block;
     width: auto;
-    border: 0px;
+}
+#container{
+	margin: 100px auto;
+	width: 650px;;
+}
+.mdl-textfield.mdl-js-textfield{
+	width: auto;
+        display: inline-block;
+        margin: 10px;
+}
+main{
+    left: 300px;
+    width: 70%
+}
+erial-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
 
-}
-.campos-relatorio{
-    position: relative;
-    display: inline-block;
-    color: #000000;
-    font-size: 15pt;
-}
-.campo{
-    position: relative;
-    display: inline-block;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }
 
-.campos-relatorio select, .campos-relatorio input{
-    width: auto;
-    height: 25px;
-}
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 12px; }
+.material-icons.md-24 { font-size: 18px; }
+.material-icons.md-36 { font-size: 24px; }
+.material-icons.md-48 { font-size: 36px; }
+.material-icons.md-100{ font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+.md-green{color: green;}
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
