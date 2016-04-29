@@ -20,7 +20,7 @@ import java.sql.Statement;
 public  abstract class Conexao {
    
 
-    final Connection conexao() throws ClassNotFoundException, SQLException {
+    final Connection getConexao() throws ClassNotFoundException, SQLException {
         Connection con = null;
         Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
         try {
@@ -39,7 +39,7 @@ public  abstract class Conexao {
         Connection conn = null;
         String sql = ("SELECT NOME_CLIENTE FROM TB_CLIENTE WHERE CPF='" + cpf + "'");
         try {
-            conn = conexao();
+            conn = getConexao();
             stm = conn.prepareStatement(sql);
             nome = rs.getString("NOME_CLIENTE");
             stm.close();
