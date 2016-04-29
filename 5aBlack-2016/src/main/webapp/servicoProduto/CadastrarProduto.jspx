@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : CadastrarProduto
+    Created on : 28/04/2016, 23:31:14
+    Author     : Isaque
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          version="2.0">
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+
+    <jsp:output omit-xml-declaration="true"
+                doctype-root-element="HTML"
+                doctype-system="about:legacy-compact"/>
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <link href="../_css/estilo-formulario.css" rel="stylesheet"/>
+            <script src="../_js/formatoJS.js" type="text/javascript">.</script>
+
+            <title>5aBlack - Novo Produto</title>
+        </head>
+        <body>
+
+            <jsp:include page="../inicial/menu2.jspx" /> 
+
+            <main>
+                <div class="container">
+                    <form class="form-signin" action="NovoProdutoServlet" method="post" accept-charset="UTF-8">
+                        <fieldset> 
+                            <legend><h2 class="form-signin-heading">Novo Produto</h2></legend>
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input type="text" class="form-control" name="nome" for="pNome" id="pNome"/>
+                            </div>
+                        </fieldset>
+
+                        <button type="submit" id="inserir" class="btn btn-lg btn-primary btn-block">Cadastrar</button>
+
+                    </form>
+                </div> 
+            </main>
+        </body>
+    </html>
+</jsp:root>

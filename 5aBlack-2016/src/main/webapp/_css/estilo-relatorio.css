@@ -7,63 +7,21 @@ and open the template in the editor.
     Created on : 19/04/2016, 18:25:27
     Author     : isaque.bcosta1
 */
-fieldset{
+
+.linha-unica{
     display: inline-block;
+    
 }
-.teste{
-    display:inline-block;
-    width: auto;
+.linha-unica label,.linha-unica input, .linha-unica button{
+    display: inline-block;
+    margin: 10px;
 }
-#container{
-	margin: 100px auto;
-	width: 650px;;
+.form-group .linha-unica{
+    display: inline-block;
+    width: 150px;
 }
-.mdl-textfield.mdl-js-textfield{
-	width: auto;
-        display: inline-block;
-        margin: 10px;
-}
-main{
-    left: 300px;
-    width: 70%
-}
-erial-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 15px;  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
+label:after{
+    content: ":";
 }
 
-/* Rules for sizing the icon. */
-.material-icons.md-18 { font-size: 12px; }
-.material-icons.md-24 { font-size: 18px; }
-.material-icons.md-36 { font-size: 24px; }
-.material-icons.md-48 { font-size: 36px; }
-.material-icons.md-100{ font-size: 48px; }
 
-/* Rules for using icons as black on a light background. */
-.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
-.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
-.md-green{color: green;}
-/* Rules for using icons as white on a dark background. */
-.material-icons.md-light { color: rgba(255, 255, 255, 1); }
-.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }

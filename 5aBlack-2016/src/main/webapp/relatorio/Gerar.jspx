@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : Gerar
+    Created on : 28/04/2016, 22:56:05
+    Author     : Isaque
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          version="2.0">
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+
+    <jsp:output omit-xml-declaration="true"
+                doctype-root-element="HTML"
+                doctype-system="about:legacy-compact"/>
+
+    <html>
+        <head>
+            <meta charset="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <link href="../_css/estilo-relatorio.css" rel="stylesheet"/>
+            <script src="../_js/formatoJS.js" type="text/javascript">.</script>
+
+            <title>5aBlack - Buscar Pedido</title>
+        </head>
+        <body>
+            <jsp:include page="../inicial/menu2.jspx" />
+            <main>
+                <div class="container">
+
+                    <form class="form-signin" action="GerarRelatorioServlet" method="post" accept-charset="UTF-8">
+                        <fieldset> 
+                            <legend><h2 class="form-signin-heading">Gerar Relatório</h2></legend>
+                            <div class="form-group linha-unica">
+
+                                    <label class="linha-unica" for="tipo-Relatorio">Tipo de Relatório</label>
+                                    <select class="form-control linha-unica" name="tipo-Relatorio" id="tipoRelatorio">
+                                        <option value=""></option>
+                                        <option value="venda">Vendas</option>
+                                        <option value="cliente">Cliente</option>
+                                        <option value="funcionario">Funcionario</option>
+                                        <option value="produto">Produto</option>
+                                        <option value="pedido">Pedido</option>
+                                    </select>
+
+                                    <label class="linha-unica" for="data-Inicial">Periodo</label>
+                                    <input type="date" class="form-control linha-unica" id="dtInicial" name="data-Inicial"/>
+
+    
+                                    <label class="linha-unica" for="data-Final">à</label>
+ 
+                                    <input type="date" class="form-control linha-unica" id="dtFinal" name="data-Final"/>
+  
+                            </div>
+                        </fieldset>
+                        <button type="submit" class="btn btn-lg btn-primary btn-block" id="pesquisar">Gerar Relatório</button>
+                    </form>
+                </div>
+            </main>
+
+        </body>
+    </html>
+</jsp:root>

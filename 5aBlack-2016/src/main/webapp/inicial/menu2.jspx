@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : menu2
+    Created on : 28/04/2016, 18:40:22
+    Author     : Isaque
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+
+    <jsp:output omit-xml-declaration="true"
+                doctype-root-element="HTML"
+                doctype-system="about:legacy-compact"/>
+
+
+    <html>
+        <head>
+            <meta charset="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <link href="../_css/bootstrap.min.css" rel="stylesheet"/>              
+
+            <title>5aBlack</title>
+        </head>
+        <body>
+            <nav class="navbar navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/5aBlack-2016/inicial/home.jspx">5aBack</a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="/5aBlack-2016/inicial/home.jspx">Home</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pedido <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/5aBlack-2016/pedido/Buscar.jspx">Buscar, Alterar, Invalidar</a></li>
+                                    <li><a href="/5aBlack-2016/pedido/Gerar.jspx">Gerar</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Funcionario <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/5aBlack-2016/funcionario/Buscar.jspx">Buscar, Alterar, Invalidar</a></li>
+                                    <li><a href="/5aBlack-2016/funcionario/Cadastrar.jspx">Cadastrar</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cliente <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/5aBlack-2016/cliente/Buscar.jspx">Buscar, Alterar </a></li>
+                                    <li><a href="/5aBlack-2016/cliente/Cadastrar.jspx">Cadastrar</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relatório <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/5aBlack-2016/relatorio/Gerar.jspx">Gerar</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Serviço e Produto <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/5aBlack-2016/servicoProduto/CadastrarServico.jspx">Novo Serviço</a></li>
+                                    <li><a href="#">Alterar Serviço</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="/5aBlack-2016/servicoProduto/CadastrarProduto.jspx">Novo Produto</a></li>
+                                    <li><a href="#">Alterar Produto</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </nav>
+            <script src="../_js/jquery.min.js">.</script>
+            <script src="../_js/bootstrap.min.js">.</script>
+        </body>
+    </html>
+</jsp:root>

@@ -1,0 +1,14 @@
+{
+    "attributes": {
+        "src": {
+            "context": "meta"
+        },
+        "href": {
+            "context": "meta"
+        },
+        "url": {
+            "context": "meta"
+        }
+    },
+    "elements": {}
+}
