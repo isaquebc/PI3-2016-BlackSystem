@@ -8,6 +8,7 @@ package br.senac.tads.pi3.blacksystem.ablack;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import 
 
 /**
  *
@@ -16,8 +17,7 @@ import java.sql.SQLException;
 public class IncluirClienteDAO extends Conexao{
     
     
-    public void incluirPessoa(String nome, String telefone, String celular, String cpf, String email,
-            String end, String numEnd, String cidade, String estado, String cep) throws ClassNotFoundException {
+    public void incluirPessoa() throws ClassNotFoundException {
         PreparedStatement stm = null;
         Connection conn = null;
         
