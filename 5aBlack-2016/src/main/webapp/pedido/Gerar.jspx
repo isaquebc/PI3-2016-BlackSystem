@@ -33,7 +33,7 @@
                                     <legend><h2>Gerar Pedido</h2></legend>
                                     <div class="form-group">
                                         <label class="" for="peca">Tipo de Peça</label>
-                                        <select class="form-control" name="tipo-Peca" id="tipoPeca">
+                                        <select class="form-control" required="" name="tipo-Peca" id="tipoPeca">
                                             <option value=""></option>
                                             <option value="camiseta">Camiseta</option>
                                             <option value="calca">Calça</option>
@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="">
                                         <label class="" for="tecido">Tipo de Tecido</label>
-                                        <select class="form-control" name="tipo-Tecido" id="tipoTecido">
+                                        <select class="form-control" required="" name="tipo-Tecido" id="tipoTecido">
                                             <option value=""></option>
                                             <option value="camiseta">Moletom</option>
                                             <option value="camiseta">Algodão</option>
@@ -55,7 +55,7 @@
                                     </div>
                                     <div class="">
                                         <label class="" for="lavagem">Tipo de Lavagem</label>
-                                        <select class="form-control" name="tipo-Lavagem" id="tipoLavagem">
+                                        <select class="form-control" required="" name="tipo-Lavagem" id="tipoLavagem">
                                             <option value=""></option>
                                             <option value="camiseta">A seco</option>
                                             <option value="camiseta">Simples</option>
@@ -63,11 +63,11 @@
                                     </div>
                                     <div class="">
                                         <label class="" for="quantidade">Quantidade</label>
-                                        <input type="number" class="form-control" name="qtd-Peca" id="qtdPeca"/>
+                                        <input type="number" required="" class="form-control" name="qtd-Peca" id="qtdPeca"/>
                                     </div>
                                     <div class="">
                                         <label class="" for="cor">Cor</label>
-                                        <select class="form-control" name="cor" id="cor" >
+                                        <select class="form-control" required="" name="cor" id="cor" >
                                             <option value=""></option>
                                             <option value="camiseta">Azul</option>
                                             <option value="camiseta">Amarelo</option>
@@ -75,7 +75,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="" for="dtRetirada">Data de retirada</label>
-                                        <input type="date" class="form-control" name="dt-Retirada" id="dtRetirada"/>
+                                        <input type="date" required="" class="form-control" name="dt-Retirada" id="dtRetirada"/>
                                     </div>
                                 </fieldset>
                                 <button type="submit" id="inserir" class="btn btn-default btn-primary btn-block">Inserir</button>

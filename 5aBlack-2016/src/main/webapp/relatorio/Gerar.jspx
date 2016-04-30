@@ -29,7 +29,7 @@
                                     <legend><h2 class="form-signin-heading">Gerar Relatório</h2></legend>
                                     <div class="form-group col-md-3 col-md-offset-0">
                                         <label  for="tipo-Relatorio">Tipo de Relatório</label>
-                                        <select class="form-control" name="tipo-Relatorio" id="tipoRelatorio">
+                                        <select class="form-control" required="" name="tipo-Relatorio" id="tipoRelatorio">
                                             <option value=""></option>
                                             <option value="venda">Vendas</option>
                                             <option value="cliente">Cliente</option>
@@ -40,11 +40,11 @@
                                     </div>
                                     <div class="form-group col-md-3 col-md-offset-0">
                                         <label for="data-Inicial">Periodo</label>
-                                        <input type="date" class="form-control" id="dtInicial" name="data-Inicial" />
+                                        <input type="date" required="" class="form-control" id="dtInicial" name="data-Inicial" />
                                     </div>
                                     <div class="form-group col-md-3 col-md-offset-0">
                                         <label  for="data-Final">à</label>
-                                        <input type="date" class="form-control linha-unica" id="dtFinal" name="data-Final"/>
+                                        <input type="date" required="" class="form-control linha-unica" id="dtFinal" name="data-Final"/>
                                     </div>
                                 </fieldset>
                                 <button type="submit" id="inserir" class="btn btn-lg btn-primary btn-block">Gerar</button>

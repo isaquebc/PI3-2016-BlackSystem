@@ -31,11 +31,11 @@
                                 <div class="form-group linha-unica">
                                     <div class="linha-unica">
                                         <label for="nome">Nome</label>
-                                        <input type="text" class="form-control" name="nome" id="pNome"/>
+                                        <input type="text" required="" class="form-control" name="nome" id="pNome"/>
                                     </div>
                                     <div class="linha-unica">
                                         <label for="sobrenome">Sobrenome</label>
-                                        <input type="text" class="form-control" name="sobrenome" id="sNome"/>
+                                        <input type="text" required="" class="form-control" name="sobrenome" id="sNome"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -48,11 +48,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="cpf">CPF</label>
-                                    <input type="text" class="form-control" name="cpf" id ="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder=" ___.___.___-__" />
+                                    <input type="text" required="" class="form-control" name="cpf" id ="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder=" ___.___.___-__" />
                                 </div>
                                 <div class="form-group">
                                     <label for="email">E-mail</label>
-                                    <input type="email" class="form-control" name="email" id="email" for="email" placeholder=" ________@_____.com"/>
+                                    <input type="email" required="" class="form-control" name="email" id="email" for="email" placeholder=" ________@_____.com"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="endereco">Endereço</label>

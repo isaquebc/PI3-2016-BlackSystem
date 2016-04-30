@@ -30,8 +30,8 @@
                         <form class="form-signin" action="BuscarPedidoServlet" method="post" accept-charset="UTF-8">
                             <fieldset>
                                 <legend><h2 class="form-signin-heading">Buscar Funcionario</h2></legend>
-                                <div class="linha-unica">
-                                    <input type="text" class="form-control" name="cpf" id ="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder=" ___.___.___-__" />
+                                <div class="form-group">
+                                    <input type="text" required="" class="form-control" name="cpf" id ="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder=" ___.___.___-__" />
                                 </div>
                             </fieldset>
                             <button type="submit" class="btn btn-lg btn-primary btn-block" id="pesquisar">Buscar</button>

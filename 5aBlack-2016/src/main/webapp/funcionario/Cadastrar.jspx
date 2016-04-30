@@ -32,16 +32,16 @@
                                 <div class="form-group linha-unica">
                                     <div class="linha-unica">
                                         <label for="nome">Nome</label>
-                                        <input type="text" class="form-control" name="nome" id="pNome"/>
+                                        <input type="text" required="" class="form-control" name="nome" id="pNome"/>
                                     </div>
                                     <div class="linha-unica">
                                         <label for="sobrenome">Sobrenome</label>
-                                        <input type="text" class="form-control" name="sobrenome" id="sNome"/>
+                                        <input type="text" required="" class="form-control" name="sobrenome" id="sNome"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="cargo">Cargo</label>
-                                    <select  class="form-control" name="cargo" id="cargo">
+                                    <select  class="form-control" required="" name="cargo" id="cargo">
                                         <option value=""></option>
                                         <option value="backoffice">Backoffice</option>
                                         <option value="atendimento">Atendimento</option>
@@ -62,15 +62,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="cpf">CPF</label>
-                                    <input type="text" class="form-control" name="cpf" id ="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder=" ___.___.___-__" />
+                                    <input type="text" required="" class="form-control" name="cpf" id ="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder=" ___.___.___-__" />
                                 </div>
                                 <div class="form-group">
                                     <label for="email">E-mail</label>
-                                    <input type="text" class="form-control" name="email" id="email" for="email" placeholder=" ________@_____.com"/>
+                                    <input type="email" required="" class="form-control" name="email" id="email" for="email" placeholder=" ________@_____.com"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="filial-Trabalho">Filial de trabalho</label>
-                                    <select class="form-control" name="filial-Trabalho" id="filial">
+                                    <select class="form-control" required="" name="filial-Trabalho" id="filial">
                                         <option value=""></option>
                                         <option value="santos">Santos</option>
                                         <option value="sao-paulo">São Paulo</option>
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="dtContratacao">Data de Contratação</label>
-                                    <input type="date" class="form-control" name="dt-Contratacao" id="dtEntrada"/>
+                                    <input type="date" required="" class="form-control" name="dt-Contratacao" id="dtEntrada"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="salario">Sarario R$</label>
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="senha">Senha</label>
-                                    <input type="password" class="form-control" name="senha" id="senha"/>
+                                    <input type="password" required="" class="form-control" name="senha" id="senha"/>
                                 </div>
                             </fieldset>
                             <button type="submit" id="inserir" class="btn btn-default btn-primary btn-block">Cadastrar</button>

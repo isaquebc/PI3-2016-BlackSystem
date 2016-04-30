@@ -30,7 +30,7 @@
                         <form class="form-signin" action="BuscarPedidoServlet" method="post" accept-charset="UTF-8">
                             <fieldset>
                                 <legend><h2 class="form-signin-heading">Buscar Pedido</h2></legend>
-                                <div class="linha-unica">
+                                <div class="form-group">
                                     <label class="sr-only" for="buscPedido">Numero do Pedido</label>
                                     <input type="text" id="buscPedido" class="form-control" placeholder="Numero do Pedido" required="" autofocus=""/>
                                 </div>
