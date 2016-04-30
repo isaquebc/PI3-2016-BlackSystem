@@ -12,7 +12,6 @@
     <jsp:output omit-xml-declaration="true"
                 doctype-root-element="HTML"
                 doctype-system="about:legacy-compact"/>
-
     <html>
         <head>
             <meta charset="utf-8"/>
@@ -24,24 +23,23 @@
             <title>5aBlack - Buscar Pedido</title>
         </head>
         <body>
-            <jsp:include page="../inicial/menu2.jspx" />
-
-
+            <jsp:include page="../inicial/Menu.jspx" />
             <div class="container" >
-                <form class="form-signin" action="BuscarPedidoServlet" method="post" accept-charset="UTF-8">
-
-                    <h2 class="form-signin-heading">Buscar Pedido</h2>
-                    <div class="linha-unica">
-                    <label class="sr-only" for="buscPedido">Numero do Pedido</label>
-                    <input type="text" id="buscPedido" class="form-control" placeholder="Numero do Pedido" required="" autofocus=""/>
-
-                    <button type="submit" class="btn btn-lg btn-primary btn-block" id="pesquisar">Buscar</button>
+                <div class="row" >
+                    <div class="col-md-offset-3 col-md-6" >
+                        <form class="form-signin" action="BuscarPedidoServlet" method="post" accept-charset="UTF-8">
+                            <fieldset>
+                                <legend><h2 class="form-signin-heading">Buscar Pedido</h2></legend>
+                                <div class="linha-unica">
+                                    <label class="sr-only" for="buscPedido">Numero do Pedido</label>
+                                    <input type="text" id="buscPedido" class="form-control" placeholder="Numero do Pedido" required="" autofocus=""/>
+                                </div>
+                            </fieldset>
+                            <button type="submit" class="btn btn-lg btn-primary btn-block" id="pesquisar">Buscar</button>
+                        </form>
                     </div>
-
-
-                </form>
+                </div>
             </div>
-
         </body>
     </html>
 </jsp:root>

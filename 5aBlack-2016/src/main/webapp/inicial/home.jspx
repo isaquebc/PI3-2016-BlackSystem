@@ -12,7 +12,6 @@
     <jsp:output omit-xml-declaration="true"
                 doctype-root-element="HTML"
                 doctype-system="about:legacy-compact"/>
-
     <html>
         <head>
             <meta charset="utf-8"/>
@@ -21,9 +20,7 @@
             <title>5aBlack - Home</title>
         </head>
         <body>
-            <jsp:include page="menu2.jspx" />
-
-
+            <jsp:include page="Menu.jspx" />
         </body>
     </html>
 </jsp:root>

@@ -14,7 +14,7 @@
     <body>
         
         <%-- AQUI EU ESTOU CHAMANDO O MENU NESTA PAGINA --%>
-        <jsp:include page="../menu.jsp" />  
+        <jsp:include page="../Menu.jsp" />  
         
       
         

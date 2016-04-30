@@ -8,7 +8,7 @@ package br.senac.tads.pi3.blacksystem.ablack;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import 
+
 
 /**
  *

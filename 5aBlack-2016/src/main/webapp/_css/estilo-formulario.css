@@ -13,6 +13,3 @@ and open the template in the editor.
 form label:after{
     content: " :";
 }
-form{
-    width: 600px;
-}
