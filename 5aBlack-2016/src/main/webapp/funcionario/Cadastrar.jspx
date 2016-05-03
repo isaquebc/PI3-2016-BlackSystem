@@ -54,19 +54,19 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="telefone">Telefone</label>
-                                    <input type="text" class="form-control" name="telefone" id="tel" maxlength="12" OnKeyPress="formatar('##-####-####', this)" placeholder=" (__) ____-____" />
+                                    <input type="text" class="form-control" name="telefone" id="tel" maxlength="12" OnKeyPress="formatar('##-####-####', this)" />
                                 </div>
                                 <div class="form-group">
                                     <label for="celular">Celular</label>
-                                    <input type="text" class="form-control" name="celular" id="cel" maxlength="12" OnKeyPress="formatar('##-#####-####', this)" placeholder=" (__) _____-____" />
+                                    <input type="text" class="form-control" name="celular" id="cel" maxlength="12" OnKeyPress="formatar('##-#####-####', this)" />
                                 </div>
                                 <div class="form-group">
                                     <label for="cpf">CPF</label>
-                                    <input type="text" required="" class="form-control" name="cpf" id ="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder=" ___.___.___-__" />
+                                    <input type="text" required="" class="form-control" name="cpf" id ="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">E-mail</label>
-                                    <input type="email" required="" class="form-control" name="email" id="email" for="email" placeholder=" ________@_____.com"/>
+                                    <input type="email" required="" class="form-control" name="email" id="email" for="email" />
                                 </div>
                                 <div class="form-group">
                                     <label for="filial-Trabalho">Filial de trabalho</label>

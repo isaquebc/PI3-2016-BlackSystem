@@ -27,7 +27,7 @@
             <main>
                 <div class="container">
                     <div class="row" >
-                        <div class="col-md-offset-3 col-md-6" >
+                        <div class="col-md-offset-3 col-md-4" >
                             <form class="form-signin" role="form" action="GerarPedidoServlet" method="post" accept-charset="UTF-8">
                                 <fieldset> 
                                     <legend><h2>Gerar Pedido</h2></legend>
