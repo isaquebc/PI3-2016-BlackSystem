@@ -5,7 +5,7 @@ package br.senac.tads.pi3.blacksystem.servlet;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import br.senac.tads.pi3.blacksystem.entity.Servico;
+//import br.senac.tads.pi3.blacksystem.entity.Servico;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +51,7 @@ public class GerarPedidoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Servico sr = new Servico();
+//        Servico sr = new Servico();
         List lista = new ArrayList<>();
         HttpSession sessao = request.getSession();
         request.setAttribute("servicos", lista);

@@ -24,7 +24,7 @@
                 <div class="container">
                     <div class="row" >
                         <div class="col-md-offset-3 col-md-6" >
-                            <form class="form-signin" action="NovoProdutoServlet" method="post" accept-charset="UTF-8">
+                            <form class="form-signin" action="#" method="post" accept-charset="UTF-8"> <!-- NovoProdutoServlet -->
                                 <fieldset> 
                                     <legend><h2 class="form-signin-heading">Novo Produto</h2></legend>
                                     <div class="form-group">

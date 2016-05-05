@@ -24,8 +24,8 @@
             <jsp:include page="../inicial/Menu.jspx" />
             <div class="container" >
                 <div class="row" >
-                    <div class="col-md-offset-3 col-md-6" >
-                        <form class="form-signin" role="form" action="NovoFuncionarioServlet" method="post" accept-charset="UTF-8">
+                    <div class="col-md-offset-2 col-md-5" >
+                        <form class="form-signin" role="form" action="#" method="post" accept-charset="UTF-8"> <!-- NovoClienteServlet -->
                             <fieldset> 
                                 <legend><h2>Cadastrar Cliente</h2></legend>
                                 <div class="form-group linha-unica">
