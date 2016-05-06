@@ -8,6 +8,7 @@ package br.senac.tads.pi3.blacksystem.servlet;
 //import br.senac.tads.pi3.blacksystem.entity.Servico;
 import br.senac.tads.pi3.blacksystem.entity.Servico;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -23,8 +24,21 @@ import javax.servlet.RequestDispatcher;
  * @author Rafael
  */
 @WebServlet(name = "GerarPedidoServlet", urlPatterns = {"/GerarPedidoServlet"})
-public class GerarPedidoServlet extends HttpServlet {
+public class PedidoGerarServlet extends HttpServlet {
 
+     public List Servico(){ 
+        //Servico sr = new Servico();
+        List lista = new ArrayList<>();
+        Date data = new Date(12, 12, 12);
+        Servico servico = new Servico("Lavagem Simples", 20, data);
+        Servico servico2 = new Servico("Lavagem completa", 20, data);
+        Servico servico3 = new Servico("Lavagem Seca", 20, data);
+        
+        lista.add(servico);
+        lista.add(servico3);
+        lista.add(servico2);
+        return lista;
+    }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -52,22 +66,9 @@ public class GerarPedidoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Servico sr = new Servico();
-        List lista = new ArrayList<>();
-        HttpSession sessao = request.getSession();
-        // servicos é a referencia do agributo para o jsp
-        request.setAttribute("servicos", lista);
-        if( !lista.isEmpty()){
-           
-            request.getRequestDispatcher("/pedido/Gerer.jspx").forward(request, response);
-            
-        }
-        //fazer DAO do pedido
-        //fazer dao de listar serviços
-        // Delcarando uma seção para usa-la como refencia aos tipos de serviço a serem listados em todas as paginas
-        sessao.setAttribute(null, lista);
+        request.setAttribute("servicos", Servico());
+        request.getRequestDispatcher("/pedido/Gerar.jspx").forward(request, response);
     }
-
     /**
      * Handles the HTTP <code>POST</code> method.
      *
