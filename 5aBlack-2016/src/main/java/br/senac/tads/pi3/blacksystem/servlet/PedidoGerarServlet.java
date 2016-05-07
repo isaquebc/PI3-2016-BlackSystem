@@ -1,26 +1,44 @@
+package br.senac.tads.pi3.blacksystem.servlet;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.senac.tads.pi3.blacksystem.servlet;
-import br.senac.tads.pi3.blacksystem.ablack.CadastroDAO;
-
+//import br.senac.tads.pi3.blacksystem.entity.Servico;
+import br.senac.tads.pi3.blacksystem.entity.Servico;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.RequestDispatcher;
 
 /**
  *
  * @author Rafael
  */
-@WebServlet(name = "NovoClienteServlet", urlPatterns = {"/NovoClienteServlet"})
-public class NovoClienteServlet extends HttpServlet {
+@WebServlet(name = "GerarPedidoServlet", urlPatterns = {"/GerarPedidoServlet"})
+public class PedidoGerarServlet extends HttpServlet {
 
+     public List Servico(){ 
+        //Servico sr = new Servico();
+        List lista = new ArrayList<>();
+        Date data = new Date(12, 12, 12);
+        Servico servico = new Servico("Lavagem Simples", 20, data);
+        Servico servico2 = new Servico("Lavagem completa", 20, data);
+        Servico servico3 = new Servico("Lavagem Seca", 20, data);
+        
+        lista.add(servico);
+        lista.add(servico3);
+        lista.add(servico2);
+        return lista;
+    }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,11 +51,8 @@ public class NovoClienteServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-            /* TODO output your page here. You may use following sample code. */
-            
-        }
-    
+
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -51,9 +66,9 @@ public class NovoClienteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        request.setAttribute("servicos", Servico());
+        request.getRequestDispatcher("/pedido/Gerar.jspx").forward(request, response);
     }
-
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -65,20 +80,14 @@ public class NovoClienteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String nome= request.getParameter("nome");
-        String sobrenome= request.getParameter("sobreNome" );
-        String telefone= request.getParameter("telefone");
-        String celular=request.getParameter(" celular");
-        String cpf= request.getParameter("cpf");
-        String email= request.getParameter("email");
-        String rua= request.getParameter("rua");
-        String numero= request.getParameter("numero");
-        String estado=request.getParameter("estado");
-        String cidade= request.getParameter("cidade");
-        String cep= request.getParameter( "cep");
-        
-        
+
+        String tipoPeca = request.getParameter("tipo-Peca");
+        String tipoTecido = request.getParameter("tipo-Tecido");
+        String tipoLavagem = request.getParameter("tipo-Lavagem");
+        String qtd = request.getParameter("qtd-Peca");
+        String cor = request.getParameter("cor");
+        int servico = Integer.parseInt(request.getParameter("tipo-Servico"));
+
     }
 
     /**

@@ -18,11 +18,10 @@ public class Servico {
     private Date prazo;
     private long id;
 
-    public Servico(String tipoServico, float preco, Date prazo, long id) {
+    public Servico(String tipoServico, float preco, Date prazo) {
         this.tipoServico = tipoServico;
         this.preco = preco;
         this.prazo = prazo;
-        this.id = id;
     }
 
     public Servico() {

@@ -13,9 +13,12 @@
                 doctype-system="about:legacy-compact"/>
     <html>
         <head>
+            <c:set var="css">
+                <c:url value="_css/bootstrap.min.css"/>
+            </c:set>
             <meta charset="utf-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
-            <link href="../_css/bootstrap.min.css" rel="stylesheet"/>              
+            <link href="${css}" rel="stylesheet"/>              
             <title>5aBlack</title>
         </head>
         <body>
@@ -40,7 +43,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pedido <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="/5aBlack-2016/pedido/Buscar.jspx">Buscar, Alterar, Invalidar</a></li>
-                                    <li><a href="/5aBlack-2016/pedido/Gerar.jspx">Gerar</a></li>
+                                    <li><a href="../GerarPedidoServlet">Gerar</a></li>
                                 </ul>
                             </li>
                             <!-- < /c:when> FIM DO CASE -->
@@ -75,10 +78,10 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Serviço e Produto <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="/5aBlack-2016/servicoProduto/CadastrarServico.jspx">Novo Serviço</a></li>
-                                    <li><a href="#">Alterar Serviço</a></li>
+                                    <li><a href="/5aBlack-2016/servicoProduto/AlterarServico.jspx">Alterar Serviço</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="/5aBlack-2016/servicoProduto/CadastrarProduto.jspx">Novo Produto</a></li>
-                                    <li><a href="#">Alterar Produto</a></li>
+                                    <li><a href="/5aBlack-2016/servicoProduto/AlterarProduto.jspx">Alterar Produto</a></li>
                                 </ul>
                             </li>
                             <!-- < /c:when> FIM DO CASE -->
@@ -87,8 +90,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chamado <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="/5aBlack-2016/chamado/Abrir.jspx">Abrir</a></li>
-                                    <li><a href="#">Acompanhar</a></li>
-                                    <li><a href="#">Encerrar</a></li>
+                                    <li><a href="/5aBlack-2016/chamado/Buscar.jspx">Buscar</a></li>
                                 </ul>
                             </li>
                             <!-- < /c:when> FIM DO CASE -->
@@ -96,8 +98,14 @@
                     </div><!--/.nav-collapse -->
                 </div>
             </nav>
-            <script src="../_js/jquery.min.js">.</script>
-            <script src="../_js/bootstrap.min.js">.</script>
+            <c:set var="jquery">
+                <c:url value="_js/jquery.min.js"/>
+            </c:set>
+            <c:set var="boot">
+                <c:url value="_js/bootstrap.min.js"/>
+            </c:set>
+            <script src="${jquery}">.</script>
+            <script src="${boot}">.</script>
         </body>
     </html>
 </jsp:root>
