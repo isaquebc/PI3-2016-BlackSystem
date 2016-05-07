@@ -5,8 +5,14 @@
  */
 package br.senac.tads.pi3.blacksystem.servlet;
 
+import br.senac.tads.pi3.blacksystem.ablack.CadastroDAO;
+import br.senac.tads.pi3.blacksystem.entity.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -61,7 +67,27 @@ public class ClienteCadastrarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Cliente cli= new Cliente();
+        DateFormat form= new SimpleDateFormat("dd/mm/yyyy");
+        try{
+            java.util.Date data= form.parse(request.getParameter(null));
+            
+        }
+        catch (ParseException e){
+            
+        }
+         cli.setCpf(request.getParameter("cpf"));
+        cli.setNome( request.getParameter("nome"));
+        cli.setSonbrenome(request.getParameter("sobreNome" ));
+        
+        cli.setTelefone(request.getParameter("telefone"));
+        cli.setEmail(request.getParameter("email"));
+        String rua= request.getParameter("rua");
+        String numero= request.getParameter("numero");
+        String estado=request.getParameter("estado");
+        String cidade= request.getParameter("cidade");
+        String cep= request.getParameter( "cep");
+        
     }
 
     /**

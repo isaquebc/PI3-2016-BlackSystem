@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package br.senac.tads.pi3.blacksystem.ablack;
-
+import br.senac.tads.pi3.blacksystem.entity.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -73,19 +73,17 @@ public class CadastroDAO extends Conexao{
         
     }
     
-    public void cadatrarPessoa(String cpf, String nome, String sobrenome, Date nasc , String telefone, String email, Date dataEntrada, String status, int id_dpt) 
-        throws ClassNotFoundException {
+    public void cadatrarPessoa(Cliente cli,Date dataEntrada,int id_dpt)throws ClassNotFoundException {
         try {
             conn = getConexao();
             stm = conn.prepareStatement(QUERY_INSERT_CLIENTE);
-            stm.setString(1, cpf);
-            stm.setString(2, nome);
-            stm.setString(3, sobrenome);
-            stm.setDate(4, new java.sql.Date(nasc.getTime()));
-            stm.setString(5, telefone);
-            stm.setString(6, email);
+            stm.setString(1, cli.getCpf());
+            stm.setString(2, cli.getNome());
+            stm.setString(3, cli.getSonbrenome());
+            stm.setDate(4, new java.sql.Date(cli.getNasc().getTime()));
+            stm.setString(5, cli.getTelefone());
+            stm.setString(6, cli.getEmail());
             stm.setDate(7, new java.sql.Date(dataEntrada.getTime()));
-            stm.setString(8, status);
             stm.setInt(9, id_dpt);
             stm.executeQuery();
             stm.close();
@@ -119,7 +117,7 @@ public class CadastroDAO extends Conexao{
         
     }
     
-    public void cadastrarEndereco(int id_end, String endereco, String complemento, String bairro, String cidade, String estado, String cep, String cpf)
+    public void cadastrarEndereco(Cliente cli,int id_end, String endereco, String complemento, String bairro, String cidade, String estado, String cep, String cpf)
         throws ClassNotFoundException{
         try {
             conn = getConexao();
@@ -131,7 +129,7 @@ public class CadastroDAO extends Conexao{
             stm.setString(5, cidade);
             stm.setString(6, estado);
             stm.setString(7, cep);
-            stm.setString(8, cpf);
+            stm.setString(8, cli.getCpf());
             stm.executeQuery();
             stm.close();
             conn.close();
