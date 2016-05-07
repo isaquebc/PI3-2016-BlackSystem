@@ -123,7 +123,7 @@ public class CadastroDAO extends Conexao{
         throws ClassNotFoundException{
         try {
             conn = getConexao();
-            stm = conn.prepareStatement(QUERY_INSERT_FUNCIORARIO);
+            stm = conn.prepareStatement(QUERY_INSERT_ENDERECO);
             stm.setInt(1, id_end);
             stm.setString(2, endereco);
             stm.setString(3, complemento);
@@ -146,7 +146,7 @@ public class CadastroDAO extends Conexao{
         throws ClassNotFoundException{
         try {
             conn = getConexao();
-            stm = conn.prepareStatement(QUERY_INSERT_FUNCIORARIO);
+            stm = conn.prepareStatement(QUERY_INSERT_PEDIDO);
             stm.setInt(1, ID_PEDIDO);
             stm.setString(2, STATUS);
             stm.setDate(3, new java.sql.Date(DATA_ENTRADA.getTime()));
@@ -163,9 +163,148 @@ public class CadastroDAO extends Conexao{
             System.out.println("Dao não inicializado");
         }
     }
- 
-        
-        
     
+    public void sevico(int ID_SERVICO, String TIPO_DE_SERVICO, float VALOR, String PRAZO)
+        throws ClassNotFoundException{
+        try {
+            conn = getConexao();
+            stm = conn.prepareStatement(QUERY_INSERT_SERVICO);
+            stm.setInt(1, ID_SERVICO);
+            stm.setString(2, TIPO_DE_SERVICO);
+            stm.setFloat(3, VALOR);
+            stm.setString(4, PRAZO);
+            stm.executeQuery();
+            stm.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("Erro de conexão");
+        } catch (NullPointerException e) {
+            System.out.println("Dao não inicializado");
+        }
+    }
+    
+    public void roupa(int ID_ROUPA, String DESCRICAO, int QUANTIDADE, String TIPO_PECA, String COR, String TIPO_TECIDO, int ID_PEDIDO, int ID_SERVICO)
+        throws ClassNotFoundException{
+        try {
+            conn = getConexao();
+            stm = conn.prepareStatement(QUERY_INSERT_ROUPA);
+            stm.setInt(1, ID_ROUPA);
+            stm.setString(2, DESCRICAO);
+            stm.setInt(3, QUANTIDADE);
+            stm.setString(4, TIPO_PECA);
+            stm.setString(5, COR);
+            stm.setString(6, TIPO_TECIDO);
+            stm.setInt(7, ID_PEDIDO);
+            stm.setInt(8, ID_SERVICO);
+            stm.executeQuery();
+            stm.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("Erro de conexão");
+        } catch (NullPointerException e) {
+            System.out.println("Dao não inicializado");
+        }
+    }
+    
+    public void chamado(int ID_CHAMADO, String DESCRICAO, String STATUS, Date DATA_ABERTURA, Date DATA_BAIXADA, String TIPO_SOLICITACAO, int ID_FUNCIONARIO)
+        throws ClassNotFoundException{
+        try {
+            conn = getConexao();
+            stm = conn.prepareStatement(QUERY_INSERT_CHAMADO);
+            stm.setInt(1, ID_CHAMADO);
+            stm.setString(2, DESCRICAO);
+            stm.setDate(3, new java.sql.Date(DATA_ABERTURA.getTime()));
+            stm.setDate(4, new java.sql.Date(DATA_BAIXADA.getTime()));
+            stm.setString(5, TIPO_SOLICITACAO);
+            stm.setInt(6, ID_FUNCIONARIO);
+            stm.executeQuery();
+            stm.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("Erro de conexão");
+        } catch (NullPointerException e) {
+            System.out.println("Dao não inicializado");
+        }
+    }
+    
+    public void tratativaChamado(int ID_TRATATIVA, Date DATA_FECHAMENTO, String DESCRICAO, int ID_CHAMADO, int ID_FUNCIONARIO)
+        throws ClassNotFoundException{
+        try {
+            conn = getConexao();
+            stm = conn.prepareStatement(QUERY_INSERT_TRATATIVA);
+            stm.setInt(1, ID_TRATATIVA);
+            stm.setDate(2, new java.sql.Date(DATA_FECHAMENTO.getTime()));
+            stm.setString(3, DESCRICAO);
+            stm.setInt(4, ID_CHAMADO);
+            stm.setInt(5, ID_FUNCIONARIO);
+            stm.executeQuery();
+            stm.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("Erro de conexão");
+        } catch (NullPointerException e) {
+            System.out.println("Dao não inicializado");
+        }
+    }
+     
+    public void feedNoticias(int ID_FEED, String DESCRICAO, Date DATA_POSTADO, String TITULO, int ID_FUNCIONARIO)
+        throws ClassNotFoundException{
+        try {
+            conn = getConexao();
+            stm = conn.prepareStatement(QUERY_INSERT_FEED);
+            stm.setInt(1, ID_FEED);
+            stm.setString(2, DESCRICAO);
+            stm.setDate(3, new java.sql.Date(DATA_POSTADO.getTime()));
+            stm.setString(4, TITULO);
+            stm.setInt(5, ID_FUNCIONARIO);
+            stm.executeQuery();
+            stm.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("Erro de conexão");
+        } catch (NullPointerException e) {
+            System.out.println("Dao não inicializado");
+        }
+    }
+    
+    public void movimento(int ID_MOVIMENTO, Date DATA_MOV, String TIPO_MOVIMENTO, float QUANTIDADE, String DESCRICAO, int ID_PRODUTO, int ID_FUNCIONARIO)
+        throws ClassNotFoundException{
+        try {
+            conn = getConexao();
+            stm = conn.prepareStatement(QUERY_INSERT_MOVIMENTO);
+            stm.setInt(1, ID_MOVIMENTO);
+            stm.setDate(2, new java.sql.Date(DATA_MOV.getTime()));
+            stm.setString(3, TIPO_MOVIMENTO);
+            stm.setFloat(4, QUANTIDADE);
+            stm.setString(5, DESCRICAO);
+            stm.setInt(6, ID_PRODUTO);
+            stm.setInt(7, ID_FUNCIONARIO);
+            stm.executeQuery();
+            stm.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("Erro de conexão");
+        } catch (NullPointerException e) {
+            System.out.println("Dao não inicializado");
+        }
+    }
+    
+    public void tipoProduto(int ID_TIPO, String NOME, String DESCRICAO)   
+        throws ClassNotFoundException{
+        try {
+            conn = getConexao();
+            stm = conn.prepareStatement(QUERY_INSERT_TIPO_PRODUTO);
+            stm.setInt(1, ID_TIPO);
+            stm.setString(2, NOME);
+            stm.setString(3, DESCRICAO);
+            stm.executeQuery();
+            stm.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("Erro de conexão");
+        } catch (NullPointerException e) {
+            System.out.println("Dao não inicializado");
+        }
+    }
 
 }
