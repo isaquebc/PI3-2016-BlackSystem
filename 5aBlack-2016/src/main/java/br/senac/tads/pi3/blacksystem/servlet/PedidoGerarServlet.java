@@ -23,7 +23,7 @@ import javax.servlet.RequestDispatcher;
  *
  * @author Rafael
  */
-@WebServlet(name = "GerarPedidoServlet", urlPatterns = {"/GerarPedidoServlet"})
+@WebServlet(name = "PedidoGerarServlet", urlPatterns = {"/PedidoGerarServlet"})
 public class PedidoGerarServlet extends HttpServlet {
 
      public List Servico(){ 

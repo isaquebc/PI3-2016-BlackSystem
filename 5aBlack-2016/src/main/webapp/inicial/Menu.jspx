@@ -43,7 +43,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pedido <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="/5aBlack-2016/pedido/Buscar.jspx">Buscar, Alterar, Invalidar</a></li>
-                                    <li><a href="../GerarPedidoServlet">Gerar</a></li>
+                                    <li><a href="PedidoGerarServlet">Gerar</a></li>
                                 </ul>
                             </li>
                             <!-- < /c:when> FIM DO CASE -->
@@ -60,8 +60,8 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cliente <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/5aBlack-2016/cliente/Buscar.jspx">Buscar, Alterar </a></li>
-                                    <li><a href="/5aBlack-2016/cliente/Cadastrar.jspx">Cadastrar</a></li>
+                                    <li><a href="ClienteBuscarServlet">Buscar, Alterar </a></li>
+                                    <li><a href="ClienteCadastrarServlet">Cadastrar</a></li>
                                 </ul>
                             </li>
                             <!-- < /c:when> FIM DO CASE -->

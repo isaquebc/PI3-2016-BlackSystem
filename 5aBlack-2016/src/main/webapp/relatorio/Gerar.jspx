@@ -14,9 +14,14 @@
     <html>
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-            <link href="../_css/estilo-formulario.css" rel="stylesheet"/>
-            <link href="../_css/bootstrap.min.css" rel="stylesheet"/> 
-            <script src="../_js/formatoJS.js" type="text/javascript">.</script>
+            <c:set var="scriptAtual">
+                <c:url value="_js/formatoJS.js"/>
+            </c:set>
+            <c:set var="cssAtual">
+                <c:url value="_css/estilo-formulario.css"/>
+            </c:set>
+            <link href="${cssAtual}" rel="stylesheet"/>
+            <script src="${scriptAtual}" type="text/javascript">.</script>
             <title>5aBlack - Buscar Pedido</title>
         </head>
         <body>

@@ -4,7 +4,10 @@
     Created on : 28/04/2016, 21:21:50
     Author     : Isaque
 -->
- <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+     <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          version="2.0">
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
 
     <jsp:output omit-xml-declaration="true"
                 doctype-root-element="HTML"
@@ -38,8 +41,8 @@
                                         <label class="" for="peca">Tipo de Serviço</label>
                                         <select class="form-control" required="" name="tipo-Peca" id="tipoPeca">
                                             <option value=""></option>
-                                            <c:forEach items="${servicos}" var="serv">
-                                                <option value="camisetas">${serv.tipoServico}</option>
+                                            <c:forEach items="${servicos}" var="serv" varStatus="cont" >
+                                                <option value="${cont.index}">${serv.tipoServico}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
