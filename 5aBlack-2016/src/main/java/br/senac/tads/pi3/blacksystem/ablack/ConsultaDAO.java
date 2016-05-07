@@ -14,7 +14,7 @@ import java.sql.SQLException;
  *
  * @author Rafael
  */
-public class BuscarClienteDAO extends Conexao{
+public class ConsultaDAO extends Conexao{
 
 //    @Override
 //    public String buscaNome(String cpf) throws ClassNotFoundException {

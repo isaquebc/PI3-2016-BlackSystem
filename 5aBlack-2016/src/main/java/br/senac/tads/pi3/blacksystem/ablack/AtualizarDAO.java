@@ -9,32 +9,32 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-
 /**
  *
  * @author Rafael
  */
-public class IncluirClienteDAO extends Conexao{
-    
-    
-    public void incluirPessoa() throws ClassNotFoundException {
-        PreparedStatement stm = null;
-        Connection conn = null;
+public class AtualizarDAO extends Conexao{
+
+    @Override
+    public void deletaCliente(String cpf) throws ClassNotFoundException {
+        super.deletaCliente(cpf); //To change body of generated methods, choose Tools | Templates.
         
-        String sql = "insert into TB_CLIENTE (NOME_CLIENTE,TEL, CEL, CPF, EMAIL, END, NUM_END,CIDADE,ESTADO,CEP)"
-                + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+        Connection con = null;
+        PreparedStatement stm = null;
+        String sql = "DELETE FROM NOME_CLIENTE WHERE CPF='" + cpf + "'";
         try {
-            conn = getConexao();
-            stm = conn.prepareStatement(sql);
-            stm.executeUpdate();
+            con = getConexao();
+            stm = con.prepareStatement(sql);
+
             stm.close();
-            conn.close();
-            
+            con.close();
         } catch (SQLException e) {
-            System.out.println("Erro de conexão");
+            System.out.println("Ero de conexão");
         } catch (NullPointerException e) {
             System.out.println("Dao não inicializado");
         }
     }
-
+    
+   
+    
 }

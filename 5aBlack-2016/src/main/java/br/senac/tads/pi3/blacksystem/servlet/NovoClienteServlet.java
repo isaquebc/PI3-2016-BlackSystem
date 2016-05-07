@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package br.senac.tads.pi3.blacksystem.servlet;
-import br.senac.tads.pi3.blacksystem.ablack.IncluirClienteDAO;
+import br.senac.tads.pi3.blacksystem.ablack.CadastroDAO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
