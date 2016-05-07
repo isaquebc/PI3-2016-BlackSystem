@@ -11,7 +11,6 @@
     <jsp:output omit-xml-declaration="true"
                 doctype-root-element="HTML"
                 doctype-system="about:legacy-compact"/>
-
     <html> 
         <head> 
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -28,35 +27,30 @@
         </head>
         <body>
             <jsp:include page="../inicial/Menu.jspx"/>
-            
-            <form method="GET" action="">
             <div  class="container">
                 <div class="row">
                     <div class ="col-md-offset-2 col-md-5">
-                        <div class="formChamado">
-                            <label for="Tipo">Categoria de Chamado: </label>
-                            <select id="opcao" class="form-control"  name="opcao" >
-                                <option>Procedimentos</option>
-                                <option>Falha no sistema</option>
-                                <option>Reparo de equipamento</option>
-
-                            </select>
-                        </div>                        
-                        <div class="formChamado">
-                            <label for="Descricao">Descrição do Chamado</label>
-                         <!--   <textarea class="form-control" rows="3" id="Desc" name=" Desc" required=""/>                            -->
-                        </div>
-                        <div class="formChamado">
-                            <button  type="submit"  > Enviar Chamado </button>
-                            
-                        </div>
-
-
+                        <form method="post" action="">
+                            <legend><h2>Abrir Chamado</h2></legend>
+                            <div class="form-group">
+                                <label for="categoriaChamado">Categoria de Chamado</label>
+                                <select id="opcao" class="form-control"  name="categoria" required="" >
+                                    <option>Procedimentos</option>
+                                    <option>Falha no sistema</option>
+                                    <option>Reparo de equipamento</option>
+                                </select>
+                            </div>                        
+                            <div class="form-group">
+                                <label for="Descricao">Descrição do Chamado</label>
+                                <textarea class="form-control" rows="5" id="Desc" name="Desc" required="" >.</textarea>
+                            </div>
+                            <div class="form-group">
+                                <button  type="submit" class="btn btn-default btn-primary btn-block" id="enviar"  > Enviar Chamado </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-</form>
         </body>
     </html>    
-
 </jsp:root>

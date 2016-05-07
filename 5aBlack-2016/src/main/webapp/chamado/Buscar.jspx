@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-    Document   : AlterarProduto
-    Created on : 28/04/2016, 23:29:03
+    Document   : Buscar
+    Created on : 06/05/2016, 18:04:47
     Author     : Isaque
 -->
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
@@ -18,20 +18,18 @@
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <link href="../_css/estilo-relatorio.css" rel="stylesheet"/>
             <script src="../_js/formatoJS.js" type="text/javascript">.</script>
-
-            <title>5aBlack - Alterar Produto</title>
+            <title>5aBlack - Buscar Chamado</title>
         </head>
         <body>
             <jsp:include page="../inicial/Menu.jspx" />
             <div class="container" >
                 <div class="row" >
                     <div class="col-md-offset-3 col-md-6" >
-                        <form class="form-signin" action="#" method="post" accept-charset="UTF-8"> <!-- BuscarPedidoServlet -->
+                        <form class="form-signin" action="#" method="post" accept-charset="UTF-8"> <!-- BuscarClienteServlet -->
                             <fieldset>
-                                <legend><h2 class="form-signin-heading">Buscar Produto</h2></legend>
+                                <legend><h2 class="form-signin-heading">Buscar Chamado</h2></legend>
                                 <div class="form-group">
-                                    <label class="sr-only" for="buscPedido">Nome do Produto</label>
-                                    <input type="text" id="buscProduto" class="form-control" placeholder="Nome do Produto" required="" autofocus=""/>
+                                    <input type="text" required="" class="form-control" name="Id" id ="idChamado" placeholder="Digite o ID do chamado."/>
                                 </div>
                             </fieldset>
                             <button type="submit" class="btn btn-lg btn-primary btn-block" id="pesquisar">Buscar</button>
@@ -41,4 +39,5 @@
             </div>
         </body>
     </html>
+
 </jsp:root>

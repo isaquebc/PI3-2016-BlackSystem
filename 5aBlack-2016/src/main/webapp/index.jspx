@@ -33,7 +33,7 @@
                 <div class="row" >
                     <div class="col-md-offset-1 col-md-3" >
                         <main>
-                            <form class="form-signin" action="inicial/home.jspx" method="post">
+                            <form class="form-signin" action="HomeServlet" method="post">
                                 <fieldset>
                                     <legend><h1 class="form-signin-heading">Login</h1></legend>
                                     <div class="form-group">

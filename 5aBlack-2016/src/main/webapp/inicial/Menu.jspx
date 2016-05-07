@@ -31,18 +31,18 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/5aBlack-2016/inicial/home.jspx">5aBlack</a>
+                        <a class="navbar-brand" href="HomeServlet">5aBlack</a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="/5aBlack-2016/inicial/home.jspx">Home</a></li>
+                            <li class="active"><a href="HomeServlet">Home</a></li>
                             <!-- Aqui a gente defini o que o usuario pode ver -->
                             <!-- < c:coose> Aqui começa --> 
                             <!-- < c:when test="sessionScope.talusuario== Funcionario tal"> SE O TAL USUARIO DA SESSÃO FOR O USUARIO TAL ELE VE O MENU PEDIDO -->
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pedido <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/5aBlack-2016/pedido/Buscar.jspx">Buscar, Alterar, Invalidar</a></li>
+                                    <li><a href="PedidoBuscarServlet">Buscar, Alterar, Invalidar</a></li>
                                     <li><a href="PedidoGerarServlet">Gerar</a></li>
                                 </ul>
                             </li>
@@ -51,8 +51,8 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Funcionario <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/5aBlack-2016/funcionario/Buscar.jspx">Buscar, Alterar, Invalidar</a></li>
-                                    <li><a href="/5aBlack-2016/funcionario/Cadastrar.jspx">Cadastrar</a></li>
+                                    <li><a href="FuncionarioBuscarServlet">Buscar, Alterar, Invalidar</a></li>
+                                    <li><a href="FuncionarioCadastrarServlet">Cadastrar</a></li>
                                 </ul>
                             </li>
                             <!-- < /c:when> FIM DO CASE -->
@@ -69,7 +69,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relatório <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/5aBlack-2016/relatorio/Gerar.jspx">Gerar</a></li>
+                                    <li><a href="RelatorioGerarServlet">Gerar</a></li>
                                 </ul>
                             </li>
                             <!-- < /c:when> FIM DO CASE -->
@@ -77,11 +77,11 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Serviço e Produto <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/5aBlack-2016/servicoProduto/CadastrarServico.jspx">Novo Serviço</a></li>
-                                    <li><a href="/5aBlack-2016/servicoProduto/AlterarServico.jspx">Alterar Serviço</a></li>
+                                    <li><a href="ServicoCadastrarServlet">Novo Serviço</a></li>
+                                    <li><a href="ServicoAlterarServico">Alterar Serviço</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="/5aBlack-2016/servicoProduto/CadastrarProduto.jspx">Novo Produto</a></li>
-                                    <li><a href="/5aBlack-2016/servicoProduto/AlterarProduto.jspx">Alterar Produto</a></li>
+                                    <li><a href="ProdutoCadastrarServlet">Novo Produto</a></li>
+                                    <li><a href="ProdutoAlterarServlet">Alterar Produto</a></li>
                                 </ul>
                             </li>
                             <!-- < /c:when> FIM DO CASE -->
@@ -89,8 +89,8 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chamado <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/5aBlack-2016/chamado/Abrir.jspx">Abrir</a></li>
-                                    <li><a href="/5aBlack-2016/chamado/Buscar.jspx">Buscar</a></li>
+                                    <li><a href="ChamadoAbrirServlet">Abrir</a></li>
+                                    <li><a href="ClienteBuscarServlet">Buscar</a></li>
                                 </ul>
                             </li>
                             <!-- < /c:when> FIM DO CASE -->
