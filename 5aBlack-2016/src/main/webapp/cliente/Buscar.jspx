@@ -19,7 +19,7 @@
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <link href="../_css/estilo-relatorio.css" rel="stylesheet"/>
             <script src="../_js/formatoJS.js" type="text/javascript">.</script>
-            <title>5aBlack - Buscar Pedido</title>
+            <title>5aBlack - Buscar Cliente</title>
         </head>
         <body>
             <jsp:include page="../inicial/Menu.jspx" />
@@ -35,6 +35,67 @@
                             </fieldset>
                             <button type="submit" class="btn btn-lg btn-primary btn-block" id="pesquisar">Buscar</button>
                         </form>
+                    </div>
+                </div>
+            </div>
+            <!-- <td> colune e <tr> é linha ou seja <tr>(Linha) contem <td>coluna</td> <td>coluna</td> </tr>(Fecha Linha)-->
+            <div class="container" >
+                <div class="row" >
+                    <div class="col-md-offset-0 col-md-12" >
+                        <table class="table table-hover">
+                            <caption><h3>Clientes </h3></caption>
+                            <thead>
+                                <tr > 
+                                    <th> ID: </th>
+                                    <th> Nome</th>
+                                    <th>Sobrenome</th>
+                                    <th>CPF</th>
+                                    <th>Data de Nascimento</th>
+                                    <th>Telefone</th>
+                                    <th>Celular</th>
+                                    <th>E-mail</th>
+                                    <th>Rua</th>
+                                    <th>Numero</th>
+                                    <th>estado</th>
+                                    <th>Cidade</th>
+                                    <th>cep</th> 
+                                </tr>
+                            </thead>
+                            <tbody class="table-hover">
+                                <tr>
+                                    <td>779</td>
+                                    <td>Vagabundo</td>
+                                    <td>Tamojunto</td>
+                                    <td>222.222.222-22</td>
+                                    <td>12-03-1996</td>
+                                    <td>11 3939-4040</td>
+                                    <td>11 98888-7777</td>
+                                    <td>osmaismalas@mailzika.com</td>
+                                    <td>Rua da grana xxxxxxxxxxxxxxxxxxxxxxx</td>
+                                    <td>999</td>
+                                    <td>porto rico</td>
+                                    <td>bufunfa</td>
+                                    <td>89899-000</td>
+                                </tr>
+                                <c:forEach items="${clientes}" var="cliente">
+                                    <tr>
+                                        <td>${cliente.id}</td>
+                                        <td>${cliente.nome}</td>
+                                        <td>${cliente.sobrenome}</td>
+                                        <td>${cliente.cpf}</td>
+                                        <td>${cliente.nasc}</td>
+                                        <td>${cliente.telefone}</td>
+                                        <td>${cliente.celular}</td>
+                                        <td>${cliente.email}</td>
+                                        <td>${cliente.rua}</td>
+                                        <td>${cliente.numero}</td>
+                                        <td>${cliente.estado}</td>
+                                        <td>${cliente.cidade}</td>
+                                        <td>${cliente.cep}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

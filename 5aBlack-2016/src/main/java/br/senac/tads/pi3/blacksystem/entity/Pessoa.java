@@ -13,6 +13,7 @@ import java.sql.Date;
  */
 public abstract class Pessoa {
     
+    private int id;
     private String nome;
     private String sonbrenome;
     private String cpf;

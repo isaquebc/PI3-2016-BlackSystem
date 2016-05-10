@@ -90,7 +90,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chamado <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="ChamadoAbrirServlet">Abrir</a></li>
-                                    <li><a href="ClienteBuscarServlet">Buscar</a></li>
+                                    <li><a href="ChamadoBuscarServlet">Buscar</a></li>
                                 </ul>
                             </li>
                             <!-- < /c:when> FIM DO CASE -->

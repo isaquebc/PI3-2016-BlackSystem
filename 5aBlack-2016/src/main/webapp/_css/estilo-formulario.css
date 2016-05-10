@@ -11,5 +11,5 @@ and open the template in the editor.
 
 
 form label:after{
-    content: " :";
+    content: ": ";
 }

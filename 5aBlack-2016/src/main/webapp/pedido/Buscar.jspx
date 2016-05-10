@@ -40,6 +40,48 @@
                     </div>
                 </div>
             </div>
+            <div class="container" >
+                <div class="row" >
+                    <div class="col-md-offset-0 col-md-12" >
+                        <table class="table table-hover">
+                            <caption><h3>Pedido </h3></caption>
+                            <thead>
+                                <tr > 
+                                    <th>ID: </th>
+                                    <th>Tipo de Peça</th>
+                                    <th>Tipo de Tecido</th>
+                                    <th>Tipo de Lavagem</th>
+                                    <th>Quantidade</th>
+                                    <th>cor</th>
+                                    <th>Serviço</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-hover">
+                                <tr>
+                                    <td>779</td>
+                                    <td>Vagabundo</td>
+                                    <td>Tamojunto</td>
+                                    <td>222.222.222-22</td>
+                                    <td>12-03-1996</td>
+                                    <td>11 3939-4040</td>
+                                    <td>11 3939-4040</td>
+                                </tr>
+                                <c:forEach items="${pedidos}" var="pedido">
+                                    <tr>
+                                        <td>${pedido.id}</td>
+                                        <td>${pedido.tipoPeca}</td>
+                                        <td>${pedido.tipoTecido}</td>
+                                        <td>${pedido.tipoLavagem}</td>
+                                        <td>${pedido.qtd}</td>
+                                        <td>${pedido.cor}</td>
+                                        <td>${pedido.servico}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </body>
     </html>
 </jsp:root>

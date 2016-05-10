@@ -20,6 +20,9 @@
             <c:set var="cssAtual">
                 <c:url value="_css/estilo-formulario.css"/>
             </c:set>
+            <c:set var="fundo">
+                <c:url value="_css/estilo-menu.css"/>
+            </c:set>
             <link href="${cssAtual}" rel="stylesheet"/>
             <script src="${scriptAtual}" type="text/javascript">.</script>
             <title>5aBlack - Buscar Pedido</title>
