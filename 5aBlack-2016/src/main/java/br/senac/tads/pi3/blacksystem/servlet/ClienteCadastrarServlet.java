@@ -78,7 +78,7 @@ public class ClienteCadastrarServlet extends HttpServlet {
         }
          cli.setCpf(request.getParameter("cpf"));
         cli.setNome( request.getParameter("nome"));
-        cli.setSonbrenome(request.getParameter("sobreNome" ));
+        cli.setSobrenome(request.getParameter("sobreNome" ));
         
         cli.setTelefone(request.getParameter("telefone"));
         cli.setEmail(request.getParameter("email"));

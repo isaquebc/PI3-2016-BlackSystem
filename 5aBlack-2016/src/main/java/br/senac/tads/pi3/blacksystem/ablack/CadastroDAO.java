@@ -79,7 +79,7 @@ public class CadastroDAO extends Conexao{
             stm = conn.prepareStatement(QUERY_INSERT_CLIENTE);
             stm.setString(1, cli.getCpf());
             stm.setString(2, cli.getNome());
-            stm.setString(3, cli.getSonbrenome());
+            stm.setString(3, cli.getSobrenome());
             stm.setDate(4, new java.sql.Date(cli.getNasc().getTime()));
             stm.setString(5, cli.getTelefone());
             stm.setString(6, cli.getEmail());
