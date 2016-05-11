@@ -86,7 +86,8 @@ public class CadastroDAO extends Conexao{
     public static  void cadatrarPessoa(Cliente cli,Date dataEntrada)throws ClassNotFoundException {
         try {
             conn = getConexao();
-            stm = conn.prepareStatement(QUERY_INSERT_CLIENTE);
+            String sql = "insert into CLIENTE(ID_CPF, NOME, SOBRENOME, DATANASC, TEL, EMAIL, DATA_ENTRADA, STATUS) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            stm = conn.prepareStatement(sql);
             stm.setString(1, cli.getCpf());
             stm.setString(2, cli.getNome());
             stm.setString(3, cli.getSobrenome());
@@ -95,7 +96,7 @@ public class CadastroDAO extends Conexao{
             stm.setString(6, cli.getEmail());
             stm.setDate(7, new java.sql.Date(dataEntrada.getTime()));
             stm.setString(8, "n");
-            stm.executeQuery();
+            stm.executeUpdate();
             stm.close();
             conn.close();
             
