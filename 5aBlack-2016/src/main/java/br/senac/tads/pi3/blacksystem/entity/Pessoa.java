@@ -6,6 +6,7 @@
 package br.senac.tads.pi3.blacksystem.entity;
 
 import java.sql.Date;
+import static java.sql.Types.NULL;
 
 /**
  *
@@ -13,7 +14,7 @@ import java.sql.Date;
  */
 public abstract class Pessoa {
     
-    private int id;
+
     private String nome;
     private String sobrenome;
     private String cpf;
@@ -26,14 +27,7 @@ public abstract class Pessoa {
     private String cidade;
     private String cep;
     private Date nasc;
-
-    public Date getNasc() {
-        return nasc;
-    }
-
-    public void setNasc(Date nasc) {
-        this.nasc = nasc;
-    }
+    private String status;
 
     public Pessoa(String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
         this.nome = nome;
@@ -50,6 +44,19 @@ public abstract class Pessoa {
     }
 
     public Pessoa() {
+        this.nome = "";
+        this.sobrenome = "";
+        this.cpf = "";
+        this.telefone = "";
+        this.celular = "";
+        this.email = "";
+        this.rua = "";
+        this.numero = 0;
+        this.estado = "";
+        this.cidade = "";
+        this.cep = "";
+        this.nasc = null;
+        this.status= " ";
     }
 
     
@@ -140,6 +147,21 @@ public abstract class Pessoa {
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+    public Date getNasc() {
+        return nasc;
+    }
+
+    public void setNasc(Date nasc) {
+        this.nasc = nasc;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
     
     

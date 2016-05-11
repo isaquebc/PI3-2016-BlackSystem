@@ -71,7 +71,7 @@ public class ClienteCadastrarServlet extends HttpServlet {
             throws ServletException, IOException {
         CadastroDAO cadCli= new CadastroDAO();
         Cliente cli= new Cliente();
- //       DateFormat form= new SimpleDateFormat("dd/mm/yyyy");
+        DateFormat form= new SimpleDateFormat("dd/mm/yyyy");
 //        try{
 //            java.util.Date data= form.parse(request.getParameter(null));
 //            
@@ -79,22 +79,19 @@ public class ClienteCadastrarServlet extends HttpServlet {
 //        catch (ParseException e){
 //            
 //        }
-//        cli.setCpf(request.getParameter("cpf"));
-//        cli.setNome( request.getParameter("nome"));
-//        cli.setSobrenome(request.getParameter("sobreNome" ));
-//        cli.setTelefone(request.getParameter("telefone"));
-//        cli.setEmail(request.getParameter("email"));
-//        String rua= request.getParameter("rua");
-//        String numero= request.getParameter("numero");
-//        String estado=request.getParameter("estado");
-//        String cidade= request.getParameter("cidade");
-//        String cep= request.getParameter( "cep");
-//            
-        cli.setCpf("00000000000");
-        cli.setNome("fulano");
-        cli.setSobrenome("de tal");
-        cli.setTelefone("11 982335099");
-        cli.setEmail("iiiii@gmail.com");
+        cli.setCpf(request.getParameter("cpf"));
+        cli.setNome( request.getParameter("nome"));
+        cli.setSobrenome(request.getParameter("sobrenome"));
+        cli.setTelefone(request.getParameter("telefone"));
+        cli.setCelular(request.getParameter("celular"));
+        cli.setEmail(request.getParameter("email"));
+        String rua= request.getParameter("rua");
+        String numero= request.getParameter("numero");
+        String estado=request.getParameter("estado");
+        String cidade= request.getParameter("cidade");
+        String cep= request.getParameter( "cep");
+            
+
         
         try {
             cadCli.cadatrarPessoa(cli, null);
