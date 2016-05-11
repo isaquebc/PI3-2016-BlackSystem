@@ -13,6 +13,8 @@ import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -67,26 +69,41 @@ public class ClienteCadastrarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        CadastroDAO cadCli= new CadastroDAO();
         Cliente cli= new Cliente();
-        DateFormat form= new SimpleDateFormat("dd/mm/yyyy");
-        try{
-            java.util.Date data= form.parse(request.getParameter(null));
-            
-        }
-        catch (ParseException e){
-            
-        }
-         cli.setCpf(request.getParameter("cpf"));
-        cli.setNome( request.getParameter("nome"));
-        cli.setSobrenome(request.getParameter("sobreNome" ));
+ //       DateFormat form= new SimpleDateFormat("dd/mm/yyyy");
+//        try{
+//            java.util.Date data= form.parse(request.getParameter(null));
+//            
+//        }
+//        catch (ParseException e){
+//            
+//        }
+//        cli.setCpf(request.getParameter("cpf"));
+//        cli.setNome( request.getParameter("nome"));
+//        cli.setSobrenome(request.getParameter("sobreNome" ));
+//        cli.setTelefone(request.getParameter("telefone"));
+//        cli.setEmail(request.getParameter("email"));
+//        String rua= request.getParameter("rua");
+//        String numero= request.getParameter("numero");
+//        String estado=request.getParameter("estado");
+//        String cidade= request.getParameter("cidade");
+//        String cep= request.getParameter( "cep");
+//            
+        cli.setCpf("00000000000");
+        cli.setNome("fulano");
+        cli.setSobrenome("de tal");
+        cli.setTelefone("11 982335099");
+        cli.setEmail("iiiii@gmail.com");
         
-        cli.setTelefone(request.getParameter("telefone"));
-        cli.setEmail(request.getParameter("email"));
-        String rua= request.getParameter("rua");
-        String numero= request.getParameter("numero");
-        String estado=request.getParameter("estado");
-        String cidade= request.getParameter("cidade");
-        String cep= request.getParameter( "cep");
+        try {
+            cadCli.cadatrarPessoa(cli, null);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch(NullPointerException ex){
+            
+            
+        }
         
     }
 

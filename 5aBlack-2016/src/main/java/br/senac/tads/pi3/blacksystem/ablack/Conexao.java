@@ -20,11 +20,11 @@ import java.sql.Statement;
 public  abstract class Conexao {
    
 
-    final Connection getConexao() throws ClassNotFoundException, SQLException {
+    final static  Connection getConexao() throws ClassNotFoundException, SQLException {
         Connection con = null;
-        Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+        Class.forName("org.apache.derby.jdbc.ClientDataSource");
         try {
-            con = DriverManager.getConnection("jdbc:derby://localhost:1527/BlackSystemLavandeiria ", "app", "app");
+            con = DriverManager.getConnection("jdbc:derby://localhost:1527/BlackSystemLavandeiria;SecurityMechanism=3", "app", "app");
         } catch (NullPointerException e) {
             System.out.println("error");
         }

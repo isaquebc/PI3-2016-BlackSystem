@@ -44,7 +44,6 @@ public class ClienteBuscarServlet extends HttpServlet {
         cliente2.setCep("89899-000");
         cliente2.setCidade("bufunfa");
         cliente2.setCpf("000.000.000-00");
-        cliente2.setEmail("xxxxxxxxxxx@mailzika.com");
         cliente2.setEstado("Porto Rico");
         cliente2.setNome("Mala");
         cliente2.setNumero(333);

@@ -16,42 +16,52 @@ import java.util.Date;
  */
 public class CadastroDAO extends Conexao{
     
-    final String QUERY_INSERT_DEPARTAMENTO = "INSERT INTO DEPARTAMENTO(ID_DPT, NOME, ENDERECO, CIDADE, TEL, CEP, ESTADO)"
+    final static String QUERY_INSERT_DEPARTAMENTO = "INSERT INTO DEPARTAMENTO(ID_DPT, NOME, ENDERECO, CIDADE, TEL, CEP, ESTADO)"
                                              + "VALUES (?, ?, ?, ?, ?, ?, ?);";
-    final String QUERY_INSERT_CLIENTE      = "INSERT INTO CLIENTE( ID_CPF, NOME, SOBRENOME, DATANASC, TEL, EMAIL, DATA_ENTRADA, STATUS, ID_DPT)"
-                                             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
-    final String QUERY_INSERT_FUNCIORARIO  = "INSERT INTO FUNCIONARIO(ID_FUNCIONARIO, SENHA, CARGO, SALARIO, ID_CPF )"
+    final static String QUERY_INSERT_CLIENTE      = "INSERT INTO CLIENTE( ID_CPF, NOME, SOBRENOME, DATANASC, TEL, EMAIL, DATA_ENTRADA, STATUS)"
+                                             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+    final static String QUERY_INSERT_FUNCIORARIO  = "INSERT INTO FUNCIONARIO(ID_FUNCIONARIO, SENHA, CARGO, SALARIO, ID_CPF )"
                                              + "VALUES (? , ?, ?, ?, ?);";
-    final String QUERY_INSERT_ENDERECO     =  "INSERT INTO ENDERECO(ID_ENDERECO, ENDERECO, COMPLEMENTO, BAIRRO, CIDADE, ESTADO, CEP, ID_CPF)"
+    final static String QUERY_INSERT_ENDERECO     =  "INSERT INTO ENDERECO(ID_ENDERECO, ENDERECO, COMPLEMENTO, BAIRRO, CIDADE, ESTADO, CEP, ID_CPF)"
                                              + "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
-    final String QUERY_INSERT_PEDIDO       = "PEDIDO(ID_PEDIDO, STATUS, DATA_ENTRADA, DATA_SAIDA, ID_FUNCIONARIO, ID_CPF, ID_DPT)"
+    final static String QUERY_INSERT_PEDIDO       = "PEDIDO(ID_PEDIDO, STATUS, DATA_ENTRADA, DATA_SAIDA, ID_FUNCIONARIO, ID_CPF, ID_DPT)"
                                              + "VALUES (?, ?, ?, ?, ?, ?, ?);";
-    final String QUERY_INSERT_SERVICO      = "INSERT INTO SERVICO(ID_SERVICO, TIPO_DE_SERVICO, VALOR, PRAZO)"
+    final static String QUERY_INSERT_SERVICO      = "INSERT INTO SERVICO(ID_SERVICO, TIPO_DE_SERVICO, VALOR, PRAZO)"
                                              + "VALUES (?, ?, ?, ?);";
-    final String QUERY_INSERT_ROUPA        = "INSERT INTO ROUPA(ID_ROUPA, DESCRICAO, QUANTIDADE, TIPO_PECA, COR, TIPO_TECIDO, ID_PEDIDO, ID_SERVICO)"
+    final static String QUERY_INSERT_ROUPA        = "INSERT INTO ROUPA(ID_ROUPA, DESCRICAO, QUANTIDADE, TIPO_PECA, COR, TIPO_TECIDO, ID_PEDIDO, ID_SERVICO)"
                                              + "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
-    final String QUERY_INSERT_CHAMADO      = "INSERT INTO CHAMADO(ID_CHAMADO, DESCRICAO, STATUS, DATA_ABERTURA, DATA_BAIXADA, TIPO_SOLICITACAO, ID_FUNCIONARIO)"
+    final static String QUERY_INSERT_CHAMADO      = "INSERT INTO CHAMADO(ID_CHAMADO, DESCRICAO, STATUS, DATA_ABERTURA, DATA_BAIXADA, TIPO_SOLICITACAO, ID_FUNCIONARIO)"
                                              + "VALUES (?, ?, ?, ?, ?, ?, ?);";
-    final String QUERY_INSERT_TRATATIVA    = "INSERT INTO TRATATIVA_CHAMADO(ID_TRATATIVA, DATA_FECHAMENTO, DESCRICAO, ID_CHAMADO, ID_FUNCIONARIO)"
+    final static String QUERY_INSERT_TRATATIVA    = "INSERT INTO TRATATIVA_CHAMADO(ID_TRATATIVA, DATA_FECHAMENTO, DESCRICAO, ID_CHAMADO, ID_FUNCIONARIO)"
                                              + "VALUES (?, ?, ?, ?, ?);";
-    final String QUERY_INSERT_FEED         = "INSERT INTO FEED_NOTICIAS(ID_FEED, DESCRICAO, DATA_POSTADO, TITULO, ID_FUNCIONARIO)"
+    final static String QUERY_INSERT_FEED         = "INSERT INTO FEED_NOTICIAS(ID_FEED, DESCRICAO, DATA_POSTADO, TITULO, ID_FUNCIONARIO)"
                                              + "VALUES(?, ?, ?, ?, ?);";
-    final String QUERY_INSERT_PRODUTO      = "INSERT INTO PRODUTO(ID_PRODUTO, NOME, VALIDADE, LOTE, STATUS, MIN_QTD, MAX_QTD, QUANTIDADE, ID_TIPO, ID_DPT, ID_FUNCIONARIO)"
+    final static String QUERY_INSERT_PRODUTO      = "INSERT INTO PRODUTO(ID_PRODUTO, NOME, VALIDADE, LOTE, STATUS, MIN_QTD, MAX_QTD, QUANTIDADE, ID_TIPO, ID_DPT, ID_FUNCIONARIO)"
                                              + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-    final String QUERY_INSERT_MOVIMENTO    = "INSERT INTO MOVIMENTO(ID_MOVIMENTO, DATA_MOV, TIPO_MOVIMENTO, QUANTIDADE, DESCRICAO, ID_PRODUTO, ID_FUNCIONARIO)"
+    final static String QUERY_INSERT_MOVIMENTO    = "INSERT INTO MOVIMENTO(ID_MOVIMENTO, DATA_MOV, TIPO_MOVIMENTO, QUANTIDADE, DESCRICAO, ID_PRODUTO, ID_FUNCIONARIO)"
                                              + "VALUES(?, ?, ?, ?, ?, ?, ?);";
-    final String QUERY_INSERT_TIPO_PRODUTO = "INSERT INTO TIPO_PRODUTO(ID_TIPO, NOME, DESCRICAO)"
+    final static String QUERY_INSERT_TIPO_PRODUTO = "INSERT INTO TIPO_PRODUTO(ID_TIPO, NOME, DESCRICAO)"
                                              + "VALUES (?, ?, ?);";
-    final String QUERY_INSERT_ALTERACAO    = "NÃO DEFINIDO AINDA";
+    final static String QUERY_INSERT_ALTERACAO    = "NÃO DEFINIDO AINDA";
     
-    private PreparedStatement stm = null;
-    private Connection conn = null;
+    private static  PreparedStatement stm = null;
+    private static  Connection conn = null;
     
-    
+    public static void main(String[] args) throws ClassNotFoundException {
+        
+        Cliente cli= new Cliente();
+        cli.setCpf("00000000000");
+        cli.setNome("fulano");
+        cli.setSobrenome("de tal");
+        cli.setTelefone("11 982335099");
+        cli.setEmail("iiiii@gmail.com");
+        cadatrarPessoa(cli, null);
+    }
     
     public void cadastrarDepartamento(int id_dpt, String nome, String endereco, String cidade, String telefone, String cep, String estado)
     throws ClassNotFoundException{
          try {
+       
             conn = getConexao();
             stm = conn.prepareStatement(QUERY_INSERT_DEPARTAMENTO);
             stm.setInt(1, id_dpt);
@@ -73,7 +83,7 @@ public class CadastroDAO extends Conexao{
         
     }
     
-    public void cadatrarPessoa(Cliente cli,Date dataEntrada,int id_dpt)throws ClassNotFoundException {
+    public static  void cadatrarPessoa(Cliente cli,Date dataEntrada)throws ClassNotFoundException {
         try {
             conn = getConexao();
             stm = conn.prepareStatement(QUERY_INSERT_CLIENTE);
@@ -84,7 +94,7 @@ public class CadastroDAO extends Conexao{
             stm.setString(5, cli.getTelefone());
             stm.setString(6, cli.getEmail());
             stm.setDate(7, new java.sql.Date(dataEntrada.getTime()));
-            stm.setInt(9, id_dpt);
+            stm.setString(8, "n");
             stm.executeQuery();
             stm.close();
             conn.close();
