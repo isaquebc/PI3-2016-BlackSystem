@@ -56,7 +56,7 @@ public abstract class Pessoa {
         this.cidade = "";
         this.cep = "";
         this.nasc = null;
-        this.status= " ";
+        this.status= "";
     }
 
     
