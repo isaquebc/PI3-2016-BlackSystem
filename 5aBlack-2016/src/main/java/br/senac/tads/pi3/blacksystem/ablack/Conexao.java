@@ -20,7 +20,7 @@ import java.sql.Statement;
 public  abstract class Conexao {
    
 
-   static  Connection getConexao() throws ClassNotFoundException {
+   public  Connection getConexao() throws ClassNotFoundException {
         Connection con = null;
         Class.forName("org.apache.derby.jdbc.ClientDataSource");
         try {

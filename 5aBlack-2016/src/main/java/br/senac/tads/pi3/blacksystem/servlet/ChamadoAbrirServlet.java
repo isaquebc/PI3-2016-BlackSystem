@@ -5,8 +5,12 @@
  */
 package br.senac.tads.pi3.blacksystem.servlet;
 
+import br.senac.tads.pi3.blacksystem.ablack.CadastroDAO;
+import br.senac.tads.pi3.blacksystem.entity.Chamado;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -60,7 +64,22 @@ public class ChamadoAbrirServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        CadastroDAO cadChamado = new CadastroDAO();
+        
+        Chamado chamado = new Chamado();
+        chamado.setDataAbertura(null);
+        chamado.setDescricao(request.getParameter("Desc"));
+        chamado.setTipoSolicitacao(request.getParameter("categoria"));
+        chamado.setStatus("Abt");
+        //chamado.setIdFuncionario(CPF DO FUNCIONARIO);
+        try {
+            cadChamado.cadastrarChamado(chamado);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ChamadoAbrirServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }catch (NullPointerException ex){
+            
+        }
+        
     }
 
     /**
