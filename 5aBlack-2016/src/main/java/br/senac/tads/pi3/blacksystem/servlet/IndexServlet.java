@@ -5,16 +5,8 @@
  */
 package br.senac.tads.pi3.blacksystem.servlet;
 
-import br.senac.tads.pi3.blacksystem.ablack.CadastroDAO;
-import br.senac.tads.pi3.blacksystem.entity.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Rafael
+ * @author Isaque
  */
-@WebServlet(name="ClienteCadastrarServlet",urlPatterns = {"/ClienteCadastrarServlet"})
-public class ClienteCadastrarServlet extends HttpServlet {
+@WebServlet(name = "IndexServlet", urlPatterns = {"/IndexServlet"})
+public class IndexServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,7 +31,19 @@ public class ClienteCadastrarServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet IndexServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet IndexServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -55,7 +59,7 @@ public class ClienteCadastrarServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("servicos", "Mensagem");
-        request.getRequestDispatcher("/cliente/Cadastrar.jspx").forward(request, response);
+        request.getRequestDispatcher("/index.jspx").forward(request, response);
     }
 
     /**
@@ -69,42 +73,7 @@ public class ClienteCadastrarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CadastroDAO cadCli= new CadastroDAO();
-        Cliente cli= new Cliente();
- //       DateFormat form= new SimpleDateFormat("dd/mm/yyyy");
-//        try{
-//            java.util.Date data= form.parse(request.getParameter(null));
-//            
-//        }
-//        catch (ParseException e){
-//            
-//        }
-//        cli.setCpf(request.getParameter("cpf"));
-//        cli.setNome( request.getParameter("nome"));
-//        cli.setSobrenome(request.getParameter("sobreNome" ));
-//        cli.setTelefone(request.getParameter("telefone"));
-//        cli.setEmail(request.getParameter("email"));
-//        String rua= request.getParameter("rua");
-//        String numero= request.getParameter("numero");
-//        String estado=request.getParameter("estado");
-//        String cidade= request.getParameter("cidade");
-//        String cep= request.getParameter( "cep");
-//            
-        cli.setCpf("00000000000");
-        cli.setNome("fulano");
-        cli.setSobrenome("de tal");
-        cli.setTelefone("11 982335099");
-        cli.setEmail("iiiii@gmail.com");
-        
-        try {
-            cadCli.cadatrarPessoa(cli, null);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch(NullPointerException ex){
-            
-            
-        }
-        
+        processRequest(request, response);
     }
 
     /**
