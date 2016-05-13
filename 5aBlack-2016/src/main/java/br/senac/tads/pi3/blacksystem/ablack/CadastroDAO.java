@@ -208,14 +208,17 @@ public class CadastroDAO extends Conexao{
         throws ClassNotFoundException{
         try {
             conn = getConexao();
-            String sql = "INSERT INTO CHAMADO(DESCRICAO, STATUS, TIPO_SOLICITACAO) VALUES(?, ?, ?)";
+            String sql = "INSERT INTO CHAMADO(DESCRICAO, STATUS, DATA_ABERTURA, TIPO_SOLICITACAO) VALUES(?, ?, CONVERT(DATETIME,'?',103), ?)";
+            
             stm = conn.prepareStatement(sql);
             stm.setString(1, chamado.getDescricao());
             stm.setString(2, chamado.getStatus());
-            stm.setString(3, chamado.getTipoSolicitacao());// TIPO_SOLICITACAO);
+            stm.setDate(3, chamado.getDataAbertura());
+            stm.setString(4, chamado.getTipoSolicitacao());// TIPO_SOLICITACAO);
             stm.executeUpdate();
             stm.close();
             conn.close();
+            
         } catch (SQLException e) {
             System.out.println("Erro de conexão");
         } catch (NullPointerException e) {

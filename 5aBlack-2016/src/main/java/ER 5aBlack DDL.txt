@@ -38,7 +38,7 @@ CREATE TABLE Cliente (
  cel VARCHAR(21),
  email VARCHAR(100),
  data_entrada DATE,
- status CHAR(10),
+ status CHAR(30),
  id_dpt INT
 );
 
@@ -64,13 +64,13 @@ CREATE TABLE Funcionario (
  senha VARCHAR(100),
  cargo VARCHAR(80),
  salario FLOAT(20),
- id_cpf CHAR(11)
+ id_cpf CHAR(16)
 );
 
 
 CREATE TABLE Pedido (
  id_pedido INT NOT NULL GENERATED ALWAYS AS IDENTITY CONSTRAINT PK_Pedido PRIMARY KEY,
- status CHAR(15),
+ status CHAR(30),
  data_entrada DATE,
  data_saida DATE,
  id_funcionario INT,
@@ -85,7 +85,7 @@ CREATE TABLE Produto (
  nome VARCHAR(100),
  validade DATE,
  lote INT,
- status VARCHAR(20),
+ status VARCHAR(30),
  min_qtd FLOAT(10),
  max_qtd FLOAT(10),
  quantidade DECIMAL(10),
@@ -115,7 +115,7 @@ CREATE TABLE Tratativa_chamado (
     (START WITH 1, INCREMENT BY 1) CONSTRAINT PK_Tratativa_chamado PRIMARY KEY,
  data_fechamento DATE,
  descricao VARCHAR(512),
- id_chamado CHAR(20),
+ id_chamado INT,
  id_funcionario INT
 );
 
@@ -135,7 +135,7 @@ CREATE TABLE Chamado (
  id_chamado INT NOT NULL GENERATED ALWAYS AS IDENTITY 
     (START WITH 1, INCREMENT BY 1) CONSTRAINT PK_Chamado PRIMARY KEY,
  descricao VARCHAR(512),
- status CHAR(4),
+ status CHAR(30),
  data_abertura DATE,
  data_baixada DATE,
  tipo_solicitacao VARCHAR(80),
@@ -192,12 +192,13 @@ ALTER TABLE Roupa ADD CONSTRAINT FK_Roupa_1 FOREIGN KEY (id_servico) REFERENCES 
 
 
 ALTER TABLE Tratativa_chamado ADD CONSTRAINT FK_Tratativa_chamado_0 FOREIGN KEY (id_funcionario) REFERENCES Funcionario (id_funcionario);
-
+ALTER TABLE Tratativa_chamado ADD CONSTRAINT FK_Tratativa_chamado_1 FOREIGN KEY (id_chamado) REFERENCES chamado(id_chamado);
 
 ALTER TABLE Alteracao ADD CONSTRAINT FK_Alteracao_0 FOREIGN KEY (id_funcionario) REFERENCES Funcionario (id_funcionario);
 
 
 ALTER TABLE Chamado ADD CONSTRAINT FK_Chamado_0 FOREIGN KEY (id_funcionario) REFERENCES Funcionario (id_funcionario);
+
 
 
 ALTER TABLE Feed_noticias ADD CONSTRAINT FK_Feed_noticias_0 FOREIGN KEY (id_funcionario) REFERENCES Funcionario (id_funcionario);

@@ -7,8 +7,14 @@ package br.senac.tads.pi3.blacksystem.servlet;
 
 import br.senac.tads.pi3.blacksystem.ablack.CadastroDAO;
 import br.senac.tads.pi3.blacksystem.entity.Chamado;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -64,13 +70,25 @@ public class ChamadoAbrirServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         CadastroDAO cadChamado = new CadastroDAO();
         
+        Calendar ca = GregorianCalendar.getInstance();  
+        Date data = ca.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String data1 = sdf.format(data);
+        java.sql.Date sqlData = null;  
+        try {
+            sqlData = (java.sql.Date)(java.util.Date)sdf.parse(data1);
+        } catch (ParseException ex) {
+            Logger.getLogger(ChamadoAbrirServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Chamado chamado = new Chamado();
         chamado.setDataAbertura(null);
         chamado.setDescricao(request.getParameter("Desc"));
         chamado.setTipoSolicitacao(request.getParameter("categoria"));
         chamado.setStatus("Abt");
+        chamado.setDataAbertura(sqlData);
         //chamado.setIdFuncionario(CPF DO FUNCIONARIO);
         try {
             cadChamado.cadastrarChamado(chamado);
