@@ -5,7 +5,7 @@
  */
 package br.senac.tads.pi3.blacksystem.servlet;
 
-import br.senac.tads.pi3.blacksystem.ablack.CadastroDAO;
+import br.senac.tads.pi3.blacksystem.ablack.ClienteCadastroDAO;
 import br.senac.tads.pi3.blacksystem.entity.Chamado;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -64,7 +64,7 @@ public class ChamadoAbrirServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CadastroDAO cadChamado = new CadastroDAO();
+        ClienteCadastroDAO cadChamado = new ClienteCadastroDAO();
         
         Chamado chamado = new Chamado();
         chamado.setDataAbertura(null);

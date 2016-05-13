@@ -6,6 +6,7 @@
 package br.senac.tads.pi3.blacksystem.ablack;
 import br.senac.tads.pi3.blacksystem.entity.Chamado;
 import br.senac.tads.pi3.blacksystem.entity.Cliente;
+import br.senac.tads.pi3.blacksystem.entity.Endereco;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -15,20 +16,16 @@ import java.util.Date;
  *
  * @author Rafael
  */
-public class CadastroDAO extends Conexao{
+public class ClienteCadastroDAO extends Conexao{
     
-    final String QUERY_INSERT_DEPARTAMENTO = "INSERT INTO DEPARTAMENTO(ID_DPT, NOME, ENDERECO, CIDADE, TEL, CEP, ESTADO)"
-                                             + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+    
     String QUERY_INSERT_CLIENTE      = "INSERT INTO CLIENTE( ID_CPF, NOME, SOBRENOME, DATANASC, TEL, CEL, EMAIL, STATUS)"
                                              + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    final String QUERY_INSERT_FUNCIORARIO  = "INSERT INTO FUNCIONARIO(ID_FUNCIONARIO, SENHA, CARGO, SALARIO, ID_CPF )"
-                                             + "VALUES (? , ?, ?, ?, ?)";
-    final String QUERY_INSERT_ENDERECO     =  "INSERT INTO ENDERECO(ID_ENDERECO, ENDERECO, COMPLEMENTO, BAIRRO, CIDADE, ESTADO, CEP, ID_CPF)"
-                                             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    final String QUERY_INSERT_PEDIDO       = "PEDIDO(ID_PEDIDO, STATUS, DATA_ENTRADA, DATA_SAIDA, ID_FUNCIONARIO, ID_CPF, ID_DPT)"
-                                             + "VALUES (?, ?, ?, ?, ?, ?, ?)";
     final String QUERY_INSERT_SERVICO      = "INSERT INTO SERVICO(ID_SERVICO, TIPO_DE_SERVICO, VALOR, PRAZO)"
-                                             + "VALUES (?, ?, ?, ?)";
+                                             + "VALUES (?, ?, ?, ?)";    
+    
+    
+    
     final String QUERY_INSERT_ROUPA        = "INSERT INTO ROUPA(ID_ROUPA, DESCRICAO, QUANTIDADE, TIPO_PECA, COR, TIPO_TECIDO, ID_PEDIDO, ID_SERVICO)"
                                              + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     String QUERY_INSERT_CHAMADO      = "INSERT INTO CHAMADO(DESCRICAO, STATUS, DATA_ABERTURA, DATA_BAIXADA, TIPO_SOLICITACAO, ID_FUNCIONARIO)"
@@ -45,33 +42,8 @@ public class CadastroDAO extends Conexao{
                                              + "VALUES (?, ?, ?)";
     final String QUERY_INSERT_ALTERACAO    = "NÃO DEFINIDO AINDA";
     
-    private  PreparedStatement stm = null;
-    private  Connection conn = null;
     
-    public void cadastrarDepartamento(int id_dpt, String nome, String endereco, String cidade, String telefone, String cep, String estado)
-    throws ClassNotFoundException{
-         try {
-       
-            conn = getConexao();
-            stm = conn.prepareStatement(QUERY_INSERT_DEPARTAMENTO);
-            stm.setInt(1, id_dpt);
-            stm.setString(2, nome);
-            stm.setString(3, endereco);
-            stm.setString(4, cidade);
-            stm.setString(5, telefone);
-            stm.setString(6, cep);
-            stm.setString(7, estado);
-            stm.executeQuery();
-            stm.close();
-            conn.close();
-            
-        } catch (SQLException e) {
-            System.out.println("Erro de conexão");
-        } catch (NullPointerException e) {
-            System.out.println("Dao não inicializado");
-        }
-        
-    }
+    
     
     public  void cadatrarPessoa(Cliente cli,Date dataEntrada)throws ClassNotFoundException {
         try {
@@ -96,52 +68,13 @@ public class CadastroDAO extends Conexao{
         }
     }
     
-    public void cadastrarFuncionario(int id_funcionario, String senha, String cargo, float salario, String cpf)
-        throws ClassNotFoundException{
-        try {
-            conn = getConexao();
-            stm = conn.prepareStatement(QUERY_INSERT_FUNCIORARIO);
-            stm.setInt(1, id_funcionario);
-            stm.setString(2, senha);
-            stm.setString(3, cargo);
-            stm.setFloat(4, salario);
-            stm.setString(5, cpf);
-            stm.executeQuery();
-            stm.close();
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println("Erro de conexão");
-        } catch (NullPointerException e) {
-            System.out.println("Dao não inicializado");
-        }
-        
-    }
     
-    public void cadastrarEndereco(Cliente cli,int id_end, String endereco, String complemento, String bairro, String cidade, String estado, String cep, String cpf)
-        throws ClassNotFoundException{
-        try {
-            conn = getConexao();
-            stm = conn.prepareStatement(QUERY_INSERT_ENDERECO);
-            stm.setInt(1, id_end);
-            stm.setString(2, endereco);
-            stm.setString(3, complemento);
-            stm.setString(4, bairro);
-            stm.setString(5, cidade);
-            stm.setString(6, estado);
-            stm.setString(7, cep);
-            stm.setString(8, cli.getCpf());
-            stm.executeQuery();
-            stm.close();
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println("Erro de conexão");
-        } catch (NullPointerException e) {
-            System.out.println("Dao não inicializado");
-        }
-    }
     
     public void cadastrarPedido(int ID_PEDIDO, String STATUS, Date DATA_ENTRADA, Date DATA_SAIDA, int ID_FUNCIONARIO, String ID_CPF, int ID_DPT)
         throws ClassNotFoundException{
+        
+        Connection conn= null;
+        PreparedStatement stm= null;
         try {
             conn = getConexao();
             stm = conn.prepareStatement(QUERY_INSERT_PEDIDO);
@@ -152,25 +85,6 @@ public class CadastroDAO extends Conexao{
             stm.setInt(5, ID_FUNCIONARIO);
             stm.setString(6, ID_CPF);
             stm.setInt(7, ID_DPT);
-            stm.executeQuery();
-            stm.close();
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println("Erro de conexão");
-        } catch (NullPointerException e) {
-            System.out.println("Dao não inicializado");
-        }
-    }
-    
-    public void cadastrarSevico(int ID_SERVICO, String TIPO_DE_SERVICO, float VALOR, String PRAZO)
-        throws ClassNotFoundException{
-        try {
-            conn = getConexao();
-            stm = conn.prepareStatement(QUERY_INSERT_SERVICO);
-            stm.setInt(1, ID_SERVICO);
-            stm.setString(2, TIPO_DE_SERVICO);
-            stm.setFloat(3, VALOR);
-            stm.setString(4, PRAZO);
             stm.executeQuery();
             stm.close();
             conn.close();

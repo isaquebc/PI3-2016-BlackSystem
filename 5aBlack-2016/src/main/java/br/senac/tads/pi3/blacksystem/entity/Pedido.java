@@ -10,22 +10,34 @@ package br.senac.tads.pi3.blacksystem.entity;
  * @author Rafael
  */
 public class Pedido {
-    
-    private String tipoPeca;
-    private    String tipoTecido;
-    private    String tipoLavagem;
-    private    String qtd;
-    private    String cor;
-    private    Servico servico;
 
-    public Pedido(String tipoPeca, String tipoTecido, String tipoLavagem, String qtd, String cor, Servico servico) {
+    private String tipoPeca;
+    private String status;
+    private String tipoTecido;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    private String tipoLavagem;
+    private String qtd;
+    private String cor;
+    private Servico servico;
+
+    public Pedido(String tipoPeca, String status, String tipoTecido, String tipoLavagem, String qtd, String cor, Servico servico) {
         this.tipoPeca = tipoPeca;
+        this.status = status;
         this.tipoTecido = tipoTecido;
         this.tipoLavagem = tipoLavagem;
         this.qtd = qtd;
         this.cor = cor;
         this.servico = servico;
     }
+
+    
 
     public Pedido() {
     }
@@ -77,5 +89,5 @@ public class Pedido {
     public void setServico(Servico servico) {
         this.servico = servico;
     }
-    
+
 }
