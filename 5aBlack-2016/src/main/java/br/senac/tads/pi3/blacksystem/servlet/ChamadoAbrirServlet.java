@@ -73,6 +73,8 @@ public class ChamadoAbrirServlet extends HttpServlet {
         
         CadastroDAO cadChamado = new CadastroDAO();
         
+        
+        
         Calendar ca = GregorianCalendar.getInstance();  
         Date data = ca.getTime();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
