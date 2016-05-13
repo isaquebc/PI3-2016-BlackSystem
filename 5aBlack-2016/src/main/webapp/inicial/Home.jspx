@@ -12,6 +12,7 @@
     <jsp:output omit-xml-declaration="true"
                 doctype-root-element="HTML"
                 doctype-system="about:legacy-compact"/>
+    
     <html>
         <head>
             <meta charset="utf-8"/>
