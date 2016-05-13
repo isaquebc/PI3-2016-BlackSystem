@@ -30,7 +30,7 @@
             <div  class="container">
                 <div class="row">
                     <div class ="col-md-offset-2 col-md-5">
-                        <form method="post" action="" role="form" accept-charset="UTF-8">
+                        <form method="post" action="">
                             <legend><h2>Abrir Chamado</h2></legend>
                             <div class="form-group">
                                 <label for="categoriaChamado">Categoria de Chamado</label>
