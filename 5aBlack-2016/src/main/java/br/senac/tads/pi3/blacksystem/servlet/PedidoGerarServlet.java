@@ -26,19 +26,19 @@ import javax.servlet.RequestDispatcher;
 @WebServlet(name = "PedidoGerarServlet", urlPatterns = {"/PedidoGerarServlet"})
 public class PedidoGerarServlet extends HttpServlet {
 
-     public List Servico(){ 
-        //Servico sr = new Servico();
-        List lista = new ArrayList<>();
-        Date data = new Date(12, 12, 12);
-        Servico servico = new Servico("Lavagem Simples", 20, data);
-        Servico servico2 = new Servico("Lavagem completa", 20, data);
-        Servico servico3 = new Servico("Lavagem Seca", 20, data);
-        
-        lista.add(servico);
-        lista.add(servico3);
-        lista.add(servico2);
-        return lista;
-    }
+//     public List Servico(){ 
+//        Servico sr = new Servico();
+//        List lista = new ArrayList<>();
+//        Date data = new Date(12, 12, 12);
+//        Servico servico = new Servico("Lavagem Simples", 20, data);
+//        Servico servico2 = new Servico("Lavagem completa", 20, data);
+//        Servico servico3 = new Servico("Lavagem Seca", 20, data);
+////        
+//        lista.add(servico);
+//        lista.add(servico3);
+//        lista.add(servico2);
+//        return lista;
+//    }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -66,7 +66,7 @@ public class PedidoGerarServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("servicos", Servico());
+//        request.setAttribute("servicos", Servico());
         request.getRequestDispatcher("/pedido/Gerar.jspx").forward(request, response);
     }
     /**

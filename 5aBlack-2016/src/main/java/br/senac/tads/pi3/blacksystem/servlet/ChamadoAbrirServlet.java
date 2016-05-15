@@ -72,13 +72,13 @@ public class ChamadoAbrirServlet extends HttpServlet {
         chamado.setTipoSolicitacao(request.getParameter("categoria"));
         chamado.setStatus("Abt");
         //chamado.setIdFuncionario(CPF DO FUNCIONARIO);
-        try {
-            cadChamado.cadastrarChamado(chamado);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ChamadoAbrirServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (NullPointerException ex){
-            
-        }
+//        try {
+//            cadChamado.cadastrarChamado(chamado);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(ChamadoAbrirServlet.class.getName()).log(Level.SEVERE, null, ex);
+//        }catch (NullPointerException ex){
+//            
+//        }
         
     }
 

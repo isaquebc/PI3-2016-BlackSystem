@@ -4,9 +4,12 @@
  * and open the template in the editor.
  */
 package br.senac.tads.pi3.blacksystem.servlet;
-
+import br.senac.tads.pi3.blacksystem.ablack.FuncinarioCadastroDAO;
+import br.senac.tads.pi3.blacksystem.entity.Funcionario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -73,7 +76,35 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        FuncinarioCadastroDAO funcDAO= new FuncinarioCadastroDAO();
+        Funcionario func= new Funcionario();
+        
+        
+//        func.setNome( request.getParameter("nome"));
+//        func.setSobrenome(request.getParameter("sobreNome" ));
+//        func.setTelefone(request.getParameter("telefone"));
+//        func.setCelular(request.getParameter("celular"));
+//        func.setEmail(request.getParameter("email"));
+
+        func.setCargo(request.getParameter("cargo"));
+        func.setSalario(Float.parseFloat(request.getParameter("salario")));
+        func.setSenha(request.getParameter("senha"));
+        func.setFilial(request.getParameter("filial-Trabalho"));
+        func.setCpf(request.getParameter("cpf"));
+////        func.setDataContratacao(request.getParameter("2000-01-01"));
+        try {
+            funcDAO.cadastrarFuncionario(func);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FuncionarioCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(NullPointerException ex){
+            ex.getMessage();
+        }
+        
+        
+        
+        
+        
     }
 
     /**

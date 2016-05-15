@@ -14,19 +14,19 @@ import static java.sql.Types.NULL;
  */
 public abstract class Pessoa {
     
-    private String nome;
-    private String sobrenome;
-    private String cpf;
-    private String telefone;
-    private String celular;
-    private String email;
-    private String rua;
-    private int numero; 
-    private String estado;
-    private String cidade;
-    private String cep;
-    private Date nasc;
-    private String status;
+    private String nome="";
+    private String sobrenome="";
+    private String cpf ="";
+    private String telefone="";
+    private String celular="";
+    private String email="";
+    private String rua="";
+    private int numero=0; 
+    private String estado="";
+    private String cidade="";
+    private String cep="";
+    private Date nasc=null;
+    private String status="";
 
     public Pessoa(String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
         this.nome = nome;
