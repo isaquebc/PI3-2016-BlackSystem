@@ -24,29 +24,19 @@ public class ClienteCadastroDAO extends Conexao{
     final String QUERY_INSERT_SERVICO      = "INSERT INTO SERVICO(ID_SERVICO, TIPO_DE_SERVICO, VALOR, PRAZO)"
                                              + "VALUES (?, ?, ?, ?)";    
     
-    
-    
-    final String QUERY_INSERT_ROUPA        = "INSERT INTO ROUPA(ID_ROUPA, DESCRICAO, QUANTIDADE, TIPO_PECA, COR, TIPO_TECIDO, ID_PEDIDO, ID_SERVICO)"
-                                             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     String QUERY_INSERT_CHAMADO      = "INSERT INTO CHAMADO(DESCRICAO, STATUS, DATA_ABERTURA, DATA_BAIXADA, TIPO_SOLICITACAO, ID_FUNCIONARIO)"
                                              + "VALUES (?, ?, ?, ?, ?, ?, ?)";
-    final String QUERY_INSERT_TRATATIVA    = "INSERT INTO TRATATIVA_CHAMADO(ID_TRATATIVA, DATA_FECHAMENTO, DESCRICAO, ID_CHAMADO, ID_FUNCIONARIO)"
-                                             + "VALUES (?, ?, ?, ?, ?)";
-    final String QUERY_INSERT_FEED         = "INSERT INTO FEED_NOTICIAS(ID_FEED, DESCRICAO, DATA_POSTADO, TITULO, ID_FUNCIONARIO)"
-                                             + "VALUES(?, ?, ?, ?, ?);";
+
     final String QUERY_INSERT_PRODUTO      = "INSERT INTO PRODUTO(ID_PRODUTO, NOME, VALIDADE, LOTE, STATUS, MIN_QTD, MAX_QTD, QUANTIDADE, ID_TIPO, ID_DPT, ID_FUNCIONARIO)"
                                              + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    final String QUERY_INSERT_MOVIMENTO    = "INSERT INTO MOVIMENTO(ID_MOVIMENTO, DATA_MOV, TIPO_MOVIMENTO, QUANTIDADE, DESCRICAO, ID_PRODUTO, ID_FUNCIONARIO)"
-                                             + "VALUES(?, ?, ?, ?, ?, ?, ?)";
-    final String QUERY_INSERT_TIPO_PRODUTO = "INSERT INTO TIPO_PRODUTO(ID_TIPO, NOME, DESCRICAO)"
-                                             + "VALUES (?, ?, ?)";
+
     final String QUERY_INSERT_ALTERACAO    = "NÃO DEFINIDO AINDA";
-    
-    
-    
     
     public  void cadatrarPessoa(Cliente cli,Date dataEntrada)throws ClassNotFoundException {
         try {
+            
+            Connection conn=null;
+            PreparedStatement stm=null;
             conn = getConexao();
             String sql = QUERY_INSERT_CLIENTE;
             stm = conn.prepareStatement(sql);
@@ -66,156 +56,40 @@ public class ClienteCadastroDAO extends Conexao{
         } catch (NullPointerException e) {
             System.out.println("Dao não inicializado: Cadastro do cliente");
         }
-    }
-    
-    
-    
-    public void cadastrarPedido(int ID_PEDIDO, String STATUS, Date DATA_ENTRADA, Date DATA_SAIDA, int ID_FUNCIONARIO, String ID_CPF, int ID_DPT)
-        throws ClassNotFoundException{
+//        public void cadastrarMovimento()
+//        throws ClassNotFoundException{
+//     final String QUERY_INSERT_MOVIMENTO    = "INSERT INTO MOVIMENTO(ID_MOVIMENTO, DATA_MOV, TIPO_MOVIMENTO, QUANTIDADE, DESCRICAO, ID_PRODUTO, ID_FUNCIONARIO)"
+//                                             + "VALUES(?, ?, ?, ?, ?, ?, ?)";   
+//Connection conn= null;
+//        PreparedStatement stm= null;
+//        try {
+//            conn = getConexao();
+//            stm = conn.prepareStatement(QUERY_INSERT_MOVIMENTO);
+//            stm.setInt(1, ID_MOVIMENTO);
+//            stm.setDate(2, new java.sql.Date(DATA_MOV.getTime()));
+//            stm.setString(3, TIPO_MOVIMENTO);
+//            stm.setFloat(4, QUANTIDADE);
+//            stm.setString(5, DESCRICAO);
+//            stm.setInt(6, ID_PRODUTO);
+//            stm.setInt(7, ID_FUNCIONARIO);
+//            stm.executeQuery();
+//            stm.close();
+//            conn.close();
+//        } catch (SQLException e) {
+//            System.out.println("Erro de conexão");
+//        } catch (NullPointerException e) {
+//            System.out.println("Dao não inicializado");
+//        }
+//    }
         
-        Connection conn= null;
-        PreparedStatement stm= null;
-        try {
-            conn = getConexao();
-            stm = conn.prepareStatement(QUERY_INSERT_PEDIDO);
-            stm.setInt(1, ID_PEDIDO);
-            stm.setString(2, STATUS);
-            stm.setDate(3, new java.sql.Date(DATA_ENTRADA.getTime()));
-            stm.setDate(4, new java.sql.Date(DATA_SAIDA.getTime()));
-            stm.setInt(5, ID_FUNCIONARIO);
-            stm.setString(6, ID_CPF);
-            stm.setInt(7, ID_DPT);
-            stm.executeQuery();
-            stm.close();
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println("Erro de conexão");
-        } catch (NullPointerException e) {
-            System.out.println("Dao não inicializado");
-        }
-    }
-    
-    public void cadastrarRoupa(int ID_ROUPA, String DESCRICAO, int QUANTIDADE, String TIPO_PECA, String COR, String TIPO_TECIDO, int ID_PEDIDO, int ID_SERVICO)
-        throws ClassNotFoundException{
-        try {
-            conn = getConexao();
-            stm = conn.prepareStatement(QUERY_INSERT_ROUPA);
-            stm.setInt(1, ID_ROUPA);
-            stm.setString(2, DESCRICAO);
-            stm.setInt(3, QUANTIDADE);
-            stm.setString(4, TIPO_PECA);
-            stm.setString(5, COR);
-            stm.setString(6, TIPO_TECIDO);
-            stm.setInt(7, ID_PEDIDO);
-            stm.setInt(8, ID_SERVICO);
-            stm.executeQuery();
-            stm.close();
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println("Erro de conexão");
-        } catch (NullPointerException e) {
-            System.out.println("Dao não inicializado");
-        }
-    }
-    
-    public void cadastrarChamado(Chamado chamado)
-        throws ClassNotFoundException{
-        try {
-            conn = getConexao();
-            String sql = "INSERT INTO CHAMADO(DESCRICAO, STATUS, TIPO_SOLICITACAO) VALUES(?, ?, ?)";
-            stm = conn.prepareStatement(sql);
-            stm.setString(1, chamado.getDescricao());
-            stm.setString(2, chamado.getStatus());
-            stm.setString(3, chamado.getTipoSolicitacao());// TIPO_SOLICITACAO);
-            stm.executeUpdate();
-            stm.close();
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println("Erro de conexão");
-        } catch (NullPointerException e) {
-            System.out.println("Dao não inicializado");
-        }
-    }
+    }    
     //stm.setDate(3, chamado.getDataAbertura());
             //stm.setDate(3, new java.sql.Date(DATA_BAIXADA.getTime()));
-    public void cadastrarTratativaChamado(int ID_TRATATIVA, Date DATA_FECHAMENTO, String DESCRICAO, int ID_CHAMADO, int ID_FUNCIONARIO)
-        throws ClassNotFoundException{
-        try {
-            conn = getConexao();
-            stm = conn.prepareStatement(QUERY_INSERT_TRATATIVA);
-            stm.setInt(1, ID_TRATATIVA);
-            stm.setDate(2, new java.sql.Date(DATA_FECHAMENTO.getTime()));
-            stm.setString(3, DESCRICAO);
-            stm.setInt(4, ID_CHAMADO);
-            stm.setInt(5, ID_FUNCIONARIO);
-            stm.executeQuery();
-            stm.close();
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println("Erro de conexão");
-        } catch (NullPointerException e) {
-            System.out.println("Dao não inicializado");
-        }
-    }
-     
-    public void cadastrarFeedNoticias(int ID_FEED, String DESCRICAO, Date DATA_POSTADO, String TITULO, int ID_FUNCIONARIO)
-        throws ClassNotFoundException{
-        try {
-            conn = getConexao();
-            stm = conn.prepareStatement(QUERY_INSERT_FEED);
-            stm.setInt(1, ID_FEED);
-            stm.setString(2, DESCRICAO);
-            stm.setDate(3, new java.sql.Date(DATA_POSTADO.getTime()));
-            stm.setString(4, TITULO);
-            stm.setInt(5, ID_FUNCIONARIO);
-            stm.executeQuery();
-            stm.close();
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println("Erro de conexão");
-        } catch (NullPointerException e) {
-            System.out.println("Dao não inicializado");
-        }
-    }
-    
-    public void cadastrarMovimento(int ID_MOVIMENTO, Date DATA_MOV, String TIPO_MOVIMENTO, float QUANTIDADE, String DESCRICAO, int ID_PRODUTO, int ID_FUNCIONARIO)
-        throws ClassNotFoundException{
-        try {
-            conn = getConexao();
-            stm = conn.prepareStatement(QUERY_INSERT_MOVIMENTO);
-            stm.setInt(1, ID_MOVIMENTO);
-            stm.setDate(2, new java.sql.Date(DATA_MOV.getTime()));
-            stm.setString(3, TIPO_MOVIMENTO);
-            stm.setFloat(4, QUANTIDADE);
-            stm.setString(5, DESCRICAO);
-            stm.setInt(6, ID_PRODUTO);
-            stm.setInt(7, ID_FUNCIONARIO);
-            stm.executeQuery();
-            stm.close();
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println("Erro de conexão");
-        } catch (NullPointerException e) {
-            System.out.println("Dao não inicializado");
-        }
-    }
-    
-    public void cadastrarTipoProduto(int ID_TIPO, String NOME, String DESCRICAO)   
-        throws ClassNotFoundException{
-        try {
-            conn = getConexao();
-            stm = conn.prepareStatement(QUERY_INSERT_TIPO_PRODUTO);
-            stm.setInt(1, ID_TIPO);
-            stm.setString(2, NOME);
-            stm.setString(3, DESCRICAO);
-            stm.executeQuery();
-            stm.close();
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println("Erro de conexão");
-        } catch (NullPointerException e) {
-            System.out.println("Dao não inicializado");
-        }
-    }
 
+     
+    
+    
+    
+    
+    
 }

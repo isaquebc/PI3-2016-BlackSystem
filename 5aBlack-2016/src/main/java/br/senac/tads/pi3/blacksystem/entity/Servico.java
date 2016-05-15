@@ -14,15 +14,32 @@ import java.sql.Date;
 public class Servico {
 
     private String tipoServico;
+    private String descricaoServico;
     private float preco;
     private Date prazo;
     private long id;
 
-    public Servico(String tipoServico, float preco, Date prazo) {
+    public Servico(String tipoServico, String descricaoServico, float preco, Date prazo, long id) {
         this.tipoServico = tipoServico;
+        this.descricaoServico = descricaoServico;
         this.preco = preco;
         this.prazo = prazo;
+        this.id = id;
     }
+
+    
+    
+    
+    
+    public String getDescricaoServico() {
+        return descricaoServico;
+    }
+
+    public void setDescricaoServico(String descricaoServico) {
+        this.descricaoServico = descricaoServico;
+    }
+
+    
 
     public Servico() {
     }

@@ -18,6 +18,8 @@ import java.sql.Statement;
  * @author Rafael
  */
 public  abstract class Conexao {
+   private Connection con = null;
+   private PreparedStatement stm= null;
    
 
    public  Connection getConexao() throws ClassNotFoundException {

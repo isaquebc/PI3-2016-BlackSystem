@@ -5,15 +5,44 @@
  */
 package br.senac.tads.pi3.blacksystem.entity;
 
+import java.util.Date;
+
 /**
  *
  * @author Rafael
  */
 public class Pedido {
 
+    private long idPedido;
+
+    public long getIdPedido() {
+        return idPedido;
+    }
+
+    public void setIdPedido(long idPedido) {
+        this.idPedido = idPedido;
+    }
     private String tipoPeca;
     private String status;
     private String tipoTecido;
+    private Date dataEntrada;
+    private Date dataSaida;
+    private String tipoLavagem;
+    private String qtd;
+    private String cor;
+    private Servico servico;
+
+    public Pedido(String tipoPeca, String status, String tipoTecido, Date dataEntrada, Date dataSaida, String tipoLavagem, String qtd, String cor, Servico servico) {
+        this.tipoPeca = tipoPeca;
+        this.status = status;
+        this.tipoTecido = tipoTecido;
+        this.dataEntrada = dataEntrada;
+        this.dataSaida = dataSaida;
+        this.tipoLavagem = tipoLavagem;
+        this.qtd = qtd;
+        this.cor = cor;
+        this.servico = servico;
+    }
 
     public String getStatus() {
         return status;
@@ -22,22 +51,6 @@ public class Pedido {
     public void setStatus(String status) {
         this.status = status;
     }
-    private String tipoLavagem;
-    private String qtd;
-    private String cor;
-    private Servico servico;
-
-    public Pedido(String tipoPeca, String status, String tipoTecido, String tipoLavagem, String qtd, String cor, Servico servico) {
-        this.tipoPeca = tipoPeca;
-        this.status = status;
-        this.tipoTecido = tipoTecido;
-        this.tipoLavagem = tipoLavagem;
-        this.qtd = qtd;
-        this.cor = cor;
-        this.servico = servico;
-    }
-
-    
 
     public Pedido() {
     }
@@ -72,6 +85,22 @@ public class Pedido {
 
     public void setQtd(String qtd) {
         this.qtd = qtd;
+    }
+
+    public Date getDataEntrada() {
+        return dataEntrada;
+    }
+
+    public void setDataEntrada(Date dataEntrada) {
+        this.dataEntrada = dataEntrada;
+    }
+
+    public Date getDataSaida() {
+        return dataSaida;
+    }
+
+    public void setDataSaida(Date dataSaida) {
+        this.dataSaida = dataSaida;
     }
 
     public String getCor() {
