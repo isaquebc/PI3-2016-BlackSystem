@@ -124,15 +124,15 @@
                                 </tr>
                             </thead>
                             <tbody class="table-hover">
-                                <c:forEach items="${pedidos}" var="pedido">
+                                <c:forEach items="${pecas}" var="peca">
                                     <tr>
-                                        <td>${pedido.id}</td>
-                                        <td>${pedido.tipoPeca}</td>
-                                        <td>${pedido.tipoTecido}</td>
-                                        <td>${pedido.tipoLavagem}</td>
-                                        <td>${pedido.qtd}</td>
-                                        <td>${pedido.cor}</td>
-                                        <td>${pedido.servico}</td>
+                                        <td>${peca.id}</td>
+                                        <td>${peca.tipoPeca}</td>
+                                        <td>${peca.tipoTecido}</td>
+                                        <td>${peca.tipoLavagem}</td>
+                                        <td>${peca.qtd}</td>
+                                        <td>${peca.cor}</td>
+                                        <td>${peca.servico}</td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

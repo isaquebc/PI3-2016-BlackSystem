@@ -1,5 +1,4 @@
 package br.senac.tads.pi3.blacksystem.servlet;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -25,14 +24,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.RequestDispatcher;
-
 /**
  *
  * @author Rafael
  */
 @WebServlet(name = "PedidoGerarServlet", urlPatterns = {"/PedidoGerarServlet"})
 public class PedidoGerarServlet extends HttpServlet {
-
 //     public List Servico(){ 
 //        Servico sr = new Servico();
 //        List lista = new ArrayList<>();
@@ -58,10 +55,7 @@ public class PedidoGerarServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
     }
-
-    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -90,7 +84,7 @@ public class PedidoGerarServlet extends HttpServlet {
         Peca peca= new Peca();
         Pedido ped= new Pedido();
         Cliente cli = new Cliente();
-//        Departamento dep= new Departamento();
+//      Departamento dep= new Departamento();
         
         String servico = request.getParameter("tipo-Servico");
         
@@ -100,21 +94,17 @@ public class PedidoGerarServlet extends HttpServlet {
         ped.setTipoTecido(request.getParameter("tipo-Tecido"));
         ped.setTipoLavagem(request.getParameter("tipo-Lavagem"));
         ped.setQtd(request.getParameter("qtd-Peca"));
-        //data de liberação do pedido
+//      data de liberação do pedido
         ped.setCor(request.getParameter("cor"));
         cli.setCpf("000.000.000-00");
-        
         
         PedidoDAO pedDAO= new PedidoDAO();
         try {
             pedDAO.cadastrarPedido(ped,cli);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(PedidoGerarServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
+        }     
     }
-
     /**
      * Returns a short description of the servlet.
      *
