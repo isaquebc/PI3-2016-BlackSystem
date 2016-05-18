@@ -36,7 +36,7 @@
                 <div class="container">
                     <div class="row" >
                         <div class="col-md-offset-2 col-md-5" >
-                            <form class="form-signin" role="form" action="#" method="post" accept-charset="UTF-8"> <!-- GerarPedidoServlet -->
+                            <form class="form-signin" role="form" action="#" method="post" accept-charset="UTF-8">
                                 <fieldset> 
                                     <legend><h2>Gerar Pedido</h2></legend>                                  
                                     <div class="form-group">
@@ -97,12 +97,21 @@
                                         <input type="date" required="" class="form-control" name="dt-Retirada" id="dtRetirada"/>
                                     </div>
                                 </fieldset>
-                                <button type="submit" id="inserir" class="btn btn-default btn-primary btn-block" data-toggle="modal" data-target="#venda">Inserir</button>
+                                <button type="submit" id="inserir" class="btn btn-default btn-primary btn-block">Inserir</button>
                             </form>
-                            <!-- Aqui a gente gera a lista de peça
-                            ====================================================================-->
-                            <table class="table table-hover">
-                            <caption><h3>Pedido </h3></caption>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <!-- Fim do formulario de peças
+            ===============================-->
+            <!-- Aqui a gente gera a lista de peças adicionadas
+            ====================================================================-->
+            <div class="container">
+                <div class="row" >
+                    <div class=" col-md-12" >
+                        <table class="table table-hover">
+                            <caption><h3>Peças </h3></caption>
                             <thead>
                                 <tr > 
                                     <th>Tipo de Serviço</th>
@@ -115,14 +124,6 @@
                                 </tr>
                             </thead>
                             <tbody class="table-hover">
-                                <tr>
-                                    <td>Vagabundo</td>
-                                    <td>Tamojunto</td>
-                                    <td>222.222.222-22</td>
-                                    <td>12-03-1996</td>
-                                    <td>11 3939-4040</td>
-                                    <td>11 3939-4040</td>
-                                </tr>
                                 <c:forEach items="${pedidos}" var="pedido">
                                     <tr>
                                         <td>${pedido.id}</td>
@@ -136,42 +137,53 @@
                                 </c:forEach>
                             </tbody>
                         </table>
-                            <!-- Aqui a gente gera o pop-up para finalizar a venda
-                            ====================================================================-->
-                            <div id="venda" class="modal fade" role="dialog">
-                                <div class="modal-dialog">
-
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Modal Header</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <label for="pecoTotal">Preço R$ ${pedido.total}</label>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="metodoDePagamento">Forma de Pagamento:</label>
-                                                <select class="form-control" required="" name="cor" id="cor" >
-                                                    <option value=""></option>
-                                                    <option value="camiseta">Debito</option>
-                                                    <option value="camiseta">Credito</option>
-                                                    <option value="camiseta">Dinheiro</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar Venda</button>
-                                                <button type="submit" class="btn btn-primary">Vender</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="form-group">
+                        <button type="submit" id="inserir" class="btn btn-default btn-primary btn-block" data-toggle="modal" data-target="#venda">Finalizar Venda</button>
                         </div>
                     </div>
                 </div>
-            </main>
+            </div>
+            <!--Fim da Tabela
+            ==================-->
+            <!-- Aqui a gente gera o pop-up para finalizar a venda
+            ====================================================================-->
+            <div id="venda" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Modal Header</h4>
+                        </div>
+                        <div class="modal-body">
+                            <main>
+                                <form class="form-signin" role="form" action="#" method="post" accept-charset="UTF-8">
+                                    <fieldset> 
+                                        <div class="form-group">
+                                            <label for="pecoTotal">Preço R$ ${pedido.total}</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="metodoDePagamento">Forma de Pagamento:</label>
+                                            <select class="form-control" required="" name="cor" id="cor" >
+                                                <option value=""></option>
+                                                <option value="camiseta">Debito</option>
+                                                <option value="camiseta">Credito</option>
+                                                <option value="camiseta">Dinheiro</option>
+                                            </select>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar Venda</button>
+                                            <button type="submit" class="btn btn-primary">Vender</button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </main>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim do Pop-up que finaliza a venda
+            ======================================-->
         </body>
     </html>
 </jsp:root>

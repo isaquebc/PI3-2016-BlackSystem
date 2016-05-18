@@ -21,6 +21,30 @@
         </head>
         <body>
             <jsp:include page="Menu.jspx" />
+            <div class="container" >
+                <div class="row" >
+                    <div class="col-md-offset-2 col-md-6" >
+                        <div class="jumbotron">
+                            <p>Titulo da Noticia</p>
+                            Hello World
+                        </div>
+                        <div class="jumbotron">
+                            <p>Titulo da Noticia 2</p>
+                            Hello World
+                        </div>
+                        <div class="jumbotron">
+                            <p>Titulo da Noticia 3</p>
+                            Hello World
+                        </div>
+                        <c:forEach items="${feed}" var="noticia">
+                            <div class="jumbotron">
+                                <h3>${noticia.titulo}</h3>
+                                <p>${noticia.descricao}</p>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
         </body>
     </html>
 </jsp:root>

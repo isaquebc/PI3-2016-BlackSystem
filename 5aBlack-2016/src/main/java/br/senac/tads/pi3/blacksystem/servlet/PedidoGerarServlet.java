@@ -40,7 +40,7 @@ public class PedidoGerarServlet extends HttpServlet {
 //        Servico servico = new Servico("Lavagem Simples", 20, data);
 //        Servico servico2 = new Servico("Lavagem completa", 20, data);
 //        Servico servico3 = new Servico("Lavagem Seca", 20, data);
-////        
+//        
 //        lista.add(servico);
 //        lista.add(servico3);
 //        lista.add(servico2);

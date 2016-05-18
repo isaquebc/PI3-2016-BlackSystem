@@ -24,15 +24,19 @@
         </head>
         <body>
             <jsp:include page="../inicial/Menu.jspx" />
+            <!-- Campo de Busca
+            ========================-->
             <div class="container" >
                 <div class="row" >
                     <div class="col-md-offset-2 col-md-4" >
                         <form class="form-signin" action="#" method="post" accept-charset="UTF-8"> <!-- BuscarPedidoServlet -->
                             <fieldset>
                                 <legend><h2 class="form-signin-heading">Buscar Pedido</h2></legend>
+                                <label class="radio-inline"><input type="radio" name="tipoBusca" required="" value="idPedido"/>Numero do Pedido</label>
+                                <label class="radio-inline"><input type="radio" name="tipoBusca" required="" value="cpfCliente" checked=""/>CPF do Cliente</label>
                                 <div class="form-group">
-                                    <label class="sr-only" for="buscPedido">Numero do Pedido</label>
-                                    <input type="text" id="buscPedido" class="form-control" placeholder="Numero do Pedido" required="" autofocus=""/>
+                                    <label class="sr-only" for="buscPedido">Localizar Pedido</label>
+                                    <input type="text" id="buscPedido" class="form-control" placeholder="Localizar Pedido" required="" autofocus=""/>
                                 </div>
                             </fieldset>
                             <button type="submit" class="btn btn-lg btn-primary btn-block" id="pesquisar">Buscar</button>
@@ -40,6 +44,10 @@
                     </div>
                 </div>
             </div>
+            <!--Fim do campo de busca
+            ==============================-->
+            <!-- Aqui é onde fica a lista de resultados
+            =====================================================-->
             <div class="container" >
                 <div class="row" >
                     <div class="col-md-offset-0 col-md-12" >
@@ -82,6 +90,8 @@
                     </div>
                 </div>
             </div>
+            <!-- Fim da lista de resultados
+            ================================-->
         </body>
     </html>
 </jsp:root>
