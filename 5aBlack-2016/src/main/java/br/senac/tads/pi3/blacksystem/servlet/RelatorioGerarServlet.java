@@ -34,7 +34,7 @@ public class RelatorioGerarServlet extends HttpServlet {
         
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -47,7 +47,7 @@ public class RelatorioGerarServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("servicos", "mensagem");
-        request.getRequestDispatcher("/relatorio/Gerar.jspx").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/relatorio/Gerar.jspx").forward(request, response);
     }
 
     /**
@@ -72,6 +72,6 @@ public class RelatorioGerarServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

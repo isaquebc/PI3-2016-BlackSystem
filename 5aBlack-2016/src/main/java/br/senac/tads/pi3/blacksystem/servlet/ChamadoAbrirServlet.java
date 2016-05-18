@@ -37,7 +37,7 @@ public class ChamadoAbrirServlet extends HttpServlet {
             throws ServletException, IOException {
         }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+  
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -50,7 +50,7 @@ public class ChamadoAbrirServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("servicos", "Mensagem");
-        request.getRequestDispatcher("/chamado/Abrir.jspx").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/chamado/Abrir.jspx").forward(request, response);
     }
 
     /**
@@ -90,6 +90,6 @@ public class ChamadoAbrirServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

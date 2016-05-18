@@ -85,7 +85,7 @@ public class ClienteBuscarServlet extends HttpServlet {
             throws ServletException, IOException {
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -98,7 +98,7 @@ public class ClienteBuscarServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("clientes", clientes());
-        request.getRequestDispatcher("/cliente/Buscar.jspx").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/cliente/Buscar.jspx").forward(request, response);
     }
 
     /**
@@ -123,6 +123,6 @@ public class ClienteBuscarServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

@@ -33,8 +33,6 @@ public class PedidoBuscarServlet extends HttpServlet {
             throws ServletException, IOException {
        
     }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -47,7 +45,7 @@ public class PedidoBuscarServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("servicos", "Mensagem");
-        request.getRequestDispatcher("/pedido/Buscar.jspx").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/pedido/Buscar.jspx").forward(request, response);
     }
 
     /**
@@ -72,6 +70,6 @@ public class PedidoBuscarServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

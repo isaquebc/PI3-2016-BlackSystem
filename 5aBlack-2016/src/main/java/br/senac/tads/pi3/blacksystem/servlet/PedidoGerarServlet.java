@@ -61,7 +61,7 @@ public class PedidoGerarServlet extends HttpServlet {
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -74,7 +74,7 @@ public class PedidoGerarServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        request.setAttribute("servicos", Servico());
-        request.getRequestDispatcher("/pedido/Gerar.jspx").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/pedido/Gerar.jspx").forward(request, response);
     }
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -123,6 +123,6 @@ public class PedidoGerarServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }
