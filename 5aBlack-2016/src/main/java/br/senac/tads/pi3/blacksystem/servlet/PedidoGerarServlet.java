@@ -6,11 +6,18 @@ package br.senac.tads.pi3.blacksystem.servlet;
  * and open the template in the editor.
  */
 //import br.senac.tads.pi3.blacksystem.entity.Servico;
+import br.senac.tads.pi3.blacksystem.ablack.PedidoDAO;
+import br.senac.tads.pi3.blacksystem.entity.Cliente;
+import br.senac.tads.pi3.blacksystem.entity.Departamento;
+import br.senac.tads.pi3.blacksystem.entity.Peca;
+import br.senac.tads.pi3.blacksystem.entity.Pedido;
 import br.senac.tads.pi3.blacksystem.entity.Servico;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -80,14 +87,32 @@ public class PedidoGerarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String tipoPeca = request.getParameter("tipo-Peca");
-        String tipoTecido = request.getParameter("tipo-Tecido");
-        String tipoLavagem = request.getParameter("tipo-Lavagem");
-        String qtd = request.getParameter("qtd-Peca");
-        String cor = request.getParameter("cor");
-        int servico = Integer.parseInt(request.getParameter("tipo-Servico"));
-
+        Peca peca= new Peca();
+        Pedido ped= new Pedido();
+        Cliente cli = new Cliente();
+//        Departamento dep= new Departamento();
+        
+        String servico = request.getParameter("tipo-Servico");
+        
+        ped.setStatus(request.getParameter("status"));
+        
+        ped.setTipoPeca(request.getParameter("tipo-Peca"));
+        ped.setTipoTecido(request.getParameter("tipo-Tecido"));
+        ped.setTipoLavagem(request.getParameter("tipo-Lavagem"));
+        ped.setQtd(request.getParameter("qtd-Peca"));
+        //data de liberação do pedido
+        ped.setCor(request.getParameter("cor"));
+        cli.setCpf("000.000.000-00");
+        
+        
+        PedidoDAO pedDAO= new PedidoDAO();
+        try {
+            pedDAO.cadastrarPedido(ped,cli);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PedidoGerarServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
 
     /**

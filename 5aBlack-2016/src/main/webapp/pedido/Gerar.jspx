@@ -4,7 +4,7 @@
     Created on : 28/04/2016, 21:21:50
     Author     : Isaque
 -->
-     <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
           xmlns:c="http://java.sun.com/jsp/jstl/core"
           version="2.0">
     <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
@@ -30,17 +30,21 @@
         </head>
         <body>
             <jsp:include page="../inicial/Menu.jspx" />
+            <!-- Aqui é o formulario principal, onde são geradas as peças.
+            ===============================================================================-->
             <main>
                 <div class="container">
                     <div class="row" >
                         <div class="col-md-offset-2 col-md-5" >
                             <form class="form-signin" role="form" action="#" method="post" accept-charset="UTF-8"> <!-- GerarPedidoServlet -->
                                 <fieldset> 
-                                    <legend><h2>Gerar Pedido</h2></legend>
+                                    <legend><h2>Gerar Pedido</h2></legend>                                  
                                     <div class="form-group">
                                         <label class="" for="peca">Tipo de Serviço</label>
-                                        <select class="form-control" required="" name="tipo-Peca" id="tipoPeca">
+                                        <select class="form-control" required="" name="tipo-Servico" id="tipoPeca">
+
                                             <option value=""></option>
+                                            <option value="1">Tira Manchas</option>
                                             <c:forEach items="${servicos}" var="serv" varStatus="cont" >
                                                 <option value="${cont.index}">${serv.tipoServico}</option>
                                             </c:forEach>
@@ -52,9 +56,9 @@
                                             <option value=""></option>
                                             <option value="camiseta">Camiseta</option>
                                             <option value="calca">Calça</option>
-                                            <option value="camiseta">Camiseta</option>
-                                            <option value="camiseta">Camiseta</option>
-                                            <option value="camiseta">Camiseta</option>
+                                            <option value="blusa">Blusa</option>
+                                            <option value="meia">Meia</option>
+                                            <option value="roupiantima">Roupa Intima</option>
                                         </select>
                                     </div>
                                     <div class="">
@@ -93,8 +97,41 @@
                                         <input type="date" required="" class="form-control" name="dt-Retirada" id="dtRetirada"/>
                                     </div>
                                 </fieldset>
-                                <button type="submit" id="inserir" class="btn btn-default btn-primary btn-block">Inserir</button>
+                                <button type="button" id="inserir" class="btn btn-default btn-primary btn-block" data-toggle="modal" data-target="#venda">Inserir</button>
                             </form>
+                            <!-- Aqui a gente gera o pop-up para finalizar a venda
+                            
+                            ====================================================================-->
+                            <div id="venda" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Modal Header</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="pecoTotal">Preço R$ ${pedido.total}</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="metodoDePagamento">Forma de Pagamento:</label>
+                                                <select class="form-control" required="" name="cor" id="cor" >
+                                                    <option value=""></option>
+                                                    <option value="camiseta">Debito</option>
+                                                    <option value="camiseta">Credito</option>
+                                                    <option value="camiseta">Dinheiro</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar Venda</button>
+                                                <button type="submit" class="btn btn-primary">Vender</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

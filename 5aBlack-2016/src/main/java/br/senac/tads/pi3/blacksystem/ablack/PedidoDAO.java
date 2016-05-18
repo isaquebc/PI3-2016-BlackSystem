@@ -19,10 +19,10 @@ import java.util.Date;
  */
 public class PedidoDAO extends Conexao {
 
-    final String QUERY_INSERT_PEDIDO = "PEDIDO(ID_PEDIDO, STATUS, DATA_ENTRADA, DATA_SAIDA, ID_CPF, ID_DPT)"
-            + "VALUES (?, ?, ?, ?, ?, ?)";
+     String QUERY_INSERT_PEDIDO = "PEDIDO( STATUS, DATA_ENTRADA, DATA_SAIDA, ID_CPF, ID_DPT)"
+            + "VALUES (?, ?, ?, ?, ?)";
 
-    public void cadastrarPedido(int ID_PEDIDO, Pedido pedido, Cliente cli, Departamento dep)
+    public void cadastrarPedido( Pedido pedido, Cliente cli)
             throws ClassNotFoundException {
 
         Connection conn = null;
@@ -30,13 +30,13 @@ public class PedidoDAO extends Conexao {
         try {
             conn = getConexao();
             stm = conn.prepareStatement(QUERY_INSERT_PEDIDO);
-            stm.setInt(1, ID_PEDIDO);
-            stm.setString(2, pedido.getStatus());
-            stm.setDate(3, new java.sql.Date(pedido.getDataEntrada().getTime()));
-            stm.setDate(4, new java.sql.Date(pedido.getDataSaida().getTime()));
-            stm.setString(5, cli.getCpf());
-            stm.setInt(6, dep.getIdDPT());
-            stm.executeQuery();
+            
+            stm.setString(1, pedido.getStatus());
+            stm.setDate(2, new java.sql.Date(pedido.getDataEntrada().getTime()));
+            stm.setDate(3, new java.sql.Date(pedido.getDataSaida().getTime()));
+            stm.setString(4, cli.getCpf());
+            stm.setInt(5, 1);
+            stm.executeUpdate();
             stm.close();
             conn.close();
         } catch (SQLException e) {

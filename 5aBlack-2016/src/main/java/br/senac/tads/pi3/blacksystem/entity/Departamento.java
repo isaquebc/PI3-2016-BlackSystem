@@ -82,6 +82,10 @@ public class Departamento {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    public void setIdDPT(Integer idDPT) {
+        this.idDPT = idDPT;
+    }
     
     
     
