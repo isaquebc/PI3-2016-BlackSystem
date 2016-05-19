@@ -21,30 +21,47 @@
         </head>
         <body>
             <jsp:include page="Menu.jspx" />
-            <div class="container" >
-                <div class="row" >
-                    <div class="col-md-offset-2 col-md-6" >
-                        <div class="jumbotron">
-                            <p>Titulo da Noticia</p>
-                            Hello World
-                        </div>
-                        <div class="jumbotron">
-                            <p>Titulo da Noticia 2</p>
-                            Hello World
-                        </div>
-                        <div class="jumbotron">
-                            <p>Titulo da Noticia 3</p>
-                            Hello World
-                        </div>
-                        <c:forEach items="${feed}" var="noticia">
-                            <div class="jumbotron">
-                                <h3>${noticia.titulo}</h3>
-                                <p>${noticia.descricao}</p>
-                            </div>
-                        </c:forEach>
+
+
+        <li><a data-placement="bottom" data-toggle="popover" data-title="Login" data-container="body" type="button" data-html="true" href="#" id="login">Login</a></li>
+        <div id="popover-content" class="hide">
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <select class="form-control">
+                        <option>NA</option>
+                        <option>RU</option>
+                        <option>EU</option>
+                        <option>SEA</option>
+                    </select> 
+                    <input type="text" placeholder="Name" class="form-control" maxlength="5"/>
+                    <button type="submit" class="btn btn-primary">Go To Login »</button>                                  
+                </div>
+            </form>
+        </div>
+        <div class="container" >
+            <div class="row" >
+                <div class="col-md-offset-2 col-md-6" >
+                    <div class="jumbotron">
+                        <p>Titulo da Noticia</p>
+                        Hello World
                     </div>
+                    <div class="jumbotron">
+                        <p>Titulo da Noticia 2</p>
+                        Hello World
+                    </div>
+                    <div class="jumbotron">
+                        <p>Titulo da Noticia 3</p>
+                        Hello World
+                    </div>
+                    <c:forEach items="${feed}" var="noticia">
+                        <div class="jumbotron">
+                            <h3>${noticia.titulo}</h3>
+                            <p>${noticia.descricao}</p>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
-        </body>
-    </html>
+        </div>
+    </body>
+</html>
 </jsp:root>

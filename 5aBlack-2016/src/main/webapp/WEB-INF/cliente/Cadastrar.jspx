@@ -68,7 +68,7 @@
                                     <input type="text" class="form-control" name="rua" id="rua"/>
 
                                     <label for="numero">Numero</label>
-                                    <input type="text" class="form-control" name="nuemero" id="nuemero"/>
+                                    <input type="number" class="form-control" name="nuemero" id="nuemero"/>
 
                                     <label for="cidade">Cidade</label>
                                     <input type="text" class="form-control" name="cidade" id="cidade"/>

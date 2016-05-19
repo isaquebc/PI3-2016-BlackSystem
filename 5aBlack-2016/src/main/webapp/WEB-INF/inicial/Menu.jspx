@@ -13,9 +13,13 @@
                 doctype-system="about:legacy-compact"/>
     <html>
         <head>
+            <c:set var="scriptAtual">
+                <c:url value="_js/formatoJS.js"/>
+            </c:set>
             <c:set var="css">
                 <c:url value="_css/bootstrap.min.css"/>
             </c:set>
+            <script src="${scriptAtual}" type="text/javascript">.</script>
             <meta charset="utf-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <link href="${css}" rel="stylesheet"/>              
@@ -43,7 +47,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pedido <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="PedidoBuscarServlet">Buscar, Alterar, Invalidar</a></li>
-                                    <li><a href="PedidoGerarServlet">Gerar</a></li>
+                                    <li><a data-toggle="modal" data-target="#validar">Gerar</a></li>
                                 </ul>
                             </li>
                             <!-- < /c:when> FIM DO CASE -->
@@ -98,6 +102,33 @@
                     </div><!--/.nav-collapse -->
                 </div>
             </nav>
+
+            <div id="validar" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Validação de Cliente</h4>
+                        </div>
+                        <div class="modal-body">
+                            <main>
+                                <form class="form-signin" role="form" action="ValidarCpfServlet" method="post" accept-charset="UTF-8">
+                                    <fieldset> 
+                                        <div class="form-group">
+                                            <label for="cpf">CPF</label>
+                                            <input type="text" required="" class="form-control" name="cpf" id ="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)"/>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-primary">Validar CPF</button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </main>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <c:set var="jquery">
                 <c:url value="_js/jquery.min.js"/>
             </c:set>

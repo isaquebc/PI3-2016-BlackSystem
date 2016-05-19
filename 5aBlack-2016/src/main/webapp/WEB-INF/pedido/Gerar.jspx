@@ -17,6 +17,9 @@
             <c:set var="scriptAtual">
                 <c:url value="_js/formatoJS.js"/>
             </c:set>
+            <c:set var="scriptInsere">
+                <c:url value="_js/listaPedido.js"/>
+            </c:set>
             <c:set var="cssAtual">
                 <c:url value="_css/estilo-formulario.css"/>
             </c:set>
@@ -25,6 +28,7 @@
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <link href="${cssAtual}" rel="stylesheet"/>
             <script src="${scriptAtual}"  type="text/javascript">.</script>
+            <script src="${scriptInsere}"  type="text/javascript">.</script>
 
             <title>5aBlack - Buscar Pedido</title>
         </head>
@@ -40,8 +44,8 @@
                                 <fieldset> 
                                     <legend><h2>Gerar Pedido</h2></legend>                                  
                                     <div class="form-group">
-                                        <label class="" for="peca">Tipo de Serviço</label>
-                                        <select class="form-control" required="" name="tipo-Servico" id="tipoPeca">
+                                        <label class="" for="servico">Tipo de Serviço</label>
+                                        <select class="form-control" required="" id="tipoServico">
 
                                             <option value=""></option>
                                             <option value="1">Tira Manchas</option>
@@ -52,7 +56,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="" for="peca">Tipo de Peça</label>
-                                        <select class="form-control" required="" name="tipo-Peca" id="tipoPeca">
+                                        <select class="form-control" required="" id="tipoPeca">
                                             <option value=""></option>
                                             <option value="camiseta">Camiseta</option>
                                             <option value="calca">Calça</option>
@@ -63,7 +67,7 @@
                                     </div>
                                     <div class="">
                                         <label class="" for="tecido">Tipo de Tecido</label>
-                                        <select class="form-control" required="" name="tipo-Tecido" id="tipoTecido">
+                                        <select class="form-control" required="" id="tipoTecido">
                                             <option value=""></option>
                                             <option value="camiseta">Moletom</option>
                                             <option value="camiseta">Algodão</option>
@@ -73,20 +77,12 @@
                                         </select>
                                     </div>
                                     <div class="">
-                                        <label class="" for="lavagem">Tipo de Lavagem</label>
-                                        <select class="form-control" required="" name="tipo-Lavagem" id="tipoLavagem">
-                                            <option value=""></option>
-                                            <option value="camiseta">A seco</option>
-                                            <option value="camiseta">Simples</option>
-                                        </select>
-                                    </div>
-                                    <div class="">
                                         <label class="" for="quantidade">Quantidade</label>
-                                        <input type="number" required="" class="form-control" name="qtd-Peca" id="qtdPeca"/>
+                                        <input type="number" required="" class="form-control" id="qtdPeca"/>
                                     </div>
                                     <div class="">
                                         <label class="" for="cor">Cor</label>
-                                        <select class="form-control" required="" name="cor" id="cor" >
+                                        <select class="form-control" required="" id="cor" >
                                             <option value=""></option>
                                             <option value="camiseta">Azul</option>
                                             <option value="camiseta">Amarelo</option>
@@ -94,10 +90,10 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="" for="dtRetirada">Data de retirada</label>
-                                        <input type="date" required="" class="form-control" name="dt-Retirada" id="dtRetirada"/>
+                                        <input type="date" required="" class="form-control" id="dtRetirada"/>
                                     </div>
                                 </fieldset>
-                                <button type="submit" id="inserir" class="btn btn-default btn-primary btn-block">Inserir</button>
+                                <button type="button" id="inserir" class="btn btn-default btn-primary btn-block">Inserir</button>
                             </form>
                         </div>
                     </div>
