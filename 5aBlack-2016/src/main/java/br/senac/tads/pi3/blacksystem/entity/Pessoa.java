@@ -27,6 +27,16 @@ public abstract class Pessoa {
     private String cep="";
     private Date nasc=null;
     private String status="";
+    private String sexo="";
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+    
 
     public Pessoa(String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
         this.nome = nome;

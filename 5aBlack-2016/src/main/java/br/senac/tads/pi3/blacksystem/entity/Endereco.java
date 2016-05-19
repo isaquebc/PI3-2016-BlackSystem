@@ -20,6 +20,16 @@ public class Endereco {
     private String estado;
     private String cep;
     private Integer idCPF;
+    private Integer numero;
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+    
 
     public Endereco(Integer idCPF) {
         this.idCPF = idCPF;

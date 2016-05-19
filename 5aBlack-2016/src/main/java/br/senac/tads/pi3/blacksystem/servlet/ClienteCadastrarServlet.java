@@ -6,7 +6,9 @@
 package br.senac.tads.pi3.blacksystem.servlet;
 
 import br.senac.tads.pi3.blacksystem.ablack.ClienteCadastroDAO;
+import br.senac.tads.pi3.blacksystem.ablack.EnderecoClienteDAO;
 import br.senac.tads.pi3.blacksystem.entity.Cliente;
+import br.senac.tads.pi3.blacksystem.entity.Endereco;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -70,6 +72,8 @@ public class ClienteCadastrarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ClienteCadastroDAO cadCli= new ClienteCadastroDAO();
+        EnderecoClienteDAO DAOenddCli = new EnderecoClienteDAO();
+        Endereco endCli= new Endereco();
         Cliente cli= new Cliente();
  //       DateFormat form= new SimpleDateFormat("dd/mm/yyyy");
 //        try{
@@ -83,12 +87,13 @@ public class ClienteCadastrarServlet extends HttpServlet {
         cli.setNome( request.getParameter("nome"));
         cli.setSobrenome(request.getParameter("sobreNome" ));
         cli.setTelefone(request.getParameter("telefone"));
+        cli.setSexo("M");
         cli.setEmail(request.getParameter("email"));
-        String rua= request.getParameter("rua");
-        String numero= request.getParameter("numero");
-        String estado=request.getParameter("estado");
-        String cidade= request.getParameter("cidade");
-        String cep= request.getParameter( "cep");
+        endCli.setEndereco( request.getParameter("rua"));
+        endCli.setNumero(Integer.parseInt( request.getParameter("numero")));
+        endCli.setEstado(request.getParameter("estado"));
+        endCli.setCidade(null); request.getParameter("cidade");
+        endCli.setCep( request.getParameter( "cep"));
             
 //        cli.setCpf("00000000000");
 //        cli.setNome("fulano");
@@ -98,6 +103,8 @@ public class ClienteCadastrarServlet extends HttpServlet {
         
         try {
             cadCli.cadatrarPessoa(cli);
+            DAOenddCli.cadastrarEndereco(cli,endCli );
+            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch(NullPointerException ex){
