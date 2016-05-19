@@ -14,11 +14,11 @@ import java.sql.SQLException;
  *
  * @author Rafael
  */
-public class EnderecoDAO extends Conexao{
-final String QUERY_INSERT_ENDERECO     =  "INSERT INTO ENDERECO(ID_ENDERECO, ENDERECO, COMPLEMENTO, BAIRRO, CIDADE, ESTADO, CEP, ID_CPF)"
-                                             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";    
+public class EnderecoClienteDAO extends Conexao{
+final String QUERY_INSERT_ENDERECO     =  "INSERT INTO ENDERECO_CLIENTE(,LOGRADOURO_CLI,COMPLEMENTO_CLI,"
+        + "BAIRRO_CLI, CIDADE_CLI, ESTADO_CLI,CEP_CLI, CPF_CLIENTE)" + "VALUES (?, ?, ?, ?, ?, ?, ?)";    
 
-public void cadastrarEndereco(Cliente cli,int id_end,Endereco end)
+public void cadastrarEndereco(Cliente cli,Endereco end)
         throws ClassNotFoundException{
     
     Connection conn= null;
@@ -26,14 +26,14 @@ public void cadastrarEndereco(Cliente cli,int id_end,Endereco end)
         try {
               conn = getConexao();
              stm = conn.prepareStatement(QUERY_INSERT_ENDERECO);
-            stm.setInt(1, id_end);
-            stm.setString(2, end.getEndereco());
-            stm.setString(3, end.getComplemento());
-            stm.setString(4, end.getBairro());
-            stm.setString(5, end.getCidade());
-            stm.setString(6, end.getEstado());
-            stm.setString(7, end.getCep());
-            stm.setString(8, cli.getCpf());
+            
+            stm.setString(1, end.getEndereco());
+            stm.setString(2, end.getComplemento());
+            stm.setString(3, end.getBairro());
+            stm.setString(4, end.getCidade());
+            stm.setString(5, end.getEstado());
+            stm.setString(6, end.getCep());
+            stm.setString(7, cli.getCpf());
             stm.executeQuery();
             stm.close();
             conn.close();

@@ -19,37 +19,34 @@ import java.util.Date;
  */
 public class ClienteCadastroDAO extends Conexao {
 
-    String QUERY_INSERT_CLIENTE = "INSERT INTO CLIENTE( ID_CPF, NOME, SOBRENOME, DATANASC, TEL, CEL, EMAIL, STATUS)"
-            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    final String QUERY_INSERT_SERVICO = "INSERT INTO SERVICO(ID_SERVICO, TIPO_DE_SERVICO, VALOR, PRAZO)"
-            + "VALUES (?, ?, ?, ?)";
-
-    String QUERY_INSERT_CHAMADO = "INSERT INTO CHAMADO(DESCRICAO, STATUS, DATA_ABERTURA, DATA_BAIXADA, TIPO_SOLICITACAO, ID_FUNCIONARIO)"
-            + "VALUES (?, ?, ?, ?, ?, ?, ?)";
-
-    final String QUERY_INSERT_PRODUTO = "INSERT INTO PRODUTO(ID_PRODUTO, NOME, VALIDADE, LOTE, STATUS, MIN_QTD, MAX_QTD, QUANTIDADE, ID_TIPO, ID_DPT, ID_FUNCIONARIO)"
-            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-    final String QUERY_INSERT_ALTERACAO = "NÃO DEFINIDO AINDA";
-
+    String QUERY_INSERT_CLIENTE = "INSERT INTO CLIENTE( CPF_CLIENTE, NOME_CLIENTE, SOBRENOME_CLIENTE,SEXO_CLIENTE,"
+            + " NASC_CLIENTE, TEL_CLIENTE, CEL_CLIENTE, EMAIL_CLIENTE, STATUS_CLIENTE)"
+            + "VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)";
+//    final String QUERY_INSERT_SERVICO = "INSERT INTO SERVICO(ID_SERVICO, TIPO_DE_SERVICO, VALOR, PRAZO)"
+//            + "VALUES (?, ?, ?, ?)";
+////    String QUERY_INSERT_CHAMADO = "INSERT INTO CHAMADO(DESCRICAO, STATUS, DATA_ABERTURA, DATA_BAIXADA, TIPO_SOLICITACAO, ID_FUNCIONARIO)"
+//            + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+////    final String QUERY_INSERT_PRODUTO = "INSERT INTO PRODUTO(ID_PRODUTO, NOME, VALIDADE, LOTE, STATUS, MIN_QTD, MAX_QTD, QUANTIDADE, ID_TIPO, ID_DPT, ID_FUNCIONARIO)"
+//            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";//
+//    final String QUERY_INSERT_ALTERACAO = "NÃO DEFINIDO AINDA";
     public void cadatrarPessoa(Cliente cli) throws ClassNotFoundException {
         
         Connection conn = null;
         PreparedStatement stm = null;
         
             try {
-
                 conn = getConexao();
                 String sql = QUERY_INSERT_CLIENTE;
                 stm = conn.prepareStatement(sql);
                 stm.setString(1, cli.getCpf());
                 stm.setString(2, cli.getNome());
                 stm.setString(3, cli.getSobrenome());
-                stm.setDate(4, new java.sql.Date(1009 - 03 - 03));
-                stm.setString(5, cli.getTelefone());
-                stm.setString(6, cli.getCelular());
-                stm.setString(7, cli.getEmail());
-                stm.setString(8, cli.getStatus());
+                stm.setString(4,cli.getSexo());
+                stm.setDate(5, new java.sql.Date(1009 - 03 - 03));
+                stm.setString(6, cli.getTelefone());
+                stm.setString(7, cli.getCelular());
+                stm.setString(8, cli.getEmail());
+                stm.setString(9, cli.getStatus());
                 stm.executeUpdate();
                 stm.close();
                 conn.close();
