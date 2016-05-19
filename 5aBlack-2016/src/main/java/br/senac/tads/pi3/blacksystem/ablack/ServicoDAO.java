@@ -16,7 +16,7 @@ import java.sql.SQLException;
  *
  * @author Rafael
  */
-public class ServiçoDAO extends Conexao{
+public class ServicoDAO extends Conexao{
     
     final String QUERY_INSERT_SERVICO      = "INSERT INTO SERVICO(ID_SERVICO, TIPO_DE_SERVICO, VALOR, PRAZO)"
                                              + "VALUES (?, ?, ?, ?)";    

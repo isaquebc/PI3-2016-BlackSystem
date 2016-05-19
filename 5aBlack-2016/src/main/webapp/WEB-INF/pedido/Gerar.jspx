@@ -23,10 +23,14 @@
             <c:set var="cssAtual">
                 <c:url value="_css/estilo-formulario.css"/>
             </c:set>
+            <c:set var="cssEsconde">
+                <c:url value="_css/escondeCampo.css"/>
+            </c:set>
             <meta charset="utf-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <link href="${cssAtual}" rel="stylesheet"/>
+            <link href="${cssEsconde}" rel="stylesheet"/>
             <script src="${scriptAtual}"  type="text/javascript">.</script>
             <script src="${scriptInsere}"  type="text/javascript">.</script>
 
@@ -40,7 +44,7 @@
                 <div class="container">
                     <div class="row" >
                         <div class="col-md-offset-2 col-md-5" >
-                            <form class="form-signin" role="form" action="#" method="post" accept-charset="UTF-8">
+                            <form class="form-signin">
                                 <fieldset> 
                                     <legend><h2>Gerar Pedido</h2></legend>                                  
                                     <div class="form-group">
@@ -48,7 +52,7 @@
                                         <select class="form-control" required="" id="tipoServico">
 
                                             <option value=""></option>
-                                            <option value="1">Tira Manchas</option>
+                                            <option value="Tira Manchas">Tira Manchas</option>
                                             <c:forEach items="${servicos}" var="serv" varStatus="cont" >
                                                 <option value="${cont.index}">${serv.tipoServico}</option>
                                             </c:forEach>
@@ -58,22 +62,22 @@
                                         <label class="" for="peca">Tipo de Peça</label>
                                         <select class="form-control" required="" id="tipoPeca">
                                             <option value=""></option>
-                                            <option value="camiseta">Camiseta</option>
-                                            <option value="calca">Calça</option>
-                                            <option value="blusa">Blusa</option>
-                                            <option value="meia">Meia</option>
-                                            <option value="roupiantima">Roupa Intima</option>
+                                            <option value="Camiseta">Camiseta</option>
+                                            <option value="Calça">Calça</option>
+                                            <option value="Blusa">Blusa</option>
+                                            <option value="Meia">Meia</option>
+                                            <option value="Roupa Intima">Roupa Intima</option>
                                         </select>
                                     </div>
                                     <div class="">
                                         <label class="" for="tecido">Tipo de Tecido</label>
                                         <select class="form-control" required="" id="tipoTecido">
                                             <option value=""></option>
-                                            <option value="camiseta">Moletom</option>
-                                            <option value="camiseta">Algodão</option>
-                                            <option value="camiseta">Seda</option>
-                                            <option value="camiseta">Elastano</option>
-                                            <option value="camiseta">Camiseta</option>
+                                            <option value="Moletom">Moletom</option>
+                                            <option value="Algodão">Algodão</option>
+                                            <option value="Seda">Seda</option>
+                                            <option value="Elastano">Elastano</option>
+                                            <option value="Camiseta">Camiseta</option>
                                         </select>
                                     </div>
                                     <div class="">
@@ -84,8 +88,8 @@
                                         <label class="" for="cor">Cor</label>
                                         <select class="form-control" required="" id="cor" >
                                             <option value=""></option>
-                                            <option value="camiseta">Azul</option>
-                                            <option value="camiseta">Amarelo</option>
+                                            <option value="Branco">Branco</option>
+                                            <option value="Colorido">Colorido</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -93,7 +97,7 @@
                                         <input type="date" required="" class="form-control" id="dtRetirada"/>
                                     </div>
                                 </fieldset>
-                                <button type="button" id="inserir" class="btn btn-default btn-primary btn-block">Inserir</button>
+                                <button type="submit" id="inserir" class="btn btn-default btn-primary btn-block">Inserir</button>
                             </form>
                         </div>
                     </div>
@@ -113,24 +117,13 @@
                                     <th>Tipo de Serviço</th>
                                     <th>Tipo de Peça</th>
                                     <th>Tipo de Tecido</th>
-                                    <th>Tipo de Lavagem</th>
                                     <th>Quantidade</th>
                                     <th>cor</th>
                                     <th>Data de retirada</th>
                                 </tr>
                             </thead>
-                            <tbody class="table-hover">
-                                <c:forEach items="${pecas}" var="peca">
-                                    <tr>
-                                        <td>${peca.id}</td>
-                                        <td>${peca.tipoPeca}</td>
-                                        <td>${peca.tipoTecido}</td>
-                                        <td>${peca.tipoLavagem}</td>
-                                        <td>${peca.qtd}</td>
-                                        <td>${peca.cor}</td>
-                                        <td>${peca.servico}</td>
-                                    </tr>
-                                </c:forEach>
+                            <tbody id="tabela" class="table-hover">
+
                             </tbody>
                         </table>
                         <div class="form-group">
