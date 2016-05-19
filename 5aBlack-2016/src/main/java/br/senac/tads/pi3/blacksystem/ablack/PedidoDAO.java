@@ -19,10 +19,10 @@ import java.util.Date;
  */
 public class PedidoDAO extends Conexao {
 
-     String QUERY_INSERT_PEDIDO = "PEDIDO( STATUS, DATA_ENTRADA, DATA_SAIDA, ID_CPF, ID_DPT)"
+String QUERY_INSERT_PEDIDO = "PEDIDO( STATUS, DATA_ENTRADA, DATA_SAIDA, ID_CPF, ID_DPT)"
             + "VALUES (?, ?, ?, ?, ?)";
 
-    public void cadastrarPedido( Pedido pedido, Cliente cli)
+    public void cadastrarPedido(Pedido pedido, Cliente cli)
             throws ClassNotFoundException {
 
         Connection conn = null;
@@ -30,12 +30,12 @@ public class PedidoDAO extends Conexao {
         try {
             conn = getConexao();
             stm = conn.prepareStatement(QUERY_INSERT_PEDIDO);
-            
-            stm.setString(1, pedido.getStatus());
-            stm.setDate(2, new java.sql.Date(pedido.getDataEntrada().getTime()));
-            stm.setDate(3, new java.sql.Date(pedido.getDataSaida().getTime()));
+            stm.setString(1, "ABERTO");
+            stm.setDate(2,new java.sql.Date(1009 - 03 - 03));
+            stm.setDate(3,java.sql.Date.valueOf(pedido.getDataSaida()));
             stm.setString(4, cli.getCpf());
             stm.setInt(5, 1);
+                       
             stm.executeUpdate();
             stm.close();
             conn.close();

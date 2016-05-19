@@ -16,10 +16,10 @@ public class Servico {
     private String tipoServico;
     private String descricaoServico;
     private float preco;
-    private Date prazo;
+    private String prazo;
     private long id;
 
-    public Servico(String tipoServico, String descricaoServico, float preco, Date prazo, long id) {
+    public Servico(String tipoServico, String descricaoServico, float preco, String prazo, long id) {
         this.tipoServico = tipoServico;
         this.descricaoServico = descricaoServico;
         this.preco = preco;
@@ -60,11 +60,11 @@ public class Servico {
         this.preco = preco;
     }
 
-    public Date getPrazo() {
+    public String getPrazo() {
         return prazo;
     }
 
-    public void setPrazo(Date prazo) {
+    public void setPrazo(String prazo) {
         this.prazo = prazo;
     }
 

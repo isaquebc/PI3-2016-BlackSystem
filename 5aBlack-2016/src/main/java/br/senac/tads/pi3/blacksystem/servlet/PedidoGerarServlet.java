@@ -6,6 +6,7 @@ package br.senac.tads.pi3.blacksystem.servlet;
  */
 //import br.senac.tads.pi3.blacksystem.entity.Servico;
 import br.senac.tads.pi3.blacksystem.ablack.PedidoDAO;
+import br.senac.tads.pi3.blacksystem.ablack.ServicoDAO;
 import br.senac.tads.pi3.blacksystem.entity.Cliente;
 import br.senac.tads.pi3.blacksystem.entity.Departamento;
 import br.senac.tads.pi3.blacksystem.entity.Peca;
@@ -81,26 +82,29 @@ public class PedidoGerarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        Servico serv= new Servico();
         Peca peca= new Peca();
         Pedido ped= new Pedido();
         Cliente cli = new Cliente();
 //      Departamento dep= new Departamento();
         
-        String servico = request.getParameter("tipo-Servico");
-        
-        ped.setStatus(request.getParameter("status"));
-        
-        ped.setTipoPeca(request.getParameter("tipo-Peca"));
-        ped.setTipoTecido(request.getParameter("tipo-Tecido"));
+        serv.setTipoServico(request.getParameter("tipo-Servico"));
+        peca.setTipoPeca(request.getParameter("tipo-Peca"));
+        peca.setTipoTecido(request.getParameter("tipo-Tecido"));
         ped.setTipoLavagem(request.getParameter("tipo-Lavagem"));
-        ped.setQtd(request.getParameter("qtd-Peca"));
-//      data de liberação do pedido
-        ped.setCor(request.getParameter("cor"));
+        peca.setQdt(Integer.parseInt(request.getParameter("qtd-Peca")));
+        ped.setDataSaida(request.getParameter("dt_saida"));
+        peca.setCor(request.getParameter("cor"));
         cli.setCpf("000.000.000-00");
         
         PedidoDAO pedDAO= new PedidoDAO();
+        ServicoDAO servDao= new ServicoDAO();
         try {
+            
             pedDAO.cadastrarPedido(ped,cli);
+            servDao.cadastrarServico(serv);
+            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(PedidoGerarServlet.class.getName()).log(Level.SEVERE, null, ex);
         }     
