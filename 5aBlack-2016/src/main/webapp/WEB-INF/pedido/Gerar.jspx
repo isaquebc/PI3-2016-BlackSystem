@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="">
                                         <label class="" for="quantidade">Quantidade</label>
-                                        <input type="number" required="" class="form-control" id="qtdPeca"/>
+                                        <input type="text" required="" class="form-control" id="qtdPeca"/>
                                     </div>
                                     <div class="">
                                         <label class="" for="cor">Cor</label>

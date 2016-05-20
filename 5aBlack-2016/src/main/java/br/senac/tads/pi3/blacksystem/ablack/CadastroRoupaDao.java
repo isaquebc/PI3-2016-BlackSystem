@@ -30,7 +30,7 @@ final String QUERY_INSERT_ROUPA  = "INSERT INTO ROUPA(ID_ROUPA, DESCRICAO, QUANT
             stm = conn.prepareStatement(QUERY_INSERT_ROUPA);
             stm.setInt(1, ID_ROUPA);
             stm.setString(2, peca.getDescricao());
-            stm.setInt(3, peca.getQdt());
+            stm.setInt(3, Integer.parseInt(peca.getQdt()));
             stm.setString(4, peca.getTipoPeca());
             stm.setString(5, peca.getCor());
             stm.setString(6, peca.getTipoTecido());

@@ -8,22 +8,26 @@ package br.senac.tads.pi3.blacksystem.entity;
 /**
  *
  * @author Isaque
- */
+ */ 
 public class Peca {
     
     private Integer id;
     private String descricao;
-    private int qdt;
+    private String qdt;
+
+    public void setNomeServico(String nomeServico) {
+        this.nomeServico = nomeServico;
+    }
     private String tipoPeca;
     private String cor;
     private String tipoTecido;
     private Integer idPedido;
-    private Integer idServico;
+    private String nomeServico;
 
     public Peca() {
     }
 
-    public Peca(String descricao, int qdt, String tipoPeca, String cor, String tipoTecido) {
+    public Peca(String descricao, String qdt, String tipoPeca, String cor, String tipoTecido) {
         this.descricao = descricao;
         this.qdt = qdt;
         this.tipoPeca = tipoPeca;
@@ -39,8 +43,8 @@ public class Peca {
         return idPedido;
     }
 
-    public Integer getIdServico() {
-        return idServico;
+    public String getIdServico() {
+        return nomeServico;
     }
     
     public String getDescricao() {
@@ -51,11 +55,11 @@ public class Peca {
         this.descricao = descricao;
     }
 
-    public int getQdt() {
+    public String getQdt() {
         return qdt;
     }
 
-    public void setQdt(int qdt) {
+    public void setQdt(String qdt) {
         this.qdt = qdt;
     }
 
