@@ -126,7 +126,9 @@
 
                             </tbody>
                         </table>
+                        
                         <div class="form-group">
+                        <input type="hidden" id="cont" name="cont"/>
                         <button type="submit" id="inserir" class="btn btn-default btn-primary btn-block" data-toggle="modal" data-target="#venda">Finalizar Venda</button>
                         </div>
                     </div>
@@ -142,7 +144,7 @@
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Modal Header</h4>
+                            <h4 class="modal-title">Efetuar Venda</h4>
                         </div>
                         <div class="modal-body">
                             <main>
@@ -152,7 +154,7 @@
                                             <label for="pecoTotal">Preço R$ ${pedido.total}</label>
                                         </div>
                                         <div class="form-group">
-                                            <label for="metodoDePagamento">Forma de Pagamento:</label>
+                                            <label for="metodoDePagamento">Forma de Pagamento</label>
                                             <select class="form-control" required="" name="cor" id="cor" >
                                                 <option value=""></option>
                                                 <option value="camiseta">Debito</option>
