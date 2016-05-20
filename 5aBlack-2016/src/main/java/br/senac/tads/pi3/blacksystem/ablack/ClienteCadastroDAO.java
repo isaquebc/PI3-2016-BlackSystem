@@ -10,6 +10,7 @@ import br.senac.tads.pi3.blacksystem.entity.Cliente;
 import br.senac.tads.pi3.blacksystem.entity.Endereco;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
@@ -18,6 +19,8 @@ import java.util.Date;
  *
  * @author Rafael
  */
+
+
 public class ClienteCadastroDAO extends Conexao {
 
     String QUERY_INSERT_CLIENTE = "INSERT INTO CLIENTE( CPF_CLIENTE, NOME_CLIENTE, SOBRENOME_CLIENTE,SEXO_CLIENTE,"
@@ -30,6 +33,44 @@ public class ClienteCadastroDAO extends Conexao {
 ////    final String QUERY_INSERT_PRODUTO = "INSERT INTO PRODUTO(ID_PRODUTO, NOME, VALIDADE, LOTE, STATUS, MIN_QTD, MAX_QTD, QUANTIDADE, ID_TIPO, ID_DPT, ID_FUNCIONARIO)"
 //            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";//
 //    final String QUERY_INSERT_ALTERACAO = "NÃO DEFINIDO AINDA";
+    
+    
+    public boolean consultaCPF(Cliente cli) throws ClassNotFoundException{
+        String cpf="SELECT CPF_CLIENTE FROM CLIENTE='"+cli.getCpf()+"'";
+        
+        Connection conn = null;
+        PreparedStatement stm = null;
+        boolean pesCPF=false;
+        String retCPF="";
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+            
+            conn = getConexao();
+            stmt = conn.createStatement();
+            stmt.executeQuery(retCPF);
+            rs.first();
+            retCPF=rs.getString("CPF_CLIENTE");
+            
+            if(retCPF.equals(cli.getCpf())){
+                pesCPF= true;
+                
+            }
+            //serv.setTipoServico(rs.getString("TIPO_SERV"));
+            
+            //serv.setPrazo(rs.getString("PRAZO_SERV"));
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println("erro ao conectar com o banco");
+            ex.getMessage();
+        } catch (NullPointerException ex) {
+            System.out.println("DAO não inicializado");
+            ex.getMessage();
+        }
+        return pesCPF;
+    }
+    
     public void cadatrarPessoa(Cliente cli) throws ClassNotFoundException {
         
         Connection conn = null;
