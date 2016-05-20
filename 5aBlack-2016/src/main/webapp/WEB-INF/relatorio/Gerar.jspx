@@ -32,11 +32,12 @@
             <main>
                 <div class="container">
                     <div class="row" >
-                        <div class="col-md-offset-1 col-md-8 " >
+                        <div class="col-md-12" >
                             <form class="form-inline" action="#" method="post" accept-charset="UTF-8"><!-- GerarRelatorioServlet -->
                                 <fieldset> 
                                     <legend><h2 class="form-signin-heading">Gerar Relatório</h2></legend>
-                                    <div class="form-group col-md-3">
+                                    
+                                    <div class="form-group col-xs-4">
                                         <label  for="tipo-Relatorio">Tipo de Relatório</label>
                                         <select class="form-control" required="" name="tipo-Relatorio" id="tipoRelatorio">
                                             <option value=""></option>
@@ -47,17 +48,17 @@
                                             <option value="pedido">Pedido</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-xs-4">
                                         <label for="data-Inicial">Periodo</label>
                                         <input type="date" required="" class="form-control" id="dtInicial" name="data-Inicial" />
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label  for="data-Final">à</label>
+                                    <div class="form-group col-xs-4">
+                                        <label  for="data-Final">Data Final</label>
                                         <input type="date" required="" class="form-control" id="dtFinal" name="data-Final"/>
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <br/>
-                                        <button  type="submit" id="inserir" class="btn btn-info btn-lg btn-group-vertical">Gerar</button>
+                                    <div class="form-group col-xs-3">
+                                       <br/>
+                                        <button  type="submit" id="inserir" class="btn btn-default btn-primary btn-block ">Gerar</button>
                                     </div>
                                 </fieldset>
                             </form>
