@@ -5,6 +5,7 @@
  */
 package br.senac.tads.pi3.blacksystem.servlet;
 
+import br.senac.tads.pi3.blacksystem.ablack.ClienteCadastroDAO;
 import br.senac.tads.pi3.blacksystem.entity.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -112,7 +113,12 @@ public class ClienteBuscarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+       String cpf = request.getParameter("cpf");
+        
+       ClienteCadastroDAO cliente = new ClienteCadastroDAO();
+       
+       cliente.consultaCPF(cpf);
     }
 
     /**

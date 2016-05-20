@@ -35,8 +35,8 @@ public class ClienteCadastroDAO extends Conexao {
 //    final String QUERY_INSERT_ALTERACAO = "NÃO DEFINIDO AINDA";
     
     
-    public boolean consultaCPF(Cliente cli) throws ClassNotFoundException{
-        String cpf="SELECT CPF_CLIENTE FROM CLIENTE='"+cli.getCpf()+"'";
+    public boolean consultaCPF(String cpf) throws ClassNotFoundException{
+        String cpf="SELECT CPF_CLIENTE FROM CLIENTE='"+cpf+"'";
         
         Connection conn = null;
         PreparedStatement stm = null;
@@ -51,8 +51,12 @@ public class ClienteCadastroDAO extends Conexao {
             stmt.executeQuery(retCPF);
             rs.first();
             retCPF=rs.getString("CPF_CLIENTE");
+            retCPF=rs.getString("");
+            retCPF=rs.getString("CPF_CLIENTE");
+            retCPF=rs.getString("CPF_CLIENTE");
+            retCPF=rs.getString("CPF_CLIENTE");
             
-            if(retCPF.equals(cli.getCpf())){
+            if(retCPF.equals(cpf)){
                 pesCPF= true;
                 
             }
@@ -125,6 +129,10 @@ public class ClienteCadastroDAO extends Conexao {
 //            System.out.println("Dao não inicializado");
 //        }
 //    }
+
+    public void consultaCPF(String cpf) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     }
     //stm.setDate(3, chamado.getDataAbertura());
