@@ -29,12 +29,12 @@ function insere() {
     else {
         cont++;
         $('#tabela').append('<tr id="' + cont + '"></tr>');
-        $('#' + cont + '').append('<td><input type="text" class="esconder" name="peca' + cont + '" value="' + servico + '" readonly/></td>');
-        $('#' + cont + '').append('<td><input type="text" class="esconder" name="peca' + cont + '" value="' + peca + '" readonly/></td>');
-        $('#' + cont + '').append('<td><input type="text" class="esconder" name="peca' + cont + '" value="' + tecido + '" readonly/></td>');
-        $('#' + cont + '').append('<td><input type="text" class="esconder" name="peca' + cont + '" value="' + quantidade + '" readonly/></td>');
-        $('#' + cont + '').append('<td><input type="text" class="esconder" name="peca' + cont + '" value="' + cor + '" readonly/></td>');
-        $('#' + cont + '').append('<td><input type="text" class="esconder" name="peca' + cont + '" value="' + dtRetirada + '" readonly/></td>');
+        $('#' + cont + '').append('<td><input type="text" class="esconder" name="servico' + cont + '" value="' + servico + '" readonly/></td>');
+        $('#' + cont + '').append('<td><input type="text" class="esconder" name="tipoPeca' + cont + '" value="' + peca + '" readonly/></td>');
+        $('#' + cont + '').append('<td><input type="text" class="esconder" name="tecido' + cont + '" value="' + tecido + '" readonly/></td>');
+        $('#' + cont + '').append('<td><input type="text" class="esconder" name="qtd' + cont + '" value="' + quantidade + '" readonly/></td>');
+        $('#' + cont + '').append('<td><input type="text" class="esconder" name="cor' + cont + '" value="' + cor + '" readonly/></td>');
+        $('#' + cont + '').append('<td><input type="text" class="esconder" name="dtRetirada' + cont + '" value="' + dtRetirada + '" readonly/></td>');
 
         document.getElementById("tipoPeca").value = "";
         document.getElementById("tipoServico").value = "";
