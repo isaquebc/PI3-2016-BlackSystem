@@ -68,7 +68,7 @@ public class Servico {
         this.prazo = prazo;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

@@ -13,7 +13,7 @@ public class Peca {
     
     private Integer id;
     private String descricao;
-    private String qdt;
+    private int qdt;
 
     public void setNomeServico(String nomeServico) {
         this.nomeServico = nomeServico;
@@ -23,17 +23,35 @@ public class Peca {
     private String tipoTecido;
     private Integer idPedido;
     private String nomeServico;
+    private int idServico;
 
     public Peca() {
     }
 
-    public Peca(String descricao, String qdt, String tipoPeca, String cor, String tipoTecido) {
+    public Peca(String descricao, int qdt, String tipoPeca, String cor, String tipoTecido, int idServico) {
         this.descricao = descricao;
         this.qdt = qdt;
         this.tipoPeca = tipoPeca;
         this.cor = cor;
         this.tipoTecido = tipoTecido;
+        this.idServico = idServico;
     }    
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setIdPedido(Integer idPedido) {
+        this.idPedido = idPedido;
+    }
+
+    public void setIdServico(int idServico) {
+        this.idServico = idServico;
+    }
+
+    public String getNomeServico() {
+        return nomeServico;
+    }
 
     public Integer getId() {
         return id;
@@ -43,8 +61,8 @@ public class Peca {
         return idPedido;
     }
 
-    public String getIdServico() {
-        return nomeServico;
+    public int getIdServico() {
+        return idServico;
     }
     
     public String getDescricao() {
@@ -55,11 +73,11 @@ public class Peca {
         this.descricao = descricao;
     }
 
-    public String getQdt() {
+    public int getQdt() {
         return qdt;
     }
 
-    public void setQdt(String qdt) {
+    public void setQdt(int qdt) {
         this.qdt = qdt;
     }
 

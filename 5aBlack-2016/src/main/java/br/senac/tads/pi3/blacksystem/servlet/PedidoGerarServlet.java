@@ -8,12 +8,9 @@ package br.senac.tads.pi3.blacksystem.servlet;
 
 import br.senac.tads.pi3.blacksystem.ablack.PedidoDAO;
 import br.senac.tads.pi3.blacksystem.ablack.ServicoDAO;
-import br.senac.tads.pi3.blacksystem.entity.Cliente;
-import br.senac.tads.pi3.blacksystem.entity.Departamento;
-import br.senac.tads.pi3.blacksystem.entity.Peca;
-import br.senac.tads.pi3.blacksystem.entity.Pedido;
-import br.senac.tads.pi3.blacksystem.entity.Servico;
+import br.senac.tads.pi3.blacksystem.entity.*;
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,30 +86,36 @@ public class PedidoGerarServlet extends HttpServlet {
             throws ServletException, IOException {
 
         Servico serv = new Servico();
-        Peca peca = new Peca();
+        ArrayList<Peca> peca = new ArrayList<>();
         Pedido ped = new Pedido();
         Cliente cli = new Cliente();
+        cli.setId(1);
+        Funcionario f = new Funcionario();
+        f.setId(1);
 //      Departamento dep= new Departamento();
 
         int cont = Integer.parseInt(request.getParameter("cont"));
 
-        for (int i = 1; i <= cont; i++) {
-
-            peca.setNomeServico(request.getParameter("servico" + cont));
-            peca.setTipoPeca(request.getParameter("peca" + cont));
-            peca.setTipoTecido(request.getParameter("tecido" + cont));
-            peca.setQdt(request.getParameter("quantidade" + cont));
+        for (Peca peca1 : peca) {
+            cont++;//nao entendi esse count
+            peca1.setNomeServico(request.getParameter("servico" + cont));
+            peca1.setTipoPeca(request.getParameter("peca" + cont));
+            peca1.setTipoTecido(request.getParameter("tecido" + cont));
+            peca1.setQdt(Integer.parseInt(request.getParameter("quantidade" + cont)));
             ped.setDataSaida(request.getParameter("dtRetirada" + cont));
-            
-            
+            peca.add(peca1);
         }
+            
+        
+        
+        
 
         PedidoDAO pedDAO = new PedidoDAO();
         ServicoDAO servDao = new ServicoDAO();
         try {
             
-            pedDAO.cadastrarPedido(ped, cli,serv,);
-            servDao.cadastrarServico(serv);
+            pedDAO.cadastrarPedido(ped, peca, cli, serv ,f);
+            //servDao.cadastrarServico(serv);
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(PedidoGerarServlet.class.getName()).log(Level.SEVERE, null, ex);

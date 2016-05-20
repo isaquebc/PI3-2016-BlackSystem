@@ -14,6 +14,7 @@ import static java.sql.Types.NULL;
  */
 public abstract class Pessoa {
     
+    private int id;
     private String nome="";
     private String sobrenome="";
     private String cpf ="";
@@ -38,7 +39,8 @@ public abstract class Pessoa {
     }
     
 
-    public Pessoa(String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
+    public Pessoa(int id, String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
+        this.id = id;
         this.nome = nome;
         this.sobrenome = sonbrenome;
         this.cpf = cpf;
@@ -66,6 +68,14 @@ public abstract class Pessoa {
         this.cep = "";
         this.nasc = null;
         this.status= "";
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     

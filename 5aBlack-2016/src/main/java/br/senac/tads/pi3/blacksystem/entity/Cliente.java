@@ -11,8 +11,8 @@ package br.senac.tads.pi3.blacksystem.entity;
  */
 public class Cliente extends Pessoa{
 
-    public Cliente(String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
-        super(nome, sonbrenome, cpf, telefone, celular, email, rua, numero, estado, cidade, cep);
+    public Cliente(int id, String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
+        super(id, nome, sonbrenome, cpf, telefone, celular, email, rua, numero, estado, cidade, cep);
         
     }
 

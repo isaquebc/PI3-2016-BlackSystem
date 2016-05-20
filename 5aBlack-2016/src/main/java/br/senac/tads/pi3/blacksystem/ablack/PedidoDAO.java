@@ -5,8 +5,8 @@
  */
 package br.senac.tads.pi3.blacksystem.ablack;
 
-import br.senac.tads.pi3.blacksystem.entity.Cliente;
-import br.senac.tads.pi3.blacksystem.entity.Departamento;
+
+import br.senac.tads.pi3.blacksystem.entity.*;
 import br.senac.tads.pi3.blacksystem.entity.Peca;
 import br.senac.tads.pi3.blacksystem.entity.Pedido;
 import br.senac.tads.pi3.blacksystem.entity.Servico;
@@ -24,17 +24,19 @@ import java.util.Date;
  */
 public class PedidoDAO extends Conexao {
 
-    String QUERY_INSERT_PEDIDO = "INSERT INTO PEDIDO( STATUS, DATA_ENTRADA, DATA_SAIDA, ID_CPF, ID_DPT)"
-            + "VALUES (?, ?, ?, ?, ?)";
+    String QUERY_INSERT_PEDIDO = "INSERT INTO PEDIDO( STATUS, DATA_ENTRADA, DATA_SAIDA, ID_FUNC, ID_CLIENTE, ID_FILIAL)"
+            + "VALUES (?, ?, ?, ?, ?, ?)";
 
-    String QUERY_INSERT_PECA = "INSERT INTO PECA(QTD_PECA, TIPO_PECA,COR_PECA, TIPO_TECIDO,ID_PEDIDO,ID_SERVICO)" + "(?,?,?,?,?)";
+    String QUERY_INSERT_PECA = "INSERT INTO PECA(QTD_PECA, TIPO_PECA,COR_PECA, TIPO_TECIDO,ID_PEDIDO,ID_SERVICO)" + "(?,?,?,?,?,?)";
 
-    public void cadastrarPedido(Pedido ped, ArrayList<Peca> peca, Cliente cli, Servico serv)
+    public void cadastrarPedido(Pedido ped, ArrayList<Peca> peca, Cliente cli, Servico serv, Funcionario f)
             throws ClassNotFoundException {
 
         String pesqIdServ = "SELECT ID_SERVICO WHERE NOME_SERV ='" + serv.getTipoServico() + "'";
+        
         Connection conn = null;
         PreparedStatement stm = null;
+        
         Statement stmt = null;
         ResultSet rs = null;
         try {
@@ -42,9 +44,12 @@ public class PedidoDAO extends Conexao {
             conn = getConexao();
             stmt = conn.createStatement();
             stmt.executeQuery(pesqIdServ);
-            rs.first();
+            //rs.first();
             serv.setId(rs.getInt("ID_SERVICO"));
-
+            serv.setTipoServico(rs.getString("NOME_SERV"));
+            //serv.setTipoServico(rs.getString("TIPO_SERV"));
+            serv.setPrazo(rs.getString("PRAZO_SERV"));
+            //serv.setPrazo(rs.getString("PRAZO_SERV"));
             stmt.close();
             conn.close();
         } catch (SQLException ex) {
@@ -61,10 +66,31 @@ public class PedidoDAO extends Conexao {
             stm.setString(1, "ABERTO");
             stm.setDate(2, new java.sql.Date(1009 - 03 - 03));
             stm.setDate(3, java.sql.Date.valueOf(ped.getDataSaida()));
-            stm.setString(4, cli.getCpf());
-            stm.setInt(5, 1);
+            stm.setInt(4, f.getId());
+            stm.setInt(5, cli.getId());
+            stm.setInt(6, serv.getId());
 
             stm.executeUpdate();
+            stm.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("Erro de conexão");
+        } catch (NullPointerException e) {
+            System.out.println("Dao não inicializado");
+        }
+        
+        /*percorre a lista de pecas cadastraas e inseri no banco*/
+        try {
+            conn = getConexao();
+            stm = conn.prepareStatement(QUERY_INSERT_PECA);
+            for (int i = 0; i < peca.size(); i++) {
+                stm.setInt(1, peca.get(i).getQdt());
+                stm.setString(2, peca.get(i).getTipoPeca());
+                stm.setString(3, peca.get(i).getTipoTecido());
+                stm.setInt(4, peca.get(i).getIdPedido());
+                stm.setInt(5, peca.get(i).getIdServico());
+                stm.executeUpdate();
+            }
             stm.close();
             conn.close();
         } catch (SQLException e) {
