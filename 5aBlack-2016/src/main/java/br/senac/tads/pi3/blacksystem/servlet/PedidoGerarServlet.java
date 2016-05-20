@@ -89,14 +89,12 @@ public class PedidoGerarServlet extends HttpServlet {
         Cliente cli = new Cliente();
 //      Departamento dep= new Departamento();
         
-        serv.setTipoServico(request.getParameter("tipo-Servico"));
-        peca.setTipoPeca(request.getParameter("tipo-Peca"));
-        peca.setTipoTecido(request.getParameter("tipo-Tecido"));
-        ped.setTipoLavagem(request.getParameter("tipo-Lavagem"));
-        peca.setQdt(Integer.parseInt(request.getParameter("qtd-Peca")));
-        ped.setDataSaida(request.getParameter("dt_saida"));
-        peca.setCor(request.getParameter("cor"));
-        cli.setCpf("000.000.000-00");
+        int cont= Integer.parseInt(request.getParameter("cont"));
+        
+        for(int i=1;i<=cont;i++){
+                    peca.setNomeServico(request,getParameter("servico"));
+            
+        }
         
         PedidoDAO pedDAO= new PedidoDAO();
         ServicoDAO servDao= new ServicoDAO();
