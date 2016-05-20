@@ -6,7 +6,7 @@
 
 
 window.addEventListener("load", iniciar);
-var peca, servico, tecido, quantidade, cor, dtRetirada, cont = -1;
+var peca, servico, tecido, quantidade, cor, dtRetirada, cont = 0;
 
 function iniciar() {
 
