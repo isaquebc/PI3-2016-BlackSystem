@@ -17,9 +17,9 @@ public class Servico {
     private String descricaoServico;
     private float preco;
     private String prazo;
-    private long id;
+    private int id;
 
-    public Servico(String tipoServico, String descricaoServico, float preco, String prazo, long id) {
+    public Servico(String tipoServico, String descricaoServico, float preco, String prazo, int id) {
         this.tipoServico = tipoServico;
         this.descricaoServico = descricaoServico;
         this.preco = preco;
@@ -72,7 +72,7 @@ public class Servico {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 }

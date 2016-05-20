@@ -11,6 +11,7 @@ import br.senac.tads.pi3.blacksystem.entity.Endereco;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 
 /**
@@ -33,6 +34,7 @@ public class ClienteCadastroDAO extends Conexao {
         
         Connection conn = null;
         PreparedStatement stm = null;
+        
         
             try {
                 conn = getConexao();

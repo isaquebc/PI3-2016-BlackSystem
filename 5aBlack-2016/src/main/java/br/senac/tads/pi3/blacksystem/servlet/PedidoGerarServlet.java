@@ -5,6 +5,7 @@ package br.senac.tads.pi3.blacksystem.servlet;
  * and open the template in the editor.
  */
 //import br.senac.tads.pi3.blacksystem.entity.Servico;
+
 import br.senac.tads.pi3.blacksystem.ablack.PedidoDAO;
 import br.senac.tads.pi3.blacksystem.ablack.ServicoDAO;
 import br.senac.tads.pi3.blacksystem.entity.Cliente;
@@ -25,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.RequestDispatcher;
+
 /**
  *
  * @author Rafael
@@ -44,6 +46,7 @@ public class PedidoGerarServlet extends HttpServlet {
 //        lista.add(servico2);
 //        return lista;
 //    }
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -57,6 +60,7 @@ public class PedidoGerarServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
     }
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -71,6 +75,7 @@ public class PedidoGerarServlet extends HttpServlet {
 //        request.setAttribute("servicos", Servico());
         request.getRequestDispatcher("WEB-INF/pedido/Gerar.jspx").forward(request, response);
     }
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -82,31 +87,38 @@ public class PedidoGerarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        Servico serv= new Servico();
-        Peca peca= new Peca();
-        Pedido ped= new Pedido();
+
+        Servico serv = new Servico();
+        Peca peca = new Peca();
+        Pedido ped = new Pedido();
         Cliente cli = new Cliente();
 //      Departamento dep= new Departamento();
-        
-        int cont= Integer.parseInt(request.getParameter("cont"));
-        
-        for(int i=1;i<=cont;i++){
-                    peca.setNomeServico(request,getParameter("servico"));
+
+        int cont = Integer.parseInt(request.getParameter("cont"));
+
+        for (int i = 1; i <= cont; i++) {
+
+            peca.setNomeServico(request.getParameter("servico" + cont));
+            peca.setTipoPeca(request.getParameter("peca" + cont));
+            peca.setTipoTecido(request.getParameter("tecido" + cont));
+            peca.setQdt(request.getParameter("quantidade" + cont));
+            ped.setDataSaida(request.getParameter("dtRetirada" + cont));
+            
             
         }
-        
-        PedidoDAO pedDAO= new PedidoDAO();
-        ServicoDAO servDao= new ServicoDAO();
+
+        PedidoDAO pedDAO = new PedidoDAO();
+        ServicoDAO servDao = new ServicoDAO();
         try {
             
-            pedDAO.cadastrarPedido(ped,cli);
+            pedDAO.cadastrarPedido(ped, cli,serv,);
             servDao.cadastrarServico(serv);
-            
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(PedidoGerarServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }     
+        }
     }
+
     /**
      * Returns a short description of the servlet.
      *
