@@ -50,7 +50,6 @@
                                     <div class="form-group">
                                         <label class="" for="servico">Tipo de Serviço</label>
                                         <select class="form-control" required="" id="tipoServico">
-
                                             <option value=""></option>
                                             <option value="Tira Manchas">Tira Manchas</option>
                                             <c:forEach items="${servicos}" var="serv" varStatus="cont" >
@@ -123,10 +122,10 @@
                                 </tr>
                             </thead>
                             <tbody id="tabela" class="table-hover">
-
+                                <!-- Conteúdo da tabela será gerado pelo JavaScript listaPedidos
+                                ====================================================================-->
                             </tbody>
-                        </table>
-                        
+                        </table>                        
                         <div class="form-group">
                         <input type="hidden" id="cont" name="cont"/>
                         <button type="submit" id="inserir" class="btn btn-default btn-primary btn-block" data-toggle="modal" data-target="#venda">Finalizar Venda</button>
@@ -140,7 +139,6 @@
             ====================================================================-->
             <div id="venda" class="modal fade" role="dialog">
                 <div class="modal-dialog">
-
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
