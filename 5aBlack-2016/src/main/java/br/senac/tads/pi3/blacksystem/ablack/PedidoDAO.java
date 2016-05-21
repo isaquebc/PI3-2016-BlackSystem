@@ -84,11 +84,11 @@ public class PedidoDAO extends Conexao {
             conn = getConexao();
             stm = conn.prepareStatement(QUERY_INSERT_PECA);
             for (int i = 0; i < peca.size(); i++) {
-                stm.setInt(1, peca.get(i).getQdt());
+                stm.setInt(1, Integer.parseInt(peca.get(i).getQdt()));
                 stm.setString(2, peca.get(i).getTipoPeca());
                 stm.setString(3, peca.get(i).getTipoTecido());
                 stm.setInt(4, peca.get(i).getIdPedido());
-                stm.setInt(5, peca.get(i).getIdServico());
+                stm.setInt(5, Integer.parseInt(peca.get(i).getIdServico()));
                 stm.executeUpdate();
             }
             stm.close();

@@ -86,7 +86,7 @@ public class PedidoGerarServlet extends HttpServlet {
             throws ServletException, IOException {
 
         Servico serv = new Servico();
-        ArrayList<Peca> peca = new ArrayList<>();
+        ArrayList<Peca> pecas = new ArrayList<>();
         Pedido ped = new Pedido();
         Cliente cli = new Cliente();
         cli.setId(1);
@@ -96,19 +96,19 @@ public class PedidoGerarServlet extends HttpServlet {
 
         int cont = Integer.parseInt(request.getParameter("cont"));  
         for (int i=0;i<=cont;i ++) {
-               Peca peca1= new Peca();
+               Peca peca= new Peca();
             serv.setTipoServico(request.getParameter("servico" + cont));
-            peca1.setTipoPeca(request.getParameter("peca" + cont));
-            peca1.setTipoTecido(request.getParameter("tecido" + cont));
-            peca1.setQdt(request.getParameter("quantidade" + cont));
+            peca.setTipoPeca(request.getParameter("peca" + cont));
+            peca.setTipoTecido(request.getParameter("tecido" + cont));
+            peca.setQdt(request.getParameter("quantidade" + cont));
             ped.setDataSaida(request.getParameter("dtRetirada" + cont));
-            peca.add(peca1);
+            pecas.add(peca);
         }
         PedidoDAO pedDAO = new PedidoDAO();
         ServicoDAO servDao = new ServicoDAO();
         try {
             
-            pedDAO.cadastrarPedido(ped, peca, cli, serv ,f);
+            pedDAO.cadastrarPedido(ped, pecas, cli, serv ,f);
             //servDao.cadastrarServico(serv);
 
         } catch (ClassNotFoundException ex) {
