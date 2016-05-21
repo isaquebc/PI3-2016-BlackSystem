@@ -20,19 +20,16 @@ import java.util.logging.Logger;
  */
 public class FuncinarioCadastroDAO extends Conexao {
 
-    String QUERY_INSERT_FUNCIORARIO = "INSERT INTO FUNCIONARIO( CPF_FUNC, NOME_FUNC, SOBRENOME_FUNC,SEXO_INSERT INTO CLIENTE( CPF_FUNC, CPF_FUNC, CPF_FUNC,CPF_FUNC,"
-            + " CPF_FUNC, CPF_FUNC, CPF_FUNC, CPF_FUNC, CPF_FUNC)"
-            + "VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)"
-            + " CPF_FUNC, CPF_FUNC, CPF_FUNC, CPF_FUNC, CPF_FUNC)"
-            + "VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)";
-
-    public void cadastrarFuncionario(Funcionario func)
+     
+    public void cadastrarFuncionario(Funcionario func,Filial filial)
             throws ClassNotFoundException {
+
+String QUERY_INSERT_FUNCIORARIO = "INSERT INTO FUNCIONARIO( CPF_FUNC, NOME_FUNC, SOBRENOME_FUNC,SEXO_FUNC,NASC_FUNC,"
+ +"TEL_FUNC ,CEL_FUNC,EMAIL_FUNC, STATUS_FUNC,CARGO_FUNC,SALARIO_FUNC,ID_FILIAL)"+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         Connection conn = null;
         PreparedStatement stm = null;
-        
-        
+                
             try {
                 conn = getConexao();
                 String sql = QUERY_INSERT_FUNCIORARIO;
@@ -41,11 +38,16 @@ public class FuncinarioCadastroDAO extends Conexao {
                 stm.setString(2, func.getNome());
                 stm.setString(3, func.getSobrenome());
                 stm.setString(4,func.getSexo());
-                stm.setDate(5, new java.sql.Date(1009 - 03 - 03));
+                stm.setDate(5,new java.sql.Date(Long.parseLong(func.getDataNascimento())));
                 stm.setString(6, func.getTelefone());
                 stm.setString(7, func.getCelular());
                 stm.setString(8, func.getEmail());
                 stm.setString(9, func.getStatus());
+                stm.setString(10, func.getSenha());
+                stm.setString(11, func.getCargo());
+                stm.setString(12, func.getSalario());
+                stm.setString(13, );
+                
                 stm.executeUpdate();
                 stm.close();
                 conn.close();

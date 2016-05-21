@@ -81,12 +81,13 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
         Funcionario func= new Funcionario();
         
         
-//        func.setNome( request.getParameter("nome"));
-//        func.setSobrenome(request.getParameter("sobreNome" ));
-//        func.setTelefone(request.getParameter("telefone"));
-//        func.setCelular(request.getParameter("celular"));
-//        func.setEmail(request.getParameter("email"));
-
+        func.setNome( request.getParameter("nome"));
+        func.setSobrenome(request.getParameter("sobreNome" ));
+        func.setTelefone(request.getParameter("telefone"));
+        func.setCelular(request.getParameter("celular"));
+        func.setEmail(request.getParameter("email"));
+        func.setDataNascimento(request.getParameter("dtNascimento"));
+        func.setDataContratacao(request.getParameter("dtContratacao"));
         func.setCargo(request.getParameter("cargo"));
         func.setSalario(Float.parseFloat(request.getParameter("salario")));
         func.setSenha(request.getParameter("senha"));

@@ -13,10 +13,15 @@ import java.sql.Date;
  */
 public class Funcionario extends Pessoa{
 
-    public Funcionario() {
-    }
+    private String senha;
+    private String cargo;
+    private String filial;
+    private String dataContratacao;
+    private String dataNascimento;
 
-    public Funcionario(String senha, String cargo, float salario) {
+    
+    
+     public Funcionario(String senha, String cargo, float salario) {
         this.senha = senha;
         this.cargo = cargo;
         this.salario = salario;
@@ -25,19 +30,26 @@ public class Funcionario extends Pessoa{
      public Funcionario(int id, String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
         super(id, nome, sonbrenome, cpf, telefone, celular, email, rua, numero, estado, cidade, cep);
      }
-     
-   
-    private String senha;
-    private String cargo;
-    private String filial;
-    private Date dataContratacao;
+    
+    
+    
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
     private float salario;
 
-    public Date getDataContratacao() {
+    public Funcionario() {
+    }
+     
+    public String getDataContratacao() {
         return dataContratacao;
     }
 
-    public void setDataContratacao(Date dataContratacao) {
+    public void setDataContratacao(String dataContratacao) {
         this.dataContratacao = dataContratacao;
     }
 
