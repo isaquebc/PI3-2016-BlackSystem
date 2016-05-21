@@ -96,15 +96,19 @@ public class PedidoGerarServlet extends HttpServlet {
         pedido.setDataSaida(null);
         
 //      Departamento dep= new Departamento();
-
+        
+        /*======================================================================
+        Aqui ele gera um contador Cont, que serve para saber quantas linhas 
+        existem na tabela e assim fazer o looping
+        =======================================================================*/
         int cont = Integer.parseInt(request.getParameter("cont"));  
         for (int i=1;i<=cont;i ++) {
             Peca peca= new Peca();
-            peca.setNomeServico(request.getParameter("servico"+cont));
-            peca.setTipoPeca(request.getParameter("tipoPeca"+cont));
-            peca.setTipoTecido(request.getParameter("tecido"+cont));
-            peca.setQdt(request.getParameter("qtd"+cont));
-            peca.setCor(request.getParameter("cor"+cont));
+            peca.setNomeServico(request.getParameter("servico"+i));
+            peca.setTipoPeca(request.getParameter("tipoPeca"+i));
+            peca.setTipoTecido(request.getParameter("tecido"+i));
+            peca.setQdt(request.getParameter("qtd"+i));
+            peca.setCor(request.getParameter("cor"+i));
             pecas.add(peca);
         }
         PedidoDAO pedidoDAO = new PedidoDAO();
@@ -114,6 +118,9 @@ public class PedidoGerarServlet extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(PedidoGerarServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        /*======================================================================
+        Termina as adições no banco
+        ======================================================================*/
     }
 
     /**
