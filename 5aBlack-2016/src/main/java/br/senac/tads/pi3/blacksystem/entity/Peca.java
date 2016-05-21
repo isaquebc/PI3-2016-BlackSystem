@@ -13,15 +13,12 @@ public class Peca {
     
     private Integer id;
     private String descricao;
+    private String dtRetirada;
     private String qdt;
-
-    public void setNomeServico(String nomeServico) {
-        this.nomeServico = nomeServico;
-    }
     private String tipoPeca;
     private String cor;
     private String tipoTecido;
-    private Integer idPedido;
+    private String idPedido;
     private String nomeServico;
     private String idServico;
 
@@ -35,14 +32,32 @@ public class Peca {
         this.cor = cor;
         this.tipoTecido = tipoTecido;
         this.idServico = idServico;
-    }    
+    } 
+
+    
+    
+    public String getDtRetirada() {
+        return dtRetirada;
+    }
+
+    public void setDtRetirada(String dtRetirada) {
+        this.dtRetirada = dtRetirada;
+    }
+
+    public String getIdPedido() {
+        return idPedido;
+    }
+
+    public void setIdPedido(String idPedido) {
+        this.idPedido = idPedido;
+    }
+    
+    public void setNomeServico(String nomeServico) {
+        this.nomeServico = nomeServico;
+    }  
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public void setIdPedido(Integer idPedido) {
-        this.idPedido = idPedido;
     }
 
     public void setIdServico(String idServico) {
@@ -55,10 +70,6 @@ public class Peca {
 
     public Integer getId() {
         return id;
-    }
-
-    public Integer getIdPedido() {
-        return idPedido;
     }
 
     public String getIdServico() {

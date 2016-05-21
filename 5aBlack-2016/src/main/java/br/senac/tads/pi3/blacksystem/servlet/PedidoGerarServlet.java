@@ -85,32 +85,32 @@ public class PedidoGerarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Servico serv = new Servico();
+        Servico servico = new Servico();
         ArrayList<Peca> pecas = new ArrayList<>();
-        Pedido ped = new Pedido();
-        Cliente cli = new Cliente();
-        cli.setId(1);
-        Funcionario f = new Funcionario();
-        f.setId(1);
+        Pedido pedido = new Pedido();
+        Cliente cliente = new Cliente();
+        Funcionario funcionario = new Funcionario();
+        
+        pedido.setDataEntrada(null);
+        pedido.setStatus("aberto");
+        pedido.setDataSaida(null);
+        
 //      Departamento dep= new Departamento();
 
         int cont = Integer.parseInt(request.getParameter("cont"));  
-        for (int i=0;i<=cont;i ++) {
-               Peca peca= new Peca();
-            serv.setTipoServico(request.getParameter("servico" + cont));
-            peca.setTipoPeca(request.getParameter("peca" + cont));
-            peca.setTipoTecido(request.getParameter("tecido" + cont));
-            peca.setQdt(request.getParameter("quantidade" + cont));
-            ped.setDataSaida(request.getParameter("dtRetirada" + cont));
+        for (int i=1;i<=cont;i ++) {
+            Peca peca= new Peca();
+            peca.setNomeServico(request.getParameter("servico"+cont));
+            peca.setTipoPeca(request.getParameter("tipoPeca"+cont));
+            peca.setTipoTecido(request.getParameter("tecido"+cont));
+            peca.setQdt(request.getParameter("qtd"+cont));
+            peca.setCor(request.getParameter("cor"+cont));
             pecas.add(peca);
         }
-        PedidoDAO pedDAO = new PedidoDAO();
-        ServicoDAO servDao = new ServicoDAO();
+        PedidoDAO pedidoDAO = new PedidoDAO();
+        ServicoDAO servicoDao = new ServicoDAO();
         try {
-            
-            pedDAO.cadastrarPedido(ped, pecas, cli, serv ,f);
-            //servDao.cadastrarServico(serv);
-
+            pedidoDAO.cadastrarPedido(pedido, pecas, cliente, funcionario);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(PedidoGerarServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

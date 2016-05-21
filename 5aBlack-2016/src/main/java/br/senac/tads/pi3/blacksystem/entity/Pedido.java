@@ -14,7 +14,16 @@ import java.util.Date;
 public class Pedido {
 
     private long idPedido;
-
+    private String status;
+    private Date dataEntrada;
+    private String dataSaida;
+    
+    public Pedido(String tipoPeca, String status, String tipoTecido, Date dataEntrada, String dataSaida, String tipoLavagem, String qtd, String cor, Servico servico) {
+        this.status = status;
+        this.dataEntrada = dataEntrada;
+        this.dataSaida = dataSaida;
+    }
+    
     public long getIdPedido() {
         return idPedido;
     }
@@ -22,21 +31,7 @@ public class Pedido {
     public void setIdPedido(long idPedido) {
         this.idPedido = idPedido;
     }
-
-    private String status;
-    private String tipoLavagem;
-
-    private Date dataEntrada;
-    private String dataSaida;
-
-    public Pedido(String tipoPeca, String status, String tipoTecido, Date dataEntrada, String dataSaida, String tipoLavagem, String qtd, String cor, Servico servico) {
-
-        this.status = status;
-        this.dataEntrada = dataEntrada;
-        this.dataSaida = dataSaida;
-
-    }
-
+    
     public String getStatus() {
         return status;
     }
@@ -47,16 +42,6 @@ public class Pedido {
 
     public Pedido() {
     }
-
-
-    public String getTipoLavagem() {
-        return tipoLavagem;
-    }
-
-    public void setTipoLavagem(String tipoLavagem) {
-        this.tipoLavagem = tipoLavagem;
-    }
-
 
     public Date getDataEntrada() {
         return dataEntrada;
