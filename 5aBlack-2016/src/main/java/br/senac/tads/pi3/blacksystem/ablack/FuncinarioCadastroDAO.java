@@ -6,6 +6,7 @@
 package br.senac.tads.pi3.blacksystem.ablack;
 
 import br.senac.tads.pi3.blacksystem.entity.Cliente;
+import br.senac.tads.pi3.blacksystem.entity.Filial;
 import br.senac.tads.pi3.blacksystem.entity.Funcionario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -45,8 +46,8 @@ String QUERY_INSERT_FUNCIORARIO = "INSERT INTO FUNCIONARIO( CPF_FUNC, NOME_FUNC,
                 stm.setString(9, func.getStatus());
                 stm.setString(10, func.getSenha());
                 stm.setString(11, func.getCargo());
-                stm.setString(12, func.getSalario());
-                stm.setString(13, );
+                stm.setFloat(12, func.getSalario());
+                stm.setInt(13,Integer.parseInt(filial.getIdFilial()));
                 
                 stm.executeUpdate();
                 stm.close();

@@ -85,7 +85,7 @@ public class ClienteCadastrarServlet extends HttpServlet {
 //        }
         cli.setCpf(request.getParameter("cpf"));
         cli.setNome( request.getParameter("nome"));
-        cli.setSobrenome(request.getParameter("sobreNome" ));
+        cli.setSobrenome(request.getParameter("sobrenome" ));
         cli.setTelefone(request.getParameter("telefone"));
         cli.setSexo("M");
         cli.setEmail(request.getParameter("email"));
@@ -95,11 +95,7 @@ public class ClienteCadastrarServlet extends HttpServlet {
         endCli.setCidade(null); request.getParameter("cidade");
         endCli.setCep( request.getParameter( "cep"));
             
-//        cli.setCpf("00000000000");
-//        cli.setNome("fulano");
-//        cli.setSobrenome("de tal");
-//        cli.setTelefone("11 982335099");
-//        cli.setEmail("iiiii@gmail.com");
+
         
         try {
             cadCli.cadatrarPessoa(cli);

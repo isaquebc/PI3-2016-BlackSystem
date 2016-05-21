@@ -9,9 +9,9 @@ package br.senac.tads.pi3.blacksystem.entity;
  *
  * @author Isaque
  */
-public class Departamento {
+public class Filial {
     
-    private Integer idDPT;
+    private String idFilial;
     private String nome;
     private String endereco;
     private String cidade;
@@ -19,10 +19,10 @@ public class Departamento {
     private String cep;
     private String estado;
 
-    public Departamento() {
+    public Filial() {
     }
 
-    public Departamento(String nome, String endereco, String cidade, String tel, String cep, String estado) {
+    public Filial(String nome, String endereco, String cidade, String tel, String cep, String estado) {
         this.nome = nome;
         this.endereco = endereco;
         this.cidade = cidade;
@@ -31,8 +31,8 @@ public class Departamento {
         this.estado = estado;
     }
     
-    public Integer getIdDPT() {
-        return idDPT;
+    public String getIdFilial() {
+        return idFilial;
     }  
     
     public String getNome() {
@@ -83,8 +83,8 @@ public class Departamento {
         this.estado = estado;
     }
 
-    public void setIdDPT(Integer idDPT) {
-        this.idDPT = idDPT;
+    public void setIdFilial(String idFilial) {
+        this.idFilial = idFilial;
     }
     
     

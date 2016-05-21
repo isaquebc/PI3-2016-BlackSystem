@@ -6,6 +6,7 @@
 package br.senac.tads.pi3.blacksystem.servlet;
 
 import br.senac.tads.pi3.blacksystem.ablack.FuncinarioCadastroDAO;
+import br.senac.tads.pi3.blacksystem.entity.Filial;
 import br.senac.tads.pi3.blacksystem.entity.Funcionario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -68,7 +69,7 @@ public class FuncionarioBuscarServlet extends HttpServlet {
         
         Funcionario func= new Funcionario();
         FuncinarioCadastroDAO funDAO= new FuncinarioCadastroDAO();
-        
+        Filial filial= new Filial();
         func.setCpf(request.getParameter("cpf"));
         func.setNome( request.getParameter("nome"));
         func.setSobrenome(request.getParameter("sobreNome" ));
@@ -87,16 +88,16 @@ public class FuncionarioBuscarServlet extends HttpServlet {
 //        cli.setTelefone("11 982335099");
 //        cli.setEmail("iiiii@gmail.com");
         
-        try {
-             
-            funDAO.cadastrarFuncionario(func);
+//        try {
+//             
+////            funDAO.cadastrarFuncionario(func,filial);
+//            
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch(NullPointerException ex){
+//            
             
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch(NullPointerException ex){
-            
-            
-        }
+        
     }
 
     /**

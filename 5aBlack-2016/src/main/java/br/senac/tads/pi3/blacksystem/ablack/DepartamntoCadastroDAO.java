@@ -5,7 +5,7 @@
  */
 package br.senac.tads.pi3.blacksystem.ablack;
 
-import br.senac.tads.pi3.blacksystem.entity.Departamento;
+import br.senac.tads.pi3.blacksystem.entity.Filial;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -19,7 +19,7 @@ public class DepartamntoCadastroDAO extends Conexao {
     final String QUERY_INSERT_DEPARTAMENTO = "INSERT INTO DEPARTAMENTO(ID_DPT, NOME, ENDERECO, CIDADE, TEL, CEP, ESTADO)"
             + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-    public void cadastrarDepartamento(Departamento dep)
+    public void cadastrarDepartamento(Filial dep)
             throws ClassNotFoundException {
         Connection conn = null;
         PreparedStatement stm = null;
@@ -27,7 +27,7 @@ public class DepartamntoCadastroDAO extends Conexao {
 
             conn = getConexao();
             stm = conn.prepareStatement(QUERY_INSERT_DEPARTAMENTO);
-            stm.setInt(1, dep.getIdDPT());
+            stm.setInt(1, Integer.parseInt(dep.getIdFilial()));
             stm.setString(2, dep.getNome());
             stm.setString(3, dep.getEndereco());
             stm.setString(4, dep.getCidade());

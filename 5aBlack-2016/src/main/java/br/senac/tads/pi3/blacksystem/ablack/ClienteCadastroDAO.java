@@ -23,7 +23,7 @@ import java.util.Date;
 
 public class ClienteCadastroDAO extends Conexao {
 
-    String QUERY_INSERT_CLIENTE = "INSERT INTO CLIENTE( CPF_CLIENTE, NOME_CLIENTE, SOBRENOME_CLIENTE,SEXO_CLIENTE,"
+    String QUERY_INSERT_CLIENTE = "INSERT INTO CLIENTE(CPF_CLIENTE, NOME_CLIENTE, SOBRENOME_CLIENTE,SEXO_CLIENTE,"
             + " NASC_CLIENTE, TEL_CLIENTE, CEL_CLIENTE, EMAIL_CLIENTE, STATUS_CLIENTE)"
             + "VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)";
 //    final String QUERY_INSERT_SERVICO = "INSERT INTO SERVICO(ID_SERVICO, TIPO_DE_SERVICO, VALOR, PRAZO)"
@@ -79,8 +79,7 @@ public class ClienteCadastroDAO extends Conexao {
         
         Connection conn = null;
         PreparedStatement stm = null;
-        
-        
+                
             try {
                 conn = getConexao();
                 String sql = QUERY_INSERT_CLIENTE;
