@@ -94,22 +94,16 @@ public class PedidoGerarServlet extends HttpServlet {
         f.setId(1);
 //      Departamento dep= new Departamento();
 
-        int cont = Integer.parseInt(request.getParameter("cont"));
-
-        for (Peca peca1 : peca) {
-            cont++;//nao entendi esse count
-            peca1.setNomeServico(request.getParameter("servico" + cont));
+        int cont = Integer.parseInt(request.getParameter("cont"));  
+        for (int i=0;i<=cont;i ++) {
+               Peca peca1= new Peca();
+            serv.setTipoServico(request.getParameter("servico" + cont));
             peca1.setTipoPeca(request.getParameter("peca" + cont));
             peca1.setTipoTecido(request.getParameter("tecido" + cont));
-            peca1.setQdt(Integer.parseInt(request.getParameter("quantidade" + cont)));
+            peca1.setQdt(request.getParameter("quantidade" + cont));
             ped.setDataSaida(request.getParameter("dtRetirada" + cont));
             peca.add(peca1);
         }
-            
-        
-        
-        
-
         PedidoDAO pedDAO = new PedidoDAO();
         ServicoDAO servDao = new ServicoDAO();
         try {

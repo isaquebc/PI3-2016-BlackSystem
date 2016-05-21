@@ -35,45 +35,45 @@ public class ClienteCadastroDAO extends Conexao {
 //    final String QUERY_INSERT_ALTERACAO = "NÃO DEFINIDO AINDA";
     
     
-    public boolean consultaCPF(String cpf) throws ClassNotFoundException{
-        String cpf="SELECT CPF_CLIENTE FROM CLIENTE='"+cpf+"'";
-        
-        Connection conn = null;
-        PreparedStatement stm = null;
-        boolean pesCPF=false;
-        String retCPF="";
-        Statement stmt = null;
-        ResultSet rs = null;
-        try {
-            
-            conn = getConexao();
-            stmt = conn.createStatement();
-            stmt.executeQuery(retCPF);
-            rs.first();
-            retCPF=rs.getString("CPF_CLIENTE");
-            retCPF=rs.getString("");
-            retCPF=rs.getString("CPF_CLIENTE");
-            retCPF=rs.getString("CPF_CLIENTE");
-            retCPF=rs.getString("CPF_CLIENTE");
-            
-            if(retCPF.equals(cpf)){
-                pesCPF= true;
-                
-            }
-            //serv.setTipoServico(rs.getString("TIPO_SERV"));
-            
-            //serv.setPrazo(rs.getString("PRAZO_SERV"));
-            stmt.close();
-            conn.close();
-        } catch (SQLException ex) {
-            System.out.println("erro ao conectar com o banco");
-            ex.getMessage();
-        } catch (NullPointerException ex) {
-            System.out.println("DAO não inicializado");
-            ex.getMessage();
-        }
-        return pesCPF;
-    }
+////    public boolean consultaCPF(String cpf) throws ClassNotFoundException{
+////        String cpf="SELECT CPF_CLIENTE FROM CLIENTE='"+cpf+"'";
+////        
+////        Connection conn = null;
+////        PreparedStatement stm = null;
+////        boolean pesCPF=false;
+////        String retCPF="";
+////        Statement stmt = null;
+////        ResultSet rs = null;
+////        try {
+////            
+////            conn = getConexao();
+////            stmt = conn.createStatement();
+////            stmt.executeQuery(retCPF);
+////            rs.first();
+////            retCPF=rs.getString("CPF_CLIENTE");
+////            retCPF=rs.getString("");
+////            retCPF=rs.getString("CPF_CLIENTE");
+////            retCPF=rs.getString("CPF_CLIENTE");
+////            retCPF=rs.getString("CPF_CLIENTE");
+////            
+////            if(retCPF.equals(cpf)){
+////                pesCPF= true;
+////                
+////            }
+////            //serv.setTipoServico(rs.getString("TIPO_SERV"));
+////            
+////            //serv.setPrazo(rs.getString("PRAZO_SERV"));
+////            stmt.close();
+////            conn.close();
+////        } catch (SQLException ex) {
+////            System.out.println("erro ao conectar com o banco");
+////            ex.getMessage();
+////        } catch (NullPointerException ex) {
+////            System.out.println("DAO não inicializado");
+////            ex.getMessage();
+////        }
+////        return pesCPF;
+////    }
     
     public void cadatrarPessoa(Cliente cli) throws ClassNotFoundException {
         

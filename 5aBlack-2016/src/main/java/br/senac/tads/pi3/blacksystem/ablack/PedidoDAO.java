@@ -32,7 +32,7 @@ public class PedidoDAO extends Conexao {
     public void cadastrarPedido(Pedido ped, ArrayList<Peca> peca, Cliente cli, Servico serv, Funcionario f)
             throws ClassNotFoundException {
 
-        String pesqIdServ = "SELECT ID_SERVICO WHERE NOME_SERV ='" + serv.getTipoServico() + "'";
+        String pesqIdServ = "SELECT ID_SERVICO FROM SERVICO WHERE NOME_SERV ='" + serv.getTipoServico() + "'";
         
         Connection conn = null;
         PreparedStatement stm = null;

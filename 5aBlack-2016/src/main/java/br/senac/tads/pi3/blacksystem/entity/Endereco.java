@@ -19,26 +19,24 @@ public class Endereco {
     private String cidade;
     private String estado;
     private String cep;
-    private Integer idCPF;
-    private Integer numero;
+    private String idCPF;
+    private String numero;
 
-    public Integer getNumero() {
-        return numero;
+    public String getIdCPF() {
+        return idCPF;
     }
 
-    public void setNumero(Integer numero) {
-        this.numero = numero;
-    }
-    
-
-    public Endereco(Integer idCPF) {
+    public void setIdCPF(String idCPF) {
         this.idCPF = idCPF;
     }
 
-    public Endereco() {
+    public String getNumero() {
+        return numero;
     }
 
-    
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
     
     public Integer getId() {
         return id;
@@ -92,9 +90,6 @@ public class Endereco {
         this.cep = cep;
     }
 
-    public Integer getIdCPF() {
-        return idCPF;
-    } 
-    
+
 }
 

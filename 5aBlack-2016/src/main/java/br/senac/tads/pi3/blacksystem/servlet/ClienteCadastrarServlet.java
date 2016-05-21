@@ -90,7 +90,7 @@ public class ClienteCadastrarServlet extends HttpServlet {
         cli.setSexo("M");
         cli.setEmail(request.getParameter("email"));
         endCli.setEndereco( request.getParameter("rua"));
-        endCli.setNumero(Integer.parseInt( request.getParameter("numero")));
+        endCli.setNumero( request.getParameter("numero"));
         endCli.setEstado(request.getParameter("estado"));
         endCli.setCidade(null); request.getParameter("cidade");
         endCli.setCep( request.getParameter( "cep"));

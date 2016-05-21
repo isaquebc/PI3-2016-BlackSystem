@@ -109,27 +109,29 @@
             <div class="container">
                 <div class="row" >
                     <div class=" col-md-12" >
-                        <table class="table table-hover">
-                            <caption><h3>Peças </h3></caption>
-                            <thead>
-                                <tr > 
-                                    <th>Tipo de Serviço</th>
-                                    <th>Tipo de Peça</th>
-                                    <th>Tipo de Tecido</th>
-                                    <th>Quantidade</th>
-                                    <th>cor</th>
-                                    <th>Data de retirada</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabela" class="table-hover">
-                                <!-- Conteúdo da tabela será gerado pelo JavaScript listaPedidos
-                                ====================================================================-->
-                            </tbody>
-                        </table>                        
-                        <div class="form-group">
-                        <input type="hidden" id="cont" name="cont"/>
-                        <button type="submit" id="inserir" class="btn btn-default btn-primary btn-block" data-toggle="modal" data-target="#venda">Finalizar Venda</button>
-                        </div>
+                        <form action="PedidoGerarServlet" method="post">
+                            <table class="table table-hover">
+                                <caption><h3>Peças </h3></caption>
+                                <thead>
+                                    <tr > 
+                                        <th>Tipo de Serviço</th>
+                                        <th>Tipo de Peça</th>
+                                        <th>Tipo de Tecido</th>
+                                        <th>Quantidade</th>
+                                        <th>cor</th>
+                                        <th>Data de retirada</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela" class="table-hover">
+                                    <!-- Conteúdo da tabela será gerado pelo JavaScript listaPedidos
+                                    ====================================================================-->
+                                </tbody>
+                            </table>                        
+                            <div class="form-group">
+                                <input type="hidden" id="cont" name="cont"/>
+                                <button type="submit" id="inserir" class="btn btn-default btn-primary btn-block" data-toggle="modal" data-target="#venda">Finalizar Venda</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

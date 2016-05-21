@@ -26,7 +26,7 @@ public  abstract class Conexao {
         Connection con = null;
         Class.forName("org.apache.derby.jdbc.ClientDataSource");
         try {
-            con = DriverManager.getConnection("jdbc:derby://localhost:1527/sample;SecurityMechanism=3", "app", "app");
+            con = DriverManager.getConnection("jdbc:derby://localhost:1527/BlackSystemLavanderia;SecurityMechanism=3", "app", "app");
         
        
         }catch(SQLException ex){

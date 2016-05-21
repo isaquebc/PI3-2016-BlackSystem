@@ -20,32 +20,41 @@ import java.util.logging.Logger;
  */
 public class FuncinarioCadastroDAO extends Conexao {
 
-    String QUERY_INSERT_FUNCIORARIO = "INSERT INTO FUNCIONARIO( SENHA, CARGO, SALARIO, ID_CPF )"
-            + "VALUES (?, ?, ?, ?)";
+    String QUERY_INSERT_FUNCIORARIO = "INSERT INTO FUNCIONARIO( CPF_FUNC, NOME_FUNC, SOBRENOME_FUNC,SEXO_INSERT INTO CLIENTE( CPF_FUNC, CPF_FUNC, CPF_FUNC,CPF_FUNC,"
+            + " CPF_FUNC, CPF_FUNC, CPF_FUNC, CPF_FUNC, CPF_FUNC)"
+            + "VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)"
+            + " CPF_FUNC, CPF_FUNC, CPF_FUNC, CPF_FUNC, CPF_FUNC)"
+            + "VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)";
 
     public void cadastrarFuncionario(Funcionario func)
             throws ClassNotFoundException {
 
         Connection conn = null;
         PreparedStatement stm = null;
+        
+        
+            try {
+                conn = getConexao();
+                String sql = QUERY_INSERT_FUNCIORARIO;
+                stm = conn.prepareStatement(sql);
+                stm.setString(1, func.getCpf());
+                stm.setString(2, func.getNome());
+                stm.setString(3, func.getSobrenome());
+                stm.setString(4,func.getSexo());
+                stm.setDate(5, new java.sql.Date(1009 - 03 - 03));
+                stm.setString(6, func.getTelefone());
+                stm.setString(7, func.getCelular());
+                stm.setString(8, func.getEmail());
+                stm.setString(9, func.getStatus());
+                stm.executeUpdate();
+                stm.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println("Erro de conexão: Cadastro do cliente");
+            } catch (NullPointerException e) {
+                System.out.println("Dao não inicializado: Cadastro do cliente");
+            }
 
-        try {
-            conn = getConexao();
-            stm = conn.prepareStatement(QUERY_INSERT_FUNCIORARIO);
-
-            stm.setString(1, func.getSenha());
-            stm.setString(2, func.getCargo());
-            stm.setFloat(3, func.getSalario());
-            stm.setString(4, func.getCpf());
-            stm.executeUpdate();
-            stm.close();
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println("Erro de conexão");
-        } catch (NullPointerException e) {
-            System.out.println("Dao não inicializado");
         }
-
-    }
 
 }

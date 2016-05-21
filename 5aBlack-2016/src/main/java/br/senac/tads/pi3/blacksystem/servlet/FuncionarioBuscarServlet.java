@@ -5,8 +5,12 @@
  */
 package br.senac.tads.pi3.blacksystem.servlet;
 
+import br.senac.tads.pi3.blacksystem.ablack.FuncinarioCadastroDAO;
+import br.senac.tads.pi3.blacksystem.entity.Funcionario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -61,7 +65,38 @@ public class FuncionarioBuscarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        Funcionario func= new Funcionario();
+        FuncinarioCadastroDAO funDAO= new FuncinarioCadastroDAO();
+        
+        func.setCpf(request.getParameter("cpf"));
+        func.setNome( request.getParameter("nome"));
+        func.setSobrenome(request.getParameter("sobreNome" ));
+        func.setTelefone(request.getParameter("telefone"));
+        func.setSexo("M");
+        func.setEmail(request.getParameter("email"));
+//        func.setEndereco( request.getParameter("rua"));
+//        endCli.setNumero( request.getParameter("numero"));
+//        endCli.setEstado(request.getParameter("estado"));
+//        endCli.setCidade(null); request.getParameter("cidade");
+//        endCli.setCep( request.getParameter( "cep"));
+            
+//        cli.setCpf("00000000000");
+//        cli.setNome("fulano");
+//        cli.setSobrenome("de tal");
+//        cli.setTelefone("11 982335099");
+//        cli.setEmail("iiiii@gmail.com");
+        
+        try {
+             
+            funDAO.cadastrarFuncionario(func);
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch(NullPointerException ex){
+            
+            
+        }
     }
 
     /**
