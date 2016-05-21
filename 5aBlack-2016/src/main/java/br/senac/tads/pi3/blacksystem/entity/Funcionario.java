@@ -23,6 +23,7 @@ public class Funcionario extends Pessoa{
     
      public Funcionario(String senha, String cargo, float salario) {
         this.senha = senha;
+        
         this.cargo = cargo;
         this.salario = salario;
     }
