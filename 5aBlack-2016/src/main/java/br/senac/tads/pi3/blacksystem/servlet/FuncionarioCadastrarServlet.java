@@ -83,7 +83,7 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
         Filial filial= new Filial();
         
         func.setNome( request.getParameter("nome"));
-        func.setSobrenome(request.getParameter("sobreNome" ));
+        func.setSobrenome(request.getParameter("sobrenome" ));
         func.setTelefone(request.getParameter("telefone"));
         func.setCelular(request.getParameter("celular"));
         func.setEmail(request.getParameter("email"));

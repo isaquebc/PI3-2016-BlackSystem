@@ -26,7 +26,7 @@ public abstract class Pessoa {
     private String estado="";
     private String cidade="";
     private String cep="";
-    private Date nasc=null;
+    private String nasc=null;
     private String status="";
     private String sexo="";
 
@@ -167,11 +167,11 @@ public abstract class Pessoa {
     public void setCep(String cep) {
         this.cep = cep;
     }
-    public Date getNasc() {
+    public String getNasc() {
         return nasc;
     }
 
-    public void setNasc(Date nasc) {
+    public void setNasc(String nasc) {
         this.nasc = nasc;
     }
 

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package br.senac.tads.pi3.blacksystem.ablack;
+
 import br.senac.tads.pi3.blacksystem.entity.Cliente;
 import br.senac.tads.pi3.blacksystem.entity.Endereco;
 import java.sql.Connection;
@@ -14,19 +15,19 @@ import java.sql.SQLException;
  *
  * @author Rafael
  */
-public class EnderecoClienteDAO extends Conexao{
-final String QUERY_INSERT_ENDERECO     =  "INSERT INTO ENDERECO_CLIENTE(,LOGRADOURO_CLI,COMPLEMENTO_CLI,"
-        + "BAIRRO_CLI, CIDADE_CLI, ESTADO_CLI,CEP_CLI, CPF_CLIENTE)" + "VALUES (?, ?, ?, ?, ?, ?, ?)";    
+public class EnderecoClienteDAO extends Conexao {
 
-public void cadastrarEndereco(Cliente cli,Endereco end)
-        throws ClassNotFoundException{
-    
-    Connection conn= null;
-        PreparedStatement stm= null;
+    final String QUERY_INSERT_ENDERECO = "INSERT INTO ENDERECO_CLIENTE(,LOGRADOURO_CLI,COMPLEMENTO_CLI,"
+            + "BAIRRO_CLI, CIDADE_CLI, ESTADO_CLI,CEP_CLI, CPF_CLIENTE)" + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+    public void cadastrarEndereco(Cliente cli, Endereco end) throws ClassNotFoundException {
+
+        Connection conn = null;
+        PreparedStatement stm = null;
         try {
-              conn = getConexao();
-             stm = conn.prepareStatement(QUERY_INSERT_ENDERECO);
-            
+            conn = getConexao();
+            stm = conn.prepareStatement(QUERY_INSERT_ENDERECO);
+
             stm.setString(1, end.getEndereco());
             stm.setString(2, end.getComplemento());
             stm.setString(3, end.getBairro());
@@ -43,5 +44,5 @@ public void cadastrarEndereco(Cliente cli,Endereco end)
             System.out.println("Dao não inicializado");
         }
     }
-    
+
 }

@@ -35,7 +35,7 @@ public class ClienteBuscarServlet extends HttpServlet {
         cliente.setEmail("xxxxxxxxxxx@mailzika.com");
         cliente.setEstado("Porto Rico");
         cliente.setNome("Mala");
-        cliente.setNumero(333);
+        cliente.setNumero(0);
         cliente.setRua("Uma rua ai manoloko");
         cliente.setSobrenome("Aquele la mano");
         cliente.setTelefone("00 00000-0000");
@@ -47,7 +47,7 @@ public class ClienteBuscarServlet extends HttpServlet {
         cliente2.setCpf("000.000.000-00");
         cliente2.setEstado("Porto Rico");
         cliente2.setNome("Mala");
-        cliente2.setNumero(333);
+        cliente2.setNumero(4);
         cliente2.setRua("Uma rua ai manoloko");
         cliente2.setSobrenome("Aquele la mano");
         cliente2.setTelefone("00 00000-0000");
@@ -60,7 +60,7 @@ public class ClienteBuscarServlet extends HttpServlet {
         cliente4.setEmail("xxxxxxxxxxx@mailzika.com");
         cliente4.setEstado("Porto Rico");
         cliente4.setNome("Mala");
-        cliente4.setNumero(333);
+        cliente4.setNumero(2);
         cliente4.setRua("Uma rua ai manoloko");
         cliente4.setSobrenome("Aquele la mano");
         cliente4.setTelefone("00 00000-0000");
@@ -118,7 +118,7 @@ public class ClienteBuscarServlet extends HttpServlet {
         
        ClienteCadastroDAO cliente = new ClienteCadastroDAO();
        
-       cliente.consultaCPF(cpf);
+
     }
 
     /**

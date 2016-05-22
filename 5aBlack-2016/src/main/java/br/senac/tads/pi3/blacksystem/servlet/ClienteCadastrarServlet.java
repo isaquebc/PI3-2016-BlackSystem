@@ -75,31 +75,30 @@ public class ClienteCadastrarServlet extends HttpServlet {
         EnderecoClienteDAO DAOenddCli = new EnderecoClienteDAO();
         Endereco endCli= new Endereco();
         Cliente cli= new Cliente();
- //       DateFormat form= new SimpleDateFormat("dd/mm/yyyy");
+        DateFormat form= new SimpleDateFormat("dd/mm/yyyy");
 //        try{
-//            java.util.Date data= form.parse(request.getParameter(null));
-
+//            java.util.Date data= form.parse(request.getParameter());
+//
 //        }
 //        catch (ParseException e){
-
+//
 //        }
         cli.setCpf(request.getParameter("cpf"));
         cli.setNome( request.getParameter("nome"));
         cli.setSobrenome(request.getParameter("sobrenome" ));
         cli.setTelefone(request.getParameter("telefone"));
+        cli.setCelular(request.getParameter("celular"));
         cli.setSexo("M");
         cli.setEmail(request.getParameter("email"));
-        endCli.setEndereco( request.getParameter("rua"));
-        endCli.setNumero( request.getParameter("numero"));
-        endCli.setEstado(request.getParameter("estado"));
-        endCli.setCidade(null); request.getParameter("cidade");
-        endCli.setCep( request.getParameter( "cep"));
-            
-
-        
+//        endCli.setEndereco( request.getParameter("rua"));
+//        
+//        endCli.setEstado(request.getParameter("estado"));
+//        endCli.setCidade(null); request.getParameter("cidade");
+//        endCli.setCep( request.getParameter( "cep"));
+//        
         try {
             cadCli.cadatrarPessoa(cli);
-            DAOenddCli.cadastrarEndereco(cli,endCli );
+            
             
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);

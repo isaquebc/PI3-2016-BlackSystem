@@ -23,9 +23,65 @@ import java.util.Date;
 
 public class ClienteCadastroDAO extends Conexao {
 
-    String QUERY_INSERT_CLIENTE = "INSERT INTO CLIENTE(CPF_CLIENTE, NOME_CLIENTE, SOBRENOME_CLIENTE,SEXO_CLIENTE,"
-            + " NASC_CLIENTE, TEL_CLIENTE, CEL_CLIENTE, EMAIL_CLIENTE, STATUS_CLIENTE)"
-            + "VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)";
+    String QUERY_INSERT_CLIENTE = "insert into CLIENTE( NOME_CLIENTE, SOBRENOME_CLIENTE, SEXO_CLIENTE, NASC_CLIENTE,"
+            + "TEL_CLIENTE, CEL_CLIENTE,EMAIL_CLIENTE,STATUS_CLIENTE,CPF_CLIENTE)"+" values(?,?,?,?,?,?,?,?,?)";
+    
+    public void cadatrarPessoa(Cliente cli) throws ClassNotFoundException  {
+        
+        Connection conn = null;
+        PreparedStatement stm = null;
+               
+            try {
+                conn = getConexao();
+                String sql = QUERY_INSERT_CLIENTE;
+                stm = conn.prepareStatement(sql);
+                stm.setString(1, cli.getNome());
+                stm.setString(2, cli.getSobrenome());
+                stm.setString(3,cli.getSexo());
+                stm.setDate(4, new java.sql.Date(1009 - 03 - 03));
+                stm.setString(5, cli.getTelefone());
+                stm.setString(6, cli.getCelular());
+                stm.setString(7, cli.getEmail());
+                stm.setString(8, "ATIVO");
+                stm.setString(9, cli.getCpf());
+                stm.executeUpdate();
+                stm.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println("Erro de conexão: Cadastro do cliente");
+            } catch (NullPointerException e) {
+                System.out.println("Dao não inicializado: Cadastro do cliente");
+            }
+
+        }
+//        public void cadastrarMovimento()
+//        throws ClassNotFoundException{
+//     final String QUERY_INSERT_MOVIMENTO    = "INSERT INTO MOVIMENTO(ID_MOVIMENTO, DATA_MOV, TIPO_MOVIMENTO, QUANTIDADE, DESCRICAO, ID_PRODUTO, ID_FUNCIONARIO)"
+//                                             + "VALUES(?, ?, ?, ?, ?, ?, ?)";   
+//Connection conn= null;
+//        PreparedStatement stm= null;
+//        try {
+//            conn = getConexao();
+//            stm = conn.prepareStatement(QUERY_INSERT_MOVIMENTO);
+//            stm.setInt(1, ID_MOVIMENTO);
+//            stm.setDate(2, new java.sql.Date(DATA_MOV.getTime()));
+//            stm.setString(3, TIPO_MOVIMENTO);
+//            stm.setFloat(4, QUANTIDADE);
+//            stm.setString(5, DESCRICAO);
+//            stm.setInt(6, ID_PRODUTO);
+//            stm.setInt(7, ID_FUNCIONARIO);
+//            stm.executeQuery();
+//            stm.close();
+//            conn.close();
+//        } catch (SQLException e) {
+//            System.out.println("Erro de conexão");
+//        } catch (NullPointerException e) {
+//            System.out.println("Dao não inicializado");
+//        }
+//    }
+
+
+    }
 //    final String QUERY_INSERT_SERVICO = "INSERT INTO SERVICO(ID_SERVICO, TIPO_DE_SERVICO, VALOR, PRAZO)"
 //            + "VALUES (?, ?, ?, ?)";
 ////    String QUERY_INSERT_CHAMADO = "INSERT INTO CHAMADO(DESCRICAO, STATUS, DATA_ABERTURA, DATA_BAIXADA, TIPO_SOLICITACAO, ID_FUNCIONARIO)"
@@ -73,68 +129,5 @@ public class ClienteCadastroDAO extends Conexao {
 ////            ex.getMessage();
 ////        }
 ////        return pesCPF;
-////    }
-    
-    public void cadatrarPessoa(Cliente cli) throws ClassNotFoundException {
-        
-        Connection conn = null;
-        PreparedStatement stm = null;
-                
-            try {
-                conn = getConexao();
-                String sql = QUERY_INSERT_CLIENTE;
-                stm = conn.prepareStatement(sql);
-                stm.setString(1, cli.getCpf());
-                stm.setString(2, cli.getNome());
-                stm.setString(3, cli.getSobrenome());
-                stm.setString(4,cli.getSexo());
-                stm.setDate(5, new java.sql.Date(1009 - 03 - 03));
-                stm.setString(6, cli.getTelefone());
-                stm.setString(7, cli.getCelular());
-                stm.setString(8, cli.getEmail());
-                stm.setString(9, cli.getStatus());
-                stm.executeUpdate();
-                stm.close();
-                conn.close();
-            } catch (SQLException e) {
-                System.out.println("Erro de conexão: Cadastro do cliente");
-            } catch (NullPointerException e) {
-                System.out.println("Dao não inicializado: Cadastro do cliente");
-            }
-
-        }
-//        public void cadastrarMovimento()
-//        throws ClassNotFoundException{
-//     final String QUERY_INSERT_MOVIMENTO    = "INSERT INTO MOVIMENTO(ID_MOVIMENTO, DATA_MOV, TIPO_MOVIMENTO, QUANTIDADE, DESCRICAO, ID_PRODUTO, ID_FUNCIONARIO)"
-//                                             + "VALUES(?, ?, ?, ?, ?, ?, ?)";   
-//Connection conn= null;
-//        PreparedStatement stm= null;
-//        try {
-//            conn = getConexao();
-//            stm = conn.prepareStatement(QUERY_INSERT_MOVIMENTO);
-//            stm.setInt(1, ID_MOVIMENTO);
-//            stm.setDate(2, new java.sql.Date(DATA_MOV.getTime()));
-//            stm.setString(3, TIPO_MOVIMENTO);
-//            stm.setFloat(4, QUANTIDADE);
-//            stm.setString(5, DESCRICAO);
-//            stm.setInt(6, ID_PRODUTO);
-//            stm.setInt(7, ID_FUNCIONARIO);
-//            stm.executeQuery();
-//            stm.close();
-//            conn.close();
-//        } catch (SQLException e) {
-//            System.out.println("Erro de conexão");
-//        } catch (NullPointerException e) {
-//            System.out.println("Dao não inicializado");
-//        }
-//    }
-
-    public void consultaCPF(String cpf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    }
-    //stm.setDate(3, chamado.getDataAbertura());
-    //stm.setDate(3, new java.sql.Date(DATA_BAIXADA.getTime()));
-
+////    
 

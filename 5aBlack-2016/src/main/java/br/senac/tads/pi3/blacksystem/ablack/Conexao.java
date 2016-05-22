@@ -21,12 +21,11 @@ public  abstract class Conexao {
    private Connection con = null;
    private PreparedStatement stm= null;
    
-
-   public  Connection getConexao() throws ClassNotFoundException {
+   static  Connection getConexao() throws ClassNotFoundException {
         Connection con = null;
         Class.forName("org.apache.derby.jdbc.ClientDataSource");
         try {
-            con = DriverManager.getConnection("jdbc:derby://localhost:1527/BlackSystemLavanderia;SecurityMechanism=3", "app", "app");
+            con = DriverManager.getConnection("jdbc:derby://localhost:1527/BlackSystemLavandeiria;SecurityMechanism=3", "app", "app");
         
        
         }catch(SQLException ex){

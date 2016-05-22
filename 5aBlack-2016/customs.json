@@ -10,5 +10,8 @@
             "context": "meta"
         }
     },
-    "elements": {}
+    "elements": {
+        "title": {},
+        "h2": {}
+    }
 }

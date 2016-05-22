@@ -17,45 +17,30 @@ public class Funcionario extends Pessoa{
     private String cargo;
     private String filial;
     private String dataContratacao;
-    private String dataNascimento;
+    private double salario;
 
-    
-    
-     public Funcionario(String senha, String cargo, float salario) {
-        this.senha = senha;
-        
-        this.cargo = cargo;
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
         this.salario = salario;
     }
     
-     public Funcionario(int id, String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
-        super(id, nome, sonbrenome, cpf, telefone, celular, email, rua, numero, estado, cidade, cep);
-     }
-    
-    
-    
-    public String getDataNascimento() {
-        return dataNascimento;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-    private float salario;
-
-    public Funcionario() {
-    }
-     
-    public String getDataContratacao() {
-        return dataContratacao;
-    }
-
-    public void setDataContratacao(String dataContratacao) {
-        this.dataContratacao = dataContratacao;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getCargo() {
         return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     public String getFilial() {
@@ -66,28 +51,44 @@ public class Funcionario extends Pessoa{
         this.filial = filial;
     }
 
-    public void setCargo(String cargo) {
+    public String getDataContratacao() {
+        return dataContratacao;
+    }
+
+    public void setDataContratacao(String dataContratacao) {
+        this.dataContratacao = dataContratacao;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+    private String dataNascimento;
+
+    public Funcionario(String cargo, String filial, String dataContratacao, String dataNascimento, int id, String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
+        super(id, nome, sonbrenome, cpf, telefone, celular, email, rua, numero, estado, cidade, cep);
         this.cargo = cargo;
+        this.filial = filial;
+        this.dataContratacao = dataContratacao;
+        this.dataNascimento = dataNascimento;
     }
 
-    public float getSalario() {
-        return salario;
-    }
-
-    public void setSalario(float salario) {
-        this.salario = salario;
+    public Funcionario(String cargo, String filial, String dataContratacao, String dataNascimento) {
+        this.cargo = cargo;
+        this.filial = filial;
+        this.dataContratacao = dataContratacao;
+        this.dataNascimento = dataNascimento;
     }
     
+    public Funcionario() {
+    }
+
     
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
+    
+    
    
     }
     
