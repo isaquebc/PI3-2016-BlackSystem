@@ -1,5 +1,6 @@
 {
     "attributes": {
+        "charset": {},
         "src": {
             "context": "meta"
         },
@@ -7,6 +8,9 @@
             "context": "meta"
         },
         "url": {
+            "context": "meta"
+        },
+        "http-equiv": {
             "context": "meta"
         }
     },

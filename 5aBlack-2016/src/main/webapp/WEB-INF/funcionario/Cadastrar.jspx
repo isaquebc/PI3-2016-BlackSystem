@@ -31,7 +31,7 @@
             <div class="container" >
                 <div class="row" >
                     <div class="col-md-offset-2 col-md-5" >
-                        <form class="form-signin" role="form" action="#" method="post" accept-charset="UTF-8"> <!-- NovoFuncionarioServlet -->
+                        <form class="form-signin" role="form" action="Funcionario-Cadastrar" method="post" accept-charset="UTF-8"> <!-- NovoFuncionarioServlet -->
                             <fieldset> 
                                 <legend><h2>Cadastrar Funcionario</h2></legend>
                                 <div class="form-group linha-unica">
@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="celular">Celular</label>
-                                    <input type="text" class="form-control" name="celular" id="cel" maxlength="12" OnKeyPress="formatar('##-#####-####', this)" />
+                                    <input type="text" class="form-control" name="celular" id="cel" maxlength="13" OnKeyPress="formatar('##-#####-####', this)" />
                                 </div>
                                 <div class="form-group">
                                     <label for="cpf">CPF</label>

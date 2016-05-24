@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Isaque
  */
-@WebServlet(name = "IndexServlet", urlPatterns = {"/IndexServlet"})
+@WebServlet(name = "IndexServlet", urlPatterns = {"/Index"})
 public class IndexServlet extends HttpServlet {
 
     /**
@@ -59,7 +59,7 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("servicos", "Mensagem");
-        request.getRequestDispatcher("/index.jspx").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/index.jspx").forward(request, response);
     }
 
     /**
@@ -73,7 +73,7 @@ public class IndexServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.sendRedirect(request.getContextPath() + "/HomeServlet");
     }
 
     /**

@@ -22,13 +22,13 @@ import java.util.Date;
  * @author Rafael
  */
 public class PedidoDAO extends Conexao {
-
-    String QUERY_INSERT_PEDIDO = "INSERT INTO PEDIDO( STATUS, DATA_ENTRADA, DATA_SAIDA, ID_FUNC,ID_FILIAL, ID_CLIENTE)"
-            + "VALUES (?, ?, ?, ?, ?, ?)";
+//, funcionario , ID_FILIAL, DATA_SAIDA,
+    String QUERY_INSERT_PEDIDO = "INSERT INTO PEDIDO( STATUS, DATA_ENTRADA, ID_CLIENTE)"  
+            + "VALUES (?, ?, ?)";
 
     String QUERY_INSERT_PECA = "INSERT INTO PECA(QTD_PECA, TIPO_PECA,COR_PECA, TIPO_TECIDO,ID_PEDIDO,ID_SERVICO)" + "(?,?,?,?,?,?)";
 
-    public void cadastrarPedido(Pedido ped, ArrayList<Peca> pecas, Cliente cliente, Funcionario funcionario)
+    public void cadastrarPedido( ArrayList<Peca> pecas, Cliente cliente)//, Funcionario funcionario, 
             throws ClassNotFoundException {
 
         Connection conn = null;
@@ -45,9 +45,9 @@ public class PedidoDAO extends Conexao {
             stm = conn.prepareStatement(QUERY_INSERT_PEDIDO);
             stm.setString(1, "ABERTO");
             stm.setDate(2, new java.sql.Date(1009 - 03 - 03));
-            stm.setDate(3, java.sql.Date.valueOf(ped.getDataSaida()));
-            stm.setInt(4, funcionario.getId());
-            stm.setInt(5, cliente.getId());
+            //stm.setDate(3, java.sql.Date.valueOf(ped.getDataSaida()));
+            //stm.setInt(4, funcionario.getId());
+            stm.setInt(3, cliente.getId());
             stm.executeUpdate();
             stm.close();
             conn.close();
@@ -60,7 +60,7 @@ public class PedidoDAO extends Conexao {
          Inseriu o pedido no banco
          ====================================================================*/
         try {
-            String pesqIdServ = "SELECT ID_PEDIDO FROM PEDIDO WHERE NOME_SERV ='" + cliente.getCpf() + "'";
+            String pesqIdServ = "SELECT ID_PEDIDO FROM PEDIDO WHERE NOME_SERV ='" + cliente.getId()+ "'";
             conn = getConexao();
             stmt = conn.createStatement();
             stmt.executeQuery(pesqIdServ);
@@ -81,7 +81,7 @@ public class PedidoDAO extends Conexao {
         for (Peca peca : pecas) {
             Integer idServico = 0;
             try {
-                String pesqIdServ = "SELECT ID_SERVICO FROM SERVICO WHERE NOME_SERV ='" + peca.getNomeServico() + "'";
+                String pesqIdServ = "SELECT ID_SERVICO FROM SERVICO WHERE NOME_SERV ='Lavagem Simples'";
                 conn = getConexao();
                 stmt = conn.createStatement();
                 stmt.executeQuery(pesqIdServ);

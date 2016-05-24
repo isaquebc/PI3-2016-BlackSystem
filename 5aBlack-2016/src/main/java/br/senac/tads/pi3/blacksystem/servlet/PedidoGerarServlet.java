@@ -114,7 +114,10 @@ public class PedidoGerarServlet extends HttpServlet {
         PedidoDAO pedidoDAO = new PedidoDAO();
         ServicoDAO servicoDao = new ServicoDAO();
         try {
-            pedidoDAO.cadastrarPedido(pedido, pecas, cliente, funcionario);
+            cliente.setId(1);//Teste
+            cliente.setCpf("425.506.888-25");
+            //, funcionario pedido,
+            pedidoDAO.cadastrarPedido(pecas, cliente);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(PedidoGerarServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

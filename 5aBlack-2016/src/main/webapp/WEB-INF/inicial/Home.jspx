@@ -16,7 +16,6 @@
         <head>
             <meta charset="utf-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
             <title>5aBlack - Home</title>
         </head>
         <body>
@@ -53,6 +52,11 @@
                 </div>
             </div>
         </div>
+        <form>
+            <fieldset>
+                
+            </fieldset>
+        </form>
     </body>
 </html>
 </jsp:root>

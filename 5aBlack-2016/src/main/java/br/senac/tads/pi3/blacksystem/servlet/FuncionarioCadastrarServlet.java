@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Isaque
  */
-@WebServlet(name = "FuncionarioCadastrarServlet", urlPatterns = {"/FuncionarioCadastrarServlet"})
+@WebServlet(name = "FuncionarioCadastrarServlet", urlPatterns = {"/Funcionario-Cadastrar"})
 public class FuncionarioCadastrarServlet extends HttpServlet {
 
     /**
