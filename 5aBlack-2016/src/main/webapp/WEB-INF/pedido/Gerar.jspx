@@ -44,7 +44,7 @@
                 <div class="container">
                     <div class="row" >
                         <div class="col-md-offset-2 col-md-5" >
-                            <form class="form-signin">
+                            <form class="form-signin " accept-charset="UTF-8">
                                 <fieldset> 
                                     <legend><h2>Gerar Pedido</h2></legend>                                  
                                     <div class="form-group">
@@ -109,7 +109,7 @@
             <div class="container">
                 <div class="row" >
                     <div class=" col-md-12" >
-                        <form action="PedidoGerarServlet" method="post">
+                        <form action="PedidoGerarServlet" method="post" accept-charset="UTF-8">
                             <table class="table table-hover">
                                 <caption><h3>Peças </h3></caption>
                                 <thead>
