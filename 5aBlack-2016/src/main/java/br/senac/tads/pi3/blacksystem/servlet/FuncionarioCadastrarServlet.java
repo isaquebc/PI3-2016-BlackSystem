@@ -96,17 +96,13 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
         func.setCpf(request.getParameter("cpf"));
 ////        func.setDataContratacao(request.getParameter("2000-01-01"));
         try {
-            funcDAO.cadastrarFuncionario(func,filial);
+            funcDAO.cadastrarFuncionario(func);
+            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(FuncionarioCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
         }catch(NullPointerException ex){
             ex.getMessage();
-        }
-        
-        
-        
-        
-        
+        }        
     }
 
     /**

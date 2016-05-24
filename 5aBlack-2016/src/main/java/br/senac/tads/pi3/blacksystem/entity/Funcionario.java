@@ -13,11 +13,11 @@ import java.sql.Date;
  */
 public class Funcionario extends Pessoa{
 
-    private String senha;
-    private String cargo;
-    private String filial;
-    private String dataContratacao;
-    private double salario;
+    String senha="";
+    private String cargo="";
+    private String filial="";
+    private String dataContratacao="";
+    private double salario=0;
 
     public double getSalario() {
         return salario;
