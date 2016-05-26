@@ -5,13 +5,17 @@
  */
 package br.senac.tads.pi3.blacksystem.servlet;
 
+import br.senac.tads.pi3.blacksystem.ablack.ChamadoDAO;
 import br.senac.tads.pi3.blacksystem.entity.Chamado;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,33 +32,17 @@ public class ChamadoListarServlet extends HttpServlet {
     
     public List chamados (){
         
-        List lista = new ArrayList<Object>();
+        ChamadoDAO listaChamado= new ChamadoDAO();
         
-        Chamado chamado = new Chamado();
-        Chamado chamado1 = new Chamado();
-        Chamado chamado2 = new Chamado();
-        
-        String data = "Hoje parça"; 
-        
-        chamado.setIdChamado(123);
-        chamado.setTipoSolicitacao("Erro Login");
-        chamado.setDataAbertura(data);
-        chamado.setStatus("Aberto");
-        lista.add(chamado);
-        
-        chamado1.setIdChamado(342);
-        chamado1.setTipoSolicitacao("Esqueci minha senha");
-        chamado1.setDataAbertura(data);
-        chamado1.setStatus("Aberto");
-        lista.add(chamado1);
-        
-        chamado2.setIdChamado(456);
-        chamado2.setTipoSolicitacao("#PeideiSai");
-        chamado2.setDataAbertura(data);
-        chamado2.setStatus("Em tratativa");
-        lista.add(chamado2);
-        
-        
+        List lista = new ArrayList();
+
+        try {   
+            lista = listaChamado.listaChamado();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ChamadoListarServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ChamadoListarServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         return lista;
     }
