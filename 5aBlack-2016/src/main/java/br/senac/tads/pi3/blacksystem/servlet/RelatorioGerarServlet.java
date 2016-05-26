@@ -5,8 +5,12 @@
  */
 package br.senac.tads.pi3.blacksystem.servlet;
 
+import br.senac.tads.pi3.blacksystem.ablack.RelatorioDAO;
+import br.senac.tads.pi3.blacksystem.entity.Relatorio;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "RelatorioGerarServlet", urlPatterns = {"/RelatorioGerarServlet"})
 public class RelatorioGerarServlet extends HttpServlet {
 
+    
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -61,6 +67,21 @@ public class RelatorioGerarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        try {
+            
+            RelatorioDAO rDAO = new RelatorioDAO();
+            ArrayList<Relatorio> r = rDAO.relatorioVendaFuncionaros();
+            
+            request.setAttribute("relatorioFuncionario", r);
+            request.getRequestDispatcher("WEB-INF/relatorio/Gerar.jspx").forward(request, response);
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RelatorioGerarServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
         processRequest(request, response);
     }
 
