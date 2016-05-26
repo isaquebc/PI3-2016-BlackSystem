@@ -33,7 +33,7 @@
                 <div class="row" >
                     <div class="col-md-offset-1 col-md-3" >
                         <main>
-                            <form class="form-signin" action="Index" method="post" enctype="application/x-www-form-urlencoded">
+                            <form class="form-signin" action="index.html" method="post" enctype="application/x-www-form-urlencoded">
                                 <fieldset>
                                     <legend><h1 class="form-signin-heading">Login</h1></legend>
                                     <div class="form-group">

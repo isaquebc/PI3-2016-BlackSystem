@@ -16,18 +16,22 @@ public class Chamado {
     private Integer idChamado;
     private String descricao;
     private String status;
-    private Date dataAbertura;
+    private String dataAbertura;
     private String tipoSolicitacao;
     private Integer idFuncionario;
 
     public Chamado() {
     }
 
-    public Chamado(String descricao, String status, Date dataAbertura, String tipoSolicitacao) {
+    public Chamado(String descricao, String status, String dataAbertura, String tipoSolicitacao) {
         this.descricao = descricao;
         this.status = status;
         this.dataAbertura = dataAbertura;
         this.tipoSolicitacao = tipoSolicitacao;
+    }
+
+    public void setIdChamado(Integer idChamado) {
+        this.idChamado = idChamado;
     }
     
     public Integer getIdChamado() {
@@ -54,11 +58,11 @@ public class Chamado {
         this.status = status;
     }
 
-    public Date getDataAbertura() {
+    public String getDataAbertura() {
         return dataAbertura;
     }
 
-    public void setDataAbertura(Date dataAbertura) {
+    public void setDataAbertura(String dataAbertura) {
         this.dataAbertura = dataAbertura;
     }
 

@@ -8,6 +8,7 @@
         <servlet-name>CadastrarClienteServlet</servlet-name>
         <url-pattern>/CadastrarClienteServlet</url-pattern>
     </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30

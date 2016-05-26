@@ -5,8 +5,13 @@
  */
 package br.senac.tads.pi3.blacksystem.servlet;
 
+import br.senac.tads.pi3.blacksystem.entity.Chamado;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,11 +20,44 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Isaque
+ * @author isaque.bcosta1
  */
-@WebServlet(name = "IndexServlet", urlPatterns = {"/index.html"})
-public class IndexServlet extends HttpServlet {
+@WebServlet(name = "ChamadoListarServlet", urlPatterns = {"/ChamadoListarServlet"})
+public class ChamadoListarServlet extends HttpServlet {
 
+    
+    public List chamados (){
+        
+        List lista = new ArrayList<Object>();
+        
+        Chamado chamado = new Chamado();
+        Chamado chamado1 = new Chamado();
+        Chamado chamado2 = new Chamado();
+        
+        String data = "Hoje parça"; 
+        
+        chamado.setIdChamado(123);
+        chamado.setTipoSolicitacao("Erro Login");
+        chamado.setDataAbertura(data);
+        chamado.setStatus("Aberto");
+        lista.add(chamado);
+        
+        chamado1.setIdChamado(342);
+        chamado1.setTipoSolicitacao("Esqueci minha senha");
+        chamado1.setDataAbertura(data);
+        chamado1.setStatus("Aberto");
+        lista.add(chamado1);
+        
+        chamado2.setIdChamado(456);
+        chamado2.setTipoSolicitacao("#PeideiSai");
+        chamado2.setDataAbertura(data);
+        chamado2.setStatus("Em tratativa");
+        lista.add(chamado2);
+        
+        
+        
+        return lista;
+    }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,21 +70,8 @@ public class IndexServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet IndexServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet IndexServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        
     }
-
-    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -58,8 +83,8 @@ public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("servicos", "Mensagem");
-        request.getRequestDispatcher("WEB-INF/index.jspx").forward(request, response);
+        request.setAttribute("chamados", chamados());
+        request.getRequestDispatcher("WEB-INF/chamado/Lista.jspx").forward(request, response);
     }
 
     /**
@@ -73,7 +98,7 @@ public class IndexServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect(request.getContextPath() + "/HomeServlet");
+        processRequest(request, response);
     }
 
     /**
