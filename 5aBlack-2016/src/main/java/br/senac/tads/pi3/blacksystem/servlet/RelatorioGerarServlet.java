@@ -6,16 +6,21 @@
 package br.senac.tads.pi3.blacksystem.servlet;
 
 import br.senac.tads.pi3.blacksystem.ablack.RelatorioDAO;
-import br.senac.tads.pi3.blacksystem.entity.Relatorio;
+import br.senac.tads.pi3.blacksystem.entity.RelatorioFuncionario;
 import java.io.IOException;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 /**
  *
@@ -64,20 +69,71 @@ public class RelatorioGerarServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    
+    public Date converterData(String data){
         try {
+            SimpleDateFormat dt = new SimpleDateFormat("MM/dd/yyyy");
+            Date dataConvertida = new java.sql.Date(dt.parse(data).getTime());
+            System.err.println(dataConvertida);
             
-            RelatorioDAO rDAO = new RelatorioDAO();
-            ArrayList<Relatorio> r = rDAO.relatorioVendaFuncionaros();
-            
-            request.setAttribute("relatorioFuncionario", r);
-            request.getRequestDispatcher("WEB-INF/relatorio/Gerar.jspx").forward(request, response);
-            
+            return dataConvertida;
+        } catch (Exception e) {
+            System.out.println("Erro de Conversão " + e.toString());
+        }
+        return null;
+    }
+    
+    public ArrayList tipoDeRelatorio(String tipo, String dataInicio, String dataFim){
+        RelatorioDAO rDAO = new RelatorioDAO();
+
+        try {
+            switch(tipo.toUpperCase()){
+            case "FUNCIONARIO":
+                return rDAO.relatorioVendaFuncionaros(dataInicio, dataFim);
+            case "PEDIDO":
+                return rDAO.relatorioPedidosMaisRealizados(dataInicio, dataFim);
+            case "VENDA":
+                return rDAO.relatorioDeFilial(dataInicio, dataFim);
+            case "CLIENTE":
+                return rDAO.relatorioDeCliente(dataInicio, dataFim);
+            }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(RelatorioGerarServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
+    }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+   
+            System.err.println("entrou na  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            
+            String tipoRelatorio = request.getParameter("tipo-Relatorio");
+            String dataInicio = request.getParameter("data-Inicial");
+            String dataFim = request.getParameter("data-Final");
+            log(tipoRelatorio);
+            //log(dataInicio);
+            
+            ArrayList r = tipoDeRelatorio(tipoRelatorio, dataInicio, dataFim);
+            switch(tipoRelatorio.toUpperCase()){
+                case "FUNCIONARIO":
+                    request.setAttribute("relatorioFuncionario", r);
+                break;
+                case "PEDIDO":
+                    request.setAttribute("relatorioPedido", r);
+                break;
+                case "VENDA":
+                    request.setAttribute("relatorioFilial", r);
+                break;
+                case "CLIENTE":
+                    request.setAttribute("relatorioCliente", r);
+                break;
+            }
+            
+            request.getRequestDispatcher("WEB-INF/relatorio/Gerar.jspx").forward(request, response);
+            
+        
         
         
         

@@ -65,6 +65,116 @@
                         </div>
                     </div>
                 </div>
+                        <div class="row">
+                        <div class="col-md-offset-2 col-md-8"></div>
+       
+                             <table class="table table-hover">
+                            <c:choose>
+                            <c:when test="${relatorioFuncionario != null}">
+                            <caption><h3>Clientes </h3></caption>
+                            <thead>
+                                <tr > 
+                                    <th>ID</th>
+                                    <th> Nome</th>
+                                    <th>Sobrenome</th>
+                                    <th>Quantidade</th>
+                                    <th>Filial</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-hover">
+                                <c:forEach items="${relatorioFuncionario}" var="relatorioFuncionario">
+                                    <tr>
+                                        <td>${relatorioFuncionario.id}</td>
+                                        <td>${relatorioFuncionario.nomeFuncionario}</td>
+                                        <td>${relatorioFuncionario.sobrenomeFuncionario}</td>
+                                        <td>${relatorioFuncionario.qtd}</td>
+                                        <td>${relatorioFuncionario.nomeFilial}</td>
+                                        <td>${relatorioFuncionario.valor}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                            </c:when>
+                            <c:when test="${relatorioPedido != null}">
+                            <caption><h3>Pedidos </h3></caption>
+                            <thead>
+                                <tr > 
+                                    <th>Quantidade</th>
+                                    <th>Nome</th>
+                                    <th>Tipo De Serviço</th>
+                                    <th>Prazo</th>
+                                    <th>Nome Filial</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-hover">
+                                <c:forEach items="${relatorioPedido}" var="relatorioPedido">
+                                    <tr>
+                                        <td>${relatorioPedido.qtd}</td>
+                                        <td>${relatorioPedido.nomeServico}</td>
+                                        <td>${relatorioPedido.tipoServico}</td>
+                                        <td>${relatorioPedido.prazo}</td>
+                                        <td>${relatorioPedido.nomeFilial}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                            </c:when>
+                            <c:when test="${relatorioFilial != null}">
+                            <caption><h3>Vendas Por Filial</h3></caption>
+                            <thead>
+                                <tr > 
+                                    <th>ID</th>
+                                    <th>Nome Filial</th>
+                                    <th>Cidade</th>
+                                    <th>Telefone</th>
+                                    <th>Pedidos</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-hover">
+                                <c:forEach items="${relatorioFilial}" var="relatorioFilial">
+                                    <tr>
+                                        <td>${relatorioFilial.idFilial}</td>
+                                        <td>${relatorioFilial.nome}</td>
+                                        <td>${relatorioFilial.cidade}</td>
+                                        <td>${relatorioFilial.telefone}</td>
+                                        <td>${relatorioFilial.pedidos}</td>
+                                        <td>${relatorioFilial.valor}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>    
+                            </c:when>
+                            <c:when test="${relatorioCliente != null}">
+                            <caption><h3>Compras de Clientes</h3></caption>
+                            <thead>
+                                <tr > 
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Sobrenome</th>
+                                    <th>Email</th>
+                                    <th>Telefone</th>
+                                    <th>Pedidos</th>
+                                    <th>Total</th>
+                                    <th>Filial</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-hover">
+                                <c:forEach items="${relatorioCliente}" var="relatorioCliente">
+                                    <tr>
+                                        <td>${relatorioCliente.id}</td>
+                                        <td>${relatorioCliente.nome}</td>
+                                        <td>${relatorioCliente.sobrenome}</td>
+                                        <td>${relatorioCliente.email}</td>
+                                        <td>${relatorioCliente.telefone}</td>
+                                        <td>${relatorioCliente.pedidos}</td>
+                                        <td>${relatorioCliente.total}</td>
+                                        <td>${relatorioCliente.filial}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>      
+                            </c:when>
+                            </c:choose>
+                        </table>
+                    </div>
             </main>
         </body>
     </html>

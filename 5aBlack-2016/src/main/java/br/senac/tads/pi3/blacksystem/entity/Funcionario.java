@@ -18,7 +18,9 @@ public class Funcionario extends Pessoa{
     private String filial="";
     private String dataContratacao="";
     private double salario=0;
-
+    public Endereco endereco = new Endereco();
+    
+    
     public double getSalario() {
         return salario;
     }

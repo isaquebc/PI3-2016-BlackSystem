@@ -6,10 +6,12 @@
 package br.senac.tads.pi3.blacksystem.servlet;
 
 import br.senac.tads.pi3.blacksystem.ablack.FuncinarioCadastroDAO;
+import br.senac.tads.pi3.blacksystem.ablack.FuncionarioDAO;
 import br.senac.tads.pi3.blacksystem.entity.Filial;
 import br.senac.tads.pi3.blacksystem.entity.Funcionario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -36,6 +38,10 @@ public class FuncionarioBuscarServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+       
+        
+        
         
     }
 
@@ -67,37 +73,19 @@ public class FuncionarioBuscarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        Funcionario func= new Funcionario();
-        FuncinarioCadastroDAO funDAO= new FuncinarioCadastroDAO();
-        Filial filial= new Filial();
-        func.setCpf(request.getParameter("cpf"));
-        func.setNome( request.getParameter("nome"));
-        func.setSobrenome(request.getParameter("sobreNome" ));
-        func.setTelefone(request.getParameter("telefone"));
-        func.setSexo("M");
-        func.setEmail(request.getParameter("email"));
-//        func.setEndereco( request.getParameter("rua"));
-//        endCli.setNumero( request.getParameter("numero"));
-//        endCli.setEstado(request.getParameter("estado"));
-//        endCli.setCidade(null); request.getParameter("cidade");
-//        endCli.setCep( request.getParameter( "cep"));
-            
-//        cli.setCpf("00000000000");
-//        cli.setNome("fulano");
-//        cli.setSobrenome("de tal");
-//        cli.setTelefone("11 982335099");
-//        cli.setEmail("iiiii@gmail.com");
+        String cpf = request.getParameter("cpf").replace(".", "").replace("-", "");
+        System.err.println(cpf);
+ 
         
-//        try {
-//             
-////            funDAO.cadastrarFuncionario(func,filial);
-//            
-//        } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch(NullPointerException ex){
-//            
-            
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         
+        try {
+            ArrayList f = funcionarioDAO.buscarFuncionario(cpf);    
+            request.setAttribute("funcionarios", f);
+            request.getRequestDispatcher("WEB-INF/funcionario/Buscar.jspx").forward(request, response);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
     /**

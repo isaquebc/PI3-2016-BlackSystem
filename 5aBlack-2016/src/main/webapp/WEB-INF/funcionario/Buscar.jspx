@@ -27,7 +27,7 @@
             <div class="container" >
                 <div class="row" >
                     <div class="col-md-offset-2 col-md-4" >
-                        <form class="form-signin" action="#" method="post" accept-charset="UTF-8"> <!-- BuscarFuncionarioServlet -->
+                        <form class="form-signin" action="FuncionarioBuscarServlet" method="post" accept-charset="UTF-8"> <!-- BuscarFuncionarioServlet -->
                             <fieldset>
                                 <legend><h2 class="form-signin-heading">Buscar Funcionario</h2></legend>
                                 <div class="form-group">
@@ -40,15 +40,15 @@
                 </div>
             </div>
             <!-- <td> colune e <tr> é linha ou seja <tr>(Linha) contem <td>coluna</td> <td>coluna</td> </tr>(Fecha Linha)-->
-            <div class="container" >
+            <div class="container-fluid" >
                 <div class="row" >
                     <div class="col-md-offset-0 col-md-12" >
                         <table class="table table-hover">
                             <caption><h3>Funcionarios </h3></caption>
                             <thead>
                                 <tr > 
-                                    <th> ID: </th>
-                                    <th> Nome</th>
+                                    <th>ID: </th>
+                                    <th>Nome</th>
                                     <th>Sobrenome</th>
                                     <th>CPF</th>
                                     <th>Data de Nascimento</th>
@@ -63,36 +63,21 @@
                                 </tr>
                             </thead>
                             <tbody class="table-hover">
-                                <tr>
-                                    <td>779</td>
-                                    <td>Vagabundo</td>
-                                    <td>Tamojunto</td>
-                                    <td>222.222.222-22</td>
-                                    <td>12-03-1996</td>
-                                    <td>11 3939-4040</td>
-                                    <td>11 98888-7777</td>
-                                    <td>osmaismalas@mailzika.com</td>
-                                    <td>Rua da grana xxxxxxxxxxxxxxxxxxxxxxx</td>
-                                    <td>999</td>
-                                    <td>porto rico</td>
-                                    <td>bufunfa</td>
-                                    <td>89899-000</td>
-                                </tr>
-                                <c:forEach items="${clientes}" var="cliente">
+                                <c:forEach items="${funcionarios}" var="funcionario">
                                     <tr>
-                                        <td>${cliente.id}</td>
-                                        <td>${cliente.nome}</td>
-                                        <td>${cliente.sobrenome}</td>
-                                        <td>${cliente.cpf}</td>
-                                        <td>${cliente.nasc}</td>
-                                        <td>${cliente.telefone}</td>
-                                        <td>${cliente.celular}</td>
-                                        <td>${cliente.email}</td>
-                                        <td>${cliente.rua}</td>
-                                        <td>${cliente.numero}</td>
-                                        <td>${cliente.estado}</td>
-                                        <td>${cliente.cidade}</td>
-                                        <td>${cliente.cep}</td>
+                                        <td>${funcionario.id}</td>
+                                        <td>${funcionario.nome}</td>
+                                        <td>${funcionario.sobrenome}</td>
+                                        <td>${funcionario.cpf}</td>
+                                        <td>${funcionario.nasc}</td>
+                                        <td>${funcionario.telefone}</td>
+                                        <td>${funcionario.celular}</td>
+                                        <td>${funcionario.email}</td>
+                                        <td>${funcionario.rua}</td>
+                                        <td>${funcionario.numero}</td>
+                                        <td>${funcionario.estado}</td>
+                                        <td>${funcionario.cidade}</td>
+                                        <td>${funcionario.cep}</td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

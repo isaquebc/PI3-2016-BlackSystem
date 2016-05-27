@@ -15,6 +15,8 @@ public class Cliente extends Pessoa{
         super(id, nome, sonbrenome, cpf, telefone, celular, email, rua, numero, estado, cidade, cep);
         
     }
+    
+    Endereco endereco;
 
     public Cliente() {
         
