@@ -12,6 +12,7 @@ import br.senac.tads.pi3.blacksystem.entity.*;
 import java.io.IOException;
 import java.sql.Array;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -114,11 +115,13 @@ public class PedidoGerarServlet extends HttpServlet {
         PedidoDAO pedidoDAO = new PedidoDAO();
         ServicoDAO servicoDao = new ServicoDAO();
         try {
-            cliente.setId(1);//Teste
-            cliente.setCpf("425.506.888-25");
+                        
             //, funcionario pedido,
             pedidoDAO.cadastrarPedido(pecas, cliente);
+            pedidoDAO.consultaPedido(pedido);
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PedidoGerarServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(PedidoGerarServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         /*======================================================================

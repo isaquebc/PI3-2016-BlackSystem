@@ -12,6 +12,7 @@ import br.senac.tads.pi3.blacksystem.entity.Servico;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import static java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -23,33 +24,33 @@ import java.util.Date;
  */
 public class PedidoDAO extends Conexao {
 //, funcionario , ID_FILIAL, DATA_SAIDA,
-    String QUERY_INSERT_PEDIDO = "INSERT INTO PEDIDO( STATUS, DATA_ENTRADA, ID_CLIENTE)"  
+
+    String QUERY_INSERT_PEDIDO = "INSERT INTO PEDIDO( STATUS, DATA_ENTRADA, ID_CLIENTE)"
             + "VALUES (?, ?, ?)";
 
     String QUERY_INSERT_PECA = "INSERT INTO PECA(QTD_PECA, TIPO_PECA,COR_PECA, TIPO_TECIDO,ID_PEDIDO,ID_SERVICO)" + "(?,?,?,?,?,?)";
 
-    public void cadastrarPedido( ArrayList<Peca> pecas, Cliente cliente)//, Funcionario funcionario, 
+    public void cadastrarPedido(ArrayList<Peca> pecas, Cliente cliente)//, Funcionario funcionario, 
             throws ClassNotFoundException {
 
         Connection conn = null;
-        PreparedStatement stm = null;
-
         Statement stmt = null;
+        PreparedStatement pstm = null;
         ResultSet rs = null;
-        Integer idPedido=0;
+        Integer idPedido = 0;
         /*=================================================================
          Aqui inserimos o pedido no banco, fazendo assim ele gerar um ID
          ====================================================================*/
         try {
             conn = getConexao();
-            stm = conn.prepareStatement(QUERY_INSERT_PEDIDO);
-            stm.setString(1, "ABERTO");
-            stm.setDate(2, new java.sql.Date(1009 - 03 - 03));
-            //stm.setDate(3, java.sql.Date.valueOf(ped.getDataSaida()));
-            //stm.setInt(4, funcionario.getId());
-            stm.setInt(3, cliente.getId());
-            stm.executeUpdate();
-            stm.close();
+            pstm = conn.prepareStatement(QUERY_INSERT_PEDIDO);
+            pstm.setString(1, "ABERTO");
+            pstm.setDate(2, new java.sql.Date(1009 - 03 - 03));
+            //pstm.setDate(3, java.sql.Date.valueOf(ped.getDataSaida()));
+            //pstm.setInt(4, funcionario.getId());
+            pstm.setInt(3, 1);
+            pstm.executeUpdate();
+            pstm.close();
             conn.close();
         } catch (SQLException e) {
             System.out.println("Erro de conexão");
@@ -57,27 +58,40 @@ public class PedidoDAO extends Conexao {
             System.out.println("Dao não inicializado");
         }
         /*=================================================================
-         Inseriu o pedido no banco
+         Inseriu o pedido no banco 
          ====================================================================*/
+
+    }
+
+    public int consultaPedido(Pedido ped,Cliente cli ) throws ClassNotFoundException {
+        Connection conn = null;
+        Statement stm = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+
         try {
-            String pesqIdServ = "SELECT ID_PEDIDO FROM PEDIDO WHERE NOME_SERV ='" + cliente.getId()+ "'";
             conn = getConexao();
-            stmt = conn.createStatement();
-            stmt.executeQuery(pesqIdServ);
-            rs.last();
-            idPedido = (rs.getInt("ID_PEDIDO"));
-            stmt.close();
+            stm = conn.createStatement();
+            rs = stm.executeQuery("select ID_PEDIDO FROM PEDIDO WHERE ID_CLIENTE ='"+cli.getId()+"'");
+ 
+           rs.next();
+               ped.setIdPedido(rs.getInt("ID_PEDIDO"));
+               
+            stm.close();
             conn.close();
+            return ped.getIdPedido();
         } catch (SQLException ex) {
             System.out.println("erro ao conectar com o banco");
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         } catch (NullPointerException ex) {
             System.out.println("DAO não inicializado");
             ex.getMessage();
         }
-        /*=================================================================
-         Aqui ele gera o loop para adicionar todas as peças. Porem, antes ele peda o ID do serviço
-         ====================================================================*/
+        return 0;
+    }
+    /*=================================================================
+     Aqui ele gera o loop para adicionar todas as peças. Porem, antes ele peda o ID do serviço
+     ====================================================================*/
         for (Peca peca : pecas) {
             Integer idServico = 0;
             try {
@@ -96,26 +110,25 @@ public class PedidoDAO extends Conexao {
                 ex.getMessage();
             }
 
-            /*percorre a lista de pecas cadastraas e inseri no banco*/
-            try {
-                conn = getConexao();
-                stm = conn.prepareStatement(QUERY_INSERT_PECA);
-                stm.setInt(1, Integer.parseInt(peca.getQdt()));
-                stm.setString(2, peca.getTipoPeca());
-                stm.setString(3, peca.getTipoTecido());
-                stm.setInt(4, idPedido);
-                stm.setInt(5, idServico);
-                stm.executeUpdate();
-                stm.close();
-                conn.close();
-            } catch (SQLException e) {
-                System.out.println("Erro de conexão");
-            } catch (NullPointerException e) {
-                System.out.println("Dao não inicializado");
-            }
-        }
-    }
-
+    /*percorre a lista de pecas cadastraas e inseri no banco*/
+//            try {
+//                conn = getConexao();
+//                pstm = conn.prepareStatement(QUERY_INSERT_PECA);
+//                pstm.setInt(1, Integer.parseInt(peca.getQdt()));
+//                pstm.setString(2, peca.getTipoPeca());
+//                pstm.setString(3, peca.getTipoTecido());
+//                pstm.setInt(4, idPedido);
+//                pstm.setInt(5, idServico);
+//                pstm.executeUpdate();
+//                pstm.close();
+//                conn.close();
+//            } catch (SQLException e) {
+//                System.out.println("Erro de conexão");
+//            } catch (NullPointerException e) {
+//                System.out.println("Dao não inicializado");
+//            }
+//        }
+//    }
 }
 
 //String sqlInsert = "insert into MOVIMENTACAO_ENTRADA (id_entrada, id_produto, id_vendedor,data_chegada, qtd) values (?,?,?,?,?)";

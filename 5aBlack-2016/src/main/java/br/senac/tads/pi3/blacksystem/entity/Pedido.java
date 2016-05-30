@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Pedido {
 
-    private long idPedido;
+    private int idPedido;
     private String status;
     private Date dataEntrada;
     private String dataSaida;
@@ -24,11 +24,11 @@ public class Pedido {
         this.dataSaida = dataSaida;
     }
     
-    public long getIdPedido() {
+    public int getIdPedido() {
         return idPedido;
     }
 
-    public void setIdPedido(long idPedido) {
+    public void setIdPedido(int idPedido) {
         this.idPedido = idPedido;
     }
     
@@ -57,6 +57,10 @@ public class Pedido {
 
     public void setDataSaida(String dataSaida) {
         this.dataSaida = dataSaida;
+    }
+
+    public void setIdPedido(String listarCharado) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 
