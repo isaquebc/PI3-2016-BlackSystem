@@ -15,7 +15,7 @@ public class Funcionario extends Pessoa{
 
     String senha="";
     private String cargo="";
-    private String filial="";
+    private int filial;
     private String dataContratacao="";
     private double salario=0;
     public Endereco endereco = new Endereco();
@@ -45,11 +45,11 @@ public class Funcionario extends Pessoa{
         this.cargo = cargo;
     }
 
-    public String getFilial() {
+    public int getFilial() {
         return filial;
     }
 
-    public void setFilial(String filial) {
+    public void setFilial(int filial) {
         this.filial = filial;
     }
 
@@ -70,7 +70,7 @@ public class Funcionario extends Pessoa{
     }
     private String dataNascimento;
 
-    public Funcionario(String cargo, String filial, String dataContratacao, String dataNascimento, int id, String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
+    public Funcionario(String cargo, int filial, String dataContratacao, String dataNascimento, int id, String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
         super(id, nome, sonbrenome, cpf, telefone, celular, email, rua, numero, estado, cidade, cep);
         this.cargo = cargo;
         this.filial = filial;
@@ -78,7 +78,7 @@ public class Funcionario extends Pessoa{
         this.dataNascimento = dataNascimento;
     }
 
-    public Funcionario(String cargo, String filial, String dataContratacao, String dataNascimento) {
+    public Funcionario(String cargo, int filial, String dataContratacao, String dataNascimento) {
         this.cargo = cargo;
         this.filial = filial;
         this.dataContratacao = dataContratacao;

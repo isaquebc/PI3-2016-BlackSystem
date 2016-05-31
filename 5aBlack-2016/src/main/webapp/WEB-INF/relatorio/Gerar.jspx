@@ -33,7 +33,7 @@
                 <div class="container">
                     <div class="row" >
                         <div class="col-md-12" >
-                            <form class="form-inline" action="#" method="post" accept-charset="UTF-8"><!-- GerarRelatorioServlet -->
+                            <form class="form-inline" action="RelatorioGerarServlet" method="post" accept-charset="UTF-8"><!-- GerarRelatorioServlet -->
                                 <fieldset> 
                                     <legend><h2 class="form-signin-heading">Gerar Relatório</h2></legend>
                                     

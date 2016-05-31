@@ -23,7 +23,7 @@ public class FuncionarioDAO extends Conexao{
         ResultSet rs = null;
         Connection con = null;
         String QUERY_SELECT_FUNCIONARIO = "SELECT FUNCIONARIO.ID_FUNC, FUNCIONARIO.NOME_FUNC, FUNCIONARIO.SOBRENOME_FUNC, FUNCIONARIO.CPF_FUNC, FUNCIONARIO.NASC_FUNC," +
-        " FUNCIONARIO.TEL_FUNC, FUNCIONARIO.CEL_FUNC, FUNCIONARIO.EMAIL_FUNC, ENDERECO_FUNCIONARIO.LOGRADOURO_FUNC, ENDERECO_FUNCIONARIO.NUMERO_CLI," +
+        " FUNCIONARIO.TEL_FUNC, FUNCIONARIO.CEL_FUNC, FUNCIONARIO.EMAIL_FUNC, ENDERECO_FUNCIONARIO.LOGRADOURO_FUNC," +
         " ENDERECO_FUNCIONARIO.ESTADO_FUNC, ENDERECO_FUNCIONARIO.CIDADE_FUNC, ENDERECO_FUNCIONARIO.CEP_FUNC" +
         " FROM FUNCIONARIO LEFT JOIN ENDERECO_FUNCIONARIO ON FUNCIONARIO.ID_FUNC = ENDERECO_FUNCIONARIO.ID_FUNC" +
         " WHERE FUNCIONARIO.CPF_FUNC='".concat(cpf)+"'"; 
@@ -45,7 +45,7 @@ public class FuncionarioDAO extends Conexao{
                 f.setCelular(rs.getString("CEL_FUNC"));
                 f.setEmail(rs.getString("EMAIL_FUNC"));
                 f.setRua(rs.getString("LOGRADOURO_FUNC"));
-                f.setNumero(rs.getInt("NUMERO_CLI"));
+                //f.setNumero(rs.getInt("NUMERO_CLI"));
                 f.setEstado(rs.getString("ESTADO_FUNC"));
                 f.setCidade(rs.getString("CIDADE_FUNC"));
                 f.setCep(rs.getString("CEP_FUNC"));
@@ -61,5 +61,7 @@ public class FuncionarioDAO extends Conexao{
         
         return null;
     }
+    
+    
     
 }

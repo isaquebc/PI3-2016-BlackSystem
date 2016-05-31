@@ -73,14 +73,13 @@ public class FuncionarioBuscarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String cpf = request.getParameter("cpf").replace(".", "").replace("-", "");
-        System.err.println(cpf);
+        
  
         
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         
         try {
-            ArrayList f = funcionarioDAO.buscarFuncionario(cpf);    
+            ArrayList f = funcionarioDAO.buscarFuncionario(request.getParameter("cpf"));    
             request.setAttribute("funcionarios", f);
             request.getRequestDispatcher("WEB-INF/funcionario/Buscar.jspx").forward(request, response);
         } catch (Exception e) {
