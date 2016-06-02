@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="cargo">Cargo</label>
-                                    <select  class="form-control" required="" name="cargo" id="cargo">
+                                        <select  class="form-control" required="" name="cargo" id="cargo">
                                         <option value=""></option>
                                         <option value="backoffice">Backoffice</option>
                                         <option value="atendimento">Atendimento</option>
