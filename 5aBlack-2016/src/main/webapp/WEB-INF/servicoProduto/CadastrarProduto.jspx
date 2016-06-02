@@ -34,30 +34,43 @@
                             <form class="form-signin" action="#" method="post" accept-charset="UTF-8"> <!-- NovoProdutoServlet -->
                                 <fieldset> 
                                     <legend><h2 class="form-signin-heading">Novo Produto</h2></legend>
-                                    <div class="form-group">
-                                        <label for="nome">Nome</label>
-                                        <input type="text" class="form-control" name="nome" for="pNome" id="pNome"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="validade">Validade</label>
-                                        <input type="date" class="form-control" name="validade" for="validade" id="validade"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="lote">Lote</label>
-                                        <input type="text" class="form-control" name="lote" for="lote" id="lote"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="qtdMinima">Quantidade Minima</label>
-                                        <input type="number" class="form-control" name="qtdMinima" for="qtdMinima" id="qtdMinima"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="qtdMaxima">Quantidade Maxima</label>
-                                        <input type="number" class="form-control" name="qtdMaxima" for="qtdMaxima" id="qtdMaxima"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="qtdAtual">Quantidade em entrada</label>
-                                        <input type="number" class="form-control" name="qtdAtual" for="qtdAtual" id="qtdAtual"/>
-                                    </div>
+                                    <div>
+                                        <div class="form-group">
+                                            <label for="tipoProd">Tipo de Produto</label>
+                                            <select class="form-control" required="" name="tipo" id="tipoPRoduto">
+                                                <option>  </option>
+                                                <option> SABÃO EM PÓ </option>
+                                                <option>SABÃO EM PEDRA </option>
+                                                <option>ALVEJANTE SEM CLORO  </option>
+                                                <option> ALVEJANTE COMUM</option>
+                                                <option>ALVEJANTE EM PÓ  </option>
+                                            </select>
+                                        </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nome">Nome</label>
+                                            <input type="text" class="form-control" name="nome" for="pNome" id="pNome"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="validade">Validade</label>
+                                            <input type="date" class="form-control" name="validade" for="validade" id="validade"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lote">Lote</label>
+                                            <input type="text" class="form-control" name="lote" for="lote" id="lote"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="qtdMinima">Quantidade Minima</label>
+                                            <input type="number" class="form-control" name="qtdMinima" for="qtdMinima" id="qtdMinima"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="qtdMaxima">Quantidade Maxima</label>
+                                            <input type="number" class="form-control" name="qtdMaxima" for="qtdMaxima" id="qtdMaxima"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="qtdAtual">Quantidade em entrada</label>
+                                            <input type="number" class="form-control" name="qtdAtual" for="qtdAtual" id="qtdAtual"/>
+                                        </div>
                                 </fieldset>
                                 <button type="submit" id="inserir" class="btn btn-lg btn-primary btn-block">Cadastrar</button>
                             </form>
