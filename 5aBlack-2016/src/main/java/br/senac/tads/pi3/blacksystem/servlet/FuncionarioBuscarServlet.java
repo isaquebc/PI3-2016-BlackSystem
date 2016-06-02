@@ -5,7 +5,7 @@
  */
 package br.senac.tads.pi3.blacksystem.servlet;
 
-import br.senac.tads.pi3.blacksystem.ablack.FuncinarioCadastroDAO;
+
 import br.senac.tads.pi3.blacksystem.ablack.FuncionarioDAO;
 import br.senac.tads.pi3.blacksystem.entity.Filial;
 import br.senac.tads.pi3.blacksystem.entity.Funcionario;
@@ -79,7 +79,7 @@ public class FuncionarioBuscarServlet extends HttpServlet {
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         
         try {
-            ArrayList f = funcionarioDAO.buscarFuncionario(request.getParameter("cpf"));    
+            ArrayList f = funcionarioDAO.buscarFuncionarios(request.getParameter("cpf"));    
             request.setAttribute("funcionarios", f);
             request.getRequestDispatcher("WEB-INF/funcionario/Buscar.jspx").forward(request, response);
         } catch (Exception e) {

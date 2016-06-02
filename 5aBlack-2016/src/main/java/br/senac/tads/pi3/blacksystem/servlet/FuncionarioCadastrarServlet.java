@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package br.senac.tads.pi3.blacksystem.servlet;
-import br.senac.tads.pi3.blacksystem.ablack.FuncinarioCadastroDAO;
+import br.senac.tads.pi3.blacksystem.ablack.FuncionarioDAO;
 import br.senac.tads.pi3.blacksystem.entity.Endereco;
 import br.senac.tads.pi3.blacksystem.entity.Filial;
 import br.senac.tads.pi3.blacksystem.entity.Funcionario;
@@ -79,8 +79,8 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        FuncinarioCadastroDAO funcDAO= new FuncinarioCadastroDAO();
-        Funcionario func= new Funcionario();
+        FuncionarioDAO funcDAO = new FuncionarioDAO();
+        Funcionario func = new Funcionario();
 
         Endereco end = new Endereco();
         
@@ -93,11 +93,11 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
         func.setDataContratacao(request.getParameter("dtContratacao"));
         func.setCargo(request.getParameter("cargo"));
         func.setSalario(Float.parseFloat(request.getParameter("salario")));
-        func.setSenha(request.getParameter("senha"));
+        func.setHashSenha(request.getParameter("senha"));
         func.setCpf(request.getParameter("cpf"));
         ////        func.setDataContratacao(request.getParameter("2000-01-01"));
         
-        
+        System.err.println(request.getParameter("filial-Trabalho"));
         try {
             func.setFilial(funcDAO.buscarFilial(request.getParameter("filial-Trabalho")));
             funcDAO.cadastrarFuncionario(func);

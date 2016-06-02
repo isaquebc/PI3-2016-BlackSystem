@@ -12,8 +12,9 @@ import java.sql.Date;
  * @author Rafael
  */
 public class Funcionario extends Pessoa{
-
-    String senha="";
+    
+    
+    private String hashSenha;
     private String cargo="";
     private int filial;
     private String dataContratacao="";
@@ -29,12 +30,12 @@ public class Funcionario extends Pessoa{
         this.salario = salario;
     }
     
-    public String getSenha() {
-        return senha;
+    public String getHashSenha() {
+        return hashSenha;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setHashSenha(String senha) {
+        this.hashSenha = senha;
     }
 
     public String getCargo() {

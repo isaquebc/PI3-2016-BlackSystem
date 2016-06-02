@@ -5,13 +5,18 @@
  */
 package br.senac.tads.pi3.blacksystem.servlet;
 
+import br.senac.tads.pi3.blacksystem.ablack.FuncionarioDAO;
+import br.senac.tads.pi3.blacksystem.entity.Criptografia;
+import br.senac.tads.pi3.blacksystem.entity.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,19 +36,7 @@ public class IndexServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet IndexServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet IndexServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+       
     }
 
     
@@ -60,6 +53,10 @@ public class IndexServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setAttribute("servicos", "Mensagem");
         request.getRequestDispatcher("WEB-INF/index.jspx").forward(request, response);
+        
+        
+        
+        
     }
 
     /**
@@ -73,7 +70,45 @@ public class IndexServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect(request.getContextPath() + "/HomeServlet");
+       
+        
+        Map<String, Usuario>  usuario = new HashMap<>();
+        Usuario usuarioBanco = new Usuario();
+        Usuario usuarioLogado = new Usuario();
+        Criptografia criptrografia = new Criptografia();
+        FuncionarioDAO funcDAO = new FuncionarioDAO();
+        usuarioLogado.setCpf(request.getParameter("cpf"));
+        usuarioLogado.setHashSenha(request.getParameter("senha"));
+        try {
+            usuarioBanco = funcDAO.buscarFuncionario(usuarioLogado.getCpf());
+            usuarioLogado.setSalt(usuarioBanco.getSalt());
+            usuarioLogado.setHashSenha(criptrografia.gerarHashSenhaPBKDF2(usuarioLogado));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        
+        
+        
+        
+        usuarioLogado = usuarioLogado.validar(usuarioBanco);
+        
+        if (usuarioLogado != null) {
+            HttpSession sessaoUsuario = request.getSession(false);
+            if (sessaoUsuario != null) {
+                sessaoUsuario.invalidate();
+            }
+            sessaoUsuario = request.getSession(true);
+            sessaoUsuario.setAttribute("usuarioLogado", usuarioBanco);
+            response.sendRedirect(request.getContextPath() + "/HomeServlet");
+            return;
+        }
+        response.sendRedirect(request.getContextPath() + "/index.html");    
+        
+        usuario.put(usuarioBanco.getCpf(), usuarioBanco);
+        
+        
+        
     }
 
     /**
