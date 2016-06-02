@@ -56,7 +56,7 @@ public class CadastrarProdutoDAO extends Conexao {
 
         try {
 
-            buscaTipoProd(nome);
+            tp.setIdTipo(buscaTipoProd(nome));
 
             conn = getConexao();
 
@@ -65,11 +65,10 @@ public class CadastrarProdutoDAO extends Conexao {
             stm.setDate(2, new java.sql.Date(1009 - 03 - 03));
             stm.setInt(3, p.getLote());
             stm.setString(4, "ATIVO");
-            stm.setInt(5, (int) p.getQtdMin());
-            stm.setInt(6, (int) p.getQtdMax());
-            stm.setInt(7, (int) p.getQtdAtual());
-            
-            stm.setInt(8, (int) tp.getIdTipo());
+            stm.setInt(5,  p.getQtdMin());
+            stm.setInt(6,  p.getQtdMax());
+            stm.setInt(7,  p.getQtdAtual());
+            stm.setInt(8, tp.getIdTipo());
 
             stm.executeUpdate();
             stm.close();
@@ -88,11 +87,11 @@ public class CadastrarProdutoDAO extends Conexao {
      * @return
      * @throws ClassNotFoundException
      */
-    public void buscaTipoProd(String teste) {
+    public int buscaTipoProd(String teste) {
 
         String slq = "SELECT * FROM TIPO_PRODUTO WHERE DESCRICAO_PROD ='" + teste + "'";
 
-        TipoProduto tp = new TipoProduto();
+        int saida=0;
 
         try {
             Connection conn = getConexao();
@@ -100,7 +99,7 @@ public class CadastrarProdutoDAO extends Conexao {
             ResultSet rs = stm.executeQuery(slq);
 
             while (rs.next()) {
-                tp.setIdTipo(rs.getInt("ID_TIPO_PROD"));
+                saida=(rs.getInt("ID_TIPO_PROD"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(CadastrarProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -109,6 +108,7 @@ public class CadastrarProdutoDAO extends Conexao {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(CadastrarProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+    return saida;    
     }
+    
 }

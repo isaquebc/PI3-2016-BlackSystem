@@ -16,9 +16,9 @@ public class Produto {
     private String data;
     private int lote;
     private String status;
-    private float qtdMin;
-    private float qtdMax;
-    private float qtdAtual;
+    private int qtdMin;
+    private int qtdMax;
+    private int qtdAtual;
 
     public int getIdProduto() {
         return idProduto;
@@ -68,30 +68,32 @@ public class Produto {
         this.status = status;
     }
 
-    public float getQtdMin() {
+    public int getQtdMin() {
         return qtdMin;
     }
 
-    public void setQtdMin(float qtdMin) {
+    public void setQtdMin(int qtdMin) {
         this.qtdMin = qtdMin;
     }
 
-    public float getQtdMax() {
+    public int getQtdMax() {
         return qtdMax;
     }
 
-    public void setQtdMax(float qtdMax) {
+    public void setQtdMax(int qtdMax) {
         this.qtdMax = qtdMax;
     }
 
-    public float getQtdAtual() {
+    public int getQtdAtual() {
         return qtdAtual;
     }
 
-    public void setQtdAtual(float qtdAtual) {
+    public void setQtdAtual(int qtdAtual) {
         this.qtdAtual = qtdAtual;
     }
+
+    public Produto() {
+    }
     
-    
-       
+
 }

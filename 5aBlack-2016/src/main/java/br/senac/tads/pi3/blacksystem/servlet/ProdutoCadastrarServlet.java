@@ -75,9 +75,9 @@ public class ProdutoCadastrarServlet extends HttpServlet {
         p.setNome(request.getParameter("nome"));
         p.setValidade(request.getParameter("validade"));
         p.setLote(Integer.parseInt(request.getParameter("lote")));
-        p.setQtdMin(Float.parseFloat(request.getParameter("qtdMinima")));
-        p.setQtdMax(Float.parseFloat(request.getParameter("qtdMaxima")));
-        p.setQtdAtual(Float.parseFloat(request.getParameter("qtdAtual")));
+        p.setQtdMin(Integer.parseInt(request.getParameter("qtdMinima")));
+        p.setQtdMax(Integer.parseInt(request.getParameter("qtdMaxima")));
+        p.setQtdAtual(Integer.parseInt(request.getParameter("qtdAtual")));
         
         MovimentoProduto m = new MovimentoProduto();
         m.setDescricao("Produto cadastrado");
