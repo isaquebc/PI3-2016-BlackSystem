@@ -11,7 +11,11 @@ package br.senac.tads.pi3.blacksystem.entity;
  */
 public class TipoProduto {
     
-    private Integer idTipo;
+    private int idTipo;
+
+    public void setIdTipo(Integer idTipo) {
+        this.idTipo = idTipo;
+    }
     private String nome;
     private String descricao;
 

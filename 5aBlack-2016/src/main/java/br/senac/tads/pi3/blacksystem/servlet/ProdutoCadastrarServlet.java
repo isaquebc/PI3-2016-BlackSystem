@@ -8,6 +8,7 @@ package br.senac.tads.pi3.blacksystem.servlet;
 import br.senac.tads.pi3.blacksystem.ablack.CadastrarProdutoDAO;
 import br.senac.tads.pi3.blacksystem.entity.MovimentoProduto;
 import br.senac.tads.pi3.blacksystem.entity.Produto;
+import br.senac.tads.pi3.blacksystem.entity.TipoProduto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -49,29 +50,7 @@ public class ProdutoCadastrarServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Produto p = new Produto();
-        System.err.println("sadasdasdasdasd");
-        p.setNome(request.getParameter("nome"));
-        p.setValidade(request.getParameter("validade"));
-//        p.setLote(Integer.parseInt((String)request.getParameter("lote")));
-//        p.setQtdMin(Float.parseFloat((String)request.getParameter("qtdMinima")));
-//        p.setQtdMax(Float.parseFloat((String)request.getParameter("qtdMaxima")));
-//        p.setQtdAtual(Float.parseFloat((String)request.getParameter("qtdAtual")));
         
-        MovimentoProduto m = new MovimentoProduto();
-        m.setDescricao("Produto cadastrado");
-        m.setIdFilial(1);
-        m.setIdFuncionaro(2);
-        m.setIdProduto(1);
-        m.setQtd(100);
-        
-        try {
-            CadastrarProdutoDAO pDAO = new CadastrarProdutoDAO();
-            pDAO.cadastrarProduto(p);
-            pDAO.entradaProduto(m);
-        } catch (Exception e) {
-            
-        }
 
         request.getRequestDispatcher("WEB-INF/servicoProduto/CadastrarProduto.jspx").forward(request, response);
     }
@@ -88,6 +67,32 @@ public class ProdutoCadastrarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        Produto p = new Produto();
+        System.err.println("sadasdasdasdasd");
+        TipoProduto tipo=new TipoProduto();
+        
+        String nome=(request.getParameter("tipo"));
+        p.setNome(request.getParameter("nome"));
+        p.setValidade(request.getParameter("validade"));
+        p.setLote(Integer.parseInt(request.getParameter("lote")));
+        p.setQtdMin(Float.parseFloat(request.getParameter("qtdMinima")));
+        p.setQtdMax(Float.parseFloat(request.getParameter("qtdMaxima")));
+        p.setQtdAtual(Float.parseFloat(request.getParameter("qtdAtual")));
+        
+        MovimentoProduto m = new MovimentoProduto();
+        m.setDescricao("Produto cadastrado");
+        m.setIdFilial(1);
+        m.setIdFuncionaro(2);
+        m.setIdProduto(1);
+        m.setQtd(100);
+        
+        try {
+            CadastrarProdutoDAO pDAO = new CadastrarProdutoDAO();
+
+            pDAO.produtoCadastro(p, nome);
+        } catch (Exception e) {
+            
+        }
        
         
     }
