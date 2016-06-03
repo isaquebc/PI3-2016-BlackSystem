@@ -117,8 +117,8 @@ public class PedidoGerarServlet extends HttpServlet {
         try {
                         
             //, funcionario pedido,
-            pedidoDAO.cadastrarPedido(cliente);
-//            pedidoDAO.consultaPedido(pedido,cliente );
+//            pedidoDAO.cadastrarPedido(cliente);
+            pedidoDAO.consultaPedido(pedido,cliente );
 //            pedidoDAO.setPecas(pecas);
             
         } catch (ClassNotFoundException ex) {

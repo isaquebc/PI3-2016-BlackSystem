@@ -5,8 +5,12 @@
  */
 package br.senac.tads.pi3.blacksystem.servlet;
 
+import br.senac.tads.pi3.blacksystem.ablack.ServicoDAO;
+import br.senac.tads.pi3.blacksystem.entity.Servico;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -61,7 +65,19 @@ public class ServicoCadastrarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+        Servico ser= new Servico();
+        ser.setDescricaoServico(request.getParameter("nome"));
+        ser.setTipoServico(request.getParameter("tipoServico"));
+        ser.setPreco(Float.parseFloat(request.getParameter("valor")));
+        ser.setPrazo(request.getParameter("prazo"));
+        
+        ServicoDAO sDao= new ServicoDAO();
+        try {
+            sDao.cadastrarServico(ser);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServicoCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

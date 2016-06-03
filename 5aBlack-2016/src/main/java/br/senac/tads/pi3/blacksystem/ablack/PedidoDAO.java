@@ -31,31 +31,31 @@ public class PedidoDAO extends Conexao {
  /*=================================================================
          Aqui inserimos o pedido no banco, fazendo assim ele gerar um ID
          ====================================================================*/
-    public void cadastrarPedido(Cliente cliente)//, Funcionario funcionario, 
-            throws ClassNotFoundException {
-
-        Connection conn = null;
-        PreparedStatement stm = null;
-      
-      
-        try {
-            String QUERY_INSERT_PEDIDO = "INSERT IN TO PEDIDO( STATUS, DATA_ENTRADA, ID_CLIENTE)"+ "VALUES (?, ?, ?)";
-
-            conn = getConexao();
-            stm = conn.prepareStatement(QUERY_INSERT_PEDIDO);
-            
-            stm.setString(1, "ABERTO");
-            stm.setDate(2, new java.sql.Date(1009 - 03 - 03));
-            stm.setInt(3, 3);
-            stm.executeUpdate();
-            stm.close();
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println("Erro de conexão");
-        } catch (NullPointerException e) {
-            System.out.println("Dao não inicializado");
-        }
-    }
+//    public void cadastrarPedido(Cliente cliente)//, Funcionario funcionario, 
+//            throws ClassNotFoundException {
+//
+//        Connection conn = null;
+//        PreparedStatement stm = null;
+//      
+//      
+//        try {
+//            String QUERY_INSERT_PEDIDO = "INSERT IN TO PEDIDO( STATUS, DATA_ENTRADA, ID_CLIENTE)"+ "VALUES (?, ?, ?)";
+//
+//            conn = getConexao();
+//            stm = conn.prepareStatement(QUERY_INSERT_PEDIDO);
+//            
+//            stm.setString(1, "ABERTO");
+//            stm.setDate(2, new java.sql.Date(1009 - 03 - 03));
+//            stm.setInt(3, 3);
+//            stm.executeUpdate();
+//            stm.close();
+//            conn.close();
+//        } catch (SQLException e) {
+//            System.out.println("Erro de conexão");
+//        } catch (NullPointerException e) {
+//            System.out.println("Dao não inicializado");
+//        }
+//    }
 
     /*=================================================================
      Inseriu o pedido no banco 
@@ -63,17 +63,16 @@ public class PedidoDAO extends Conexao {
     public int consultaPedido(Pedido ped, Cliente cli) throws ClassNotFoundException {
         Connection conn = null;
         Statement stm = null;
-        PreparedStatement pstm = null;
         ResultSet rs = null;
 
         try {
             conn = getConexao();
             stm = conn.createStatement();
-            rs = stm.executeQuery("select ID_PEDIDO FROM PEDIDO WHERE ID_CLIENTE ='" + 1 + "'");
+            rs = stm.executeQuery("select * FROM PEDIDO WHERE ID_CLIENTE ='1'");
 
-            rs.next();
+            while(rs.next()){
             ped.setIdPedido(rs.getInt("ID_PEDIDO"));
-
+            }
             stm.close();
             conn.close();
 
