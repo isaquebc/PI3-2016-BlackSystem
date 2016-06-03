@@ -10,6 +10,9 @@ import br.senac.tads.pi3.blacksystem.entity.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,12 +29,13 @@ public class ClienteBuscarServlet extends HttpServlet {
 
     public List clientes(){
         List lista = new ArrayList<>();
-        
+        Calendar c = new GregorianCalendar();
         Cliente cliente = new Cliente();
         cliente.setCelular("00 90000-0000");
         cliente.setCep("89899-000");
         cliente.setCidade("bufunfa");
         cliente.setCpf("000.000.000-00");
+        cliente.setNasc((Date) c.getTime());
         cliente.setEmail("xxxxxxxxxxx@mailzika.com");
         cliente.setEstado("Porto Rico");
         cliente.setNome("Mala");
@@ -45,6 +49,7 @@ public class ClienteBuscarServlet extends HttpServlet {
         cliente2.setCep("89899-000");
         cliente2.setCidade("bufunfa");
         cliente2.setCpf("000.000.000-00");
+        cliente2.setNasc((Date) c.getTime());
         cliente2.setEstado("Porto Rico");
         cliente2.setNome("Mala");
         cliente2.setNumero(4);
@@ -57,6 +62,7 @@ public class ClienteBuscarServlet extends HttpServlet {
         cliente4.setCep("89899-000");
         cliente4.setCidade("bufunfa");
         cliente4.setCpf("000.000.000-00");
+        cliente4.setNasc((Date) c.getTime());
         cliente4.setEmail("xxxxxxxxxxx@mailzika.com");
         cliente4.setEstado("Porto Rico");
         cliente4.setNome("Mala");

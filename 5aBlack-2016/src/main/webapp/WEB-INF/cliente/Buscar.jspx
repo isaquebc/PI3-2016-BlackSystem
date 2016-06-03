@@ -6,6 +6,7 @@
 -->
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
           xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
           version="2.0">
     <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
 
@@ -66,7 +67,10 @@
                                         <td>${cliente.cpf}</td>
                                         <td>${cliente.nome}</td>
                                         <td>${cliente.sobrenome}</td>
-                                        <td>${cliente.nasc}</td>
+                                        <td>
+                                        <fmt:formatDate value="${cliente.nasc}" 
+                                pattern="dd/MM/yyyy" />
+                                        </td>
                                         <td>${cliente.telefone}</td>
                                         <td>${cliente.celular}</td>
                                         <td>${cliente.email}</td>

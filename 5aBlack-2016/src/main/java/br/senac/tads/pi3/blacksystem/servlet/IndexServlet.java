@@ -86,11 +86,7 @@ public class IndexServlet extends HttpServlet {
         } catch (Exception e) {
             System.out.println(e);
         }
-        
-        
-        
-        
-        
+
         usuarioLogado = usuarioLogado.validar(usuarioBanco);
         
         if (usuarioLogado != null) {
@@ -103,7 +99,7 @@ public class IndexServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/HomeServlet");
             return;
         }
-        response.sendRedirect(request.getContextPath() + "/index.html");    
+        response.sendRedirect(request.getContextPath() + "/acessoNegado.jspx");    
         
         usuario.put(usuarioBanco.getCpf(), usuarioBanco);
         

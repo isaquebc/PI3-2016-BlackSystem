@@ -5,8 +5,11 @@
  */
 package br.senac.tads.pi3.blacksystem.servlet;
 
+import br.senac.tads.pi3.blacksystem.ablack.ClienteCadastroDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -60,7 +63,15 @@ public class ValidarCpfServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String cpf = request.getParameter("cpf");
+        
+        ClienteCadastroDAO cadCli= new ClienteCadastroDAO();
+        try {
+            cadCli.buscaNome(cpf);
+        } catch (ClassNotFoundException ex) {
+            request.getRequestDispatcher("/ClienteCadastrarServlet").forward(request, response);
+        }
+        request.getRequestDispatcher("PedidoGerarServlet").forward(request, response);
     }
 
     /**

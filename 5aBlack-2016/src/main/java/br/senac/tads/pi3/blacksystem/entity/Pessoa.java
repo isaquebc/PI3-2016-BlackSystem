@@ -5,8 +5,9 @@
  */
 package br.senac.tads.pi3.blacksystem.entity;
 
-import java.sql.Date;
+
 import static java.sql.Types.NULL;
+import java.util.Date;
 
 /**
  *
@@ -26,7 +27,7 @@ public abstract class Pessoa {
     private String estado="";
     private String cidade="";
     private String cep="";
-    private String nasc=null;
+    private Date nasc=null;
     private String status="";
     private String sexo="";
 
@@ -167,11 +168,11 @@ public abstract class Pessoa {
     public void setCep(String cep) {
         this.cep = cep;
     }
-    public String getNasc() {
+    public Date getNasc() {
         return nasc;
     }
 
-    public void setNasc(String nasc) {
+    public void setNasc(Date nasc) {
         this.nasc = nasc;
     }
 
