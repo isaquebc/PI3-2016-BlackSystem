@@ -9,6 +9,7 @@ import br.senac.tads.pi3.blacksystem.ablack.ClienteCadastroDAO;
 import br.senac.tads.pi3.blacksystem.ablack.EnderecoClienteDAO;
 import br.senac.tads.pi3.blacksystem.entity.Cliente;
 import br.senac.tads.pi3.blacksystem.entity.Endereco;
+import br.senac.tads.pi3.blacksystem.entity.Mensagem;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -27,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Rafael
  */
-@WebServlet(name="ClienteCadastrarServlet",urlPatterns = {"/ClienteCadastrarServlet"})
+@WebServlet(name = "ClienteCadastrarServlet", urlPatterns = {"/ClienteCadastrarServlet"})
 public class ClienteCadastrarServlet extends HttpServlet {
 
     /**
@@ -41,10 +42,9 @@ public class ClienteCadastrarServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      
+
     }
 
-    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -71,11 +71,11 @@ public class ClienteCadastrarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ClienteCadastroDAO cadCli= new ClienteCadastroDAO();
+        ClienteCadastroDAO cadCli = new ClienteCadastroDAO();
         EnderecoClienteDAO DAOenddCli = new EnderecoClienteDAO();
-        Endereco endCli= new Endereco();
-        Cliente cli= new Cliente();
-        DateFormat form= new SimpleDateFormat("dd/mm/yyyy");
+        Endereco endCli = new Endereco();
+        Cliente cli = new Cliente();
+        DateFormat form = new SimpleDateFormat("dd/mm/yyyy");
 //        try{
 //            java.util.Date data= form.parse(request.getParameter());
 //
@@ -84,29 +84,40 @@ public class ClienteCadastrarServlet extends HttpServlet {
 //
 //        }
         cli.setCpf(request.getParameter("cpf"));
-        cli.setNome( request.getParameter("nome"));
-        cli.setSobrenome(request.getParameter("sobrenome" ));
+        cli.setNome(request.getParameter("nome").toUpperCase());
+        cli.setSobrenome(request.getParameter("sobrenome").toUpperCase());
         cli.setTelefone(request.getParameter("telefone"));
         cli.setCelular(request.getParameter("celular"));
-        cli.setSexo("M");
+        cli.setSexo(request.getParameter("sexo").toUpperCase());
         cli.setEmail(request.getParameter("email"));
 //        endCli.setEndereco( request.getParameter("rua"));
-//        
 //        endCli.setEstado(request.getParameter("estado"));
 //        endCli.setCidade(null); request.getParameter("cidade");
 //        endCli.setCep( request.getParameter( "cep"));
 //        
-        try {
-            cadCli.cadatrarPessoa(cli);
-            
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch(NullPointerException ex){
-            
-            
+
+        if (cli.validar()) {
+            try {
+                cadCli.cadatrarPessoa(cli);
+                Mensagem msg = new Mensagem();
+                msg.setTitulo("Cadastrar Cliente");
+                msg.setTexto("Cliente cadastrado com sucesso!");
+                msg.setDestino("ClienteCadastrarServlet");
+                request.setAttribute("msg", msg);
+                request.getRequestDispatcher("Mensagem.jspx").forward(request, response);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NullPointerException ex) {
+
+            }
+        } else {
+            Mensagem msg = new Mensagem();
+            msg.setTitulo("Cadastrar Cliente");
+            msg.setTexto("Erro no cadastro, tente novamente.");
+            msg.setDestino("ClienteCadastrarServlet");
+            request.setAttribute("msg", msg);
+            request.getRequestDispatcher("Mensagem.jspx").forward(request, response);
         }
-        
     }
 
     /**

@@ -23,7 +23,7 @@
             <link href="${cssAtual}" rel="stylesheet"/>
             <script src="${scriptAtual}" type="text/javascript">.</script>
             <title>5aBlack - Buscar Pedido</title>
-            
+
         </head>
         <body>
             <jsp:include page="../inicial/Menu.jspx" />
@@ -44,8 +44,15 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="sexo" class="col-md-2">Sexo</label>
+                                    
+                                    <label class="btn btn-default"><input type="radio" value="M" name="sexo"/>Homem</label>
+                                    <label class="btn btn-default"><input type="radio" value="F" name="sexo"/>Mulher</label>
+                                    
+                                </div>
+                                <div class="form-group">
                                     <label for="dtContratacao">Data de Nascimento</label>
-                                    <input type="date" required="" class="form-control" name="dt-Nascimento" id="dtNascimento"/>
+                                    <input type="date" class="form-control" name="dt-Nascimento" id="dtNascimento"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="telefone">Telefone</label>
@@ -53,7 +60,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="celular">Celular</label>
-                                    <input type="text" class="form-control" name="celular" id="cel" maxlength="13" OnKeyPress="formatar('##-#####-####', this)" />
+                                    <input type="text" required="" class="form-control" name="celular" id="cel" maxlength="13" OnKeyPress="formatar('##-#####-####', this)" />
                                 </div>
                                 <div class="form-group">
                                     <label for="cpf">CPF</label>

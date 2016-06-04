@@ -7,6 +7,7 @@ package br.senac.tads.pi3.blacksystem.servlet;
 
 import br.senac.tads.pi3.blacksystem.ablack.FuncionarioDAO;
 import br.senac.tads.pi3.blacksystem.entity.Criptografia;
+import br.senac.tads.pi3.blacksystem.entity.Mensagem;
 import br.senac.tads.pi3.blacksystem.entity.Usuario;
 import java.io.IOException;
 import java.util.HashMap;
@@ -99,8 +100,12 @@ public class IndexServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/HomeServlet");
             return;
         }
-        response.sendRedirect(request.getContextPath() + "/acessoNegado.jspx");    
-        
+        Mensagem msg = new Mensagem();
+        msg.setTitulo("Login Invalido");
+        msg.setTexto("Acesso negado, verifique usuario ou senha e tente novamente.");
+        msg.setDestino("index.html");
+        request.setAttribute("msg", msg);
+        request.getRequestDispatcher("Mensagem.jspx").forward(request, response);        
         usuario.put(usuarioBanco.getCpf(), usuarioBanco);
         
         

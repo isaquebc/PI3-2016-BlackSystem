@@ -5,10 +5,16 @@
  */
 package br.senac.tads.pi3.blacksystem.servlet;
 
+import br.senac.tads.pi3.blacksystem.ablack.ChamadoDAO;
 import br.senac.tads.pi3.blacksystem.ablack.ClienteCadastroDAO;
 import br.senac.tads.pi3.blacksystem.entity.Chamado;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -64,21 +70,23 @@ public class ChamadoAbrirServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ClienteCadastroDAO cadChamado = new ClienteCadastroDAO();
-        
+        ChamadoDAO cadChamado = new ChamadoDAO();
         Chamado chamado = new Chamado();
-        chamado.setDataAbertura(null);
-        chamado.setDescricao(request.getParameter("Desc"));
-        chamado.setTipoSolicitacao(request.getParameter("categoria"));
-        chamado.setStatus("Abt");
-        //chamado.setIdFuncionario(CPF DO FUNCIONARIO);
-//        try {
-//            cadChamado.cadastrarChamado(chamado);
-//        } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(ChamadoAbrirServlet.class.getName()).log(Level.SEVERE, null, ex);
-//        }catch (NullPointerException ex){
-//            
-//        }
+        Calendar c = Calendar.getInstance();
+        DateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
+        chamado.setDataAbertura(formatar.format(c.getTime()));
+
+        chamado.setDescricao(request.getParameter("desc").toUpperCase());
+        chamado.setStatus(("aberto").toUpperCase());
+        chamado.setTipoSolicitacao(request.getParameter("categoria").toUpperCase());
+        
+        try {
+            cadChamado.cadastrarChamado(chamado);
+            
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ChamadoAbrirServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 
@@ -91,5 +99,4 @@ public class ChamadoAbrirServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }
-
 }

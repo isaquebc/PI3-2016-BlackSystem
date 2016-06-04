@@ -56,19 +56,7 @@ public abstract class Pessoa {
     }
 
     public Pessoa() {
-        this.nome = "";
-        this.sobrenome = "";
-        this.cpf = "";
-        this.telefone = "";
-        this.celular = "";
-        this.email = "";
-        this.rua = "";
-        this.numero = 0;
-        this.estado = "";
-        this.cidade = "";
-        this.cep = "";
-        this.nasc = null;
-        this.status= "";
+    
     }
 
     public int getId() {

@@ -67,8 +67,8 @@ public class ServicoCadastrarServlet extends HttpServlet {
             throws ServletException, IOException {
 
         Servico ser= new Servico();
-        ser.setDescricaoServico(request.getParameter("nome"));
-        ser.setTipoServico(request.getParameter("tipoServico"));
+        ser.setDescricaoServico(request.getParameter("nome").toUpperCase());
+        ser.setTipoServico(request.getParameter("tipoServico").toUpperCase());
         ser.setPreco(Float.parseFloat(request.getParameter("valor")));
         ser.setPrazo(request.getParameter("prazo"));
         

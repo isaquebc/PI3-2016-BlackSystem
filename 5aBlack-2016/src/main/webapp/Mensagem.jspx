@@ -28,10 +28,18 @@
             <title>5aBlack</title>
         </head>
         <body>
-            <div class="jumbotron">
-                <p>Acesso Negado</p>
-                Entre em contato com seu superior ou clique em esqueci minha senha.
-                <a href="index.html">Voltar</a>
+            <div class="container" >
+                <div class="row" >
+                    <div class="col-md-offset-2 col-md-6" >
+                        <div class="jumbotron">
+                            <div class="jumbotron">
+                                <p>${msg.titulo}</p>
+                                ${msg.texto}
+                            </div>
+                            <a href="${msg.destino}"><button class="btn btn-default" type="button">Voltar</button></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </body>
     </html>

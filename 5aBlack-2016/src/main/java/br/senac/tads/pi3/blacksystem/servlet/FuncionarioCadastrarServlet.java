@@ -84,22 +84,22 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
 
         Endereco end = new Endereco();
         
-        func.setNome( request.getParameter("nome"));
-        func.setSobrenome(request.getParameter("sobrenome" ));
+        func.setNome( request.getParameter("nome").toUpperCase());
+        func.setSobrenome(request.getParameter("sobrenome" ).toUpperCase());
         func.setTelefone(request.getParameter("telefone"));
         func.setCelular(request.getParameter("celular"));
         func.setEmail(request.getParameter("email"));
         func.setDataNascimento(request.getParameter("dtNascimento"));
         func.setDataContratacao(request.getParameter("dtContratacao"));
-        func.setCargo(request.getParameter("cargo"));
+        func.setCargo(request.getParameter("cargo").toUpperCase());
         func.setSalario(Float.parseFloat(request.getParameter("salario")));
         func.setHashSenha(request.getParameter("senha"));
         func.setCpf(request.getParameter("cpf"));
         ////        func.setDataContratacao(request.getParameter("2000-01-01"));
         
-        System.err.println(request.getParameter("filial-Trabalho"));
+        System.err.println(request.getParameter("filial-Trabalho").toUpperCase());
         try {
-            func.setFilial(funcDAO.buscarFilial(request.getParameter("filial-Trabalho")));
+            func.setFilial(funcDAO.buscarFilial(request.getParameter("filial-Trabalho").toUpperCase()));
             funcDAO.cadastrarFuncionario(func);
             
         } catch (ClassNotFoundException ex) {

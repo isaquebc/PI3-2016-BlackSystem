@@ -71,8 +71,8 @@ public class ProdutoCadastrarServlet extends HttpServlet {
         System.err.println("sadasdasdasdasd");
         TipoProduto tipo=new TipoProduto();
         
-        String nome=(request.getParameter("tipo"));
-        p.setNome(request.getParameter("nome"));
+        String nome=(request.getParameter("tipo").toUpperCase());
+        p.setNome(request.getParameter("nome").toUpperCase());
         p.setValidade(request.getParameter("validade"));
         p.setLote(Integer.parseInt(request.getParameter("lote")));
         p.setQtdMin(Integer.parseInt(request.getParameter("qtdMinima")));
@@ -80,7 +80,7 @@ public class ProdutoCadastrarServlet extends HttpServlet {
         p.setQtdAtual(Integer.parseInt(request.getParameter("qtdAtual")));
         
         MovimentoProduto m = new MovimentoProduto();
-        m.setDescricao("Produto cadastrado");
+        m.setDescricao("Produto cadastrado".toUpperCase());
         m.setIdFilial(1);
         m.setIdFuncionaro(2);
         m.setIdProduto(1);

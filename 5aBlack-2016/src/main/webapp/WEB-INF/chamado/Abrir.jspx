@@ -42,7 +42,7 @@
                             </div>                        
                             <div class="form-group">
                                 <label for="Descricao">Descrição do Chamado</label>
-                                <textarea class="form-control" rows="5" id="Desc" name="Desc" required="" >.</textarea>
+                                <textarea class="form-control" rows="5" id="Desc" name="desc" required="" value=" ">Descreva sua solicitação...</textarea>
                             </div>
                             <div class="form-group">
                                 <button  type="submit" class="btn btn-default btn-primary btn-block" id="enviar"  > Enviar Chamado </button>

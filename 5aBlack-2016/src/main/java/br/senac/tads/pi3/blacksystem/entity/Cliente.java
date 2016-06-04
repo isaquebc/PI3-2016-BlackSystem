@@ -22,7 +22,13 @@ public class Cliente extends Pessoa{
         
     }
 
-    
+    public boolean validar(){
+        if(getNome() != null && getCpf() != null && getSobrenome() != null 
+                && getSexo() != null && getCelular() != null && getEmail() != null){
+        return true;
+    }
+        return false;
+    }
     
     
     
