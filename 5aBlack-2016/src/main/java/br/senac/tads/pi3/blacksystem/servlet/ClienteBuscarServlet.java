@@ -9,11 +9,14 @@ import br.senac.tads.pi3.blacksystem.ablack.ClienteCadastroDAO;
 import br.senac.tads.pi3.blacksystem.entity.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,51 +32,12 @@ public class ClienteBuscarServlet extends HttpServlet {
 
     public List clientes(){
         List lista = new ArrayList<>();
-        Calendar c = new GregorianCalendar();
-        Cliente cliente = new Cliente();
-        cliente.setCelular("00 90000-0000");
-        cliente.setCep("89899-000");
-        cliente.setCidade("bufunfa");
-        cliente.setCpf("000.000.000-00");
-        cliente.setNasc( c.getTime());
-        cliente.setEmail("xxxxxxxxxxx@mailzika.com");
-        cliente.setEstado("Porto Rico");
-        cliente.setNome("Mala");
-        cliente.setNumero(0);
-        cliente.setRua("Uma rua ai manoloko");
-        cliente.setSobrenome("Aquele la mano");
-        cliente.setTelefone("00 00000-0000");
-        
-        Cliente cliente2 = new Cliente();
-        cliente2.setCelular("00 90000-0000");
-        cliente2.setCep("89899-000");
-        cliente2.setCidade("bufunfa");
-        cliente2.setCpf("000.000.000-00");
-        cliente2.setNasc((Date) c.getTime());
-        cliente2.setEstado("Porto Rico");
-        cliente2.setNome("Mala");
-        cliente2.setNumero(4);
-        cliente2.setRua("Uma rua ai manoloko");
-        cliente2.setSobrenome("Aquele la mano");
-        cliente2.setTelefone("00 00000-0000");
-        
-        Cliente cliente4 = new Cliente();
-        cliente4.setCelular("00 90000-0000");
-        cliente4.setCep("89899-000");
-        cliente4.setCidade("bufunfa");
-        cliente4.setCpf("000.000.000-00");
-        cliente4.setNasc((Date) c.getTime());
-        cliente4.setEmail("xxxxxxxxxxx@mailzika.com");
-        cliente4.setEstado("Porto Rico");
-        cliente4.setNome("Mala");
-        cliente4.setNumero(2);
-        cliente4.setRua("Uma rua ai manoloko");
-        cliente4.setSobrenome("Aquele la mano");
-        cliente4.setTelefone("00 00000-0000");
-        
-        lista.add(cliente);
-        lista.add(cliente2);
-        lista.add(cliente4);
+        ClienteCadastroDAO cadCliente = new ClienteCadastroDAO();
+        try {
+            lista = cadCliente.listarClinte();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteBuscarServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
         return lista;   

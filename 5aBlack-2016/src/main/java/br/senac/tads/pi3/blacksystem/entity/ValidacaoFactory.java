@@ -26,7 +26,7 @@ public class ValidacaoFactory {
             retorno+="Nome em branco! <br/> ";
         }
         
-        if (cliente.getCpf().length()<= 2 ||  !cliente.isCpf()) {
+        if (cliente.getCpf().length()<= 2 ||  !cliente.isCpf(cliente.getCpf())) {
             estado=true;
              retorno+="CPF invalido ou em branco! <br/> " ;
         }
