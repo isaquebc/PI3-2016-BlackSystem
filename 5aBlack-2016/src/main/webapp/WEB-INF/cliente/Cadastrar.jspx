@@ -6,6 +6,7 @@
 -->
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
           xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
           version="2.0">
     <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
     <jsp:output omit-xml-declaration="true"
@@ -52,7 +53,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="dtContratacao">Data de Nascimento</label>
-                                    <input type="date" class="form-control" name="dt-Nascimento" id="dtNascimento"/>
+                                   <input   type="date" class="form-control" name="dt-Nascimento" id="dtNascimento"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="telefone">Telefone</label>

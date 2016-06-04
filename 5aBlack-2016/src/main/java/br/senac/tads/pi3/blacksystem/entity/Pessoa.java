@@ -30,6 +30,7 @@ public abstract class Pessoa {
     private Date nasc=null;
     private String status="";
     private String sexo="";
+    private Date dtCadastro=null;
 
     public String getSexo() {
         return sexo;
@@ -41,23 +42,21 @@ public abstract class Pessoa {
     
 
     public Pessoa(int id, String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
-        this.id = id;
-        this.nome = nome;
-        this.sobrenome = sonbrenome;
-        this.cpf = cpf;
-        this.telefone = telefone;
-        this.celular = celular;
-        this.email = email;
-        this.rua = rua;
-        this.numero = numero;
-        this.estado = estado;
-        this.cidade = cidade;
-        this.cep = cep;
     }
 
     public Pessoa() {
     
     }
+
+    public Date getDtCadastro() {
+        return dtCadastro;
+    }
+
+    public void setDtCadastro(Date dtCadastro) {
+        this.dtCadastro = dtCadastro;
+    }
+    
+    
 
     public int getId() {
         return id;

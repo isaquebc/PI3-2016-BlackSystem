@@ -11,11 +11,10 @@ import br.senac.tads.pi3.blacksystem.entity.Cliente;
 import br.senac.tads.pi3.blacksystem.entity.Endereco;
 import br.senac.tads.pi3.blacksystem.entity.Mensagem;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Date;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -75,14 +74,8 @@ public class ClienteCadastrarServlet extends HttpServlet {
         EnderecoClienteDAO DAOenddCli = new EnderecoClienteDAO();
         Endereco endCli = new Endereco();
         Cliente cli = new Cliente();
-        DateFormat form = new SimpleDateFormat("dd/mm/yyyy");
-//        try{
-//            java.util.Date data= form.parse(request.getParameter());
-//
-//        }
-//        catch (ParseException e){
-//
-//        }
+        SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd");
+
         cli.setCpf(request.getParameter("cpf"));
         cli.setNome(request.getParameter("nome").toUpperCase());
         cli.setSobrenome(request.getParameter("sobrenome").toUpperCase());
@@ -90,27 +83,43 @@ public class ClienteCadastrarServlet extends HttpServlet {
         cli.setCelular(request.getParameter("celular"));
         cli.setSexo(request.getParameter("sexo").toUpperCase());
         cli.setEmail(request.getParameter("email"));
+        String dtNascStr = request.getParameter("dt-Nascimento");
+        Date nasc= null;
+        try {
+            nasc = form.parse(dtNascStr);
+        } catch (ParseException ex) {
+            Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+       cli.setNasc(nasc);
+       cli.setDtCadastro(new Date());
+       
+
 //        endCli.setEndereco( request.getParameter("rua"));
 //        endCli.setEstado(request.getParameter("estado"));
 //        endCli.setCidade(null); request.getParameter("cidade");
 //        endCli.setCep( request.getParameter( "cep"));
 //        
-
         if (cli.validar()) {
             try {
                 cadCli.cadatrarPessoa(cli);
-                Mensagem msg = new Mensagem();
-                msg.setTitulo("Cadastrar Cliente");
-                msg.setTexto("Cliente cadastrado com sucesso!");
-                msg.setDestino("ClienteCadastrarServlet");
+                /*=============================================================
+                 Mensagem de sucesso
+                 ===============================================================*/
+                Mensagem msg = new Mensagem("Cadastrar Cliente", "Cliente cadastrado com sucesso!",
+                        "ClienteCadastrarServlet");
                 request.setAttribute("msg", msg);
                 request.getRequestDispatcher("Mensagem.jspx").forward(request, response);
+
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
             } catch (NullPointerException ex) {
 
             }
         } else {
+            /*=============================================================
+             Mensagem de Erro
+             ===============================================================*/
             Mensagem msg = new Mensagem();
             msg.setTitulo("Cadastrar Cliente");
             msg.setTexto("Erro no cadastro, tente novamente.");

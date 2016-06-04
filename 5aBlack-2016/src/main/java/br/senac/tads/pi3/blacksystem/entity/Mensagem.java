@@ -15,6 +15,14 @@ public class Mensagem {
     private String texto;
     private String destino;
 
+    public Mensagem(String titulo, String texto, String destino) {
+        this.titulo = titulo;
+        this.texto = texto;
+        this.destino = destino;
+    }
+
+     
+   
     public Mensagem() {
     }
 

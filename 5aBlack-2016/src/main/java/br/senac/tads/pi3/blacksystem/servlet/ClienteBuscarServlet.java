@@ -35,7 +35,7 @@ public class ClienteBuscarServlet extends HttpServlet {
         cliente.setCep("89899-000");
         cliente.setCidade("bufunfa");
         cliente.setCpf("000.000.000-00");
-        cliente.setNasc((Date) c.getTime());
+        cliente.setNasc( c.getTime());
         cliente.setEmail("xxxxxxxxxxx@mailzika.com");
         cliente.setEstado("Porto Rico");
         cliente.setNome("Mala");

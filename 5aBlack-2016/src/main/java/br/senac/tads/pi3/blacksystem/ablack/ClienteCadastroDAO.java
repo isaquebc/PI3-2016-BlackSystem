@@ -24,7 +24,7 @@ import java.util.Date;
 public class ClienteCadastroDAO extends Conexao {
 
     String QUERY_INSERT_CLIENTE = "insert into CLIENTE( NOME_CLIENTE, SOBRENOME_CLIENTE, SEXO_CLIENTE, NASC_CLIENTE,"
-            + "TEL_CLIENTE, CEL_CLIENTE,EMAIL_CLIENTE,STATUS_CLIENTE,CPF_CLIENTE)"+" values(?,?,?,?,?,?,?,?,?)";
+            + "TEL_CLIENTE, CEL_CLIENTE,EMAIL_CLIENTE,STATUS_CLIENTE,CPF_CLIENTE, DTCADASTRO_CLIENTE)"+" values(?,?,?,?,?,?,?,?,?,?)";
     
     public void cadatrarPessoa(Cliente cli) throws ClassNotFoundException  {
         
@@ -38,12 +38,15 @@ public class ClienteCadastroDAO extends Conexao {
                 stm.setString(1, cli.getNome());
                 stm.setString(2, cli.getSobrenome());
                 stm.setString(3,cli.getSexo());
-                stm.setDate(4, new java.sql.Date(1009 - 03 - 03));
+                Date data = new java.sql.Date(cli.getNasc().getTime());
+                stm.setDate(4, (java.sql.Date) data);
                 stm.setString(5, cli.getTelefone());
                 stm.setString(6, cli.getCelular());
                 stm.setString(7, cli.getEmail());
                 stm.setString(8, "ATIVO");
                 stm.setString(9, cli.getCpf());
+                Date dtC = new java.sql.Date(cli.getDtCadastro().getTime());
+                stm.setDate(10, (java.sql.Date) dtC);
                 stm.executeUpdate();
                 stm.close();
                 conn.close();
