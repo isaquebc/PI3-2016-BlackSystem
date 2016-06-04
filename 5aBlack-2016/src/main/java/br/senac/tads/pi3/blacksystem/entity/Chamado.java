@@ -12,7 +12,7 @@ import java.sql.Date;
  * @author Isaque
  */
 public class Chamado {
-    
+
     private Integer idChamado;
     private String descricao;
     private String status;
@@ -29,11 +29,12 @@ public class Chamado {
         this.dataAbertura = dataAbertura;
         this.tipoSolicitacao = tipoSolicitacao;
     }
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
 
     public void setIdChamado(Integer idChamado) {
         this.idChamado = idChamado;
     }
-    
+
     public Integer getIdChamado() {
         return idChamado;
     }
@@ -41,7 +42,7 @@ public class Chamado {
     public Integer getIdFuncionario() {
         return idFuncionario;
     }
-    
+
     public String getDescricao() {
         return descricao;
     }
@@ -72,8 +73,5 @@ public class Chamado {
 
     public void setTipoSolicitacao(String tipoSolicitacao) {
         this.tipoSolicitacao = tipoSolicitacao;
-    }
-    
-    
-    
+    }// </editor-fold>
 }

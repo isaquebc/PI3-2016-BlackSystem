@@ -20,6 +20,8 @@ public class RelatorioCliente {
     private double total;
     private String filial;
 
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+    
     public int getId() {
         return id;
     }
@@ -82,7 +84,5 @@ public class RelatorioCliente {
 
     public void setFilial(String filial) {
         this.filial = filial;
-    }
-    
-    
+    }// </editor-fold>
 }

@@ -10,12 +10,8 @@ package br.senac.tads.pi3.blacksystem.entity;
  * @author Isaque
  */
 public class TipoProduto {
-    
-    private int idTipo;
 
-    public void setIdTipo(Integer idTipo) {
-        this.idTipo = idTipo;
-    }
+    private int idTipo;
     private String nome;
     private String descricao;
 
@@ -26,11 +22,16 @@ public class TipoProduto {
         this.nome = nome;
         this.descricao = descricao;
     }
-    
+
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+    public void setIdTipo(Integer idTipo) {
+        this.idTipo = idTipo;
+    }
+
     public Integer getIdTipo() {
         return idTipo;
-    }    
-    
+    }
+
     public String getNome() {
         return nome;
     }
@@ -45,8 +46,5 @@ public class TipoProduto {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-    
-    
-    
+    }// </editor-fold>
 }

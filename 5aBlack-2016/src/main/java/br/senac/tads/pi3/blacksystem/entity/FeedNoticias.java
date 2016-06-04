@@ -29,6 +29,8 @@ public class FeedNoticias {
         this.idFuncionario = idFuncionario;
     }
     
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+    
     public Integer getId() {
         return id;
     } 
@@ -63,7 +65,5 @@ public class FeedNoticias {
 
     public void setIdFuncionario(Integer idFuncionario) {
         this.idFuncionario = idFuncionario;
-    }
-    
-    
+    }// </editor-fold>
 }

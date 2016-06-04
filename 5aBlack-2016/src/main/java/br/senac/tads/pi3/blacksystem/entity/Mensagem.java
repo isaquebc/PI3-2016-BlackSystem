@@ -21,8 +21,9 @@ public class Mensagem {
         this.destino = destino;
     }
 
-     
-   
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+
+    
     public Mensagem() {
     }
 
@@ -48,7 +49,5 @@ public class Mensagem {
 
     public void setDestino(String destino) {
         this.destino = destino;
-    }
-    
-
+    }// </editor-fold>
 }

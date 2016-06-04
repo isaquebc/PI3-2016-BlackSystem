@@ -24,6 +24,8 @@ public class Pedido {
         this.dataSaida = dataSaida;
     }
     
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+    
     public int getIdPedido() {
         return idPedido;
     }
@@ -61,7 +63,5 @@ public class Pedido {
 
     public void setIdPedido(String listarCharado) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
+    }// </editor-fold>
 }

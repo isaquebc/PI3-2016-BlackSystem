@@ -21,6 +21,9 @@ public class MovimentoProduto {
     private int idFuncionaro;
     private int idFilial;
 
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+
+    
     public String getDescricao() {
         return descricao;
     }
@@ -91,7 +94,5 @@ public class MovimentoProduto {
 
     public void setIdFilial(int idFilial) {
         this.idFilial = idFilial;
-    }
-    
-    
+    }// </editor-fold>
 }

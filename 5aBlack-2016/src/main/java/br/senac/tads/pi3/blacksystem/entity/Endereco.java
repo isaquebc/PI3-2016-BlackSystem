@@ -22,6 +22,9 @@ public class Endereco {
     private String idCPF;
     private String numero;
 
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+
+    
     public String getIdCPF() {
         return idCPF;
     }
@@ -88,8 +91,6 @@ public class Endereco {
 
     public void setCep(String cep) {
         this.cep = cep;
-    }
-
-
+    }// </editor-fold>
 }
 

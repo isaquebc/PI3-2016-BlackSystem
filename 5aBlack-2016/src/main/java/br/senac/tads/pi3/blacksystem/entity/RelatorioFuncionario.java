@@ -18,6 +18,8 @@ public class RelatorioFuncionario {
     private String nomeFilial;
     private float valor;
 
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+    
     public int getId() {
         return id;
     }
@@ -66,6 +68,5 @@ public class RelatorioFuncionario {
         this.valor = valor;
     }
     
-    
-    
+    // </editor-fold>
 }

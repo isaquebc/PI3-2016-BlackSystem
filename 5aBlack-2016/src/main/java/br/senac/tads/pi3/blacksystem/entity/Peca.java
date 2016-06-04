@@ -34,7 +34,7 @@ public class Peca {
         this.idServico = idServico;
     } 
 
-    
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
     
     public String getDtRetirada() {
         return dtRetirada;
@@ -114,8 +114,5 @@ public class Peca {
 
     public void setTipoTecido(String tipoTecido) {
         this.tipoTecido = tipoTecido;
-    }
-    
-    
-    
+    }// </editor-fold>    
 }

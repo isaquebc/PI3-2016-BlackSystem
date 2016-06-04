@@ -17,6 +17,8 @@ public class RelatorioPedido {
     private int prazo;
     private String nomeFilial;
     
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+    
     public int getQtd() {
         return qtd;
     }
@@ -55,8 +57,5 @@ public class RelatorioPedido {
 
     public void setNomeFilial(String nomeFilial) {
         this.nomeFilial = nomeFilial;
-    }
-    
-    
-    
+    }// </editor-fold>
 }

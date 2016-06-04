@@ -19,6 +19,8 @@ public class RelatorioFilial {
     private int pedidos;
     private double valor;
 
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+    
     public int getIdFilial() {
         return idFilial;
     }
@@ -65,8 +67,5 @@ public class RelatorioFilial {
 
     public void setValor(double valor) {
         this.valor = valor;
-    }
-    
-    
-    
+    }// </editor-fold>
 }

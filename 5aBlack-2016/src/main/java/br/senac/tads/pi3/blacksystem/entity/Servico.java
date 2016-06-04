@@ -27,21 +27,16 @@ public class Servico {
         this.id = id;
     }
 
-    
-    
-    
-    
+    public Servico() {
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
     public String getDescricaoServico() {
         return descricaoServico;
     }
 
     public void setDescricaoServico(String descricaoServico) {
         this.descricaoServico = descricaoServico;
-    }
-
-    
-
-    public Servico() {
     }
 
     public String getTipoServico() {
@@ -74,5 +69,5 @@ public class Servico {
 
     public void setId(int id) {
         this.id = id;
-    }
+    }// </editor-fold>
 }

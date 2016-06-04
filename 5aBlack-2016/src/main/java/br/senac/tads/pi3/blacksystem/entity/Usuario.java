@@ -25,7 +25,7 @@ public class Usuario extends Funcionario{
         this.salt = salt;
     }
 
- 
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
 
     public String getSalt() {
         return salt;
@@ -33,9 +33,8 @@ public class Usuario extends Funcionario{
 
     public void setSalt(String salt) {
         this.salt = salt;
-    }
-    
-    
+    }// </editor-fold>
+        
     public Usuario validar(Usuario usuarioBanco) {
     if (this.getCpf() != null && this.getHashSenha().equals(usuarioBanco.getHashSenha())) {
       return this;

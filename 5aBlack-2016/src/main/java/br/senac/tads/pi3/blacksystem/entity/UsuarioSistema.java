@@ -51,6 +51,8 @@ public class UsuarioSistema implements Serializable {
         }
     }
 
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+    
     public String getCpf() {
         return cpf;
     }
@@ -69,7 +71,7 @@ public class UsuarioSistema implements Serializable {
 
     public void setCargo(String[] cargo) {
         this.cargo = cargo;
-    }
+    }// </editor-fold>
 
     /**
      * Geração do hash da senha usando algoritmo MD5 (mais comum). Não usado

@@ -31,6 +31,8 @@ public class Filial {
         this.estado = estado;
     }
     
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+    
     public String getIdFilial() {
         return idFilial;
     }  
@@ -85,9 +87,5 @@ public class Filial {
 
     public void setIdFilial(String idFilial) {
         this.idFilial = idFilial;
-    }
-    
-    
-    
-    
+    }// </editor-fold>    
 }

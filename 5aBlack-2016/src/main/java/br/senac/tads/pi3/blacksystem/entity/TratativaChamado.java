@@ -12,7 +12,7 @@ import java.sql.Date;
  * @author Isaque
  */
 public class TratativaChamado {
-    
+
     private Integer idTratativa;
     private Date dataFechamento;
     private String descricao;
@@ -27,6 +27,8 @@ public class TratativaChamado {
         this.descricao = descricao;
     }
     
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+
     public Integer getIdTratativa() {
         return idTratativa;
     }
@@ -53,8 +55,5 @@ public class TratativaChamado {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-    
-    
-    
+    }// </editor-fold>
 }

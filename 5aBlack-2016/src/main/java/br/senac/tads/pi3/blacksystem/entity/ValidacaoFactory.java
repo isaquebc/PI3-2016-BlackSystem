@@ -15,7 +15,8 @@ public class ValidacaoFactory {
         
     }    
     
-    public Erro validarCliente(Cliente cliente){
+    public Erro validarCliente(Cliente cliente){// <editor-fold defaultstate="collapsed" desc="Validação de Cliente.">
+
         
         String retorno= "";
         boolean estado=false;
@@ -57,5 +58,5 @@ public class ValidacaoFactory {
         
         Erro msg = new Erro(retorno, estado);
         return msg;
-    }
+    }// </editor-fold>
 }

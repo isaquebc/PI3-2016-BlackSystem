@@ -20,6 +20,8 @@ public class Produto {
     private int qtdMax;
     private int qtdAtual;
 
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+    
     public int getIdProduto() {
         return idProduto;
     }
@@ -90,7 +92,7 @@ public class Produto {
 
     public void setQtdAtual(int qtdAtual) {
         this.qtdAtual = qtdAtual;
-    }
+    }// </editor-fold>
 
     public Produto() {
     }

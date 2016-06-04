@@ -72,7 +72,7 @@ public class Funcionario extends Pessoa{
     private String dataNascimento;
 
     public Funcionario(String cargo, int filial, String dataContratacao, String dataNascimento, int id, String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
-        super(id, nome, sonbrenome, cpf, telefone, celular, email, rua, numero, estado, cidade, cep);
+        super();
         this.cargo = cargo;
         this.filial = filial;
         this.dataContratacao = dataContratacao;

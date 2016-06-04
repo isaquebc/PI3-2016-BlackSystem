@@ -19,6 +19,9 @@ public class Erro {
         this.existente = existente;
     }
     
+    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+
+    
     public boolean isExistente() {
         return existente;
     }
@@ -33,9 +36,5 @@ public class Erro {
 
     public void setMensagem(String Mensagem) {
         this.mensagem = Mensagem;
-    }
-    
-    
-    
-    
+    }// </editor-fold>  
 }
