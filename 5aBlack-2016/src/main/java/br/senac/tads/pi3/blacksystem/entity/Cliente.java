@@ -12,7 +12,7 @@ package br.senac.tads.pi3.blacksystem.entity;
 public class Cliente extends Pessoa{
 
     public Cliente(int id, String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
-        super(id, nome, sonbrenome, cpf, telefone, celular, email, rua, numero, estado, cidade, cep);
+        super();
         
     }
     
@@ -22,12 +22,9 @@ public class Cliente extends Pessoa{
         
     }
 
-    public boolean validar(){
-        if(getNome() != null && getCpf() != null && getSobrenome() != null 
-                && getSexo() != null && getCelular() != null && getEmail() != null){
-        return true;
-    }
-        return false;
+    public Erro validar(Cliente cliente){
+        ValidacaoFactory n = new ValidacaoFactory();
+        return  n.validarCliente(cliente);
     }
     
     

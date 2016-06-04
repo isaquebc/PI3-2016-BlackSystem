@@ -9,6 +9,7 @@ import br.senac.tads.pi3.blacksystem.ablack.ClienteCadastroDAO;
 import br.senac.tads.pi3.blacksystem.ablack.EnderecoClienteDAO;
 import br.senac.tads.pi3.blacksystem.entity.Cliente;
 import br.senac.tads.pi3.blacksystem.entity.Endereco;
+import br.senac.tads.pi3.blacksystem.entity.Erro;
 import br.senac.tads.pi3.blacksystem.entity.Mensagem;
 import java.io.IOException;
 import java.text.ParseException;
@@ -69,7 +70,7 @@ public class ClienteCadastrarServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException {
         ClienteCadastroDAO cadCli = new ClienteCadastroDAO();
         EnderecoClienteDAO DAOenddCli = new EnderecoClienteDAO();
         Endereco endCli = new Endereco();
@@ -100,7 +101,24 @@ public class ClienteCadastrarServlet extends HttpServlet {
 //        endCli.setCidade(null); request.getParameter("cidade");
 //        endCli.setCep( request.getParameter( "cep"));
 //        
-        if (cli.validar()) {
+       Erro er = cli.validar(cli);
+       boolean teste= er.isExistente();
+        if (teste) {
+            /*=============================================================
+             Mensagem de Erro
+             ===============================================================*/
+            Mensagem msg = new Mensagem();
+            msg.setTitulo("Cadastrar Cliente");
+            msg.setTexto("Erro no cadastro, "+er.getMensagem());
+            msg.setDestino("ClienteCadastrarServlet");
+            request.setAttribute("msg", msg);
+            try {
+                request.getRequestDispatcher("Mensagem.jspx").forward(request, response);
+            } catch (IOException ex) {
+                Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } else {
             try {
                 cadCli.cadatrarPessoa(cli);
                 /*=============================================================
@@ -115,17 +133,9 @@ public class ClienteCadastrarServlet extends HttpServlet {
                 Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
             } catch (NullPointerException ex) {
 
+            } catch (IOException ex) {
+                Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else {
-            /*=============================================================
-             Mensagem de Erro
-             ===============================================================*/
-            Mensagem msg = new Mensagem();
-            msg.setTitulo("Cadastrar Cliente");
-            msg.setTexto("Erro no cadastro, tente novamente.");
-            msg.setDestino("ClienteCadastrarServlet");
-            request.setAttribute("msg", msg);
-            request.getRequestDispatcher("Mensagem.jspx").forward(request, response);
         }
     }
 

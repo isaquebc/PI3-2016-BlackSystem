@@ -31,7 +31,7 @@
             <div class="container" >
                 <div class="row" >
                     <div class="col-md-offset-2 col-md-5" >
-                        <form class="form-signin" role="form" action="#" method="post" accept-charset="UTF-8"> <!-- NovoClienteServlet -->
+                        <form class="form-signin" role="form" action="#" method="post" accept-charset="UTF-8" name="cadCliente"> <!-- NovoClienteServlet -->
                             <fieldset> 
                                 <legend><h2>Cadastrar Cliente</h2></legend>
                                 <div class="form-group linha-unica">
@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="dtContratacao">Data de Nascimento</label>
-                                   <input   type="date" class="form-control" name="dt-Nascimento" id="dtNascimento"/>
+                                   <input   type="date" required="" class="form-control" name="dt-Nascimento" id="dtNascimento"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="telefone">Telefone</label>
@@ -63,9 +63,9 @@
                                     <label for="celular">Celular</label>
                                     <input type="text" required="" class="form-control" name="celular" id="cel" maxlength="13" OnKeyPress="formatar('##-#####-####', this)" />
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" id="campo-cpf">
                                     <label for="cpf">CPF</label>
-                                    <input type="text" required="" class="form-control" name="cpf" id ="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)"/>
+                                    <input type="text"  required="" class="form-control" name="cpf" id ="cpf" maxlength="14" data-dismiss="alert" onBlur="ValidarCPF(cadCliente.cpf);" OnKeyPress="formatar('###.###.###-##', this)"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">E-mail</label>
