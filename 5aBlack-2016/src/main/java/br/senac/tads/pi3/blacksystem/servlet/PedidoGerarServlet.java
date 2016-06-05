@@ -11,8 +11,10 @@ import br.senac.tads.pi3.blacksystem.ablack.ServicoDAO;
 import br.senac.tads.pi3.blacksystem.entity.*;
 import java.io.IOException;
 import java.sql.Array;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -86,47 +88,67 @@ public class PedidoGerarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Servico servico = new Servico();
+        Servico s = new Servico();
         ArrayList<Peca> pecas = new ArrayList<>();
-        Pedido pedido = new Pedido();
-        Cliente cliente = new Cliente();
+        Pedido p = new Pedido();
+        Cliente cli = new Cliente();
         Funcionario funcionario = new Funcionario();
-        
-        pedido.setDataEntrada(null);
-        pedido.setStatus("aberto");
-        pedido.setDataSaida(null);
-        
+        SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd");
+        p.setDataEntrada(null);
+        p.setStatus("aberto");
+        p.setDataSaida(null);
+
 //      Departamento dep= new Departamento();
-        
         /*======================================================================
-        Aqui ele gera um contador Cont, que serve para saber quantas linhas 
-        existem na tabela e assim fazer o looping
-        =======================================================================*/
-        int cont = Integer.parseInt(request.getParameter("cont"));  
-        for (int i=1;i<=cont;i ++) {
-            Peca peca= new Peca();
-            peca.setNomeServico(request.getParameter("servico"+i).toUpperCase());
-            peca.setTipoPeca(request.getParameter("tipoPeca"+i).toUpperCase());
-            peca.setTipoTecido(request.getParameter("tecido"+i).toUpperCase());
-            peca.setQdt(request.getParameter("qtd"+i));
-            peca.setCor(request.getParameter("cor"+i).toUpperCase());
+         Aqui ele gera um contador Cont, que serve para saber quantas linhas 
+         existem na tabela e assim fazer o looping
+         =======================================================================*/
+        String dtped ="";
+        Date ped = null;
+        Date aux= null;
+        int cont = Integer.parseInt(request.getParameter("cont"));
+        for (int i = 1; i <= cont; i++) {
+            Peca peca = new Peca();
+            peca.setNomeServico(request.getParameter("servico" + i).toUpperCase());
+            peca.setTipoPeca(request.getParameter("tipoPeca" + i).toUpperCase());
+            peca.setTipoTecido(request.getParameter("tecido" + i).toUpperCase());
+            peca.setQdt(Integer.parseInt( request.getParameter("qtd" + i)));
+            peca.setCor(request.getParameter("cor" + i).toUpperCase());
             pecas.add(peca);
+            
+             dtped = request.getParameter("dtRetirada" +i);
+            
+            try {
+                
+            aux = form.parse(dtped );
+            if( ped==null){
+                ped= form.parse(dtped);
+            }
+            
+            if(aux.after(ped)){
+            ped = aux;
+            }
+            else{
+                ped= form.parse(dtped);
+                
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+            
+        }
+        
+        p.setDataSaida(ped);
         PedidoDAO pedidoDAO = new PedidoDAO();
         ServicoDAO servicoDao = new ServicoDAO();
+        
         try {
-                        
-            //, funcionario pedido,
-//            pedidoDAO.cadastrarPedido(cliente);
-            pedidoDAO.consultaPedido(pedido,cliente );
-//            pedidoDAO.setPecas(pecas);
-            
+            pedidoDAO.cadastrarPedido(cli, p);
+            pedidoDAO.setPecas(pecas,p, s, cli);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(PedidoGerarServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        /*======================================================================
-        Termina as adições no banco
-        ======================================================================*/
+        
     }
 
     /**

@@ -16,9 +16,9 @@ public class Pedido {
     private int idPedido;
     private String status;
     private Date dataEntrada;
-    private String dataSaida;
+    private Date dataSaida;
     
-    public Pedido(String tipoPeca, String status, String tipoTecido, Date dataEntrada, String dataSaida, String tipoLavagem, String qtd, String cor, Servico servico) {
+    public Pedido(String tipoPeca, String status, String tipoTecido, Date dataEntrada, Date dataSaida, String tipoLavagem, String qtd, String cor, Servico servico) {
         this.status = status;
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
@@ -53,11 +53,11 @@ public class Pedido {
         this.dataEntrada = dataEntrada;
     }
 
-    public String getDataSaida() {
+    public Date getDataSaida() {
         return dataSaida;
     }
 
-    public void setDataSaida(String dataSaida) {
+    public void setDataSaida(Date dataSaida) {
         this.dataSaida = dataSaida;
     }
 

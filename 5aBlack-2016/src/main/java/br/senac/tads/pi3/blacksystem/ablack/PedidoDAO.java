@@ -5,6 +5,7 @@
  */
 package br.senac.tads.pi3.blacksystem.ablack;
 
+import static br.senac.tads.pi3.blacksystem.ablack.Conexao.getConexao;
 import br.senac.tads.pi3.blacksystem.entity.*;
 import br.senac.tads.pi3.blacksystem.entity.Peca;
 import br.senac.tads.pi3.blacksystem.entity.Pedido;
@@ -27,51 +28,53 @@ import java.util.logging.Logger;
 public class PedidoDAO extends Conexao {
 //, funcionario , ID_FILIAL, DATA_SAIDA,
 
-  
- /*=================================================================
-         Aqui inserimos o pedido no banco, fazendo assim ele gerar um ID
-         ====================================================================*/
-//    public void cadastrarPedido(Cliente cliente)//, Funcionario funcionario, 
-//            throws ClassNotFoundException {
-//
-//        Connection conn = null;
-//        PreparedStatement stm = null;
-//      
-//      
-//        try {
-//            String QUERY_INSERT_PEDIDO = "INSERT IN TO PEDIDO( STATUS, DATA_ENTRADA, ID_CLIENTE)"+ "VALUES (?, ?, ?)";
-//
-//            conn = getConexao();
-//            stm = conn.prepareStatement(QUERY_INSERT_PEDIDO);
-//            
-//            stm.setString(1, "ABERTO");
-//            stm.setDate(2, new java.sql.Date(1009 - 03 - 03));
-//            stm.setInt(3, 3);
-//            stm.executeUpdate();
-//            stm.close();
-//            conn.close();
-//        } catch (SQLException e) {
-//            System.out.println("Erro de conexão");
-//        } catch (NullPointerException e) {
-//            System.out.println("Dao não inicializado");
-//        }
-//    }
+    /*=================================================================
+     Aqui inserimos o pedido no banco, fazendo assim ele gerar um ID
+     ====================================================================*/
+    public void cadastrarPedido(Cliente cliente, Pedido p)
+            throws ClassNotFoundException {
+
+        try {
+            Connection conn = null;
+            PreparedStatement stm = null;
+
+            String QUERY_INSERT_PEDIDO = "INSERT INTO PEDIDO( STATUS, DATA_SAIDA, ID_CLIENTE)" + "VALUES (?, ?, ?)";
+
+            conn = getConexao();
+            stm = conn.prepareStatement(QUERY_INSERT_PEDIDO);
+
+            stm.setString(1, "ABERTO");
+            Date dataRet = new java.sql.Date(p.getDataSaida().getTime());
+            stm.setDate(2, (java.sql.Date) dataRet);
+            stm.setInt(3, 1);
+            stm.executeUpdate();
+            stm.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            System.out.println("Erro de conexão");
+        } catch (NullPointerException e) {
+            System.out.println("Dao não inicializado");
+        }
+    }
 
     /*=================================================================
      Inseriu o pedido no banco 
      ====================================================================*/
     public int consultaPedido(Pedido ped, Cliente cli) throws ClassNotFoundException {
-        Connection conn = null;
-        Statement stm = null;
-        ResultSet rs = null;
 
         try {
+
+            Connection conn = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
             conn = getConexao();
             stm = conn.createStatement();
-            rs = stm.executeQuery("select * FROM PEDIDO WHERE ID_CLIENTE ='1'");
+            rs = stm.executeQuery("select * from PEDIDO WHERE ID_CLIENTE = 1");
 
-            while(rs.next()){
-            ped.setIdPedido(rs.getInt("ID_PEDIDO"));
+            while (rs.next()) {
+                ped.setIdPedido(rs.getInt("ID_PEDIDO"));
             }
             stm.close();
             conn.close();
@@ -94,17 +97,16 @@ public class PedidoDAO extends Conexao {
 
         Connection conn = null;
         Statement stm = null;
-        PreparedStatement pstm = null;
         ResultSet rs = null;
-        String pesqIdServ = "SELECT ID_SERVICO FROM SERVICO WHERE NOME_SERV ='Lavagem Simples'";
+
         try {
             conn = getConexao();
             stm = conn.createStatement();
-            rs = stm.executeQuery(pesqIdServ);
+            rs = stm.executeQuery("select * from SERVICO WHERE TIPO_SERV = 'LAVAGEM SIMPLES' ");
 
-            rs.next();
-            serv.setId(rs.getInt("ID_SERVICO"));
-
+            while (rs.next()) {
+                serv.setId(rs.getInt("ID_SERVICO"));
+            }
             stm.close();
             conn.close();
             return serv.getId();
@@ -121,28 +123,23 @@ public class PedidoDAO extends Conexao {
         return 0;
     }
 
-    public void setPecas(ArrayList<Peca> pecas) {
-        Connection conn = null;
-        Statement stm = null;
-        String sql = "INSERT INTO PECA(QTD_PECA,TIPO_PECA,COR_PECA,TIPO_TECIDO,ID_PEDIDO,ID_SERVICO)";
-        PreparedStatement pstm = null;
-        ResultSet rs = null;
-        Pedido ped = new Pedido();
-        Cliente cli = new Cliente();
-        Servico serv = new Servico();
+    public void setPecas(ArrayList<Peca> pecas, Pedido p, Servico s, Cliente cli) {
 
         for (Peca peca : pecas) {
             try {
-                conn=getConexao();
-                serv.setId(consultaPedido(ped, cli));
+                s.setId(consultaServ(s));
+                p.setIdPedido(consultaPedido(p, cli));
 
-                conn.prepareStatement(sql);
-                pstm.setInt(1, Integer.parseInt(peca.getQdt()));
+                Connection conn = getConexao();
+
+                String sql = "insert into PECA(QTD_PECA, TIPO_PECA, COR_PECA, TIPO_TECIDO, ID_PEDIDO, ID_SERVICO)" + "values(?,?,?,?,?,?)";
+                PreparedStatement pstm = conn.prepareStatement(sql);
+                pstm.setInt(1, peca.getQdt());
                 pstm.setString(2, (peca.getTipoPeca()));
                 pstm.setString(3, (peca.getCor()));
                 pstm.setString(4, peca.getTipoTecido());
-                pstm.setInt(5, (ped.getIdPedido()));
-                pstm.setInt(6, serv.getId());
+                pstm.setInt(5, p.getIdPedido());
+                pstm.setInt(6, s.getId());
                 pstm.executeUpdate();
                 pstm.close();
                 conn.close();

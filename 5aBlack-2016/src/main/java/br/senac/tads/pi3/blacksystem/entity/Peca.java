@@ -14,68 +14,25 @@ public class Peca {
     private Integer id;
     private String descricao;
     private String dtRetirada;
-    private String qdt;
+    private Integer qdt;
     private String tipoPeca;
     private String cor;
     private String tipoTecido;
-    private String idPedido;
+    private Integer idPedido;
     private String nomeServico;
-    private String idServico;
+    private Integer idServico;
 
     public Peca() {
-    }
-
-    public Peca(String descricao, String qdt, String tipoPeca, String cor, String tipoTecido, String idServico) {
-        this.descricao = descricao;
-        this.qdt = qdt;
-        this.tipoPeca = tipoPeca;
-        this.cor = cor;
-        this.tipoTecido = tipoTecido;
-        this.idServico = idServico;
-    } 
-
-    // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
-    
-    public String getDtRetirada() {
-        return dtRetirada;
-    }
-
-    public void setDtRetirada(String dtRetirada) {
-        this.dtRetirada = dtRetirada;
-    }
-
-    public String getIdPedido() {
-        return idPedido;
-    }
-
-    public void setIdPedido(String idPedido) {
-        this.idPedido = idPedido;
-    }
-    
-    public void setNomeServico(String nomeServico) {
-        this.nomeServico = nomeServico;
-    }  
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public void setIdServico(String idServico) {
-        this.idServico = idServico;
-    }
-
-    public String getNomeServico() {
-        return nomeServico;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public String getIdServico() {
-        return idServico;
+    public void setId(Integer id) {
+        this.id = id;
     }
-    
+
     public String getDescricao() {
         return descricao;
     }
@@ -84,11 +41,19 @@ public class Peca {
         this.descricao = descricao;
     }
 
-    public String getQdt() {
+    public String getDtRetirada() {
+        return dtRetirada;
+    }
+
+    public void setDtRetirada(String dtRetirada) {
+        this.dtRetirada = dtRetirada;
+    }
+
+    public Integer getQdt() {
         return qdt;
     }
 
-    public void setQdt(String qdt) {
+    public void setQdt(Integer qdt) {
         this.qdt = qdt;
     }
 
@@ -114,5 +79,30 @@ public class Peca {
 
     public void setTipoTecido(String tipoTecido) {
         this.tipoTecido = tipoTecido;
-    }// </editor-fold>    
-}
+    }
+
+    public Integer getIdPedido() {
+        return idPedido;
+    }
+
+    public void setIdPedido(Integer idPedido) {
+        this.idPedido = idPedido;
+    }
+
+    public String getNomeServico() {
+        return nomeServico;
+    }
+
+    public void setNomeServico(String nomeServico) {
+        this.nomeServico = nomeServico;
+    }
+
+    public Integer getIdServico() {
+        return idServico;
+    }
+
+    public void setIdServico(Integer idServico) {
+        this.idServico = idServico;
+    }
+
+    }
