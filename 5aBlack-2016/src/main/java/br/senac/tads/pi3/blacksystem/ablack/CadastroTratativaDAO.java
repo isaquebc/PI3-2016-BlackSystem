@@ -7,35 +7,49 @@ package br.senac.tads.pi3.blacksystem.ablack;
 
 import br.senac.tads.pi3.blacksystem.entity.TratativaChamado;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
  * @author Rafael
  */
-public class CadastroTratativaDAO extends Conexao{
-        final String QUERY_INSERT_TRATATIVA    = "INSERT INTO TRATATIVA_CHAMADO(ID_TRATATIVA, DATA_FECHAMENTO, DESCRICAO, ID_CHAMADO, ID_FUNCIONARIO)"
-                                             + "VALUES (?, ?, ?, ?, ?)";
-    
-        public void cadastrarTratativaChamado(TratativaChamado trat)
-        throws ClassNotFoundException{
-            
-            Connection conn=null;
-            PreparedStatement stm=null;
+public class CadastroTratativaDAO extends Conexao {
+
+    public void cadastrarTratativaChamado(TratativaChamado trat)
+            throws ClassNotFoundException {
+        String QUERY_INSERT_TRATATIVA = "INSERT INTO TRATATIVA_CHAMADO(DATA_FECHAMENTO, DESCRICAO_TRATATIVA, ID_CHAMADO, ID_FUNC)"
+                + " VALUES(DATE(CURRENT TIMESTAMP), '" + trat.getDescricao() + "', " + trat.getIdChamado() + ", " + trat.getIdFuncionario() + ")";
+        Connection conn = null;
+        Statement stm = null;
         try {
             conn = getConexao();
-            stm = conn.prepareStatement(QUERY_INSERT_TRATATIVA);
-            stm.setInt(1, trat.getIdChamado());
-            stm.setDate(2, new java.sql.Date(trat.getDataFechamento().getTime()));
-            stm.setString(3, trat.getDescricao());
-            stm.setInt(4, trat.getIdChamado());
-            stm.setInt(5, trat.getIdFuncionario());
-            stm.executeQuery();
+            stm = conn.createStatement();
+            stm.executeUpdate(QUERY_INSERT_TRATATIVA);
+            baixaChamado(trat.getIdChamado());
             stm.close();
             conn.close();
         } catch (SQLException e) {
-            System.out.println("Erro de conexão");
+            System.out.println(e.toString());
+        } catch (NullPointerException e) {
+            System.out.println("Dao não inicializado");
+        }
+    }
+
+    public void baixaChamado(int id)
+            throws ClassNotFoundException {
+        String QUERY_INSERT_TRATATIVA = "UPDATE CHAMADO SET STATUS ='BAIXADO' " +
+        "WHERE ID_CHAMADO="+id;
+        Connection conn = null;
+        Statement stm = null;
+        try {
+            conn = getConexao();
+            stm = conn.createStatement();
+            stm.executeUpdate(QUERY_INSERT_TRATATIVA);
+            stm.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println(e.toString());
         } catch (NullPointerException e) {
             System.out.println("Dao não inicializado");
         }

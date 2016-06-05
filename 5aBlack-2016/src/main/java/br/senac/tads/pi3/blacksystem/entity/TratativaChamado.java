@@ -18,6 +18,7 @@ public class TratativaChamado {
     private String descricao;
     private Integer idChamado;
     private Integer idFuncionario;
+    
 
     public TratativaChamado() {
     }
@@ -27,7 +28,18 @@ public class TratativaChamado {
         this.descricao = descricao;
     }
     
+    public void setIdTratativa(Integer idTratativa) {
+        this.idTratativa = idTratativa;
+    }
+
+    public void setIdChamado(Integer idChamado) {
+        this.idChamado = idChamado;
+    }
+
     // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+    public void setIdFuncionario(Integer idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
 
     public Integer getIdTratativa() {
         return idTratativa;

@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ChamadoListarServlet extends HttpServlet {
 
     
-    public List chamados (){
+    private List chamados (){
         
         ChamadoDAO listaChamado= new ChamadoDAO();
         

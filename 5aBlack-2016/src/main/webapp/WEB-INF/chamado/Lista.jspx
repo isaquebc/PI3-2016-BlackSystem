@@ -24,13 +24,17 @@
                 <div class="row" >
                     <div class="col-md-offset-0 col-md-12" >
                         <table class="table table-hover">
-                            <caption><h3>Clientes </h3></caption>
+                            <caption><h3>Chamados </h3></caption>
                             <thead>
                                 <tr > 
                                     <th>#</th>
                                     <th>Categoria</th>
                                     <th>Data de Abertura</th>
                                     <th>Status</th>
+                                    <th>Funcionario</th>
+                                    <th>Telefone</th>
+                                    <th>Filial</th>
+                                    <th>Email</th>
                                 </tr>
                             </thead>
                             <tbody class="table-hover">
@@ -40,6 +44,10 @@
                                         <td>${chamado.tipoSolicitacao}</td>
                                         <td>${chamado.dataAbertura}</td>
                                         <td>${chamado.status}</td>
+                                        <td>${chamado.funcionario}</td>
+                                        <td>${chamado.tel}</td>
+                                        <td>${chamado.descricao}</td>
+                                        <td> null</td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

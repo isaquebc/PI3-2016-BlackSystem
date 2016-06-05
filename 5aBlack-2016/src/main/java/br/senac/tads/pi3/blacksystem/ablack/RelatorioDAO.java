@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package br.senac.tads.pi3.blacksystem.ablack;
+import br.senac.tads.pi3.blacksystem.entity.MovimentoProduto;
 import br.senac.tads.pi3.blacksystem.entity.RelatorioCliente;
 import br.senac.tads.pi3.blacksystem.entity.RelatorioFilial;
 import br.senac.tads.pi3.blacksystem.entity.RelatorioFuncionario;
@@ -180,6 +181,90 @@ public class RelatorioDAO extends Conexao{
                 System.out.println("Erro de conexao" + e.toString());
         } catch (NullPointerException e) {
             System.out.println("Dao não inicializado" + e.toString());
+        }
+        return null;
+    }
+        
+    public ArrayList<MovimentoProduto> relatorioEntradaProduto(String inicio, String fim) 
+            throws ClassNotFoundException{
+        
+        String relatorioDeEntrada = "SELECT PRODUTO.ID_PROD, PRODUTO.NOME_PROD AS NOME, ENTRADA.DATA_ENTRADA, ENTRADA.QTD, PRODUTO.QTD_ATUAL, FUNCIONARIO.ID_FUNC , FUNCIONARIO.NOME_FUNC, FILIAL.NOME_FILIAL" +
+        " FROM ENTRADA INNER JOIN PRODUTO ON PRODUTO.ID_PROD = ENTRADA.ID_PRODUTO" +
+        " INNER JOIN FUNCIONARIO ON FUNCIONARIO.ID_FUNC = ENTRADA.ID_FUNCIONARIO" +
+        " INNER JOIN FILIAL ON ENTRADA.ID_FILIAL = FILIAL.ID_FILIAL" +
+        " where ENTRADA.DATA_ENTRADA > DATE('"+inicio+"') AND ENTRADA.DATA_ENTRADA <  DATE('"+fim+"')"+
+        " ORDER BY QTD DESC";
+        Statement stm = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        
+        try {
+            conn = getConexao();
+            stm = conn.createStatement();
+            rs = stm.executeQuery(relatorioDeEntrada);
+            
+            ArrayList<MovimentoProduto> listaMovimentos = new ArrayList<>();
+            
+            while (rs.next()) {                
+                MovimentoProduto movimento = new MovimentoProduto();
+                movimento.setIdProduto(rs.getInt("ID_PROD"));
+                movimento.setProduto(rs.getString("NOME"));
+                movimento.setData(rs.getString("DATA_ENTRADA"));
+                movimento.setQtd(rs.getInt("QTD"));
+                movimento.setQtdAtual(rs.getFloat("QTD_ATUAL"));
+                movimento.setIdFuncionaro(rs.getInt("ID_FUNC"));
+                movimento.setFuncionario(rs.getString("NOME_FUNC"));
+                movimento.setFilial(rs.getString("NOME_FILIAL"));
+                listaMovimentos.add(movimento);
+            }
+            rs.close();
+            conn.close();
+            stm.close();
+            return listaMovimentos;
+        } catch (SQLException | ClassNotFoundException e) {
+            System.err.println(e.toString());
+        }
+        return null;
+    }
+    
+        public ArrayList<MovimentoProduto> relatorioSaidaProduto(String inicio, String fim) 
+            throws ClassNotFoundException{
+        
+        String relatorioDeSaida = "SELECT PRODUTO.ID_PROD, PRODUTO.NOME_PROD AS NOME, SAIDA.DATA_ENTRADA, SAIDA.QTD, PRODUTO.QTD_ATUAL, FUNCIONARIO.ID_FUNC , FUNCIONARIO.NOME_FUNC, FILIAL.NOME_FILIAL" +
+        " FROM SAIDA INNER JOIN PRODUTO ON PRODUTO.ID_PROD = SAIDA.ID_PRODUTO" +
+        " INNER JOIN FUNCIONARIO ON FUNCIONARIO.ID_FUNC = SAIDA.ID_FUNCIONARIO" +
+        " INNER JOIN FILIAL ON SAIDA.ID_FILIAL = FILIAL.ID_FILIAL" +
+        " where SAIDA.DATA_ENTRADA > DATE('"+inicio+"') AND SAIDA.DATA_ENTRADA <  DATE('"+fim+"')"+
+        " ORDER BY QTD DESC";
+        Statement stm = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        
+        try {
+            conn = getConexao();
+            stm = conn.createStatement();
+            rs = stm.executeQuery(relatorioDeSaida);
+            
+            ArrayList<MovimentoProduto> listaMovimentos = new ArrayList<>();
+            
+            while (rs.next()) {                
+                MovimentoProduto movimento = new MovimentoProduto();
+                movimento.setIdProduto(rs.getInt("ID_PROD"));
+                movimento.setProduto(rs.getString("NOME"));
+                movimento.setData(rs.getString("DATA_ENTRADA"));
+                movimento.setQtd(rs.getInt("QTD"));
+                movimento.setQtdAtual(rs.getFloat("QTD_ATUAL"));
+                movimento.setIdFuncionaro(rs.getInt("ID_FUNC"));
+                movimento.setFuncionario(rs.getString("NOME_FUNC"));
+                movimento.setFilial(rs.getString("NOME_FILIAL"));
+                listaMovimentos.add(movimento);
+            }
+            rs.close();
+            conn.close();
+            stm.close();
+            return listaMovimentos;
+        } catch (SQLException | ClassNotFoundException e) {
+            System.err.println(e.toString());
         }
         return null;
     }

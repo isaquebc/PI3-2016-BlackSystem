@@ -32,25 +32,19 @@ public class ChamadoDAO extends Conexao {
 
         Connection conn = null;
         PreparedStatement stm = null;
-        DateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
         
         try {
             conn = getConexao();
-            String sql = "INSERT INTO CHAMADO(DESCRICAO, STATUS, DATA_ABERTURA, TIPO_SOLICITACAO) VALUES(?, ?, ?, ?)";
+            String sql = "INSERT INTO CHAMADO(DESCRICAO_CHAMADO, TIPO_SOLICITACAO, ID_FUNC, STATUS, DATA_ABERTURA) VALUES(?, ?, ?, 'ABERTO', DATE(CURRENT TIMESTAMP))";
             stm = conn.prepareStatement(sql);
             stm.setString(1, chamado.getDescricao());
-            stm.setString(2, chamado.getStatus());
-            try {
-                stm.setDate(3, (Date) formatar.parse(chamado.getDataAbertura()));
-            } catch (ParseException ex) {
-                Logger.getLogger(ChamadoDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            stm.setString(4, chamado.getTipoSolicitacao());// TIPO_SOLICITACAO);
+            stm.setString(2, chamado.getTipoSolicitacao());// TIPO_SOLICITACAO);
+            stm.setInt(3, chamado.getIdFuncionario());
             stm.executeUpdate();
             stm.close();
             conn.close();
         } catch (SQLException e) {
-            System.out.println("Erro de conexão");
+            System.out.println(e.toString());
         } catch (NullPointerException e) {
             System.out.println("Dao não inicializado");
         }
@@ -62,13 +56,15 @@ public class ChamadoDAO extends Conexao {
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
-        DateFormat formatar = new SimpleDateFormat("dd-MM-yyyy");
          
-        String listarCharado = "SELECT ID_CHAMADO, STATUS, DATA_ABERTURA, TIPO_SOLICITACAO FROM CHAMADO WHERE STATUS ='aberto'";
+        String listarCharado = "SELECT ID_CHAMADO, TIPO_SOLICITACAO, DATA_ABERTURA, STATUS, FUNCIONARIO.NOME_FUNC, FUNCIONARIO.TEL_FUNC, FILIAL.NOME_FILIAL  FROM CHAMADO" +
+        " INNER JOIN FUNCIONARIO ON CHAMADO.ID_FUNC = FUNCIONARIO.ID_FUNC" +
+        " INNER JOIN FILIAL ON FILIAL.ID_FILIAL = FUNCIONARIO.ID_FILIAL" +
+        " order by STATUS asc";
         
         try {
             
-            List lista = new ArrayList();
+            List<Chamado> lista = new ArrayList();
             conn = getConexao();
             stmt = conn.createStatement(TYPE_SCROLL_INSENSITIVE, rs.CONCUR_READ_ONLY);
             rs = stmt.executeQuery(listarCharado);
@@ -76,10 +72,12 @@ public class ChamadoDAO extends Conexao {
             while (rs.next()) {
                 Chamado chamado = new Chamado();
                 chamado.setIdChamado(rs.getInt("ID_CHAMADO"));
-                chamado.setStatus(rs.getString("STATUS"));
-                String n = formatar.format(rs.getDate("DATA_ABERTURA"));
                 chamado.setTipoSolicitacao(rs.getString("TIPO_SOLICITACAO"));
-//                chamado.setDataAbertura(n);
+                chamado.setDataAbertura(rs.getString("DATA_ABERTURA"));
+                chamado.setStatus(rs.getString("STATUS"));
+                chamado.setFuncionario(rs.getString("NOME_FUNC"));
+                chamado.setTel(rs.getString("TEL_FUNC"));
+                chamado.setDescricao(rs.getString("NOME_FILIAL"));
                 lista.add(chamado);
             }
             stmt.close();
@@ -87,7 +85,7 @@ public class ChamadoDAO extends Conexao {
             return lista;
 
         } catch (SQLException ex) {
-            System.out.println("erro ao conectar com o banco");
+            System.out.println(ex.toString());
             ex.getMessage();
             return null;
         } catch (NullPointerException ex) {
@@ -95,7 +93,48 @@ public class ChamadoDAO extends Conexao {
             ex.getMessage();
             return null;
         }
+    }
+    
+    
+    public Chamado listaChamado(int id)
+            throws ClassNotFoundException, SQLException {
+
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+         
+        String listarCharado = "SELECT ID_CHAMADO, TIPO_SOLICITACAO, DATA_ABERTURA, STATUS, FUNCIONARIO.NOME_FUNC, FUNCIONARIO.TEL_FUNC, FILIAL.NOME_FILIAL  FROM CHAMADO" +
+        " INNER JOIN FUNCIONARIO ON CHAMADO.ID_FUNC = FUNCIONARIO.ID_FUNC" +
+        " INNER JOIN FILIAL ON FILIAL.ID_FILIAL = FUNCIONARIO.ID_FILIAL"+
+        " WHERE ID_CHAMADO =" + id;
         
+        try {
+            conn = getConexao();
+            stmt = conn.createStatement(TYPE_SCROLL_INSENSITIVE, rs.CONCUR_READ_ONLY);
+            rs = stmt.executeQuery(listarCharado);
+            Chamado chamado = new Chamado();
+            while (rs.next()) {
+                chamado.setIdChamado(rs.getInt("ID_CHAMADO"));
+                chamado.setTipoSolicitacao(rs.getString("TIPO_SOLICITACAO"));
+                chamado.setDataAbertura(rs.getString("DATA_ABERTURA"));
+                chamado.setStatus(rs.getString("STATUS"));
+                chamado.setFuncionario(rs.getString("NOME_FUNC"));
+                chamado.setTel(rs.getString("TEL_FUNC"));
+                chamado.setDescricao(rs.getString("NOME_FILIAL"));
+            }
+            stmt.close();
+            conn.close();
+            return chamado;
+
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            ex.getMessage();
+            return null;
+        } catch (NullPointerException ex) {
+            System.out.println("DAO não inicializado");
+            ex.getMessage();
+            return null;
+        }
     }
 
 }

@@ -5,8 +5,10 @@
  */
 package br.senac.tads.pi3.blacksystem.ablack;
 
+import static br.senac.tads.pi3.blacksystem.ablack.Conexao.getConexao;
 import br.senac.tads.pi3.blacksystem.entity.Peca;
 import br.senac.tads.pi3.blacksystem.entity.Pedido;
+import br.senac.tads.pi3.blacksystem.entity.Produto;
 import br.senac.tads.pi3.blacksystem.entity.Servico;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -89,7 +91,22 @@ public class ServicoDAO extends Conexao {
         return null;
     }
     
-    
+    public void servicoAtualizar(Servico s) throws ClassNotFoundException {
+        String sql = "UPDATE SERVICO SET NOME_SERV='"+s.getNomeServico()+"' ,TIPO_SERV='"+s.getTipoServico()+"', VALOR_SERV="+s.getValorServico()+", PRAZO_SERV="+s.getPrazo()+" WHERE ID_SERVICO ="+s.getId();
+        Connection conn = null;
+        PreparedStatement stm = null;
+        try {
+            conn = getConexao();
+            stm = conn.prepareStatement(sql);
+            stm.executeUpdate();
+            stm.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
+    }
     
     
 }

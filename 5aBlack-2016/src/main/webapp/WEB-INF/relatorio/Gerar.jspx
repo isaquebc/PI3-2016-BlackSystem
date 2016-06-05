@@ -49,7 +49,8 @@
                                             <option value="venda">Vendas</option>
                                             <option value="cliente">Cliente</option>
                                             <option value="funcionario">Funcionario</option>
-                                            <option value="produto">Produto</option>
+                                            <option value="produto-entrada">Entrada de Produto</option>
+                                            <option value="produto-saida">Saida de Produto</option>
                                             <option value="pedido">Pedido</option>
                                         </select>
                                     </div>
@@ -173,6 +174,64 @@
                                         <td>${relatorioCliente.pedidos}</td>
                                         <td>${relatorioCliente.total}</td>
                                         <td>${relatorioCliente.filial}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>      
+                            </c:when>
+                            <c:when test="${relatorioEntrada != null}">
+                            <caption><h3>Entrada de Produtos</h3></caption>
+                            <thead>
+                                <tr > 
+                                    <th>ID</th>
+                                    <th>Produto</th>
+                                    <th>Data Entrada</th>
+                                    <th>Qtd movimentada</th>
+                                    <th>Qtd Atual</th>
+                                    <th>ID Funcionario</th>
+                                    <th>Nome Funcionario</th>
+                                    <th>Filial</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-hover">
+                                <c:forEach items="${relatorioEntrada}" var="relatorioEntrada">
+                                    <tr>
+                                        <td>${relatorioEntrada.idProduto}</td>
+                                        <td>${relatorioEntrada.produto}</td>
+                                        <td>${relatorioEntrada.data}</td>
+                                        <td>${relatorioEntrada.qtd}</td>
+                                        <td>${relatorioEntrada.qtdAtual}</td>
+                                        <td>${relatorioEntrada.idFuncionario}</td>
+                                        <td>${relatorioEntrada.funcionario}</td>
+                                        <td>${relatorioEntrada.filial}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>      
+                            </c:when>
+                            <c:when test="${relatorioSaida != null}">
+                            <caption><h3>Saida de Produtos</h3></caption>
+                            <thead>
+                                <tr > 
+                                    <th>ID</th>
+                                    <th>Produto</th>
+                                    <th>Data Entrada</th>
+                                    <th>Qtd movimentada</th>
+                                    <th>Qtd Atual</th>
+                                    <th>ID Funcionario</th>
+                                    <th>Nome Funcionario</th>
+                                    <th>Filial</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-hover">
+                                <c:forEach items="${relatorioSaida}" var="relatorioSaida">
+                                    <tr>
+                                        <td>${relatorioSaida.idProduto}</td>
+                                        <td>${relatorioSaida.produto}</td>
+                                        <td>${relatorioSaida.data}</td>
+                                        <td>${relatorioSaida.qtd}</td>
+                                        <td>${relatorioSaida.qtdAtual}</td>
+                                        <td>${relatorioSaida.idFuncionario}</td>
+                                        <td>${relatorioSaida.funcionario}</td>
+                                        <td>${relatorioSaida.filial}</td>
                                     </tr>
                                 </c:forEach>
                             </tbody>      

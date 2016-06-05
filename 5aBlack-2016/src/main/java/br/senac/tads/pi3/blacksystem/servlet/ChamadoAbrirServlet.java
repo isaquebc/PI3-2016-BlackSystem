@@ -10,9 +10,11 @@ import br.senac.tads.pi3.blacksystem.ablack.ClienteCadastroDAO;
 import br.senac.tads.pi3.blacksystem.entity.Chamado;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
@@ -70,21 +72,19 @@ public class ChamadoAbrirServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         ChamadoDAO cadChamado = new ChamadoDAO();
         Chamado chamado = new Chamado();
-        Calendar c = Calendar.getInstance();
-        DateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
-        chamado.setDataAbertura(formatar.format(c.getTime()));
-
+        
         chamado.setDescricao(request.getParameter("desc").toUpperCase());
-        chamado.setStatus(("aberto").toUpperCase());
         chamado.setTipoSolicitacao(request.getParameter("categoria").toUpperCase());
+        chamado.setIdFuncionario(2);
         
         try {
             cadChamado.cadastrarChamado(chamado);
-            
-
-        } catch (ClassNotFoundException ex) {
+            request.setAttribute("chamados", new ArrayList<Chamado>(cadChamado.listaChamado()));
+            response.sendRedirect("ChamadoListarServlet");
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ChamadoAbrirServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         

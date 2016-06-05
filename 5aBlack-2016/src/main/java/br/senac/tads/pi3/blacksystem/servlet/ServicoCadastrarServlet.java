@@ -72,7 +72,7 @@ public class ServicoCadastrarServlet extends HttpServlet {
         ser.setTipoServico(request.getParameter("tipoServico").toUpperCase());
         ser.setValorServico(Float.parseFloat(request.getParameter("valor")));
         ser.setPrazo((int)Integer.parseInt(request.getParameter("prazo")));
-        
+        ser.setId(7);
         ServicoDAO sDao= new ServicoDAO();
         Mensagem msg = null;
         

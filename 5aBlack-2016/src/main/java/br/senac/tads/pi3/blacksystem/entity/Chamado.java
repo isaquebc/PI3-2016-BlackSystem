@@ -19,6 +19,13 @@ public class Chamado {
     private String dataAbertura;
     private String tipoSolicitacao;
     private Integer idFuncionario;
+    private String funcionario;
+
+    private String tel;
+
+ 
+    
+    
 
     public Chamado() {
     }
@@ -29,7 +36,28 @@ public class Chamado {
         this.dataAbertura = dataAbertura;
         this.tipoSolicitacao = tipoSolicitacao;
     }
+    
     // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+       public String getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(String funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+    
+    
+    public void setIdFuncionario(Integer idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
 
     public void setIdChamado(Integer idChamado) {
         this.idChamado = idChamado;

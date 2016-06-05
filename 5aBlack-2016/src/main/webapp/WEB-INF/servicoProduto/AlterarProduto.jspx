@@ -25,17 +25,52 @@
             <jsp:include page="../inicial/Menu.jspx" />
             <div class="container" >
                 <div class="row" >
-                    <div class="col-md-offset-2 col-md-4" >
+                    <div class="col-md-offset-2 col-md-8" >
                         <form class="form-signin" action="#" method="post" accept-charset="UTF-8"> <!-- BuscarPedidoServlet -->
                             <fieldset>
                                 <legend><h2 class="form-signin-heading">Buscar Produto</h2></legend>
                                 <div class="form-group">
                                     <label class="sr-only" for="buscPedido">Nome do Produto</label>
-                                    <input type="text" id="buscProduto" class="form-control" placeholder="Nome do Produto" required="" autofocus=""/>
+                                    <input name="nome" type="text" id="buscProduto" class="form-control" placeholder="Nome do Produto" required="" autofocus=""/>
                                 </div>
                             </fieldset>
                             <button type="submit" class="btn btn-lg btn-primary btn-block" id="pesquisar">Buscar</button>
                         </form>
+                        <table id="relatorio" class="table table-hover">
+                            <c:choose>
+                            <c:when test="${produtos != null}">
+                            <caption><h3>Produtos Cadastrados </h3></caption>
+                            <thead>
+                                <tr > 
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Validade</th>
+                                    <th>Lote</th>
+                                    <th>Status</th>
+                                    <th>Qtd Min</th>
+                                    <th>Qtd Max</th>
+                                    <th>Qtd Atual</th>
+                                    <th>Tipo</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-hover">
+                                <c:forEach items="${produtos}" var="produtos">
+                                    <tr>
+                                        <td>${produtos.idProduto}</td>
+                                        <td>${produtos.nome}</td>
+                                        <td>${produtos.validade}</td>
+                                        <td>${produtos.lote}</td>
+                                        <td>${produtos.status}</td>
+                                        <td>${produtos.qtdMin}</td>
+                                        <td>${produtos.qtdMax}</td>
+                                        <td>${produtos.qtdAtual}</td>
+                                        <td>${produtos.tipoDeProduto.nome}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                            </c:when>
+                            </c:choose>
+                        </table>
                     </div>
                 </div>
             </div>
