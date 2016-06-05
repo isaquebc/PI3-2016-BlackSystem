@@ -107,7 +107,7 @@ public class RelatorioGerarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
    
-            System.err.println("entrou na  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+           
             
             String tipoRelatorio = request.getParameter("tipo-Relatorio");
             String dataInicio = request.getParameter("data-Inicial");

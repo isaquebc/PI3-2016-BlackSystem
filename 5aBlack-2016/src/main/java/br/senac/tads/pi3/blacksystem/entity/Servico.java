@@ -5,24 +5,22 @@
  */
 package br.senac.tads.pi3.blacksystem.entity;
 
-import java.sql.Date;
-
 /**
  *
  * @author Rafael
  */
 public class Servico {
 
+    private String nomeServico;
     private String tipoServico;
-    private String descricaoServico;
-    private float preco;
-    private String prazo;
+    private float valorServico;
+    private int prazo;
     private int id;
 
-    public Servico(String tipoServico, String descricaoServico, float preco, String prazo, int id) {
-        this.tipoServico = tipoServico;
-        this.descricaoServico = descricaoServico;
-        this.preco = preco;
+    public Servico(String tipoServico, String descricaoServico, float preco, int prazo, int id) {
+        this.nomeServico = tipoServico;
+        this.tipoServico = descricaoServico;
+        this.valorServico = preco;
         this.prazo = prazo;
         this.id = id;
     }
@@ -31,35 +29,35 @@ public class Servico {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
-    public String getDescricaoServico() {
-        return descricaoServico;
-    }
-
-    public void setDescricaoServico(String descricaoServico) {
-        this.descricaoServico = descricaoServico;
-    }
-
-    public String getTipoServico() {
+    public String getNomeServico() {
         return tipoServico;
     }
 
+    public void setNomeServico(String descricaoServico) {
+        this.tipoServico = descricaoServico;
+    }
+
+    public String getTipoServico() {
+        return nomeServico;
+    }
+
     public void setTipoServico(String tipoServico) {
-        this.tipoServico = tipoServico;
+        this.nomeServico = tipoServico;
     }
 
-    public float getPreco() {
-        return preco;
+    public float getValorServico() {
+        return valorServico;
     }
 
-    public void setPreco(float preco) {
-        this.preco = preco;
+    public void setValorServico(float preco) {
+        this.valorServico = preco;
     }
 
-    public String getPrazo() {
+    public int getPrazo() {
         return prazo;
     }
 
-    public void setPrazo(String prazo) {
+    public void setPrazo(int prazo) {
         this.prazo = prazo;
     }
 

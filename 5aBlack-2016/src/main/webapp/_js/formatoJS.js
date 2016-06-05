@@ -1,3 +1,5 @@
+
+
 function formatar(mascara, documento) {
     var i = documento.value.length;
     var saida = mascara.substring(0, 1);
@@ -49,3 +51,36 @@ function ValidarCPF(Objcpf) {
  * CEP = <input type="text" name="cep" maxlength="9" OnKeyPress="formatar('#####-###', this)" />
  * CPF = <input type="text" name="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" >
  * */
+
+function fnExcelReport() {
+    var name = 'Relatorio de '+ $('h3').text();
+    var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
+    tab_text = tab_text + '<head><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>';
+    
+    tab_text = tab_text + '<x:Name>'+ name +'</x:Name>';
+
+    tab_text = tab_text + '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
+    tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
+
+    tab_text = tab_text + "<table border='1px'>";
+    tab_text = tab_text + $('#relatorio').html();
+    tab_text = tab_text + '</table></body></html>';
+
+    var data_type = 'data:application/vnd.ms-excel';
+    
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+    
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+        if (window.navigator.msSaveBlob) {
+            var blob = new Blob([tab_text], {
+                type: "application/csv;charset=utf-8;"
+            });
+            navigator.msSaveBlob(blob, name+'.xls');
+        }
+    } else {
+        $('#test').attr('href', data_type + ', ' + encodeURIComponent(tab_text));
+        $('#test').attr('download', name+'.xls');
+    }
+
+}

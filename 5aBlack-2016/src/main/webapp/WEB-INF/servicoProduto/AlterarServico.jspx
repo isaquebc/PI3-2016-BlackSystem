@@ -24,17 +24,44 @@
             <jsp:include page="../inicial/Menu.jspx" />
             <div class="container" >
                 <div class="row" >
-                    <div class="col-md-offset-2 col-md-4" >
-                        <form class="form-signin" action="#" method="post" accept-charset="UTF-8"> <!-- BuscarPedidoServlet -->
+                    <div class="col-md-offset-2 col-md-6" >
+                        <form class="form-signin" action="ServicoAlterarServico" method="post" accept-charset="UTF-8"> <!-- BuscarPedidoServlet -->
                             <fieldset>
                                 <legend><h2 class="form-signin-heading">Buscar Serviço</h2></legend>
                                 <div class="form-group">
                                     <label class="sr-only" for="buscServico">Nome do Serviço</label>
-                                    <input type="text" id="buscServico" class="form-control" placeholder="Nome do Serviço" required="" autofocus=""/>
+                                    <input type="text" name="nome-servico" id="buscServico" class="form-control" placeholder="Nome do Serviço" required="" autofocus=""/>
                                 </div>
                             </fieldset>
                             <button type="submit" class="btn btn-lg btn-primary btn-block" id="pesquisar">Buscar</button>
                         </form>
+                        <table id="relatorio" class="table table-hover">
+                            <c:choose>
+                            <c:when test="${servicos != null}">
+                            <caption><h3>Serviços </h3></caption>
+                            <thead>
+                                <tr >
+                                    <th>ID</th>
+                                    <th>NOME DO SERVICO</th>
+                                    <th>TIPO DE SERVICO</th>
+                                    <th>VALOR</th>
+                                    <th>PRAZO</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-hover">
+                                <c:forEach items="${servicos}" var="servicos">
+                                    <tr>
+                                        <td>${servicos.id}</td>
+                                        <td>${servicos.nomeServico}</td>
+                                        <td>${servicos.tipoServico}</td>
+                                        <td>${servicos.valorServico}</td>
+                                        <td>${servicos.prazo}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                            </c:when>
+                            </c:choose>
+                            </table>
                     </div>
                 </div>
             </div>

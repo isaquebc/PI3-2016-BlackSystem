@@ -242,4 +242,35 @@ INSERT INTO TIPO_PRODUTO(NOME_PROD,DESCRICAO_PROD)
 
 INSERT INTO FUNCIONARIO(CPF_FUNC, NOME_FUNC, SENHA_FUNC, CARGO_FUNC, SALT)
     VALUES('123.123', 'ADMIM', 'eb3eae884d3412c15be49452e518e6c5a56b059', 'ADMIM', '48737d31978212a');
+
+
+
+INSERT INTO TIPO_PRODUTO(NOME_PROD,DESCRICAO_PROD);
+ VALUES('SABÃO EM PÓ', 'Uma poderosa fórmula desenvolvida pela Brilhante que tira manchas de suas roupas brancas ou coloridas sem danificá-las. Remove manchas como café, vinho, suco de uva, chá preto e chocolate.');
+
+INSERT INTO TIPO_PRODUTO(NOME_PROD,DESCRICAO_PROD)
+ VALUES('SABÃO EM PEDRA', UPPER('quím substância detergente, obtida pela mistura de sais de sódio e de potássio com ácidos graxos, e us. com água para lavagem.'));
+
+INSERT INTO TIPO_PRODUTO(NOME_PROD,DESCRICAO_PROD)
+ VALUES('ALVEJANTE SEM CLORO', UPPER('Alvejante sem Cloro Vantage possui ação do oxigênio ativo, que garante eficiência no combate a manchas e sujeiras. Por ser um alvejante sem cloro, pode ser usado com total segurança em roupas brancas, coloridas e em diversos tecidos, na pré-lavagem ou na máquina.'));
+
+INSERT INTO TIPO_PRODUTO(NOME_PROD,DESCRICAO_PROD)
+ VALUES('ALVEJANTE COMUM', UPPER('Maior poder de limpeza e alvejamento, devido aos polímeros especiais e Enzimas (Protease, Amilase Celulase);
+Baixa agressividade ao tecido, aumentando o tempo de vida útil da roupa, removendo sujeiras pesadas;
+Ótima relação de benéfico e custo;
+Fácil fabricação e manipulação das matérias primas;
+Produto ecologicamente correto (isento de fosfatos que causam a eutrofização);'));
+
+
+INSERT INTO TIPO_PRODUTO(NOME_PROD,DESCRICAO_PROD)
+ VALUES('ALVEJANTE EM PÓ', UPPER('Maior poder de limpeza e alvejamento, devido aos polímeros especiais e Enzimas (Protease, Amilase Celulase);
+Baixa agressividade ao tecido, aumentando o tempo de vida útil da roupa, removendo sujeiras pesadas;
+Ótima relação de benéfico e custo;
+Fácil fabricação e manipulação das matérias primas;
+Produto ecologicamente correto (isento de fosfatos que causam a eutrofização);'));
+
+
+
+
+
 */
