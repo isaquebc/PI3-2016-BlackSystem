@@ -4,15 +4,20 @@
     Created on : 28/04/2016, 22:56:05
     Author     : Isaque
 -->
+
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
           xmlns:c="http://java.sun.com/jsp/jstl/core"
-          version="2.0">
+          version="2.0"
+          xmlns:display="http://displaytag.sf.net">
+    
     <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
     <jsp:output omit-xml-declaration="true"
                 doctype-root-element="HTML"
                 doctype-system="about:legacy-compact"/>
+    
     <html>
         <head>
+            
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <c:set var="scriptAtual">
                 <c:url value="_js/formatoJS.js"/>
@@ -44,7 +49,8 @@
                                             <option value="venda">Vendas</option>
                                             <option value="cliente">Cliente</option>
                                             <option value="funcionario">Funcionario</option>
-                                            <option value="produto">Produto</option>
+                                            <option value="produto-entrada">Entrada de Produto</option>
+                                            <option value="produto-saida">Saida de Produto</option>
                                             <option value="pedido">Pedido</option>
                                         </select>
                                     </div>
@@ -68,7 +74,7 @@
                         <div class="row">
                         <div class="col-md-offset-2 col-md-8"></div>
        
-                             <table class="table table-hover">
+                             <table id="relatorio" class="table table-hover">
                             <c:choose>
                             <c:when test="${relatorioFuncionario != null}">
                             <caption><h3>Clientes </h3></caption>
@@ -172,9 +178,69 @@
                                 </c:forEach>
                             </tbody>      
                             </c:when>
+                            <c:when test="${relatorioEntrada != null}">
+                            <caption><h3>Entrada de Produtos</h3></caption>
+                            <thead>
+                                <tr > 
+                                    <th>ID</th>
+                                    <th>Produto</th>
+                                    <th>Data Entrada</th>
+                                    <th>Qtd movimentada</th>
+                                    <th>Qtd Atual</th>
+                                    <th>ID Funcionario</th>
+                                    <th>Nome Funcionario</th>
+                                    <th>Filial</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-hover">
+                                <c:forEach items="${relatorioEntrada}" var="relatorioEntrada">
+                                    <tr>
+                                        <td>${relatorioEntrada.idProduto}</td>
+                                        <td>${relatorioEntrada.produto}</td>
+                                        <td>${relatorioEntrada.data}</td>
+                                        <td>${relatorioEntrada.qtd}</td>
+                                        <td>${relatorioEntrada.qtdAtual}</td>
+                                        <td>${relatorioEntrada.idFuncionario}</td>
+                                        <td>${relatorioEntrada.funcionario}</td>
+                                        <td>${relatorioEntrada.filial}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>      
+                            </c:when>
+                            <c:when test="${relatorioSaida != null}">
+                            <caption><h3>Saida de Produtos</h3></caption>
+                            <thead>
+                                <tr > 
+                                    <th>ID</th>
+                                    <th>Produto</th>
+                                    <th>Data Entrada</th>
+                                    <th>Qtd movimentada</th>
+                                    <th>Qtd Atual</th>
+                                    <th>ID Funcionario</th>
+                                    <th>Nome Funcionario</th>
+                                    <th>Filial</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-hover">
+                                <c:forEach items="${relatorioSaida}" var="relatorioSaida">
+                                    <tr>
+                                        <td>${relatorioSaida.idProduto}</td>
+                                        <td>${relatorioSaida.produto}</td>
+                                        <td>${relatorioSaida.data}</td>
+                                        <td>${relatorioSaida.qtd}</td>
+                                        <td>${relatorioSaida.qtdAtual}</td>
+                                        <td>${relatorioSaida.idFuncionario}</td>
+                                        <td>${relatorioSaida.funcionario}</td>
+                                        <td>${relatorioSaida.filial}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>      
+                            </c:when>
                             </c:choose>
                         </table>
+                        <a href="#" id="test" class="btn btn-default btn-primary btn-block " onclick="fnExcelReport()">Download Formato Excel</a>
                     </div>
+                
             </main>
         </body>
     </html>

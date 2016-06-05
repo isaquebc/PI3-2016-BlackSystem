@@ -60,7 +60,7 @@ public class RelatorioFuncionario {
         this.nomeFilial = nomeFilial;
     }
 
-    public double getValor() {
+    public float getValor() {
         return valor;
     }
 

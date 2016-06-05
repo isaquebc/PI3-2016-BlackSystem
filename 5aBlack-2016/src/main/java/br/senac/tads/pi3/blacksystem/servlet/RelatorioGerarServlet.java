@@ -96,6 +96,10 @@ public class RelatorioGerarServlet extends HttpServlet {
                 return rDAO.relatorioDeFilial(dataInicio, dataFim);
             case "CLIENTE":
                 return rDAO.relatorioDeCliente(dataInicio, dataFim);
+            case "PRODUTO-ENTRADA":
+                return rDAO.relatorioEntradaProduto(dataInicio, dataFim);
+            case "PRODUTO-SAIDA":
+                return rDAO.relatorioSaidaProduto(dataInicio, dataFim);
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(RelatorioGerarServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -107,7 +111,7 @@ public class RelatorioGerarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
    
-            System.err.println("entrou na  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+           
             
             String tipoRelatorio = request.getParameter("tipo-Relatorio");
             String dataInicio = request.getParameter("data-Inicial");
@@ -128,9 +132,13 @@ public class RelatorioGerarServlet extends HttpServlet {
                 break;
                 case "CLIENTE":
                     request.setAttribute("relatorioCliente", r);
+                case "PRODUTO-ENTRADA":
+                    request.setAttribute("relatorioEntrada", r);
                 break;
-            }
-            
+                case "PRODUTO-SAIDA":
+                    request.setAttribute("relatorioSaida", r);
+                break;
+            }    
             request.getRequestDispatcher("WEB-INF/relatorio/Gerar.jspx").forward(request, response);
             
         

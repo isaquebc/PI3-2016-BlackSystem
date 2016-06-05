@@ -18,11 +18,19 @@ public class MovimentoProduto {
     private String funcionaro;
     private String filial;
     private int idProduto;
-    private int idFuncionaro;
+    private int idFuncionario;
     private int idFilial;
-
+    private float qtdAtual;
+    
     // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
 
+    public void setQtdAtual(float qtdAtual) {
+        this.qtdAtual = qtdAtual;
+    }
+
+    public float getQtdAtual() {
+        return qtdAtual;
+    }
     
     public String getDescricao() {
         return descricao;
@@ -56,11 +64,11 @@ public class MovimentoProduto {
         this.qtd = qtd;
     }
 
-    public String getFuncionaro() {
+    public String getFuncionario() {
         return funcionaro;
     }
 
-    public void setFuncionaro(String funcionaro) {
+    public void setFuncionario(String funcionaro) {
         this.funcionaro = funcionaro;
     }
 
@@ -80,12 +88,12 @@ public class MovimentoProduto {
         this.idProduto = idProduto;
     }
 
-    public int getIdFuncionaro() {
-        return idFuncionaro;
+    public int getIdFuncionario() {
+        return idFuncionario;
     }
 
     public void setIdFuncionaro(int idFuncionaro) {
-        this.idFuncionaro = idFuncionaro;
+        this.idFuncionario = idFuncionaro;
     }
 
     public int getIdFilial() {
@@ -95,4 +103,5 @@ public class MovimentoProduto {
     public void setIdFilial(int idFilial) {
         this.idFilial = idFilial;
     }// </editor-fold>
+    
 }

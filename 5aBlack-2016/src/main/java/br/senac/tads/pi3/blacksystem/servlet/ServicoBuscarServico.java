@@ -5,8 +5,11 @@
  */
 package br.senac.tads.pi3.blacksystem.servlet;
 
+import br.senac.tads.pi3.blacksystem.ablack.ServicoDAO;
+import br.senac.tads.pi3.blacksystem.entity.Servico;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Isaque
  */
 @WebServlet(name = "ServicoAlterarServico", urlPatterns = {"/ServicoAlterarServico"})
-public class ServicoAlterarServico extends HttpServlet {
+public class ServicoBuscarServico extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,7 +47,6 @@ public class ServicoAlterarServico extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("servicos", "Mensagem");
         request.getRequestDispatcher("WEB-INF/servicoProduto/AlterarServico.jspx").forward(request, response);
     }
 
@@ -59,14 +61,25 @@ public class ServicoAlterarServico extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        ServicoDAO servDAO = new ServicoDAO();
+        Servico servico = new Servico();
+        ArrayList<Servico> servicos = new ArrayList<>();
+        servico.setNomeServico(((String)request.getParameter("nome-servico")).toUpperCase(Locale.US));
+        servico.setTipoServico(request.getParameter("nome-servico").toUpperCase());
+        
+        
+        try {
+            servicos = servDAO.buscarServico(servico);
+            request.setAttribute("servicos", servDAO.buscarServico(servico));
+            request.getRequestDispatcher("WEB-INF/servicoProduto/AlterarServico.jspx").forward(request, response);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+    
     @Override
     public String getServletInfo() {
         return "Short description";

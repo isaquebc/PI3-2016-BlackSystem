@@ -6,6 +6,7 @@
 package br.senac.tads.pi3.blacksystem.servlet;
 
 import br.senac.tads.pi3.blacksystem.ablack.ServicoDAO;
+import br.senac.tads.pi3.blacksystem.entity.Mensagem;
 import br.senac.tads.pi3.blacksystem.entity.Servico;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -50,7 +51,7 @@ public class ServicoCadastrarServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("servicos", "Mensagem");
+        //request.setAttribute("servicos", "Mensagem");
         request.getRequestDispatcher("WEB-INF/servicoProduto/CadastrarServico.jspx").forward(request, response);
     }
 
@@ -67,18 +68,29 @@ public class ServicoCadastrarServlet extends HttpServlet {
             throws ServletException, IOException {
 
         Servico ser= new Servico();
-        ser.setDescricaoServico(request.getParameter("nome").toUpperCase());
+        ser.setNomeServico(request.getParameter("nome").toUpperCase());
         ser.setTipoServico(request.getParameter("tipoServico").toUpperCase());
-        ser.setPreco(Float.parseFloat(request.getParameter("valor")));
-        ser.setPrazo(request.getParameter("prazo"));
-        
+        ser.setValorServico(Float.parseFloat(request.getParameter("valor")));
+        ser.setPrazo((int)Integer.parseInt(request.getParameter("prazo")));
+        ser.setId(7);
         ServicoDAO sDao= new ServicoDAO();
+        Mensagem msg = null;
+        
         try {
             sDao.cadastrarServico(ser);
+            msg = new Mensagem("Cadastrar Serviço", "Produto Cadastrado Com sucesso",
+                        "ServicoCadastrarServlet");
         } catch (ClassNotFoundException ex) {
+            msg = new Mensagem("Cadastrar Serviço", "Ocorreu um erro ao cadastrar o produto verique os campos e preencha corretamente",
+                        "ServicoCadastrarServlet");
             Logger.getLogger(ServicoCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        request.setAttribute("msg", msg);
+        request.getRequestDispatcher("Mensagem.jspx").forward(request, response);
+        
     }
+    
+    
 
     /**
      * Returns a short description of the servlet.

@@ -19,7 +19,7 @@ ESTADO_FILIAL VARCHAR(20)
 CREATE TABLE SERVICO (
 ID_SERVICO INT NOT NULL GENERATED ALWAYS AS IDENTITY 
     (START WITH 1, INCREMENT BY 1) CONSTRAINT PK_Servico PRIMARY KEY,
-NOME_SERV VARCHAR(50),
+NOME_SERV VARCHAR(50) UNIQUE,
 TIPO_SERV VARCHAR(30),
  VALOR_SERV FLOAT(10),
  PRAZO_SERV INT
@@ -35,7 +35,7 @@ CREATE TABLE TIPO_PRODUTO (
 CREATE TABLE CLIENTE (
  ID_CLIENTE INT NOT NULL GENERATED ALWAYS AS IDENTITY 
     (START WITH 1, INCREMENT BY 1)CONSTRAINT PK_Cliente PRIMARY KEY,
-CPF_CLIENTE VARCHAR(16),
+CPF_CLIENTE VARCHAR(16) UNIQUE,
  NOME_CLIENTE VARCHAR(100),
  SOBRENOME_CLIENTE VARCHAR(150),
 SEXO_CLIENTE CHAR(1),
@@ -64,7 +64,7 @@ FOREIGN KEY(ID_CLIENTE) REFERENCES CLIENTE(ID_CLIENTE)
 CREATE TABLE FUNCIONARIO (
  ID_FUNC INT NOT NULL GENERATED ALWAYS AS IDENTITY 
     (START WITH 1, INCREMENT BY 1) CONSTRAINT PK_Funcionario PRIMARY KEY,
- CPF_FUNC CHAR(16) NOT NULL ,
+ CPF_FUNC CHAR(16) NOT NULL UNIQUE,
  NOME_FUNC VARCHAR(100),
  SOBRENOME_FUNC VARCHAR(150),
 SEXO_FUNC CHAR(1),
@@ -100,7 +100,7 @@ FOREIGN KEY(ID_FUNC) REFERENCES FUNCIONARIO(ID_FUNC)
 
 CREATE TABLE PRODUTO (
  ID_PROD INT NOT NULL GENERATED ALWAYS AS IDENTITY CONSTRAINT PK_Produto PRIMARY KEY,
- NOME_PROD VARCHAR(100),
+ NOME_PROD VARCHAR(100) UNIQUE,
  VALIDADE_PROD DATE,
  LOTE INT,
  STATUS VARCHAR(30),
@@ -201,6 +201,7 @@ CREATE TABLE ENTRADA(
     (START WITH 1, INCREMENT BY 1) CONSTRAINT PK_ENTRADA PRIMARY KEY,
     DESCRICAO VARCHAR(100),
     DATA_ENTRADA DATE,
+    QTD FLOAT,
     ID_PRODUTO INT NOT NULL,
     ID_FUNCIONARIO INT NOT NULL,
     ID_FILIAL INT NOT NULL,
@@ -214,6 +215,7 @@ CREATE TABLE SAIDA(
     (START WITH 1, INCREMENT BY 1) CONSTRAINT PK_SAIDA PRIMARY KEY,
     DESCRICAO VARCHAR(100),
     DATA_ENTRADA DATE,
+    QTD FLOAT,
     ID_PRODUTO INT NOT NULL,
     ID_FUNCIONARIO INT NOT NULL,
     ID_FILIAL INT NOT NULL,
@@ -242,4 +244,38 @@ INSERT INTO TIPO_PRODUTO(NOME_PROD,DESCRICAO_PROD)
 
 INSERT INTO FUNCIONARIO(CPF_FUNC, NOME_FUNC, SENHA_FUNC, CARGO_FUNC, SALT)
     VALUES('123.123', 'ADMIM', 'eb3eae884d3412c15be49452e518e6c5a56b059', 'ADMIM', '48737d31978212a');
+
+
+
+INSERT INTO TIPO_PRODUTO(NOME_PROD,DESCRICAO_PROD);
+ VALUES('SABAO EM PO', 'Uma poderosa fórmula desenvolvida pela Brilhante que tira manchas de suas roupas brancas ou coloridas sem danificá-las. Remove manchas como café, vinho, suco de uva, chá preto e chocolate.');
+
+INSERT INTO TIPO_PRODUTO(NOME_PROD,DESCRICAO_PROD)
+ VALUES('SABAO EM PEDRA', UPPER('quím substância detergente, obtida pela mistura de sais de sódio e de potássio com ácidos graxos, e us. com água para lavagem.'));
+
+INSERT INTO TIPO_PRODUTO(NOME_PROD,DESCRICAO_PROD)
+ VALUES('ALVEJANTE SEM CLORO', UPPER('Alvejante sem Cloro Vantage possui ação do oxigênio ativo, que garante eficiência no combate a manchas e sujeiras. Por ser um alvejante sem cloro, pode ser usado com total segurança em roupas brancas, coloridas e em diversos tecidos, na pré-lavagem ou na máquina.'));
+
+INSERT INTO TIPO_PRODUTO(NOME_PROD,DESCRICAO_PROD)
+ VALUES('ALVEJANTE COMUM', UPPER('Maior poder de limpeza e alvejamento, devido aos polímeros especiais e Enzimas (Protease, Amilase Celulase);
+Baixa agressividade ao tecido, aumentando o tempo de vida útil da roupa, removendo sujeiras pesadas;
+Ótima relação de benéfico e custo;
+Fácil fabricação e manipulação das matérias primas;
+Produto ecologicamente correto (isento de fosfatos que causam a eutrofização);'));
+
+
+INSERT INTO TIPO_PRODUTO(NOME_PROD,DESCRICAO_PROD)
+ VALUES(ALVEJANTE EM PO', UPPER('Maior poder de limpeza e alvejamento, devido aos polímeros especiais e Enzimas (Protease, Amilase Celulase);
+Baixa agressividade ao tecido, aumentando o tempo de vida útil da roupa, removendo sujeiras pesadas;
+Ótima relação de benéfico e custo;
+Fácil fabricação e manipulação das matérias primas;
+Produto ecologicamente correto (isento de fosfatos que causam a eutrofização);'));
+
+SELECT  DATA_FECHAMENTO, DESCRICAO_TRATATIVA, CHAMADO.STATUS, TRATATIVA_CHAMADO.ID_CHAMADO, CHAMADO.TIPO_SOLICITACAO, FUNCIONARIO.NOME_FUNC, FUNCIONARIO.EMAIL_FUNC FROM TRATATIVA_CHAMADO
+INNER JOIN FUNCIONARIO ON FUNCIONARIO.ID_FUNC = TRATATIVA_CHAMADO.ID_FUNC
+INNER JOIN CHAMADO ON CHAMADO.ID_CHAMADO = TRATATIVA_CHAMADO.ID_CHAMADO;
+
+
+
+
 */

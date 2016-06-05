@@ -5,6 +5,8 @@
  */
 package br.senac.tads.pi3.blacksystem.servlet;
 
+import br.senac.tads.pi3.blacksystem.ablack.MovimentoDAO;
+import br.senac.tads.pi3.blacksystem.ablack.ProdutoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -59,7 +61,18 @@ public class ProdutoAlterarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        
+        String nomeProduto = request.getParameter("nome");
+        
+        try {
+            ProdutoDAO pDAO = new ProdutoDAO();
+            request.setAttribute("produtos", pDAO.buscaProduto(nomeProduto.toUpperCase()));
+            request.getRequestDispatcher("WEB-INF/servicoProduto/AlterarProduto.jspx").forward(request, response);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            
+        }
     }
 
     /**

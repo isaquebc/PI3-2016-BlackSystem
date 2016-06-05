@@ -35,6 +35,33 @@
                             <button type="submit" class="btn btn-lg btn-primary btn-block" id="pesquisar">Buscar</button>
                         </form>
                     </div>
+                    <table class="table table-hover">
+                            <caption><h3>Chamados </h3></caption>
+                            <thead>
+                                <tr > 
+                                    <th>#</th>
+                                    <th>Categoria</th>
+                                    <th>Data de Abertura</th>
+                                    <th>Status</th>
+                                    <th>Funcionario</th>
+                                    <th>Telefone</th>
+                                    <th>Filial</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-hover">
+                                    <tr>
+                                        <td>${chamados.idChamado}</td>
+                                        <td>${chamados.tipoSolicitacao}</td>
+                                        <td>${chamados.dataAbertura}</td>
+                                        <td>${chamados.status}</td>
+                                        <td>${chamados.funcionario}</td>
+                                        <td>${chamados.tel}</td>
+                                        <td>${chamados.descricao}</td>
+                                        <td> null</td>
+                                    </tr>
+                            </tbody>
+                    </table>
                 </div>
             </div>
         </body>
