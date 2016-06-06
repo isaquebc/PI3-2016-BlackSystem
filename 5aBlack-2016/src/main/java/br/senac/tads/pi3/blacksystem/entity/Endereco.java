@@ -20,7 +20,7 @@ public class Endereco {
     private String estado;
     private String cep;
     private String idCPF;
-    private String numero;
+    private int numero;
 
     // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
 
@@ -33,11 +33,11 @@ public class Endereco {
         this.idCPF = idCPF;
     }
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
     

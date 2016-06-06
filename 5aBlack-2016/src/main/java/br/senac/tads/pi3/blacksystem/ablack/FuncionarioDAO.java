@@ -143,6 +143,7 @@ public class FuncionarioDAO extends Conexao {
             stm.setInt(13, func.getFilial());
             stm.setString(14, user.getSalt());
             stm.executeUpdate();
+            
             stm.close();
             conn.close();
         } catch (SQLException | InvalidKeySpecException | NoSuchAlgorithmException e) {
@@ -180,6 +181,30 @@ public class FuncionarioDAO extends Conexao {
             System.out.println("Dao não inicializado");
         }
         return 0;
+    }
+    
+    public void cadastrarEndFuncionario(Funcionario funcionario) throws ClassNotFoundException{
+        Connection conn = null;
+        PreparedStatement preStm = null;
+        final String QUERY_INSERT_FUNCIORARIO_END = "INSERT INTO ENDERECO_FUNCIONARIO (LOGRADOURO_FUNC, NUMERO_FUNC, COMPLEMENTO_FUNC, BAIRRO_FUNC, CIDADE_FUNC, ESTADO_FUNC, CEP_FUNC, ID_FUNC) " +
+        " VALUES(?, ?, ?, ?, ?, ? , ?, (SELECT ID_FUNC FROM FUNCIONARIO WHERE CPF_FUNC ="+funcionario.getCpf()+"))";
+        try {
+            conn = getConexao();
+            preStm = conn.prepareStatement(QUERY_INSERT_FUNCIORARIO_END);
+            
+            preStm.setString(1, funcionario.getEndereco().getEndereco());
+            preStm.setInt(2, funcionario.getEndereco().getNumero());
+            preStm.setString(3, funcionario.getEndereco().getComplemento());
+            preStm.setString(4, funcionario.getEndereco().getBairro());
+            preStm.setString(5, funcionario.getEndereco().getCidade());
+            preStm.setString(6, funcionario.getEndereco().getEstado());
+            preStm.setString(7, funcionario.getEndereco().getCep());
+            preStm.executeUpdate();
+            preStm.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
     }
 
 }

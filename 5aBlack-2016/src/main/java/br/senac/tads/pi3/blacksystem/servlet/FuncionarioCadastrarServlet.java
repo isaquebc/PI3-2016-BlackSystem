@@ -97,10 +97,21 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
         func.setCpf(request.getParameter("cpf"));
         ////        func.setDataContratacao(request.getParameter("2000-01-01"));
         
+        /*quando implementar o endereco colocar os reques aqui*/
+        func.getEndereco().setEndereco(request.getParameter("logradoura"));
+        func.getEndereco().setNumero((int)Integer.parseInt(request.getParameter("numero")));
+        func.getEndereco().setComplemento(request.getParameter("complemento"));
+        func.getEndereco().setBairro(request.getParameter("bairro"));
+        func.getEndereco().setCidade(request.getParameter("cidade"));
+        func.getEndereco().setEstado(request.getParameter("estado"));
+        func.getEndereco().setCep(request.getParameter("cep"));
+        
+        
         System.err.println(request.getParameter("filial-Trabalho").toUpperCase());
         try {
             func.setFilial(funcDAO.buscarFilial(request.getParameter("filial-Trabalho").toUpperCase()));
             funcDAO.cadastrarFuncionario(func);
+            
             
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(FuncionarioCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);

@@ -19,7 +19,17 @@ public class Funcionario extends Pessoa{
     private int filial;
     private String dataContratacao="";
     private double salario=0;
-    public Endereco endereco = new Endereco();
+    private Endereco endereco;
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+    
+    
     
     
     public double getSalario() {
@@ -87,6 +97,7 @@ public class Funcionario extends Pessoa{
     }
     
     public Funcionario() {
+        this.endereco = new Endereco();
     }
 
     
