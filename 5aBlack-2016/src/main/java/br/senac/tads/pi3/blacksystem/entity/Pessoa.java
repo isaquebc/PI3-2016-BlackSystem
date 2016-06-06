@@ -86,7 +86,7 @@ public abstract class Pessoa {
         return mascaraCpf(this.cpf);
     }
     public String pegarCpf() {
-        return mascaraCpf(this.cpf);
+        return this.cpf;
     }
 
     public void setCpf(String cpf) {
