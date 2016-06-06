@@ -19,8 +19,18 @@ public class Produto {
     private int qtdMin;
     private int qtdMax;
     private int qtdAtual;
-
+    private TipoProduto tipoDeProduto;
     // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
+    public Produto(){
+        this.tipoDeProduto = new TipoProduto();
+    }
+    public void setTipoDeProduto(TipoProduto tipoDeProduto) {
+        this.tipoDeProduto = tipoDeProduto;
+    }
+
+    public TipoProduto getTipoDeProduto() {
+        return this.tipoDeProduto;
+    }
     
     public int getIdProduto() {
         return idProduto;
@@ -94,8 +104,6 @@ public class Produto {
         this.qtdAtual = qtdAtual;
     }// </editor-fold>
 
-    public Produto() {
-    }
     
 
 }

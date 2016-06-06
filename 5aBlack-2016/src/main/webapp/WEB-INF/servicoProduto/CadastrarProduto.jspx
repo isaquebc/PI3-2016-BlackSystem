@@ -31,7 +31,7 @@
                 <div class="container">
                     <div class="row" >
                         <div class="col-md-offset-2 col-md-5" >
-                            <form class="form-signin" action="#" method="post" accept-charset="UTF-8"> <!-- NovoProdutoServlet -->
+                            <form class="form-signin" action="ProdutoCadastrarServlet" method="post" accept-charset="UTF-8"> <!-- NovoProdutoServlet -->
                                 <fieldset> 
                                     <legend><h2 class="form-signin-heading">Novo Produto</h2></legend>
                                     <div>
@@ -40,11 +40,11 @@
                                             <select class="form-control" required="" name="tipo" id="tipoPRoduto">
                                                 <option>  </option>
                                                 <option>  </option>
-                                                <option> SABÃO EM PÓ </option>
-                                                <option>SABÃO EM PEDRA </option>
-                                                <option>ALVEJANTE SEM CLORO  </option>
-                                                <option> ALVEJANTE COMUM</option>
-                                                <option>ALVEJANTE EM PÓ  </option>
+                                                <option value="SABAO EM PO"> SABÃO EM PÓ </option>
+                                                <option value="SABAO EM PEDRA">SABÃO EM PEDRA </option>
+                                                <option value="ALVEJANTE SEM CLORO">ALVEJANTE SEM CLORO  </option>
+                                                <option value="ALVEJANTE COMUM"> ALVEJANTE COMUM</option>
+                                                <option value="ALVEJANTE EM PO">ALVEJANTE EM PÓ  </option>
                                             </select>
                                         </div>
                                         </div>

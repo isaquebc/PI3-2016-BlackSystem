@@ -5,7 +5,8 @@
  */
 package br.senac.tads.pi3.blacksystem.servlet;
 
-import br.senac.tads.pi3.blacksystem.ablack.CadastrarProdutoDAO;
+import br.senac.tads.pi3.blacksystem.ablack.ProdutoDAO;
+import br.senac.tads.pi3.blacksystem.ablack.MovimentoDAO;
 import br.senac.tads.pi3.blacksystem.entity.MovimentoProduto;
 import br.senac.tads.pi3.blacksystem.entity.Produto;
 import br.senac.tads.pi3.blacksystem.entity.TipoProduto;
@@ -38,7 +39,6 @@ public class ProdutoCadastrarServlet extends HttpServlet {
         
     }
 
-    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -51,7 +51,6 @@ public class ProdutoCadastrarServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-
         request.getRequestDispatcher("WEB-INF/servicoProduto/CadastrarProduto.jspx").forward(request, response);
     }
 
@@ -69,31 +68,31 @@ public class ProdutoCadastrarServlet extends HttpServlet {
         
         Produto p = new Produto();
         System.err.println("sadasdasdasdasd");
-        TipoProduto tipo=new TipoProduto();
         
-        String nome=(request.getParameter("tipo").toUpperCase());
         p.setNome(request.getParameter("nome").toUpperCase());
         p.setValidade(request.getParameter("validade"));
         p.setLote(Integer.parseInt(request.getParameter("lote")));
         p.setQtdMin(Integer.parseInt(request.getParameter("qtdMinima")));
         p.setQtdMax(Integer.parseInt(request.getParameter("qtdMaxima")));
         p.setQtdAtual(Integer.parseInt(request.getParameter("qtdAtual")));
-        
+        p.getTipoDeProduto().setNome(request.getParameter("tipo"));
+        p.setIdProduto(7);
         MovimentoProduto m = new MovimentoProduto();
         m.setDescricao("Produto cadastrado".toUpperCase());
         m.setIdFilial(1);
         m.setIdFuncionaro(2);
-        m.setIdProduto(1);
-        m.setQtd(100);
         
         try {
-            CadastrarProdutoDAO pDAO = new CadastrarProdutoDAO();
-
-            pDAO.produtoCadastro(p, nome);
+            ProdutoDAO pDAO = new ProdutoDAO();
+            MovimentoDAO mDAO = new MovimentoDAO();
+            pDAO.produtoCadastro(p);
+            mDAO.produtoEntrada(m, p);
+//            MovimentoDAO mAtulizar = new MovimentoDAO();
+//            mAtulizar.produtoAtualizar(p);
+//            mAtulizar.produtoSaida(m, p);
         } catch (Exception e) {
             
         }
-       
         
     }
 
@@ -106,5 +105,5 @@ public class ProdutoCadastrarServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }
-
+    
 }
