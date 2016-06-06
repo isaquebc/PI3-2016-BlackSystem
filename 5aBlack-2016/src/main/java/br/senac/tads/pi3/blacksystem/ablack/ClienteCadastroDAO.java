@@ -47,7 +47,7 @@ public class ClienteCadastroDAO extends Conexao {
             stm.setString(6, cli.getCelular());
             stm.setString(7, cli.getEmail());
             stm.setString(8, "ATIVO");
-            stm.setString(9, cli.getCpf());
+            stm.setString(9, cli.pegarCpf());
             Date dtC = new java.sql.Date(cli.getDtCadastro().getTime());
             stm.setDate(10, (java.sql.Date) dtC);
             stm.executeUpdate();

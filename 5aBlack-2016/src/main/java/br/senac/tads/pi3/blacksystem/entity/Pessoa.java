@@ -83,7 +83,10 @@ public abstract class Pessoa {
     }
 
     public String getCpf() {
-        return "7777777777";
+        return mascaraCpf(this.cpf);
+    }
+    public String pegarCpf() {
+        return mascaraCpf(this.cpf);
     }
 
     public void setCpf(String cpf) {
@@ -171,6 +174,11 @@ public abstract class Pessoa {
         this.status = status;
     }// </editor-fold>
 
+    public static String mascaraCpf(String CPF) {
+    return(CPF.substring(0, 3) + "." + CPF.substring(3, 6) + "." +
+      CPF.substring(6, 9) + "-" + CPF.substring(9, 11));
+  }
+    
     public boolean isCpf(String cpf) {
 
         if (cpf.equals("00000000000") || cpf.equals("11111111111")
