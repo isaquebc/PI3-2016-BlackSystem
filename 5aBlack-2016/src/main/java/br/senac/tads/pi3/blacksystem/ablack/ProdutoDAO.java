@@ -24,29 +24,29 @@ import org.apache.derby.client.am.Decimal;
  * @author Miqueas Santos
  */
 public class ProdutoDAO extends Conexao {
+
+     String QUERY_INSERT_PRODUTO = "INSERT INTO PRODUTO(NOME_PROD, VALIDADE_PROD, LOTE, STATUS, QTD_MIN, QTD_MAX, QTD_ATUAL)"
+            + "    VALUES(?, ?, ?, ?, ?, ?, ?)";
 //
-//    final String QUERY_INSERT_PRODUTO = "INSERT INTO PRODUTO(NOME_PROD, VALIDADE_PROD, LOTE, STATUS, QTD_MIN, QTD_MAX, QTD_ATUAL)"
-//            + "    VALUES(?, ?, ?, ?, ?, ?, ?)";
-//
-//    public void cadastrarTipoProduto(TipoProduto tipo)
-//            throws ClassNotFoundException {
-//        Connection conn = null;
-//        PreparedStatement stm = null;
-//        try {
-//            conn = getConexao();
-//            stm = conn.prepareStatement(QUERY_INSERT_PRODUTO);
-//            stm.setInt(1, tipo.getIdTipo());
-//            stm.setString(2, tipo.getNome());
-//            stm.setString(3, tipo.getDescricao());
-//            stm.executeQuery();
-//            stm.close();
-//            conn.close();
-//        } catch (SQLException e) {
-//            System.out.println("Erro de conexão");
-//        } catch (NullPointerException e) {
-//            System.out.println("Dao não inicializado");
-//        }
-//    }
+    public void cadastrarTipoProduto(TipoProduto tipo)
+            throws ClassNotFoundException {
+        Connection conn = null;
+        PreparedStatement stm = null;
+        try {
+            conn = getConexao();
+            stm = conn.prepareStatement(QUERY_INSERT_PRODUTO);
+            stm.setInt(1, tipo.getIdTipo());
+            stm.setString(2, tipo.getNome());
+            stm.setString(3, tipo.getDescricao());
+            stm.executeQuery();
+            stm.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("Erro de conexão");
+        } catch (NullPointerException e) {
+            System.out.println("Dao não inicializado");
+        }
+    }
 
     public void produtoCadastro(Produto p) throws ClassNotFoundException {
         String sql = "insert into PRODUTO ( NOME_PROD, VALIDADE_PROD,LOTE,STATUS,QTD_MIN,QTD_MAX,QTD_ATUAL,ID_TIPO_PROD)" + "values(?,?,?,?,?,?,?,?)";
@@ -90,7 +90,7 @@ public class ProdutoDAO extends Conexao {
      */
     public int buscaTipoProd(String tipoDoProduto) {
 
-        String slq = "SELECT * FROM TIPO_PRODUTO WHERE  NOME_PROD ='" + tipoDoProduto + "'";
+        String slq = "SELECT * FROM TIPO_PRODUTO WHERE  DESCRICAO_PROD ='" + tipoDoProduto + "'";
 
         int saida=0;
 
