@@ -61,6 +61,8 @@
                                     <th>Cidade</th>
                                     <th>cep</th> 
                                 </tr>
+                            
+
                             </thead>
                             <tbody class="table-hover">
                                 <c:forEach items="${clientes}" var="cliente">

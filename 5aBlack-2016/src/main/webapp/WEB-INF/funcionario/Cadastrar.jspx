@@ -97,7 +97,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="senha">Senha</label>
-                                    <input type="text" required="" class="form-control" name="senha" id="senha"/>
+                                    <input type="password" required="" class="form-control" name="senha" id="senha"/>
+                                    <label for="confirm">COnfirmação</label>
+                                    <input type="password" required="" class="form-control" name="senha" id="confirmSenha"/>
                                 </div>
                             </fieldset>
                             <button type="submit" id="inserir" class="btn btn-default btn-primary btn-block">Cadastrar</button>
