@@ -36,7 +36,7 @@ public class Usuario extends Funcionario{
     }// </editor-fold>
         
     public Usuario validar(Usuario usuarioBanco) {
-    if (this.getCpf() != null && this.getHashSenha().equals(usuarioBanco.getHashSenha())) {
+    if (this.pegarCpf() != null && this.getHashSenha().equals(usuarioBanco.getHashSenha())) {
       return this;
     }
     return null;

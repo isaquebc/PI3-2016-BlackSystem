@@ -13,4 +13,10 @@ and open the template in the editor.
     border: none;
     background: none;
     padding: 0px;
+    
+}
+td{
+    width:  5px;
+    min-width: 50px;
+    max-width: 300px;
 }

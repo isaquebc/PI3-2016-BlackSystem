@@ -26,7 +26,7 @@
             <jsp:include page="../inicial/Menu.jspx" />
             <div class="container" >
                 <div class="row" >
-                    <div class="col-md-offset-2 col-md-4" >
+                    <div class="col-md-offset-4 col-md-4" >
                         <form class="form-signin" action="#" method="post" accept-charset="UTF-8"> <!-- BuscarClienteServlet -->
                             <fieldset>
                                 <legend><h2 class="form-signin-heading">Buscar Cliente</h2></legend>
@@ -40,13 +40,14 @@
                 </div>
             </div>
             <!-- <td> colune e <tr> é linha ou seja <tr>(Linha) contem <td>coluna</td> <td>coluna</td> </tr>(Fecha Linha)-->
-            <div class="container" >
-                <div class="row" >
-                    <div class="col-md-offset-0 col-md-12" >
+            <div class="container-fluid" >
+                <div class="form-signin" >
+                    <div>
                         <table class="table table-hover">
                             <caption><h3>Clientes </h3></caption>
                             <thead>
                                 <tr > 
+                                    <th>#</th>
                                     <th>CPF</th>
                                     <th> Nome</th>
                                     <th>Sobrenome</th>
@@ -64,23 +65,26 @@
                             <tbody class="table-hover">
                                 <c:forEach items="${clientes}" var="cliente">
                                     <tr>
-                                        <td>${cliente.cpf}</td>
-                                        <td>${cliente.nome}</td>
-                                        <td>${cliente.sobrenome}</td>
-                                        <td>
-                                        <fmt:formatDate value="${cliente.nasc}" 
-                                pattern="dd/MM/yyyy" />
-                                        </td>
-                                        <td>${cliente.telefone}</td>
-                                        <td>${cliente.celular}</td>
-                                        <td>${cliente.email}</td>
-                                        <td>${cliente.rua}</td>
-                                        <td>${cliente.numero}</td>
-                                        <td>${cliente.estado}</td>
-                                        <td>${cliente.cidade}</td>
-                                        <td>${cliente.cep}</td>
-                                    </tr>
-                                </c:forEach>
+                                <form class="form-signin" action="#" method="post" accept-charset="UTF-8"> <!-- BuscarClienteServlet -->
+                                    <fieldset>
+                                        <td><input type="text" size="4" disabled="" class="esconder" required="" value="${cliente.id}" name="id" id="id"/></td>
+                                        <td><input type="text" size="12" class="esconder" required="" value="${cliente.cpf}" name="cpf" id="cpf" data-dismiss="alert" maxlength="14" onBlur="ValidarCPF(cadCliente.cpf);" OnKeyPress="formatar('###.###.###-##', this)"/></td>
+                                        <td><input type="text" size="12" class="esconder" required="" value="${cliente.nome}" name="nome" id="pNome"/></td>
+                                        <td><input type="text" size="13" class="esconder" required="" value="${cliente.sobrenome}" name="sobrenome" id="sNome"/></td>
+                                        <td> <fmt:formatDate value="${cliente.nasc}" pattern="dd/MM/yyyy" /> </td>
+                                        <td><input type="text" size="10" class="esconder" value="${cliente.telefone}" name="telefone" id="tel" maxlength="12" OnKeyPress="formatar('##-####-####', this)"/></td>
+                                        <td><input type="text" size="11" class="esconder" required="" value="${cliente.celular}" name="celular" id="cel" maxlength="13" OnKeyPress="formatar('##-#####-####', this)"/></td>
+                                        <td><input type="email" size="15" class="esconder" required="" value="${cliente.email}" name="email" id="email"/></td>
+                                        <td><input type="text" size="16" class="esconder" value="${cliente.rua}" name="rua" id="rua"/></td>
+                                        <td><input type="number" size="1" class="esconder" value="${cliente.numero}" name="nuemero" id="nuemero"/></td>
+                                        <td><input type="text" size="3" class="esconder" value="${cliente.estado}" name="estado" id="estado"/></td>
+                                        <td><input type="text" size="7" class="esconder" value="${cliente.cidade}" name="cidade" id="cidade"/></td>
+                                        <td><input type="text" size="7" class="esconder" value="${cliente.cep}" name="cep" id="cep" maxlength="9" OnKeyPress="formatar('#####-###', this)"/></td>
+                                        <td><button  type="submit" id="inserir" class="btn btn-default btn-sm btn-block ">Alterar</button></td>
+                                    </fieldset>
+                                </form>
+                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>

@@ -19,10 +19,14 @@
             <c:set var="css">
                 <c:url value="_css/bootstrap.min.css"/>
             </c:set>
+            <c:set var="cssEsconder">
+                <c:url value="_css/escondeCampo.css"/>
+            </c:set>
             <script src="${scriptAtual}" type="text/javascript">.</script>
             <meta charset="utf-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <link href="${css}" rel="stylesheet"/>              
+            <link href="${cssEsconder}" rel="stylesheet"/>              
             <title>5aBlack</title>
         </head>
         <body>

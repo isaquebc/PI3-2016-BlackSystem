@@ -73,7 +73,7 @@ public class IndexServlet extends HttpServlet {
             throws ServletException, IOException {
        
         
-        Map<String, Usuario>  usuario = new HashMap<>();
+//        Map<String, Usuario>  usuario = new HashMap<>();
         Usuario usuarioBanco = new Usuario();
         Usuario usuarioLogado = new Usuario();
         Criptografia criptrografia = new Criptografia();
@@ -81,7 +81,7 @@ public class IndexServlet extends HttpServlet {
         usuarioLogado.setCpf(request.getParameter("cpf"));
         usuarioLogado.setHashSenha(request.getParameter("senha"));
         try {
-            usuarioBanco = funcDAO.buscarFuncionario(usuarioLogado.getCpf());
+            usuarioBanco = funcDAO.buscarFuncionario(usuarioLogado.pegarCpf());
             usuarioLogado.setSalt(usuarioBanco.getSalt());
             usuarioLogado.setHashSenha(criptrografia.gerarHashSenhaPBKDF2(usuarioLogado));
         } catch (Exception e) {
@@ -106,7 +106,7 @@ public class IndexServlet extends HttpServlet {
         msg.setDestino("index.html");
         request.setAttribute("msg", msg);
         request.getRequestDispatcher("Mensagem.jspx").forward(request, response);        
-        usuario.put(usuarioBanco.getCpf(), usuarioBanco);
+//        usuario.put(usuarioBanco.pegarCpf(), usuarioBanco);
         
         
         
