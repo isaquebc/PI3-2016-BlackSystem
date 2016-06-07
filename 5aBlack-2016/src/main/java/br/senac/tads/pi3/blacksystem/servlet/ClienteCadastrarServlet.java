@@ -85,6 +85,16 @@ public class ClienteCadastrarServlet extends HttpServlet {
         cli.setSexo(request.getParameter("sexo").toUpperCase());
         cli.setEmail(request.getParameter("email"));
         String dtNascStr = request.getParameter("dt-Nascimento");
+        
+        // captura dos dados do endereço
+        
+        endCli.setEndereco(request.getParameter("rua"));
+        endCli.setNumero(Integer.parseInt(request.getParameter("numero")));
+        endCli.setCidade(request.getParameter("cidade"));
+        endCli.setEstado(request.getParameter("estado"));
+        endCli.setCep(request.getParameter("cep"));
+        
+        
         Date nasc= null;
         try {
             nasc = form.parse(dtNascStr);
@@ -96,11 +106,7 @@ public class ClienteCadastrarServlet extends HttpServlet {
        cli.setDtCadastro(new Date());
        
 
-//        endCli.setEndereco( request.getParameter("rua"));
-//        endCli.setEstado(request.getParameter("estado"));
-//        endCli.setCidade(null); request.getParameter("cidade");
-//        endCli.setCep( request.getParameter( "cep"));
-//        
+        
        Erro er = cli.validar(cli);
        boolean teste= er.isExistente();
         if (teste) {
@@ -121,6 +127,9 @@ public class ClienteCadastrarServlet extends HttpServlet {
         } else {
             try {
                 cadCli.cadatrarPessoa(cli);
+                DAOenddCli.cadastrarEndereco(cli, endCli);
+                
+                   
                 /*=============================================================
                  Mensagem de sucesso
                  ===============================================================*/
@@ -136,7 +145,7 @@ public class ClienteCadastrarServlet extends HttpServlet {
             } catch (IOException ex) {
                 Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        
     }
 
     /**
