@@ -127,7 +127,7 @@ public class ClienteCadastrarServlet extends HttpServlet {
         } else {
             try {
                 cadCli.cadatrarPessoa(cli);
-                DAOenddCli.cadastrarEndereco(cli, endCli);
+                 DAOenddCli.cadastrarEndereco(cli, endCli);
                 
                    
                 /*=============================================================
@@ -147,7 +147,7 @@ public class ClienteCadastrarServlet extends HttpServlet {
             }
         
     }
-
+}    
     /**
      * Returns a short description of the servlet.
      *

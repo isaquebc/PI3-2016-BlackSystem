@@ -93,23 +93,23 @@ public class PedidoDAO extends Conexao {
      Aqui ele gera o loop para adicionar todas as peças. Porem, antes ele peda o ID do serviço
      ====================================================================*/
 
-    public int consultaServ(Servico serv) {
+    public int consultaServ(String serv) {
 
         Connection conn = null;
         Statement stm = null;
         ResultSet rs = null;
-
+        int saida=0;
         try {
             conn = getConexao();
             stm = conn.createStatement();
-            rs = stm.executeQuery("select * from SERVICO WHERE TIPO_SERV = 'LAVAGEM SIMPLES' ");
+            rs = stm.executeQuery("select * from SERVICO WHERE TIPO_SERV = '" + serv + "'");
 
             while (rs.next()) {
-                serv.setId(rs.getInt("ID_SERVICO"));
+                saida=(rs.getInt("ID_SERVICO"));
             }
             stm.close();
             conn.close();
-            return serv.getId();
+            return saida;
 
         } catch (SQLException ex) {
             System.out.println("erro ao conectar com o banco");
@@ -124,10 +124,12 @@ public class PedidoDAO extends Conexao {
     }
 
     public void setPecas(ArrayList<Peca> pecas, Pedido p, Servico s, Cliente cli) {
-
+        String consulta= s.getTipoServico();
+        s.setId(consultaServ(consulta));
+        
         for (Peca peca : pecas) {
             try {
-                s.setId(consultaServ(s));
+
                 p.setIdPedido(consultaPedido(p, cli));
 
                 Connection conn = getConexao();

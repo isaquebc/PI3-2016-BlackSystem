@@ -19,17 +19,18 @@ import java.sql.Statement;
  */
 public class EnderecoClienteDAO extends Conexao {
 
-        final String QUERY_INSERT_ENDERECO = "INSERT INTO ENDERECO_CLIENTE(LOGRADOURO_CLI,NUMERO_CLI, COMPLEMENTO_CLI"
-                + ",BAIRRO_CLI, CIDADE_CLI, ESTADO_CLI, CEP_CLI, ID_CLIENTE)"+"values (?,?,?,?,?,?,?,?)";
+     String QUERY_INSERT_ENDERECO = "INSERT INTO ENDERECO_CLIENTE(LOGRADOURO_CLI,NUMERO_CLI, COMPLEMENTO_CLI"
+            + ",BAIRRO_CLI, CIDADE_CLI, ESTADO_CLI, CEP_CLI, ID_CLIENTE)" + "values (?,?,?,?,?,?,?,?)";
 
-    
     public void cadastrarEndereco(Cliente cli, Endereco end) throws ClassNotFoundException {
+
+        String consulta= cli.getCpf();
+        cli.setId(consultaCli(consulta));
         
-        cli.setId(consultaCli(cli));
-    
-        Connection conn = null;
-        PreparedStatement stm = null;
         try {
+            
+            Connection conn = null;
+            PreparedStatement stm = null;
             conn = getConexao();
             stm = conn.prepareStatement(QUERY_INSERT_ENDERECO);
 
@@ -51,27 +52,30 @@ public class EnderecoClienteDAO extends Conexao {
         }
     }
 
-    public int consultaCli(Cliente cli) {
+    public int consultaCli(String consulta) {
+
+        int saida = 0;
+        Connection conn = null;
+        Statement stm = null;
+        ResultSet rs = null;
         
-        int saida= 0;
         try {
-            Connection conn= getConexao();
-            Statement stm= null;
-            stm= conn.createStatement();
-            ResultSet rs= stm.executeQuery("select ID_CLIENTE from CLIENTE WHERE CPF_CLIENTE='"+ cli.getCpf()+"'");
-            
-            while(rs.next()){
-                saida= (rs.getInt("ID_CLIENTE"));
-                
+            conn = getConexao();
+            stm = conn.createStatement();
+            rs = stm.executeQuery("select * from CLIENTE WHERE CPF_CLIENTE = '" + consulta + "'");
+
+            while (rs.next()) {
+                saida = (rs.getInt("ID_CLIENTE"));
+
             }
-            
+
             rs.close();
             conn.close();
         } catch (Exception e) {
             System.out.println("erro de conexão");
             e.getMessage();
         }
-        return saida ;
+        return saida;
     }
 
 }
