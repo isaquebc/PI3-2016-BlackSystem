@@ -7,6 +7,7 @@ package br.senac.tads.pi3.blacksystem.ablack;
 
 import static br.senac.tads.pi3.blacksystem.ablack.Conexao.getConexao;
 import br.senac.tads.pi3.blacksystem.entity.Criptografia;
+import br.senac.tads.pi3.blacksystem.entity.Endereco;
 import br.senac.tads.pi3.blacksystem.entity.Funcionario;
 import br.senac.tads.pi3.blacksystem.entity.Usuario;
 import java.security.NoSuchAlgorithmException;
@@ -183,27 +184,136 @@ public class FuncionarioDAO extends Conexao {
         return 0;
     }
     
-    public void cadastrarEndFuncionario(Funcionario funcionario) throws ClassNotFoundException{
+//    public void cadastrarEndFuncionario(Funcionario funcionario) throws ClassNotFoundException{
+//        Connection conn = null;
+//        PreparedStatement preStm = null;
+//        final String QUERY_INSERT_FUNCIORARIO_END = "INSERT INTO ENDERECO_FUNCIONARIO (LOGRADOURO_FUNC, NUMERO_FUNC, COMPLEMENTO_FUNC, BAIRRO_FUNC, CIDADE_FUNC, ESTADO_FUNC, CEP_FUNC, ID_FUNC) " +
+//        " VALUES(?, ?, ?, ?, ?, ? , ?, (SELECT ID_FUNC FROM FUNCIONARIO WHERE CPF_FUNC ="+funcionario.getCpf()+"))";
+//        try {
+//            conn = getConexao();
+//            preStm = conn.prepareStatement(QUERY_INSERT_FUNCIORARIO_END);
+//            
+//            preStm.setString(1, funcionario.getEndereco().getEndereco());
+//            preStm.setInt(2, funcionario.getEndereco().getNumero());
+//            preStm.setString(3, funcionario.getEndereco().getComplemento());
+//            preStm.setString(4, funcionario.getEndereco().getBairro());
+//            preStm.setString(5, funcionario.getEndereco().getCidade());
+//            preStm.setString(6, funcionario.getEndereco().getEstado());
+//            preStm.setString(7, funcionario.getEndereco().getCep());
+//            preStm.executeUpdate();
+//            preStm.close();
+//            conn.close();
+//        } catch (SQLException e) {
+//            System.out.println(e.toString());
+//        }
+//    }
+    
+        public void cadastrarEndFuncionario(Funcionario funcionario, Endereco endereco) throws ClassNotFoundException{
         Connection conn = null;
         PreparedStatement preStm = null;
-        final String QUERY_INSERT_FUNCIORARIO_END = "INSERT INTO ENDERECO_FUNCIONARIO (LOGRADOURO_FUNC, NUMERO_FUNC, COMPLEMENTO_FUNC, BAIRRO_FUNC, CIDADE_FUNC, ESTADO_FUNC, CEP_FUNC, ID_FUNC) " +
+        final String QUERY_INSERT_FUNCIORARIO_END = "INSERT INTO ENDERECO_FUNCIONARIO (LOGRADOURO_FUNC, NUMERO_FUNC, BAIRRO_FUNC, CIDADE_FUNC, ESTADO_FUNC, CEP_FUNC, ID_FUNC) " +
         " VALUES(?, ?, ?, ?, ?, ? , ?, (SELECT ID_FUNC FROM FUNCIONARIO WHERE CPF_FUNC ="+funcionario.getCpf()+"))";
         try {
             conn = getConexao();
             preStm = conn.prepareStatement(QUERY_INSERT_FUNCIORARIO_END);
-            
-            preStm.setString(1, funcionario.getEndereco().getEndereco());
-            preStm.setInt(2, funcionario.getEndereco().getNumero());
-            preStm.setString(3, funcionario.getEndereco().getComplemento());
-            preStm.setString(4, funcionario.getEndereco().getBairro());
-            preStm.setString(5, funcionario.getEndereco().getCidade());
-            preStm.setString(6, funcionario.getEndereco().getEstado());
-            preStm.setString(7, funcionario.getEndereco().getCep());
+            preStm.setString(1, endereco.getEndereco());
+            preStm.setInt(2, endereco.getNumero());
+            preStm.setString(3, endereco.getBairro());
+            preStm.setString(4, endereco.getCidade());
+            preStm.setString(5, endereco.getEstado());
+            preStm.setString(6, endereco.getCep());
             preStm.executeUpdate();
             preStm.close();
             conn.close();
         } catch (SQLException e) {
             System.out.println(e.toString());
+        }
+    }
+        
+        
+    // a java preparedstatement
+    public void alterarFuncionarior(Funcionario funcionario)
+            throws SQLException, ClassNotFoundException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String query = "UPDATE FUNCIONARIO SET " +
+                        "CPF_FUNC=?, " +
+                        "NOME_FUNC=?, " +
+                        "SOBRENOME_FUNC=?, " +
+                        "SEXO_FUNC=?, " +
+                        "NASC_FUNC=?, " +
+                        "TEL_FUNC=?, " +
+                        "DATA_CONTRATACAO=date(?), " +
+                        "CEL_FUNC=?, " +
+                        "EMAIL_FUNC=?, " +
+                        "STATUS_FUNC=?, " +
+                        "CARGO_FUNC=?, " +
+                        "SALARIO_FUNC=?, " +
+                        "ID_FILIAL=?, " +
+                        "WHERE CPF_FUNC = ? OR ID_FUNC = ?";
+        try {
+            conn = getConexao();
+            // create our java preparedstatement using a sql update query
+            ps = conn.prepareStatement(query);
+
+            // set the preparedstatement parameters
+            ps.setString(1, funcionario.getCpf());
+            ps.setString(2, funcionario.getNome());
+            ps.setString(3, funcionario.getSobrenome());
+            ps.setString(4, funcionario.getSexo());
+            ps.setString(5, funcionario.getDataNascimento());
+            ps.setString(6, funcionario.getTelefone());
+            ps.setString(7, funcionario.getDataContratacao());
+            ps.setString(8, funcionario.getCelular());
+            ps.setString(9, funcionario.getEmail());
+            ps.setString(10, funcionario.getStatus());
+            ps.setString(11, funcionario.getCargo());
+            ps.setDouble(12, funcionario.getSalario());
+            ps.setInt(13, funcionario.getFilial());
+            ps.setString(15, funcionario.getCpf());
+            ps.setInt(16, funcionario.getId());
+      
+            // call executeUpdate to execute our sql update statement
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException se) {
+            // log the exception
+            throw se;
+        }
+    }
+    
+     // a java preparedstatement
+    public void alterarEnderecoFuncionarior(Funcionario funcionario, Endereco endereco)
+            throws SQLException, ClassNotFoundException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String query =  "UPDATE ENDERECO_FUNCIONARIO SET" +
+                        "LOGRADOURO_FUNC= ?," +
+                        "NUMERO_FUNC= ?," +
+                        "BAIRRO_FUNC= ?," +
+                        "CIDADE_FUNC= ?," +
+                        "ESTADO_FUNC= ?," +
+                        "CEP_FUNC= ?" +
+                        "WHERE ID_FUNC = ?";
+        try {
+            conn = getConexao();
+            // create our java preparedstatement using a sql update query
+            ps = conn.prepareStatement(query);
+
+            // set the preparedstatement parameters
+            ps.setString(1, endereco.getEndereco());
+            ps.setInt(2, endereco.getNumero());
+            ps.setString(3, endereco.getBairro());
+            ps.setString(4, endereco.getCidade());
+            ps.setString(5, endereco.getEstado());
+            ps.setString(6, endereco.getCep());
+            ps.setInt(7, funcionario.getId());
+            // call executeUpdate to execute our sql update statement
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException se) {
+            // log the exception
+            throw se;
         }
     }
 

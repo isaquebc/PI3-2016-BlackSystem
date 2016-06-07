@@ -80,38 +80,37 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
             throws ServletException, IOException {
         
         FuncionarioDAO funcDAO = new FuncionarioDAO();
-        Funcionario func = new Funcionario();
-
-        Endereco end = new Endereco();
+        Funcionario funcionario = new Funcionario();
+        Endereco endereco = new Endereco();
         
-        func.setNome( request.getParameter("nome").toUpperCase());
-        func.setSobrenome(request.getParameter("sobrenome" ).toUpperCase());
-        func.setTelefone(request.getParameter("telefone"));
-        func.setCelular(request.getParameter("celular"));
-        func.setEmail(request.getParameter("email"));
-        func.setDataNascimento(request.getParameter("dtNascimento"));
-        func.setDataContratacao(request.getParameter("dtContratacao"));
-        func.setCargo(request.getParameter("cargo").toUpperCase());
-        func.setSalario(Float.parseFloat(request.getParameter("salario")));
-        func.setHashSenha(request.getParameter("senha"));
-        func.setCpf(request.getParameter("cpf"));
+        funcionario.setNome( request.getParameter("nome").toUpperCase());
+        funcionario.setSobrenome(request.getParameter("sobrenome" ).toUpperCase());
+        funcionario.setTelefone(request.getParameter("telefone"));
+        funcionario.setCelular(request.getParameter("celular"));
+        funcionario.setEmail(request.getParameter("email"));
+        funcionario.setDataNascimento(request.getParameter("dtNascimento"));
+        funcionario.setDataContratacao(request.getParameter("dtContratacao"));
+        funcionario.setCargo(request.getParameter("cargo").toUpperCase());
+        funcionario.setSalario(Float.parseFloat(request.getParameter("salario")));
+        funcionario.setHashSenha(request.getParameter("senha"));
+        funcionario.setCpf(request.getParameter("cpf"));
         ////        func.setDataContratacao(request.getParameter("2000-01-01"));
         
-        /*quando implementar o endereco colocar os reques aqui*/
-        func.getEndereco().setEndereco(request.getParameter("logradoura"));
-        func.getEndereco().setNumero((int)Integer.parseInt(request.getParameter("numero")));
-        func.getEndereco().setComplemento(request.getParameter("complemento"));
-        func.getEndereco().setBairro(request.getParameter("bairro"));
-        func.getEndereco().setCidade(request.getParameter("cidade"));
-        func.getEndereco().setEstado(request.getParameter("estado"));
-        func.getEndereco().setCep(request.getParameter("cep"));
+        /*quando implementar o endereco colocar os request aqui*/
+        endereco.setEndereco(request.getParameter("logradoura"));
+        endereco.setNumero((int)Integer.parseInt(request.getParameter("numero")));
+        endereco.setComplemento(request.getParameter("complemento"));
+        endereco.setBairro(request.getParameter("bairro"));
+        endereco.setCidade(request.getParameter("cidade"));
+        endereco.setEstado(request.getParameter("estado"));
+        endereco.setCep(request.getParameter("cep"));
         
         
         System.err.println(request.getParameter("filial-Trabalho").toUpperCase());
         try {
-            func.setFilial(funcDAO.buscarFilial(request.getParameter("filial-Trabalho").toUpperCase()));
-            funcDAO.cadastrarFuncionario(func);
-            
+            funcionario.setFilial(funcDAO.buscarFilial(request.getParameter("filial-Trabalho").toUpperCase()));
+            funcDAO.cadastrarFuncionario(funcionario);
+            funcDAO.cadastrarEndFuncionario(funcionario, endereco);
             
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(FuncionarioCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);

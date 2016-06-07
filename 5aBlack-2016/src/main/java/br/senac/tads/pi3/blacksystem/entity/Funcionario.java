@@ -29,9 +29,6 @@ public class Funcionario extends Pessoa{
         this.endereco = endereco;
     }
     
-    
-    
-    
     public double getSalario() {
         return salario;
     }
