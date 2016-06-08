@@ -20,7 +20,7 @@
             <link href="../_css/estilo-relatorio.css" rel="stylesheet"/>
             <script src="../_js/formatoJS.js" type="text/javascript">.</script>
 
-            <title>5aBlack - Buscar Pedido</title>
+            <title>5aBlack - Buscar Funcionario</title>
         </head>
         <body>
             <jsp:include page="../inicial/Menu.jspx" />

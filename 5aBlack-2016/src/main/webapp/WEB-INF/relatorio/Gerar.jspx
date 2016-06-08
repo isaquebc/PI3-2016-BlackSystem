@@ -30,7 +30,7 @@
             </c:set>
             <link href="${cssAtual}" rel="stylesheet"/>
             <script src="${scriptAtual}" type="text/javascript">.</script>
-            <title>5aBlack - Buscar Pedido</title>
+            <title>5aBlack - Gerar Relatório</title>
         </head>
         <body>
             <jsp:include page="../inicial/Menu.jspx" />
