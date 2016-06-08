@@ -126,7 +126,7 @@ public class ClienteCadastrarServlet extends HttpServlet {
             
         } else {
             try {
-                cadCli.cadatrarPessoa(cli);
+//                cadCli.cadatrarPessoa(cli);
                  DAOenddCli.cadastrarEndereco(cli, endCli);
                 
                    

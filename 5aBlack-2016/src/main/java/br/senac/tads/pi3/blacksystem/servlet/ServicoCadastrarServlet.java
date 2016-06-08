@@ -78,7 +78,7 @@ public class ServicoCadastrarServlet extends HttpServlet {
         
         try {
             sDao.cadastrarServico(ser);
-            msg = new Mensagem("Cadastrar Serviço", "Produto Cadastrado Com sucesso",
+            msg = new    Mensagem("Cadastrar Serviço", "Produto Cadastrado Com sucesso",
                         "ServicoCadastrarServlet");
         } catch (ClassNotFoundException ex) {
             msg = new Mensagem("Cadastrar Serviço", "Ocorreu um erro ao cadastrar o produto verique os campos e preencha corretamente",

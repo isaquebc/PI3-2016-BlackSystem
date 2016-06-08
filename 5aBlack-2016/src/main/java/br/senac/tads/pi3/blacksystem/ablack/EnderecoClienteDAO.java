@@ -24,7 +24,7 @@ public class EnderecoClienteDAO extends Conexao {
 
     public void cadastrarEndereco(Cliente cli, Endereco end) throws ClassNotFoundException {
 
-        String consulta= cli.getCpf();
+        String consulta= cli.pegarCpf();
         cli.setId(consultaCli(consulta));
         
         try {
