@@ -13,6 +13,9 @@ import br.senac.tads.pi3.blacksystem.entity.Funcionario;
 import br.senac.tads.pi3.blacksystem.entity.Mensagem;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -84,19 +87,45 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
         FuncionarioDAO funcDAO = new FuncionarioDAO();
         Funcionario funcionario = new Funcionario();
         Endereco endereco = new Endereco();
+        SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd");
 
         funcionario.setNome(request.getParameter("nome").toUpperCase());
         funcionario.setSobrenome(request.getParameter("sobrenome").toUpperCase());
+        funcionario.setSexo(request.getParameter("sexo").toUpperCase());
         funcionario.setTelefone(request.getParameter("telefone"));
         funcionario.setCelular(request.getParameter("celular"));
         funcionario.setEmail(request.getParameter("email"));
-        funcionario.setDataNascimento(request.getParameter("dtNascimento"));
-        funcionario.setDataContratacao(request.getParameter("dtContratacao"));
+        
+        String dtNascF = request.getParameter("dtNascimento");
+        
+        String dtContratacao = request.getParameter("dtContratacao");
+        
         funcionario.setCargo(request.getParameter("cargo").toUpperCase());
         funcionario.setSalario(Float.parseFloat(request.getParameter("salario")));
         funcionario.setHashSenha(request.getParameter("senha"));
         funcionario.setCpf(request.getParameter("cpf"));
+        endereco.setEndereco(request.getParameter("rua").toUpperCase());
+        endereco.setNumero((int) Integer.parseInt(request.getParameter("numero")));
+        endereco.setBairro(request.getParameter("bairro").toUpperCase());
+        endereco.setCidade(request.getParameter("cidade").toUpperCase());
+        endereco.setEstado(request.getParameter("estado").toUpperCase());
+        endereco.setCep(request.getParameter("cep"));
         System.err.println(request.getParameter("filial-Trabalho").toUpperCase());
+        
+        Date contra= null;
+        Date nasc= null;
+        try {
+            nasc = form.parse(dtNascF);
+            contra= form.parse(dtContratacao);
+        } catch (ParseException ex) {
+            Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+       funcionario.setNasc(nasc);
+        funcionario.setDataContratacao( contra);
+        
+        
+        
 
         Erro er = funcionario.validar(funcionario);
         boolean teste = er.isExistente();
@@ -115,20 +144,24 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
                 Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-             Mensagem msg = new Mensagem("Cadastrar Funcionario", "Funcionario cadastrado com sucesso!",
-                        "Funcionario-Cadastrar");
-                request.setAttribute("msg", msg);
-                request.getRequestDispatcher("Mensagem.jspx").forward(request, response);
-            try {
-                funcionario.setFilial(funcDAO.buscarFilial(request.getParameter("filial-Trabalho").toUpperCase()));
-                funcDAO.cadastrarFuncionario(funcionario);
-                funcDAO.cadastrarEndFuncionario(funcionario, endereco);
+             try {
+                
+
+                 funcDAO.cadastrarFuncionario(funcionario);
+//                funcDAO.cadastrarEndFuncionario1(funcionario, endereco);
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(FuncionarioCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
             } catch (NullPointerException ex) {
                 System.err.println(ex.getMessage());
+
             }
+            
+            Mensagem msg = new Mensagem("Cadastrar Funcionario", "Funcionario cadastrado com sucesso!",
+                    "Funcionario-Cadastrar");
+            request.setAttribute("msg", msg);
+            request.getRequestDispatcher("Mensagem.jspx").forward(request, response);
+           
         }
 
     }

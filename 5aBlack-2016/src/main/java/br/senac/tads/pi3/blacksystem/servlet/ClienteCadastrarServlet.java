@@ -82,16 +82,17 @@ public class ClienteCadastrarServlet extends HttpServlet {
         cli.setSobrenome(request.getParameter("sobrenome").toUpperCase());
         cli.setTelefone(request.getParameter("telefone"));
         cli.setCelular(request.getParameter("celular"));
-        cli.setSexo(request.getParameter("sexo").toUpperCase());
+        cli.setSexo(request.getParameter("sexo".toUpperCase()).toUpperCase());
         cli.setEmail(request.getParameter("email"));
-        String dtNascStr = request.getParameter("dt-Nascimento");
+        String dtNascStr = request.getParameter("dtNascimento");
         
         // captura dos dados do endereço
         
-        endCli.setEndereco(request.getParameter("rua"));
+        endCli.setEndereco(request.getParameter("rua").toUpperCase());
         endCli.setNumero((int) Integer.parseInt(request.getParameter("numero")));
-        endCli.setCidade(request.getParameter("cidade"));
-        endCli.setEstado(request.getParameter("estado"));
+        endCli.setBairro(request.getParameter("bairro").toUpperCase());
+        endCli.setCidade(request.getParameter("cidade").toUpperCase());
+        endCli.setEstado(request.getParameter("estado").toUpperCase());
         endCli.setCep(request.getParameter("cep"));
         
         
@@ -103,7 +104,7 @@ public class ClienteCadastrarServlet extends HttpServlet {
         }
        
        cli.setNasc(nasc);
-       cli.setDtCadastro(new Date());
+    
        
 
         

@@ -5,7 +5,7 @@
  */
 package br.senac.tads.pi3.blacksystem.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -17,7 +17,7 @@ public class Funcionario extends Pessoa{
     private String hashSenha;
     private String cargo="";
     private int filial;
-    private String dataContratacao="";
+    private Date dataContratacao;
     private double salario=0;
     private Endereco endereco;
 
@@ -61,11 +61,11 @@ public class Funcionario extends Pessoa{
         this.filial = filial;
     }
 
-    public String getDataContratacao() {
+    public Date getDataContratacao() {
         return dataContratacao;
     }
 
-    public void setDataContratacao(String dataContratacao) {
+    public void setDataContratacao(Date dataContratacao) {
         this.dataContratacao = dataContratacao;
     }
 
@@ -83,7 +83,7 @@ public class Funcionario extends Pessoa{
     }
     private String dataNascimento;
 
-    public Funcionario(String cargo, int filial, String dataContratacao, String dataNascimento, int id, String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
+    public Funcionario(String cargo, int filial, Date dataContratacao, String dataNascimento, int id, String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
         super();
         this.cargo = cargo;
         this.filial = filial;
@@ -91,7 +91,7 @@ public class Funcionario extends Pessoa{
         this.dataNascimento = dataNascimento;
     }
 
-    public Funcionario(String cargo, int filial, String dataContratacao, String dataNascimento) {
+    public Funcionario(String cargo, int filial, Date dataContratacao, String dataNascimento) {
         this.cargo = cargo;
         this.filial = filial;
         this.dataContratacao = dataContratacao;

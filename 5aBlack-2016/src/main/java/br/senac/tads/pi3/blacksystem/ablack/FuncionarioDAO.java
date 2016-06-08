@@ -113,10 +113,8 @@ public class FuncionarioDAO extends Conexao {
         return null;
     }
     
-
-    String QUERY_INSERT_FUNCIORARIO = "insert into FUNCIONARIO(CPF_FUNC, NOME_FUNC,SOBRENOME_FUNC, SEXO_FUNC, NASC_FUNC,TEL_FUNC,"
-            + " CEL_FUNC, EMAIL_FUNC, STATUS_FUNC, SENHA_FUNC, CARGO_FUNC, SALARIO_FUNC, ID_FILIAL, SALT)" + "values(?,?,?,?,?,?,?,?,?,?,?, ?, ?, ?)";
-
+//
+    
     public void cadastrarFuncionario(Funcionario func)
             throws ClassNotFoundException {
 
@@ -124,7 +122,8 @@ public class FuncionarioDAO extends Conexao {
         PreparedStatement stm = null;
         Criptografia  criptografar = new Criptografia();
         Usuario user = new Usuario(func.getHashSenha(), criptografar.convertParaHex());
-        
+        String QUERY_INSERT_FUNCIORARIO = "INSERT INTO FUNCIONARIO(CPF_FUNC, NOME_FUNC, SOBRENOME_FUNC, SEXO_FUNC)" + "VALUES(?,?,?,?)";
+
         try {
             conn = getConexao();
             String sql = QUERY_INSERT_FUNCIORARIO;
@@ -133,32 +132,31 @@ public class FuncionarioDAO extends Conexao {
             stm.setString(2, func.getNome());
             stm.setString(3, func.getSobrenome());
             stm.setString(4, func.getSexo());
-            stm.setDate(5, new java.sql.Date(1009 - 03 - 03));
-            stm.setString(6, func.getTelefone());
-            stm.setString(7, func.getCelular());
-            stm.setString(8, func.getEmail());
-            stm.setString(9, "ATIVO");
-            stm.setString(10, criptografar.gerarHashSenhaPBKDF2(user));
-            stm.setString(11, func.getCargo());
-            stm.setDouble(12, func.getSalario());
-            stm.setInt(13, func.getFilial());
-            stm.setString(14, user.getSalt());
-            stm.executeUpdate();
+           
+//            stm.setString(10, criptografar.gerarHashSenhaPBKDF2(user));
+//            stm.setString(11, func.getCargo());
+//            stm.setDouble(12, func.getSalario());
+//            stm.setInt(13, func.getFilial());
+//            stm.setString(14, user.getSalt());
+//            stm.setDate(15, new java.sql.Date(func.getDataContratacao().getTime()));
             
+            stm.executeUpdate();
             stm.close();
             conn.close();
-        } catch (SQLException | InvalidKeySpecException | NoSuchAlgorithmException e) {
-            System.out.println(e.toString());
+        } catch (SQLException e) {
+            System.out.println( "erro de conexão");
+            e.getMessage();
         } catch (NullPointerException e) {
             System.out.println("Dao não inicializado");
         }
+        
 
     }
 
-    public int buscarFilial(String filial)
+    public int buscarFilial(int filial)
             throws ClassNotFoundException {
 
-        String query = "SELECT ID_FILIAL FROM FILIAL WHERE CIDADE_FILIAL LIKE '" + filial.toUpperCase() + "'";
+        String query = "SELECT ID_FILIAL FROM FILIAL WHERE CIDADE_FILIAL LIKE '" + filial + "'";
         Connection conn = null;
         Statement stm = null;
         ResultSet rs = null;
@@ -188,7 +186,7 @@ public class FuncionarioDAO extends Conexao {
 //        Connection conn = null;
 //        PreparedStatement preStm = null;
 //        final String QUERY_INSERT_FUNCIORARIO_END = "INSERT INTO ENDERECO_FUNCIONARIO (LOGRADOURO_FUNC, NUMERO_FUNC, COMPLEMENTO_FUNC, BAIRRO_FUNC, CIDADE_FUNC, ESTADO_FUNC, CEP_FUNC, ID_FUNC) " +
-//        " VALUES(?, ?, ?, ?, ?, ? , ?, (SELECT ID_FUNC FROM FUNCIONARIO WHERE CPF_FUNC ="+funcionario.getCpf()+"))";
+//        " VALUES(?, ?, ?, ?, ?, ? , ?, (SELECT ID_FUNC FROM FUNCIONARIO WHERE CPF_FUNC ="+funcionario.pegarCpf()+"))";
 //        try {
 //            conn = getConexao();
 //            preStm = conn.prepareStatement(QUERY_INSERT_FUNCIORARIO_END);
@@ -208,11 +206,11 @@ public class FuncionarioDAO extends Conexao {
 //        }
 //    }
     
-        public void cadastrarEndFuncionario(Funcionario funcionario, Endereco endereco) throws ClassNotFoundException{
+        public void cadastrarEndFuncionario1(Funcionario funcionario, Endereco endereco) throws ClassNotFoundException{
         Connection conn = null;
         PreparedStatement preStm = null;
         String QUERY_INSERT_FUNCIORARIO_END = "INSERT INTO ENDERECO_FUNCIONARIO (LOGRADOURO_FUNC, NUMERO_FUNC, BAIRRO_FUNC, CIDADE_FUNC, ESTADO_FUNC, CEP_FUNC, ID_FUNC) " +
-        " VALUES(?, ?, ?, ?, ?, ?, (SELECT ID_FUNC FROM FUNCIONARIO WHERE CPF_FUNC ='"+funcionario.pegarCpf()+"')\n)";
+        " VALUES(?, ?, ?, ?, ?, ?, ) WHERER CPF_FUNC ='"+funcionario.pegarCpf()+"'";
         try {
             conn = getConexao();
             preStm = conn.prepareStatement(QUERY_INSERT_FUNCIORARIO_END);
@@ -227,6 +225,9 @@ public class FuncionarioDAO extends Conexao {
             conn.close();
         } catch (SQLException e) {
             System.out.println(e.toString());
+        }
+        catch ( NullPointerException e){
+            e.getMessage();
         }
     }
         
@@ -263,7 +264,7 @@ public class FuncionarioDAO extends Conexao {
             ps.setString(4, funcionario.getSexo());
             ps.setString(5, funcionario.getDataNascimento());
             ps.setString(6, funcionario.getTelefone());
-            ps.setString(7, funcionario.getDataContratacao());
+            ps.setDate(7,new java.sql.Date(funcionario.getDataContratacao().getTime()));
             ps.setString(8, funcionario.getCelular());
             ps.setString(9, funcionario.getEmail());
             ps.setString(10, funcionario.getStatus());

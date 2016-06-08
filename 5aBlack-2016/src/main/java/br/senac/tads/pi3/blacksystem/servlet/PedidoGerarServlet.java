@@ -114,7 +114,7 @@ public class PedidoGerarServlet extends HttpServlet {
         int cont = Integer.parseInt(request.getParameter("cont"));
         for (int i = 1; i <= cont; i++) {
             Peca peca = new Peca();
-            p.setTipoServico(request.getParameter("servico" + i).toUpperCase());
+            s.setTipoServico(request.getParameter("servico" + i).toUpperCase());
             peca.setTipoPeca(request.getParameter("tipoPeca" + i).toUpperCase());
             peca.setTipoTecido(request.getParameter("tecido" + i).toUpperCase());
             peca.setQdt(Integer.parseInt( request.getParameter("qtd" + i)));
