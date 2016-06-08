@@ -27,7 +27,6 @@
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <link href="${css}" rel="stylesheet"/>              
             <link href="${cssEsconder}" rel="stylesheet"/>              
-            <title>5aBlack</title>
         </head>
         <body>
             <nav class="navbar navbar-default">

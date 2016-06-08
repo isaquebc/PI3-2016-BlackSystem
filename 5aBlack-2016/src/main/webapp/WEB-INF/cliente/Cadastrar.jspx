@@ -23,7 +23,7 @@
             </c:set>
             <link href="${cssAtual}" rel="stylesheet"/>
             <script src="${scriptAtual}" type="text/javascript">.</script>
-            <title>5aBlack - Buscar Pedido</title>
+            <title>5aBlack - Cadastrar Cliente</title>
 
         </head>
         <body>
@@ -85,6 +85,9 @@
 
                                     <label for="estado">Estado</label>
                                     <input type="text" class="form-control" name="estado" id="estado"/>
+                                    
+                                    <label for="bairro">Bairro</label>
+                                    <input type="text" class="form-control" name="bairro" id="bairro"/>
 
                                     <label for="cep">CEP</label>
                                     <input type="text" class="form-control" name="cep" id="cep" maxlength="9" OnKeyPress="formatar('#####-###', this)" />
