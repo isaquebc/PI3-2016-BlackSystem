@@ -5,6 +5,9 @@
  */
 package br.senac.tads.pi3.blacksystem.entity;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author Miqueas Santos
@@ -41,7 +44,10 @@ public class Usuario extends Funcionario{
     }
     return null;
   }
-    
+    public boolean autorizado(String papelNecessario) {
+    List<String> papeisUsuario = Arrays.asList(this.getPapeis());
+    return papeisUsuario.contains(papelNecessario);
+    }
     
     
 }

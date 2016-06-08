@@ -26,6 +26,13 @@ public class Servico {
     }
 
     public Servico() {
+        this.valorServico=0;
+        this.prazo=0;
+    }
+    
+    public Erro validar(Servico servico){
+        ValidacaoFactory n = new ValidacaoFactory();
+        return  n.validarServico(servico);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">

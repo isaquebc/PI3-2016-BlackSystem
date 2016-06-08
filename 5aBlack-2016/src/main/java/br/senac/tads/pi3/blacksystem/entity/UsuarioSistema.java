@@ -156,10 +156,10 @@ public class UsuarioSistema implements Serializable {
      * @param papelNecessario
      * @return
      */
-//  public boolean autorizado(String papelNecessario) {
-//    List<String> papeisUsuario = Arrays.asList(this.cargo);
-//    return papeisUsuario.contains(papelNecessario);
-//  }
+ public boolean autorizado(String papelNecessario) {
+    List<String> papeisUsuario = Arrays.asList(this.cargo);
+    return papeisUsuario.contains(papelNecessario);
+  }
     
     public String convertParaHex (int i){
         char[] hexa = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
