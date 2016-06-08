@@ -64,7 +64,7 @@ public class ProdutoDAO extends Conexao {
             stm = conn.prepareStatement(sql);
             stm.setString(1, p.getNome().toUpperCase());
             stm.setDate(2, new java.sql.Date(1009 - 03 - 03));
-            stm.setInt(3, p.getLote());
+            stm.setString(3, p.getLote());
             stm.setString(4, "ATIVO");
             stm.setInt(5,  p.getQtdMin());
             stm.setInt(6,  p.getQtdMax());
@@ -128,7 +128,7 @@ public class ProdutoDAO extends Conexao {
                 produto.setIdProduto(rs.getInt("ID_PROD"));
                 produto.setNome(rs.getString("PRODUTO"));
                 produto.setValidade(rs.getString("VALIDADE_PROD"));
-                produto.setLote(rs.getInt("LOTE"));
+                produto.setLote(rs.getString("LOTE"));
                 produto.setStatus(rs.getString("STATUS"));
                 produto.setQtdMin(rs.getInt("QTD_MIN"));
                 produto.setQtdMax(rs.getInt("QTD_MAX"));

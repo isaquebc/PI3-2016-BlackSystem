@@ -50,8 +50,7 @@
                                     <div class="form-group">
                                         <label class="" for="servico">Tipo de Serviço</label>
                                         <select class="form-control" required="" id="tipoServico">
-                                            <option value=""></option>
-                                            <option value="Tira Manchas">Tira Manchas</option>
+                                            <option value="${cont.index}"></option>
                                             <c:forEach items="${servicos}" var="serv" varStatus="cont" >
                                                 <option value="${cont.index}">${serv.tipoServico}</option>
                                             </c:forEach>

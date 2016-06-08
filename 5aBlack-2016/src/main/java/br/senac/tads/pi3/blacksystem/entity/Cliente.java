@@ -22,9 +22,9 @@ public class Cliente extends Pessoa{
         
     }
 
-    public Erro validar(Cliente cliente){
+    public Erro validar(Pessoa pessoa){
         ValidacaoFactory n = new ValidacaoFactory();
-        return  n.validarCliente(cliente);
+        return  n.validarCliente((Cliente) pessoa);
     }
     
     

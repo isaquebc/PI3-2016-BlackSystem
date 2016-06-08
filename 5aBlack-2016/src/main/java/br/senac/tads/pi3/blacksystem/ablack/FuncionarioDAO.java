@@ -129,7 +129,7 @@ public class FuncionarioDAO extends Conexao {
             conn = getConexao();
             String sql = QUERY_INSERT_FUNCIORARIO;
             stm = conn.prepareStatement(sql);
-            stm.setString(1, func.getCpf());
+            stm.setString(1, func.pegarCpf());
             stm.setString(2, func.getNome());
             stm.setString(3, func.getSobrenome());
             stm.setString(4, func.getSexo());
@@ -211,8 +211,8 @@ public class FuncionarioDAO extends Conexao {
         public void cadastrarEndFuncionario(Funcionario funcionario, Endereco endereco) throws ClassNotFoundException{
         Connection conn = null;
         PreparedStatement preStm = null;
-        final String QUERY_INSERT_FUNCIORARIO_END = "INSERT INTO ENDERECO_FUNCIONARIO (LOGRADOURO_FUNC, NUMERO_FUNC, BAIRRO_FUNC, CIDADE_FUNC, ESTADO_FUNC, CEP_FUNC, ID_FUNC) " +
-        " VALUES(?, ?, ?, ?, ?, ? , ?, (SELECT ID_FUNC FROM FUNCIONARIO WHERE CPF_FUNC ="+funcionario.getCpf()+"))";
+        String QUERY_INSERT_FUNCIORARIO_END = "INSERT INTO ENDERECO_FUNCIONARIO (LOGRADOURO_FUNC, NUMERO_FUNC, BAIRRO_FUNC, CIDADE_FUNC, ESTADO_FUNC, CEP_FUNC, ID_FUNC) " +
+        " VALUES(?, ?, ?, ?, ?, ?, (SELECT ID_FUNC FROM FUNCIONARIO WHERE CPF_FUNC ='"+funcionario.pegarCpf()+"')\n)";
         try {
             conn = getConexao();
             preStm = conn.prepareStatement(QUERY_INSERT_FUNCIORARIO_END);
@@ -282,7 +282,7 @@ public class FuncionarioDAO extends Conexao {
         }
     }
     
-     // a java preparedstatement
+    // a java preparedstatement
     public void alterarEnderecoFuncionarior(Funcionario funcionario, Endereco endereco)
             throws SQLException, ClassNotFoundException {
         Connection conn = null;
@@ -313,6 +313,7 @@ public class FuncionarioDAO extends Conexao {
             ps.close();
         } catch (SQLException se) {
             // log the exception
+            
             throw se;
         }
     }

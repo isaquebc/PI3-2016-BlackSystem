@@ -72,7 +72,12 @@ public class PedidoGerarServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        request.setAttribute("servicos", Servico());
+        try {
+            request.setAttribute("servicos", new ServicoDAO().buscarServico());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
         request.getRequestDispatcher("WEB-INF/pedido/Gerar.jspx").forward(request, response);
     }
 

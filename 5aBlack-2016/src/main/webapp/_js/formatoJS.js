@@ -10,6 +10,20 @@ function formatar(mascara, documento) {
     }
 
 }
+
+function validarSenha() {
+    var senha1 = document.cadFuncionario.senha.value;
+    var senha2 = document.cadFuncionario.confirmSenha.value;
+
+    if (senha1 == senha2 && senha2 != null) {
+        $('#erroSenha').removeClass('glyphicon glyphicon-remove form-control-feedback').addClass('glyphicon glyphicon-ok form-control-feedback');
+        $('#cadastrar').removeProp('disabled');
+    } else {
+        $('#erroSenha').removeClass('glyphicon glyphicon-warning-sign form-control-feedback').addClass('glyphicon glyphicon-remove form-control-feedback');
+        $('#erroSenha').removeClass('glyphicon glyphicon-ok form-control-feedback').addClass('glyphicon glyphicon-remove form-control-feedback');
+    }
+}
+
 function ValidarCPF(Objcpf) {
     var cpf = Objcpf.value;
     var err1 = '111.111.111-11';
@@ -38,13 +52,16 @@ function ValidarCPF(Objcpf) {
     var digitoGerado = (soma1 * 10) + soma2;
     if (digitoGerado != digitoDigitado || err1 === Objcpf.value || err2 === Objcpf.value
             || err3 === Objcpf.value || err4 === Objcpf.value || err5 === Objcpf.value
-            || err6 === Objcpf.value || err7 === Objcpf.value || err8 === Objcpf.value || err9 === Objcpf.value)
+            || err6 === Objcpf.value || err7 === Objcpf.value || err8 === Objcpf.value || err9 === Objcpf.value) {
 
-                $('#campo-cpf').append('<div class="alert alert-danger fade in" id="erro"></div>');
-                $('#erro').append('<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>');
-                $('#erro').append('<strong>Erro!</strong> CPF Invalido.');
+        $('#erro').removeClass('alert alert-success').addClass('hidden');
+        $('#erro').removeClass('hidden').addClass('alert alert-danger');
+
+    } else {
+        $('#erro').removeClass('alert alert-danger').addClass('hidden');
+        $('#sucesso').removeClass('hidden').addClass('alert alert-success');
+    }
 }
-
 /* Este script formata qualquer tipo de campo. DIgite no HTML
  *
  * TELEFONE = <input type="text" name="tel" maxlength="12" OnKeyPress="formatar('##-####-####', this)" >
@@ -53,11 +70,11 @@ function ValidarCPF(Objcpf) {
  * */
 
 function fnExcelReport() {
-    var name = 'Relatorio de '+ $('h3').text();
+    var name = 'Relatorio de ' + $('h3').text();
     var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
     tab_text = tab_text + '<head><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>';
-    
-    tab_text = tab_text + '<x:Name>'+ name +'</x:Name>';
+
+    tab_text = tab_text + '<x:Name>' + name + '</x:Name>';
 
     tab_text = tab_text + '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
     tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
@@ -67,20 +84,20 @@ function fnExcelReport() {
     tab_text = tab_text + '</table></body></html>';
 
     var data_type = 'data:application/vnd.ms-excel';
-    
+
     var ua = window.navigator.userAgent;
     var msie = ua.indexOf("MSIE ");
-    
+
     if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
         if (window.navigator.msSaveBlob) {
             var blob = new Blob([tab_text], {
                 type: "application/csv;charset=utf-8;"
             });
-            navigator.msSaveBlob(blob, name+'.xls');
+            navigator.msSaveBlob(blob, name + '.xls');
         }
     } else {
         $('#test').attr('href', data_type + ', ' + encodeURIComponent(tab_text));
-        $('#test').attr('download', name+'.xls');
+        $('#test').attr('download', name + '.xls');
     }
 
 }

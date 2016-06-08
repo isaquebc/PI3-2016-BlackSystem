@@ -66,6 +66,8 @@
                                 <div class="form-group" id="campo-cpf">
                                     <label for="cpf">CPF</label>
                                     <input type="text"  required="" class="form-control" name="cpf" id ="cpf" maxlength="14" data-dismiss="alert" onBlur="ValidarCPF(cadCliente.cpf);" OnKeyPress="formatar('###.###.###-##', this)"/>
+                                    <div class="hidden" id="erro"><strong>Erro!</strong> CPF Invalido.</div>
+                                    <div class="hidden" id="sucesso"><strong>Sucesso!</strong> CPF Valido.</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">E-mail</label>

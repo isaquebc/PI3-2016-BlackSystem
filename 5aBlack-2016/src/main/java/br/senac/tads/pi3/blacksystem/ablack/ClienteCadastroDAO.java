@@ -60,6 +60,29 @@ public class ClienteCadastroDAO extends Conexao {
         }
 
     }
+    
+    
+//    public void cadastrarEndCliente(Cliente cliente, Endereco endereco) throws ClassNotFoundException{
+//        Connection conn = null;
+//        PreparedStatement preStm = null;
+//        String QUERY_INSERT_CLIENTE_END = "INSERT INTO ENDERECO_CLIENTE (LOGRADOURO_CLI, NUMERO_CLI, BAIRRO_CLI, CIDADE_CLI, ESTADO_CLI, CEP_CLI, ID_CLIENTE) " +
+//        " VALUES(?, ?, ?, ?, ?, ?, (SELECT ID_CLIENTE FROM CLIENTE WHERE CPF_CLIENTE ='"+cliente.pegarCpf()+"')\n)";
+//        try {
+//            conn = getConexao();
+//            preStm = conn.prepareStatement(QUERY_INSERT_CLIENTE_END);
+//            preStm.setString(1, endereco.getEndereco());
+//            preStm.setInt(2, endereco.getNumero());
+//            preStm.setString(3, endereco.getBairro());
+//            preStm.setString(4, endereco.getCidade());
+//            preStm.setString(5, endereco.getEstado());
+//            preStm.setString(6, endereco.getCep());
+//            preStm.executeUpdate();
+//            preStm.close();
+//            conn.close();
+//        } catch (SQLException e) {
+//            System.out.println(e.toString());
+//        }
+//    }
 
     public List listarClinte() throws SQLException {
         List lista = new ArrayList();
@@ -97,6 +120,85 @@ public class ClienteCadastroDAO extends Conexao {
         }
 
         return lista;
+    }
+    
+    
+    // a java preparedstatement
+    public void alterarCliente(Cliente cliente)
+            throws ClassNotFoundException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String query = "UPDATE CLIENTE SET " +
+                        "CPF_CLIENTE=?, " +
+                        "NOME_CLIENTE=?, " +
+                        "SOBRENOME_CLIENTE=?, " +
+                        "SEXO_CLIENTE=?, " +
+                        "NASC_CLIENTE=?, " +
+                        "TEL_CLIENTE=?, " +
+                        "CEL_CLIENTE=?, " +
+                        "EMAIL_CLIENTE=?, " +
+                        "STATUS_CLIENTE=?, " +
+                        "DTCADASTRO_CLIENTE=? " +
+                        "WHERE CPF_CLIENTE = ?";
+        try {
+            conn = getConexao();
+            // create our java preparedstatement using a sql update query
+            ps = conn.prepareStatement(query);
+
+            // set the preparedstatement parameters
+            ps.setString(1, cliente.getCpf());
+            ps.setString(2, cliente.getNome());
+            ps.setString(3, cliente.getSobrenome());
+            ps.setString(4, cliente.getSexo());
+            ps.setDate(5, new java.sql.Date(cliente.getNasc().getTime()));
+            ps.setString(6, cliente.getTelefone());
+            ps.setString(7, cliente.getCelular());
+            ps.setString(8, cliente.getEmail());
+            ps.setString(9, cliente.getStatus());
+            ps.setDate(10, new java.sql.Date(cliente.getDtCadastro().getTime()));
+            ps.setInt(11, cliente.getId());
+      
+            // call executeUpdate to execute our sql update statement
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException se) {
+            // log the exception
+            System.out.println(se.toString());
+        }
+    }
+    
+    // a java preparedstatement
+    public void alterarEnderecoCliente(Cliente cliente, Endereco endereco)
+            throws ClassNotFoundException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String query =  "UPDATE ENDERECO_CLIENTE SET " +
+                        "LOGRADOURO_CLI=?, " +
+                        "NUMERO_CLI=?, " +
+                        "BAIRRO_CLI=?, " +
+                        "CIDADE_CLI=?, " +
+                        "ESTADO_CLI=?, " +
+                        "CEP_CLI=? " +
+                        "WHERE ID_CLIENTE = ?";
+        try {
+            conn = getConexao();
+            // create our java preparedstatement using a sql update query
+            ps = conn.prepareStatement(query);
+
+            // set the preparedstatement parameters
+            ps.setString(1, endereco.getEndereco());
+            ps.setInt(2, endereco.getNumero());
+            ps.setString(3, endereco.getBairro());
+            ps.setString(4, endereco.getCidade());
+            ps.setString(5, endereco.getEstado());
+            ps.setString(6, endereco.getCep());
+            ps.setInt(7, cliente.getId());
+            // call executeUpdate to execute our sql update statement
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException se) {
+            // log the exception
+        }
     }
 
 //        public void cadastrarMovimento()

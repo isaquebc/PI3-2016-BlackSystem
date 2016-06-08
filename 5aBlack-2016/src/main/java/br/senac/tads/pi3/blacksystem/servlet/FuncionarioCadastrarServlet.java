@@ -4,10 +4,13 @@
  * and open the template in the editor.
  */
 package br.senac.tads.pi3.blacksystem.servlet;
+
 import br.senac.tads.pi3.blacksystem.ablack.FuncionarioDAO;
 import br.senac.tads.pi3.blacksystem.entity.Endereco;
+import br.senac.tads.pi3.blacksystem.entity.Erro;
 import br.senac.tads.pi3.blacksystem.entity.Filial;
 import br.senac.tads.pi3.blacksystem.entity.Funcionario;
+import br.senac.tads.pi3.blacksystem.entity.Mensagem;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -42,7 +45,7 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet FuncionarioCadastrarServlet</title>");            
+            out.println("<title>Servlet FuncionarioCadastrarServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet FuncionarioCadastrarServlet at " + request.getContextPath() + "</h1>");
@@ -51,7 +54,6 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
         }
     }
 
-    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -78,13 +80,13 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         FuncionarioDAO funcDAO = new FuncionarioDAO();
         Funcionario funcionario = new Funcionario();
         Endereco endereco = new Endereco();
-        
-        funcionario.setNome( request.getParameter("nome").toUpperCase());
-        funcionario.setSobrenome(request.getParameter("sobrenome" ).toUpperCase());
+
+        funcionario.setNome(request.getParameter("nome").toUpperCase());
+        funcionario.setSobrenome(request.getParameter("sobrenome").toUpperCase());
         funcionario.setTelefone(request.getParameter("telefone"));
         funcionario.setCelular(request.getParameter("celular"));
         funcionario.setEmail(request.getParameter("email"));
@@ -94,29 +96,41 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
         funcionario.setSalario(Float.parseFloat(request.getParameter("salario")));
         funcionario.setHashSenha(request.getParameter("senha"));
         funcionario.setCpf(request.getParameter("cpf"));
-        ////        func.setDataContratacao(request.getParameter("2000-01-01"));
-        
-        /*quando implementar o endereco colocar os request aqui*/
-        endereco.setEndereco(request.getParameter("logradoura"));
-        endereco.setNumero((int)Integer.parseInt(request.getParameter("numero")));
-        endereco.setComplemento(request.getParameter("complemento"));
-        endereco.setBairro(request.getParameter("bairro"));
-        endereco.setCidade(request.getParameter("cidade"));
-        endereco.setEstado(request.getParameter("estado"));
-        endereco.setCep(request.getParameter("cep"));
-        
-        
         System.err.println(request.getParameter("filial-Trabalho").toUpperCase());
-        try {
-            funcionario.setFilial(funcDAO.buscarFilial(request.getParameter("filial-Trabalho").toUpperCase()));
-            funcDAO.cadastrarFuncionario(funcionario);
-            funcDAO.cadastrarEndFuncionario(funcionario, endereco);
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(FuncionarioCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }catch(NullPointerException ex){
-            System.err.println(ex.getMessage());
-        }        
+
+        Erro er = funcionario.validar(funcionario);
+        boolean teste = er.isExistente();
+        if (teste) {
+            /*=============================================================
+             Mensagem de Erro
+             ===============================================================*/
+            Mensagem msg = new Mensagem();
+            msg.setTitulo("Cadastrar Funcionario");
+            msg.setTexto("Erro no cadastro, " + er.getMensagem());
+            msg.setDestino("Funcionario-Cadastrar");
+            request.setAttribute("msg", msg);
+            try {
+                request.getRequestDispatcher("Mensagem.jspx").forward(request, response);
+            } catch (IOException ex) {
+                Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+             Mensagem msg = new Mensagem("Cadastrar Funcionario", "Funcionario cadastrado com sucesso!",
+                        "Funcionario-Cadastrar");
+                request.setAttribute("msg", msg);
+                request.getRequestDispatcher("Mensagem.jspx").forward(request, response);
+            try {
+                funcionario.setFilial(funcDAO.buscarFilial(request.getParameter("filial-Trabalho").toUpperCase()));
+                funcDAO.cadastrarFuncionario(funcionario);
+                funcDAO.cadastrarEndFuncionario(funcionario, endereco);
+
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(FuncionarioCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NullPointerException ex) {
+                System.err.println(ex.getMessage());
+            }
+        }
+
     }
 
     /**

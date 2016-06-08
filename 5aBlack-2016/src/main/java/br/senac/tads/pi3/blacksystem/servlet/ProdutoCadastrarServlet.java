@@ -71,7 +71,7 @@ public class ProdutoCadastrarServlet extends HttpServlet {
         
         p.setNome(request.getParameter("nome").toUpperCase());
         p.setValidade(request.getParameter("validade"));
-        p.setLote(Integer.parseInt(request.getParameter("lote")));
+        p.setLote(request.getParameter("lote"));
         p.setQtdMin(Integer.parseInt(request.getParameter("qtdMinima")));
         p.setQtdMax(Integer.parseInt(request.getParameter("qtdMaxima")));
         p.setQtdAtual(Integer.parseInt(request.getParameter("qtdAtual")));

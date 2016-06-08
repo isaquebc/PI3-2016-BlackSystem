@@ -14,7 +14,7 @@ public class Produto {
     private String nome;
     private String validade;
     private String data;
-    private int lote;
+    private String lote;
     private String status;
     private int qtdMin;
     private int qtdMax;
@@ -64,11 +64,11 @@ public class Produto {
         this.data = data;
     }
 
-    public int getLote() {
+    public String getLote() {
         return lote;
     }
 
-    public void setLote(int lote) {
+    public void setLote(String lote) {
         this.lote = lote;
     }
 
