@@ -49,7 +49,7 @@ public class ProdutoDAO extends Conexao {
     }
 
     public void produtoCadastro(Produto p) throws ClassNotFoundException {
-        String sql = "insert into PRODUTO ( NOME_PROD, VALIDADE_PROD,LOTE,STATUS,QTD_MIN,QTD_MAX,QTD_ATUAL,ID_TIPO_PROD)" + "values(?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO PRODUTO ( NOME_PROD, VALIDADE_PROD,LOTE,STATUS,QTD_MIN,QTD_MAX,QTD_ATUAL,ID_TIPO_PROD)" + "VALUES(?,?,?,?,?,?,?,?)";
 
         Connection conn = null;
         PreparedStatement stm = null;

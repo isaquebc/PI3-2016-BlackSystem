@@ -73,11 +73,12 @@ public class IndexServlet extends HttpServlet {
             throws ServletException, IOException {
        
         
-//        Map<String, Usuario>  usuario = new HashMap<>();
+//        Map<String, Usuario>  usuautenticarario = new HashMap<>();
         Usuario usuarioBanco = new Usuario();
         Usuario usuarioLogado = new Usuario();
         Criptografia criptrografia = new Criptografia();
         FuncionarioDAO funcDAO = new FuncionarioDAO();
+        
         usuarioLogado.setCpf(request.getParameter("cpf"));
         usuarioLogado.setHashSenha(request.getParameter("senha"));
         try {

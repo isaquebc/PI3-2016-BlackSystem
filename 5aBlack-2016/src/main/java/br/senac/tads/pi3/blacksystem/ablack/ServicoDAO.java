@@ -16,6 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -36,22 +38,31 @@ public class ServicoDAO extends Conexao {
             stm.setString(2, serv.getTipoServico());
             stm.setDouble(3, serv.getValorServico());
             stm.setInt(4, serv.getPrazo());
-
             stm.executeUpdate();
-            stm.close();
-            conn.close();
+
         } catch (SQLException e) {
             System.out.println(e.toString());
         } catch (NullPointerException e) {
             System.out.println("Dao não inicializado");
+        }finally{
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ServicoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ServicoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
     public ArrayList<Servico> buscarServico(Servico serv) throws ClassNotFoundException{
         
         String QUERY_BUSCAR_SERVICO = "select ID_SERVICO, NOME_SERV, TIPO_SERV, VALOR_SERV, PRAZO_SERV from SERVICO where " +
-        " NOME_SERV like '%"+ serv.getNomeServico().charAt(0) +"%' or " +
-        " TIPO_SERV like '%"+serv.getTipoServico().charAt(0)+"%' or  " +
+        " NOME_SERV like '%"+ serv.getNomeServico().charAt(0) +"%' OR " +
+        " TIPO_SERV like '%"+serv.getTipoServico().charAt(0)+"%' OR  " +
         " NOME_SERV = '"+serv.getNomeServico()+"' OR " +
         " TIPO_SERV = '"+serv.getTipoServico()+"'" +
         " ORDER BY VALOR_SERV DESC";

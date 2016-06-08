@@ -20,6 +20,7 @@ public class Produto {
     private int qtdMax;
     private int qtdAtual;
     private TipoProduto tipoDeProduto;
+    
     // <editor-fold defaultstate="collapsed" desc="Metodos Get e Set.">
     public Produto(){
         this.tipoDeProduto = new TipoProduto();

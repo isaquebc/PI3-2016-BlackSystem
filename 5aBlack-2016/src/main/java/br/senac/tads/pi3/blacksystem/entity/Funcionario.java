@@ -11,14 +11,14 @@ import java.util.Date;
  *
  * @author Rafael
  */
-public class Funcionario extends Pessoa{
-    
-    
+public class Funcionario extends Pessoa {
+
     private String hashSenha;
-    private String cargo="";
+    private String cargo = "";
     private int filial;
     private Date dataContratacao;
-    private double salario=0;
+    private double salario = 0;
+    private String[] papeis;
     private Endereco endereco;
 
     public Endereco getEndereco() {
@@ -28,7 +28,7 @@ public class Funcionario extends Pessoa{
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
+
     public double getSalario() {
         return salario;
     }
@@ -36,7 +36,7 @@ public class Funcionario extends Pessoa{
     public void setSalario(double salario) {
         this.salario = salario;
     }
-    
+
     public String getHashSenha() {
         return hashSenha;
     }
@@ -49,8 +49,13 @@ public class Funcionario extends Pessoa{
         return cargo;
     }
 
+    public String[] getPapeis() {
+        return this.papeis;
+    }
+
     public void setCargo(String cargo) {
         this.cargo = cargo;
+        this.papeis = papeis(cargo);
     }
 
     public int getFilial() {
@@ -69,19 +74,39 @@ public class Funcionario extends Pessoa{
         this.dataContratacao = dataContratacao;
     }
 
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-    
-    public Erro validar(Pessoa pessoa){
+    public Erro validar(Pessoa pessoa) {
         ValidacaoFactory n = new ValidacaoFactory();
-        return  n.validarFuncionario((Funcionario) pessoa);
+        return n.validarFuncionario((Funcionario) pessoa);
     }
 
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public String[] papeis(String cargo) {
+
+        switch (cargo) {
+
+            case "BACKOFFICE":
+                String papeis[] = {"BASICO", "INTERMEDIARIO"};
+                return papeis;
+            case "ATENDIMENTO":
+                String atendimento[] = {"BASICO", "VENDEDOR"};
+                return atendimento;
+            case "SUPORTETECNICO":
+                String suporteTI[] = {"BASICO", "INTERMEDIARIO", "VENDEDOR", "GERENTE"};
+                return suporteTI;
+            case "GERENTETI":
+                String gerenteTi[] = {"BASICO", "INTERMEDIARIO", "VENDEDOR", "GERENTE"};
+                return gerenteTi;
+            case "GERENTEATENDIMENTO":
+                String gerenteAtendimento[] = {"BASICO", "VENDEDOR", "GERENTE"};
+                return gerenteAtendimento;
+            case "GERENTEPRODUTO":
+                String gerenteProuto[] = {"BASICO", "INTERMEDIARIO", "GERENTE"};
+                return gerenteProuto;
+            case "DIRETOR":
+                String gerenteDiretor[] = {"BASICO", "INTERMEDIARIO", "VENDEDOR", "GERENTE"};
+                return gerenteDiretor;
+        }
+        return null;
     }
-    private String dataNascimento;
 
     public Funcionario(String cargo, int filial, Date dataContratacao, String dataNascimento, int id, String nome, String sonbrenome, String cpf, String telefone, String celular, String email, String rua, int numero, String estado, String cidade, String cep) {
         super();
@@ -97,16 +122,9 @@ public class Funcionario extends Pessoa{
         this.dataContratacao = dataContratacao;
         this.dataNascimento = dataNascimento;
     }
-    
+
     public Funcionario() {
         this.endereco = new Endereco();
     }
 
-    
-    
-    
-   
-    }
-    
-   
-
+}

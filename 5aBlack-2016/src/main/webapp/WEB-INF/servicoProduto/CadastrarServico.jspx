@@ -35,19 +35,19 @@
                                     <legend><h2 class="form-signin-heading">Novo Serviço</h2></legend>
                                     <div class="form-group">
                                         <label for="nome">Nome</label>
-                                        <input type="text" class="form-control" name="nome" for="sNome" id="pNome"/>
+                                        <input type="text" required="" class="form-control" name="nome" for="sNome" id="pNome"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="tipoServico">Tipo de Serviço</label>
-                                        <input type="text" class="form-control" name="tipoServico" for="tipoServico" id="tipoServico"/>
+                                        <input type="text" required="" class="form-control" name="tipoServico" for="tipoServico" id="tipoServico"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="valor">Valor em R$</label>
-                                        <input type="number" class="form-control" name="valor" for="valor" id="valor"/>
+                                        <input type="number" required="" class="form-control" value="0" name="valor" for="valor" id="valor"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="prazo">Prazo em dias</label>
-                                        <input type="number" class="form-control" name="prazo" for="prazo" id="prazo"/>
+                                        <input type="number" required="" class="form-control" value="0" name="prazo" for="prazo" id="prazo"/>
                                     </div>
                                 </fieldset>
                                 <button type="submit" id="inserir" class="btn btn-lg btn-primary btn-block">Cadastrar</button>
