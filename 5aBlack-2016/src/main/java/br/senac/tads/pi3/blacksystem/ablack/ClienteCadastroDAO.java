@@ -125,7 +125,7 @@ public class ClienteCadastroDAO extends Conexao {
     
     // a java preparedstatement
     public void alterarCliente(Cliente cliente)
-            throws SQLException, ClassNotFoundException {
+            throws ClassNotFoundException {
         Connection conn = null;
         PreparedStatement ps = null;
         String query = "UPDATE CLIENTE SET " +
@@ -139,7 +139,7 @@ public class ClienteCadastroDAO extends Conexao {
                         "EMAIL_CLIENTE=?, " +
                         "STATUS_CLIENTE=?, " +
                         "DTCADASTRO_CLIENTE=? " +
-                        "WHERE CPF_CLIENTE = ?;";
+                        "WHERE CPF_CLIENTE = ?";
         try {
             conn = getConexao();
             // create our java preparedstatement using a sql update query
@@ -163,13 +163,13 @@ public class ClienteCadastroDAO extends Conexao {
             ps.close();
         } catch (SQLException se) {
             // log the exception
-            throw se;
+            System.out.println(se.toString());
         }
     }
     
     // a java preparedstatement
     public void alterarEnderecoCliente(Cliente cliente, Endereco endereco)
-            throws SQLException, ClassNotFoundException {
+            throws ClassNotFoundException {
         Connection conn = null;
         PreparedStatement ps = null;
         String query =  "UPDATE ENDERECO_CLIENTE SET " +
@@ -198,8 +198,6 @@ public class ClienteCadastroDAO extends Conexao {
             ps.close();
         } catch (SQLException se) {
             // log the exception
-            
-            throw se;
         }
     }
 

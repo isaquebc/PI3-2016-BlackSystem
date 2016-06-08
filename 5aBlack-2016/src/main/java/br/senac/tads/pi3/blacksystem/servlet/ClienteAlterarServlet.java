@@ -11,7 +11,12 @@ import br.senac.tads.pi3.blacksystem.entity.Cliente;
 import br.senac.tads.pi3.blacksystem.entity.Endereco;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -69,13 +74,13 @@ public class ClienteAlterarServlet extends HttpServlet {
         Endereco endereco = new Endereco();
         Cliente cliente = new Cliente();
         SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd");
-
+        cliente.setId(11);
         cliente.setCpf(request.getParameter("cpf"));
         cliente.setNome(request.getParameter("nome").toUpperCase());
         cliente.setSobrenome(request.getParameter("sobrenome").toUpperCase());
         cliente.setTelefone(request.getParameter("telefone"));
         cliente.setCelular(request.getParameter("celular"));
-        cliente.setSexo(request.getParameter("sexo").toUpperCase());
+        //cliente.setSexo(request.getParameter("sexo").toUpperCase());
         cliente.setEmail(request.getParameter("email"));
         String dtNascStr = request.getParameter("dt-Nascimento");
         
@@ -87,10 +92,21 @@ public class ClienteAlterarServlet extends HttpServlet {
         endereco.setEstado(request.getParameter("estado"));
         endereco.setCep(request.getParameter("cep"));
         
+        
+//        Date nasc= null;
+//        try {
+//            nasc = form.parse(dtNascStr);
+//        } catch (ParseException ex) {
+//            Logger.getLogger(ClienteCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//       
+//       cliente.setNasc(nasc);
+       cliente.setDtCadastro(new Date());
         try {
-            clienteDAO.alterarCliente(cliente);
+            //clienteDAO.alterarCliente(cliente);
             clienteDAO.alterarEnderecoCliente(cliente, endereco);
-        } catch (Exception e) {
+        } catch (ClassNotFoundException e) {
+            System.out.println(e.toString());
         }
         
     }
