@@ -67,7 +67,7 @@
                             <tbody class="table-hover">
                                 <c:forEach items="${clientes}" var="cliente">
                                     <tr>
-                                <form class="form-signin" action="#" method="post" accept-charset="UTF-8"> <!-- BuscarClienteServlet -->
+                                <form class="form-signin" action="ClienteAlterarServlet" method="post" accept-charset="UTF-8"> <!-- BuscarClienteServlet -->
                                     <fieldset>
                                         <td><input type="text" size="4" disabled="" class="esconder" required="" value="${cliente.id}" name="id" id="id"/></td>
                                         <td><input type="text" size="12" class="esconder" required="" value="${cliente.cpf}" name="cpf" id="cpf" data-dismiss="alert" maxlength="14" onBlur="ValidarCPF(cadCliente.cpf);" OnKeyPress="formatar('###.###.###-##', this)"/></td>
@@ -78,7 +78,7 @@
                                         <td><input type="text" size="11" class="esconder" required="" value="${cliente.celular}" name="celular" id="cel" maxlength="13" OnKeyPress="formatar('##-#####-####', this)"/></td>
                                         <td><input type="email" size="15" class="esconder" required="" value="${cliente.email}" name="email" id="email"/></td>
                                         <td><input type="text" size="16" class="esconder" value="${cliente.rua}" name="rua" id="rua"/></td>
-                                        <td><input type="number" size="1" class="esconder" value="${cliente.numero}" name="nuemero" id="nuemero"/></td>
+                                        <td><input type="number" size="1" class="esconder" value="${cliente.numero}" name="numero" id="nuemero"/></td>
                                         <td><input type="text" size="3" class="esconder" value="${cliente.estado}" name="estado" id="estado"/></td>
                                         <td><input type="text" size="7" class="esconder" value="${cliente.cidade}" name="cidade" id="cidade"/></td>
                                         <td><input type="text" size="7" class="esconder" value="${cliente.cep}" name="cep" id="cep" maxlength="9" OnKeyPress="formatar('#####-###', this)"/></td>

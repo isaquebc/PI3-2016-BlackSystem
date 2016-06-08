@@ -211,8 +211,8 @@ public class FuncionarioDAO extends Conexao {
         public void cadastrarEndFuncionario(Funcionario funcionario, Endereco endereco) throws ClassNotFoundException{
         Connection conn = null;
         PreparedStatement preStm = null;
-        final String QUERY_INSERT_FUNCIORARIO_END = "INSERT INTO ENDERECO_FUNCIONARIO (LOGRADOURO_FUNC, NUMERO_FUNC, BAIRRO_FUNC, CIDADE_FUNC, ESTADO_FUNC, CEP_FUNC, ID_FUNC) " +
-        " VALUES(?, ?, ?, ?, ?, ? , ?, (SELECT ID_FUNC FROM FUNCIONARIO WHERE CPF_FUNC ="+funcionario.getCpf()+"))";
+        String QUERY_INSERT_FUNCIORARIO_END = "INSERT INTO ENDERECO_FUNCIONARIO (LOGRADOURO_FUNC, NUMERO_FUNC, BAIRRO_FUNC, CIDADE_FUNC, ESTADO_FUNC, CEP_FUNC, ID_FUNC) " +
+        " VALUES(?, ?, ?, ?, ?, ?, (SELECT ID_FUNC FROM FUNCIONARIO WHERE CPF_FUNC ='"+funcionario.pegarCpf()+"')\n)";
         try {
             conn = getConexao();
             preStm = conn.prepareStatement(QUERY_INSERT_FUNCIORARIO_END);
@@ -282,7 +282,7 @@ public class FuncionarioDAO extends Conexao {
         }
     }
     
-     // a java preparedstatement
+    // a java preparedstatement
     public void alterarEnderecoFuncionarior(Funcionario funcionario, Endereco endereco)
             throws SQLException, ClassNotFoundException {
         Connection conn = null;
@@ -313,6 +313,7 @@ public class FuncionarioDAO extends Conexao {
             ps.close();
         } catch (SQLException se) {
             // log the exception
+            
             throw se;
         }
     }

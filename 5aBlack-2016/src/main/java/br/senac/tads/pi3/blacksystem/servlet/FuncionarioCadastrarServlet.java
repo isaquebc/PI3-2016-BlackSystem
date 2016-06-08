@@ -96,14 +96,15 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
         funcionario.setCpf(request.getParameter("cpf"));
         ////        func.setDataContratacao(request.getParameter("2000-01-01"));
         
+        
         /*quando implementar o endereco colocar os request aqui*/
-        endereco.setEndereco(request.getParameter("logradoura"));
-        endereco.setNumero((int)Integer.parseInt(request.getParameter("numero")));
-        endereco.setComplemento(request.getParameter("complemento"));
-        endereco.setBairro(request.getParameter("bairro"));
-        endereco.setCidade(request.getParameter("cidade"));
-        endereco.setEstado(request.getParameter("estado"));
-        endereco.setCep(request.getParameter("cep"));
+//        endereco.setEndereco(request.getParameter("logradoura"));
+//        endereco.setNumero((int)Integer.parseInt(request.getParameter("numero")));
+//        endereco.setComplemento(request.getParameter("complemento"));
+//        endereco.setBairro(request.getParameter("bairro"));
+//        endereco.setCidade(request.getParameter("cidade"));
+//        endereco.setEstado(request.getParameter("estado"));
+//        endereco.setCep(request.getParameter("cep"));
         
         
         System.err.println(request.getParameter("filial-Trabalho").toUpperCase());
