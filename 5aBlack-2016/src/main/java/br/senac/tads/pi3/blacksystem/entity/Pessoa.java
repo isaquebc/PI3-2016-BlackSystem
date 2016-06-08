@@ -35,6 +35,8 @@ public abstract class Pessoa {
     public Pessoa() {
 
     }
+    
+    public abstract Erro validar(Pessoa pessoa);
 
     public void retiraMascara() {
         this.cpf = this.cpf.replace(".", "");

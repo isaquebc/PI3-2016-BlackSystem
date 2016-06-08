@@ -129,7 +129,7 @@ public class FuncionarioDAO extends Conexao {
             conn = getConexao();
             String sql = QUERY_INSERT_FUNCIORARIO;
             stm = conn.prepareStatement(sql);
-            stm.setString(1, func.getCpf());
+            stm.setString(1, func.pegarCpf());
             stm.setString(2, func.getNome());
             stm.setString(3, func.getSobrenome());
             stm.setString(4, func.getSexo());

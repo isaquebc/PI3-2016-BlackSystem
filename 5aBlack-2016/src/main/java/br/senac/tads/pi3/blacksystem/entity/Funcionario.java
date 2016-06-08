@@ -72,6 +72,11 @@ public class Funcionario extends Pessoa{
     public String getDataNascimento() {
         return dataNascimento;
     }
+    
+    public Erro validar(Pessoa pessoa){
+        ValidacaoFactory n = new ValidacaoFactory();
+        return  n.validarFuncionario((Funcionario) pessoa);
+    }
 
     public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;

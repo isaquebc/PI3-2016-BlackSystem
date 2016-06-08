@@ -89,7 +89,7 @@ public class ClienteCadastrarServlet extends HttpServlet {
         // captura dos dados do endereço
         
         endCli.setEndereco(request.getParameter("rua"));
-        endCli.setNumero(Integer.parseInt(request.getParameter("numero")));
+        endCli.setNumero((int) Integer.parseInt(request.getParameter("numero")));
         endCli.setCidade(request.getParameter("cidade"));
         endCli.setEstado(request.getParameter("estado"));
         endCli.setCep(request.getParameter("cep"));
@@ -128,8 +128,6 @@ public class ClienteCadastrarServlet extends HttpServlet {
             try {
                 cadCli.cadatrarPessoa(cli);
                  DAOenddCli.cadastrarEndereco(cli, endCli);
-                
-                   
                 /*=============================================================
                  Mensagem de sucesso
                  ===============================================================*/

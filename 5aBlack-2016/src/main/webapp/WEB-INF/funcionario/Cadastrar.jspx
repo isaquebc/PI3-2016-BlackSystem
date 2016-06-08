@@ -31,7 +31,7 @@
             <div class="container" >
                 <div class="row" >
                     <div class="col-md-offset-2 col-md-5" >
-                        <form class="form-signin" role="form" action="Funcionario-Cadastrar" method="post" accept-charset="UTF-8"> <!-- NovoFuncionarioServlet -->
+                        <form class="form-signin" role="form" action="Funcionario-Cadastrar" method="post" accept-charset="UTF-8" name="cadFuncionario"> <!-- NovoFuncionarioServlet -->
                             <fieldset> 
                                 <legend><h2>Cadastrar Funcionario</h2></legend>
                                 <div class="form-group linha-unica">
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="cargo">Cargo</label>
-                                        <select  class="form-control" required="" name="cargo" id="cargo">
+                                    <select  class="form-control" required="" name="cargo" id="cargo">
                                         <option value=""></option>
                                         <option value="backoffice">Backoffice</option>
                                         <option value="atendimento">Atendimento</option>
@@ -69,9 +69,11 @@
                                     <label for="celular">Celular</label>
                                     <input type="text" class="form-control" name="celular" id="cel" maxlength="13" OnKeyPress="formatar('##-#####-####', this)" />
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" id="campo-cpf">
                                     <label for="cpf">CPF</label>
-                                    <input type="text" required="" class="form-control" name="cpf" id ="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)"/>
+                                    <input type="text"  required="" class="form-control" name="cpf" id ="cpf" maxlength="14" data-dismiss="alert" onBlur="ValidarCPF(cadFuncionario.cpf);" OnKeyPress="formatar('###.###.###-##', this)"/>
+                                    <div class="hidden" id="erro"><strong>Erro!</strong> CPF Invalido.</div>
+                                    <div class="hidden" id="sucesso"><strong>Sucesso!</strong> CPF Valido.</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">E-mail</label>
@@ -93,16 +95,19 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="salario">Sarario R$</label>
-                                    <input type="number" class="form-control" name="salario" id="salario"/>
+                                    <input type="text" class="form-control" name="salario" id="salario"/>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" id="campo-senha">
                                     <label for="senha">Senha</label>
                                     <input type="password" required="" class="form-control" name="senha" id="senha"/>
-                                    <label for="confirm">COnfirmação</label>
-                                    <input type="password" required="" class="form-control" name="senha" id="confirmSenha"/>
+                                    <div class="form-group has-warning has-feedback" id="confirm-senha">
+                                        <label for="confirm">Confirmação</label>
+                                        <input type="password" required="" class="form-control" name="confirmSenha" id="confirmSenha" onmouseover="validarSenha();" onmouseout="validarSenha();"/>
+                                        <span class="glyphicon glyphicon-warning-sign form-control-feedback" name="erroSenha" id="erroSenha"></span>
+                                    </div>
                                 </div>
                             </fieldset>
-                            <button type="submit" id="inserir" class="btn btn-default btn-primary btn-block">Cadastrar</button>
+                            <button type="submit" id="cadastrar" class="btn btn-default btn-primary btn-block" disabled="">Cadastrar</button>
                         </form>
                     </div>
                 </div>
