@@ -108,5 +108,44 @@ public class ServicoDAO extends Conexao {
         }
     }
     
+    public ArrayList<Servico> buscarServico() throws ClassNotFoundException{
+        
+        String QUERY_BUSCAR_SERVICO = "SELECT * FROM SERVICO";
+        
+        ResultSet rs = null;
+        Connection conn = null;
+        Statement stm = null;
+        
+        try {
+            conn = getConexao();
+            stm = conn.createStatement();
+            rs = stm.executeQuery(QUERY_BUSCAR_SERVICO);
+            ArrayList<Servico> servicos = new ArrayList<>();
+            while (rs.next()) {                
+                Servico s = new Servico(
+                        rs.getString("NOME_SERV"),
+                        rs.getString("TIPO_SERV"),
+                        rs.getFloat("VALOR_SERV"),
+                        rs.getInt("PRAZO_SERV"),
+                        rs.getInt("ID_SERVICO")
+                );
+                
+//                s.setNomeServico(rs.getString("NOME_SERV"));
+//                s.setTipoServico(rs.getString("TIPO_SERV"));
+//                s.setValorServico(rs.getFloat("VALOR_SERV"));
+//                s.setPrazo(rs.getInt("PRAZO_SERV"));
+                servicos.add(s);                
+            }
+            rs.close();
+            stm.close();
+            conn.close();
+            return servicos;
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.toString());
+            
+        }
+        return null;
+    }
+    
     
 }
