@@ -43,7 +43,7 @@
                                         <input type="text" required="" class="form-control" name="sobrenome" id="sNome"/>
                                     </div>
                                 </div>
-                                 <div class="form-group">
+                                  <div class="form-group">
                                     <label for="sexo" class="col-md-2">Sexo</label>
                                     
                                     <label class="btn btn-default"><input type="radio" value="M" name="sexo"/>Homem</label>
@@ -89,10 +89,10 @@
                                     <label for="filial-Trabalho">Filial de trabalho</label>
                                     <select class="form-control" required="" name="filial-Trabalho" id="filial">
                                         <option value=""></option>
-                                        <option value="santos">Santos</option>
-                                        <option value="sao-paulo">São Paulo</option>
-                                        <option value="minas-gerais">Minas Gerais</option>
-                                        <option value="rio-de-janeiro">Rio de Janeiro</option>
+                                        <option value="2">Santos</option>
+                                        <option value="1">São Paulo</option>
+                                        <option value="3">Minas Gerais</option>
+                                        <option value="4">Rio de Janeiro</option>
                                     </select>
                                 </div>
                                 <div class="form-group">

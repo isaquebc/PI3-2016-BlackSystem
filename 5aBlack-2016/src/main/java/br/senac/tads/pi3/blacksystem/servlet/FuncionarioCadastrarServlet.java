@@ -13,6 +13,7 @@ import br.senac.tads.pi3.blacksystem.entity.Funcionario;
 import br.senac.tads.pi3.blacksystem.entity.Mensagem;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -84,7 +85,7 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        FuncionarioDAO funcDAO = new FuncionarioDAO();
+    FuncionarioDAO funcDAO = new FuncionarioDAO();
         Funcionario funcionario = new Funcionario();
         Endereco endereco = new Endereco();
         SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd");
@@ -110,7 +111,7 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
         endereco.setCidade(request.getParameter("cidade").toUpperCase());
         endereco.setEstado(request.getParameter("estado").toUpperCase());
         endereco.setCep(request.getParameter("cep"));
-        System.err.println(request.getParameter("filial-Trabalho").toUpperCase());
+        funcionario.setFilial( (int) Integer.parseInt(request.getParameter("filial-Trabalho")));
         
         Date contra= null;
         Date nasc= null;
@@ -148,6 +149,7 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
                 
 
                  funcDAO.cadastrarFuncionario(funcionario);
+                 
 //                funcDAO.cadastrarEndFuncionario1(funcionario, endereco);
 
             } catch (ClassNotFoundException ex) {
@@ -155,7 +157,9 @@ public class FuncionarioCadastrarServlet extends HttpServlet {
             } catch (NullPointerException ex) {
                 System.err.println(ex.getMessage());
 
-            }
+            } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(FuncionarioCadastrarServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
             
             Mensagem msg = new Mensagem("Cadastrar Funcionario", "Funcionario cadastrado com sucesso!",
                     "Funcionario-Cadastrar");

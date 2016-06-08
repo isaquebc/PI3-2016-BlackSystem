@@ -18,6 +18,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -116,13 +118,14 @@ public class FuncionarioDAO extends Conexao {
 //
     
     public void cadastrarFuncionario(Funcionario func)
-            throws ClassNotFoundException {
+            throws ClassNotFoundException, NoSuchAlgorithmException {
 
         Connection conn = null;
         PreparedStatement stm = null;
         Criptografia  criptografar = new Criptografia();
         Usuario user = new Usuario(func.getHashSenha(), criptografar.convertParaHex());
-        String QUERY_INSERT_FUNCIORARIO = "INSERT INTO FUNCIONARIO(CPF_FUNC, NOME_FUNC, SOBRENOME_FUNC, SEXO_FUNC)" + "VALUES(?,?,?,?)";
+        String QUERY_INSERT_FUNCIORARIO = "INSERT INTO FUNCIONARIO(CPF_FUNC, NOME_FUNC, SOBRENOME_FUNC, SEXO_FUNC, NASC_FUNC, TEL_FUNC,"
+                + " CEL_FUNC, EMAIL_FUNC, STATUS_FUNC,SENHA_FUNC,CARGO_FUNC,SALARIO_FUNC,ID_FILIAL,SALT, DATA_CONTRATACAO )" + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
             conn = getConexao();
@@ -132,13 +135,18 @@ public class FuncionarioDAO extends Conexao {
             stm.setString(2, func.getNome());
             stm.setString(3, func.getSobrenome());
             stm.setString(4, func.getSexo());
-           
-//            stm.setString(10, criptografar.gerarHashSenhaPBKDF2(user));
-//            stm.setString(11, func.getCargo());
-//            stm.setDouble(12, func.getSalario());
-//            stm.setInt(13, func.getFilial());
-//            stm.setString(14, user.getSalt());
-//            stm.setDate(15, new java.sql.Date(func.getDataContratacao().getTime()));
+            stm.setDate(5, new java.sql.Date(func.getNasc().getTime()));
+            stm.setString(6, func.getTelefone());
+            stm.setDate(7, new java.sql.Date(func.getDataContratacao().getTime()));
+            stm.setString(8, func.getCelular());
+            stm.setString(9, func.getEmail());
+            stm.setString(10, "ATIVO");
+            stm.setString(10, criptografar.gerarHashSenhaPBKDF2(user));
+            stm.setString(11, func.getCargo());
+            stm.setDouble(12, func.getSalario());
+            stm.setInt(13, 1);
+            stm.setString(14, user.getSalt());
+            stm.setDate(15, new java.sql.Date(func.getDataContratacao().getTime()));
             
             stm.executeUpdate();
             stm.close();
@@ -148,6 +156,10 @@ public class FuncionarioDAO extends Conexao {
             e.getMessage();
         } catch (NullPointerException e) {
             System.out.println("Dao não inicializado");
+        } catch (InvalidKeySpecException ex) {
+            System.out.println("falha na senha");
+            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            ex.getMessage();
         }
         
 

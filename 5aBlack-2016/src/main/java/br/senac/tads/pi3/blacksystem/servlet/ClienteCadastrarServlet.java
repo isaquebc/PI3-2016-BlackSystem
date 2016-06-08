@@ -82,7 +82,7 @@ public class ClienteCadastrarServlet extends HttpServlet {
         cli.setSobrenome(request.getParameter("sobrenome").toUpperCase());
         cli.setTelefone(request.getParameter("telefone"));
         cli.setCelular(request.getParameter("celular"));
-        cli.setSexo(request.getParameter("sexo".toUpperCase()).toUpperCase());
+        cli.setSexo(request.getParameter("sexo".toUpperCase()));
         cli.setEmail(request.getParameter("email"));
         String dtNascStr = request.getParameter("dtNascimento");
         

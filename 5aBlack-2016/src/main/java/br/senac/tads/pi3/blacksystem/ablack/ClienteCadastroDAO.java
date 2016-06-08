@@ -25,12 +25,12 @@ import java.util.logging.Logger;
  */
 public class ClienteCadastroDAO extends Conexao {
 
-    String QUERY_INSERT_CLIENTE = "insert into CLIENTE( NOME_CLIENTE, SOBRENOME_CLIENTE, SEXO_CLIENTE, NASC_CLIENTE,"
-            + "TEL_CLIENTE, CEL_CLIENTE,EMAIL_CLIENTE,STATUS_CLIENTE,CPF_CLIENTE, DTCADASTRO_CLIENTE)" + " values(?,?,?,?,?,?,?,?,?,?)";
+    
     String QUERY_SELECT_CLIENTE = "SELECT * FROM APP.CLIENTE";
 
     public void cadatrarPessoa(Cliente cli) throws ClassNotFoundException {
-
+    String QUERY_INSERT_CLIENTE = "insert into CLIENTE( NOME_CLIENTE, SOBRENOME_CLIENTE, SEXO_CLIENTE, NASC_CLIENTE,"
+            + "TEL_CLIENTE, CEL_CLIENTE,EMAIL_CLIENTE,STATUS_CLIENTE,CPF_CLIENTE, DTCADASTRO_CLIENTE)" + " values(?,?,?,?,?,?,?,?,?,?)";
         Connection conn = null;
         PreparedStatement stm = null;
 
